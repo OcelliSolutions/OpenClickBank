@@ -36,7 +36,7 @@ public class ProduceResponseTypeModelProvider : IApplicationModelProvider
     public void AddProducesResponseTypeAttribute(ActionModel action, Type? returnType, int statusCodeResult)
     {
         if (returnType != null)
-            action.Filters.Add(new ProducesResponseTypeAttribute(returnType, statusCodeResult));
+            action.Filters.Add(new ProducesResponseTypeAttribute(returnType, statusCodeResult, "plain/text"));
         else if (returnType == null) action.Filters.Add(new ProducesResponseTypeAttribute(statusCodeResult));
     }
 
@@ -44,7 +44,7 @@ public class ProduceResponseTypeModelProvider : IApplicationModelProvider
     {
         //AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status400BadRequest);
         //AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status401Unauthorized);
-        //AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status403Forbidden);
+        AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status403Forbidden);
         //AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status404NotFound);
         //AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status429TooManyRequests);
         //AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status500InternalServerError);

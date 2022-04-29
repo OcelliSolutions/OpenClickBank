@@ -23,6 +23,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/AnalyticStatus'
+        '403':
+          description: Forbidden
   '/1.3/analytics/{role}/subscription/details/compthirty':
     get:
       tags:
@@ -63,6 +65,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
+        '403':
+          description: Forbidden
   '/1.3/analytics/{role}/subscription/details/compsixty':
     get:
       tags:
@@ -103,6 +107,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
+        '403':
+          description: Forbidden
   '/1.3/analytics/{role}/subscription/details/cancelthirty':
     get:
       tags:
@@ -143,6 +149,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
+        '403':
+          description: Forbidden
   '/1.3/analytics/{role}/subscription/details/cancelsixty':
     get:
       tags:
@@ -183,6 +191,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
+        '403':
+          description: Forbidden
   '/1.3/analytics/{role}/subscription/details/startdate':
     get:
       tags:
@@ -239,6 +249,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
+        '403':
+          description: Forbidden
   '/1.3/analytics/{role}/subscription/details/canceldate':
     get:
       tags:
@@ -295,6 +307,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
+        '403':
+          description: Forbidden
   '/1.3/analytics/{role}/subscription/details/nextpmtdate':
     get:
       tags:
@@ -351,6 +365,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
+        '403':
+          description: Forbidden
   '/1.3/analytics/{role}/subscription/details/status':
     get:
       tags:
@@ -396,6 +412,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
+        '403':
+          description: Forbidden
   '/1.3/analytics/{role}/subscription/details':
     get:
       tags:
@@ -436,6 +454,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
+        '403':
+          description: Forbidden
   '/1.3/analytics/{role}/subscription/trends':
     get:
       tags:
@@ -508,6 +528,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/SubscriptionTrendsData'
+        '403':
+          description: Forbidden
   '/1.3/analytics/{role}/{dimension}':
     get:
       tags:
@@ -595,6 +617,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/AnalyticsResult'
+        '403':
+          description: Forbidden
   '/1.3/analytics/{role}/{dimension}/summary':
     get:
       tags:
@@ -688,6 +712,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/AnalyticsResult'
+        '403':
+          description: Forbidden
   /1.3/debug:
     get:
       tags:
@@ -701,6 +727,8 @@ paths:
             text/plain:
               schema:
                 type: string
+        '403':
+          description: Forbidden
   /1.3/images/list:
     get:
       tags:
@@ -735,6 +763,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/ImageListResult'
+        '403':
+          description: Forbidden
   '/1.3/orders2/{receipt}':
     head:
       tags:
@@ -759,6 +789,8 @@ paths:
           description: No Content
         '400':
           description: Bad Request
+        '403':
+          description: Forbidden
     get:
       tags:
         - Orders2
@@ -795,6 +827,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/OrderList'
+        '403':
+          description: Forbidden
   /1.3/orders2/list:
     get:
       tags:
@@ -892,6 +926,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/OrderList'
+        '403':
+          description: Forbidden
   '/1.3/orders2/{receipt}/reinstate':
     post:
       tags:
@@ -914,6 +950,8 @@ paths:
       responses:
         '204':
           description: No Content
+        '403':
+          description: Forbidden
   '/1.3/orders2/{receipt}/pause':
     post:
       tags:
@@ -944,6 +982,8 @@ paths:
       responses:
         '204':
           description: No Content
+        '403':
+          description: Forbidden
   '/1.3/orders2/{receipt}/extend':
     post:
       tags:
@@ -973,6 +1013,8 @@ paths:
       responses:
         '204':
           description: No Content
+        '403':
+          description: Forbidden
   '/1.3/orders2/{receipt}/changeProduct':
     post:
       tags:
@@ -1019,6 +1061,8 @@ paths:
       responses:
         '204':
           description: No Content
+        '403':
+          description: Forbidden
   '/1.3/orders2/{receipt}/changeAddress':
     post:
       tags:
@@ -1084,6 +1128,8 @@ paths:
       responses:
         '204':
           description: No Content
+        '403':
+          description: Forbidden
   /1.3/orders2/count:
     get:
       tags:
@@ -1159,6 +1205,8 @@ paths:
               schema:
                 type: integer
                 format: int32
+        '403':
+          description: Forbidden
   '/1.3/orders2/{receipt}/upsells':
     get:
       tags:
@@ -1183,6 +1231,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/OrderList'
+        '403':
+          description: Forbidden
   '/1.3/orders2/{receipt}/changeDate':
     post:
       tags:
@@ -1212,6 +1262,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/OrderList'
+        '403':
+          description: Forbidden
   '/1.3/products/{sku}':
     get:
       tags:
@@ -1242,6 +1294,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Product'
+        '403':
+          description: Forbidden
     delete:
       tags:
         - Product
@@ -1264,6 +1318,8 @@ paths:
       responses:
         '204':
           description: No Content
+        '403':
+          description: Forbidden
     put:
       tags:
         - Product
@@ -1455,6 +1511,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Product'
+        '403':
+          description: Forbidden
   /1.3/products/list:
     get:
       tags:
@@ -1493,6 +1551,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/ProductList'
+        '403':
+          description: Forbidden
   /1.3/quickstats/accounts:
     get:
       tags:
@@ -1510,6 +1570,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/AccountList'
+        '403':
+          description: Forbidden
   /1.3/quickstats/list:
     get:
       tags:
@@ -1527,6 +1589,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/AccountList'
+        '403':
+          description: Forbidden
   /1.3/quickstats/count:
     get:
       tags:
@@ -1544,6 +1608,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/AccountList'
+        '403':
+          description: Forbidden
   /1.3/shipping2/list:
     get:
       tags:
@@ -1601,6 +1667,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/ShippingList'
+        '403':
+          description: Forbidden
   /1.3/shipping2/count:
     get:
       tags:
@@ -1651,6 +1719,8 @@ paths:
               schema:
                 type: integer
                 format: int32
+        '403':
+          description: Forbidden
   '/1.3/shipping2/shipnotice/{receipt}':
     get:
       tags:
@@ -1675,6 +1745,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/ShippingNoticeData'
+        '403':
+          description: Forbidden
     post:
       tags:
         - Shipping2
@@ -1736,6 +1808,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/ShippingNoticeData'
+        '403':
+          description: Forbidden
   '/1.3/tickets/{receipt}':
     post:
       tags:
@@ -2017,6 +2091,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/TicketList'
+        '403':
+          description: Forbidden
   /1.3/tickets/count:
     get:
       tags:
@@ -2052,6 +2128,8 @@ paths:
               schema:
                 type: integer
                 format: int32
+        '403':
+          description: Forbidden
 components:
   schemas:
     AccountData:
@@ -2080,6 +2158,7 @@ components:
       additionalProperties: { }
     AnalyticAttribute:
       enum:
+        - NIL
         - DIMENSION_VALUE
         - HOP_COUNT
         - ORDER_IMPRESSION
@@ -2159,10 +2238,10 @@ components:
     AnalyticsValueDetail:
       type: object
       properties:
-        type:
+        '@type':
           type: string
           nullable: true
-        _:
+        $:
           type: string
           description: The property name is actually `$` but this causes issues for code generators and is disabled for now.
           nullable: true
@@ -3511,7 +3590,7 @@ components:
         total:
           type: array
           items:
-            $ref: '#/components/schemas/AnalyticAttribute'
+            $ref: '#/components/schemas/AnalyticsValue'
           nullable: true
       additionalProperties: { }
     VendorVariables:

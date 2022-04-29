@@ -19,8 +19,7 @@ public class TicketTests : IClassFixture<SharedFixture>
     }
 
     private SharedFixture Fixture { get; }
-
-    //TODO: `comments` can be an array or object
+    
     [SkippableFact]
     async public void GetTicketsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
@@ -51,6 +50,7 @@ public class TicketTests : IClassFixture<SharedFixture>
         Assert.NotEqual(0, count);
     }
 
+    //TODO: The required parameter of `receipt` is not available.
     [Fact(Skip = "TODO: The required parameter of `receipt` is not available.")]
     async public void GetTicketRefundAmountsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {

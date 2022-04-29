@@ -9,12 +9,10 @@ public class ArrayOrObjectJsonConverter<T> : JsonConverter<ICollection<T>> where
         => reader.TokenType switch
         {
             JsonTokenType.StartArray => JsonSerializer.Deserialize<T[]>(ref reader, options),
-            JsonTokenType.StartObject => JsonSerializer.Deserialize<Wrapper>(ref reader, options)?.Items,
+            JsonTokenType.StartObject => new List<T>() { JsonSerializer.Deserialize<T>(ref reader, options)! },
             _ => throw new JsonException()
         };
 
     override public void Write(Utf8JsonWriter writer, ICollection<T> value, JsonSerializerOptions options)
         => JsonSerializer.Serialize(writer, (object?)value, options);
-
-    private record Wrapper(T[] Items);
 }

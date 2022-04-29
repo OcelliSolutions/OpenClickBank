@@ -39,8 +39,7 @@ public class QuickstatTests : IClassFixture<SharedFixture>
 
         _additionalPropertiesHelper.CheckAdditionalProperties(stats, Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
     }
-
-    //TODO: `comments` can be an array or object
+    
     [Fact]
     async public void GetQuickstatsSummaryAsync_ReturnsAccountWhenAuthorized_ShouldPass()
     {

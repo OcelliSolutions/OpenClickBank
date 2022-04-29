@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E8519136-D90
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E8315A54-0A8C-4779-A235-84B23FCC9583}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenClickBank.Builder", "src\OpenClickBank.Builder\OpenClickBank.Builder.csproj", "{900854C1-3DDB-43A8-98E0-A17E6453B337}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4C4AE9B-22A3-47FE-8504-0F15D83BF8DE}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -19,8 +17,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenClickBank", "src\OpenClickBank\OpenClickBank.csproj", "{85F4E58C-BC58-4459-8DC1-E316950607B0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenClickBankTests", "tests\OpenClickBankTests\OpenClickBankTests.csproj", "{10F6040C-6C98-4C51-82B8-6BF5984ABDCB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenClickBank.Scraper", "src\OpenClickBank.Scraper\OpenClickBank.Scraper.csproj", "{0A185285-E719-4A2D-9E75-2A1328FAA047}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{8831F556-3166-408E-8092-9341A74E4220}"
 	ProjectSection(SolutionItems) = preProject
@@ -34,16 +30,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{8831F556-3
 		docs\tickets.html = docs\tickets.html
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{BC85FDDA-7CA2-4A4A-A14A-A01CC2407009}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenClickBank.Builder", "tools\OpenClickBank.Builder\OpenClickBank.Builder.csproj", "{C77C5D97-1E5F-4BCF-8693-CF10818ADF9F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenClickBank.ClientGenerator", "tools\OpenClickBank.ClientGenerator\OpenClickBank.ClientGenerator.csproj", "{D554E80E-9494-4D8E-B1F4-DFB19EDE3F72}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenClickBank.Scraper", "tools\OpenClickBank.Scraper\OpenClickBank.Scraper.csproj", "{38AA1EAA-5CF7-4FE9-A217-B499277CDF01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{900854C1-3DDB-43A8-98E0-A17E6453B337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{900854C1-3DDB-43A8-98E0-A17E6453B337}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{900854C1-3DDB-43A8-98E0-A17E6453B337}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{900854C1-3DDB-43A8-98E0-A17E6453B337}.Release|Any CPU.Build.0 = Release|Any CPU
 		{85F4E58C-BC58-4459-8DC1-E316950607B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{85F4E58C-BC58-4459-8DC1-E316950607B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85F4E58C-BC58-4459-8DC1-E316950607B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -52,19 +52,28 @@ Global
 		{10F6040C-6C98-4C51-82B8-6BF5984ABDCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10F6040C-6C98-4C51-82B8-6BF5984ABDCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10F6040C-6C98-4C51-82B8-6BF5984ABDCB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A185285-E719-4A2D-9E75-2A1328FAA047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A185285-E719-4A2D-9E75-2A1328FAA047}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A185285-E719-4A2D-9E75-2A1328FAA047}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A185285-E719-4A2D-9E75-2A1328FAA047}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C77C5D97-1E5F-4BCF-8693-CF10818ADF9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C77C5D97-1E5F-4BCF-8693-CF10818ADF9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C77C5D97-1E5F-4BCF-8693-CF10818ADF9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C77C5D97-1E5F-4BCF-8693-CF10818ADF9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D554E80E-9494-4D8E-B1F4-DFB19EDE3F72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D554E80E-9494-4D8E-B1F4-DFB19EDE3F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D554E80E-9494-4D8E-B1F4-DFB19EDE3F72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D554E80E-9494-4D8E-B1F4-DFB19EDE3F72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38AA1EAA-5CF7-4FE9-A217-B499277CDF01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38AA1EAA-5CF7-4FE9-A217-B499277CDF01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38AA1EAA-5CF7-4FE9-A217-B499277CDF01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38AA1EAA-5CF7-4FE9-A217-B499277CDF01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{900854C1-3DDB-43A8-98E0-A17E6453B337} = {E8519136-D908-4DB1-ADBB-5587B1194695}
 		{85F4E58C-BC58-4459-8DC1-E316950607B0} = {E8519136-D908-4DB1-ADBB-5587B1194695}
 		{10F6040C-6C98-4C51-82B8-6BF5984ABDCB} = {E8315A54-0A8C-4779-A235-84B23FCC9583}
-		{0A185285-E719-4A2D-9E75-2A1328FAA047} = {E8519136-D908-4DB1-ADBB-5587B1194695}
+		{C77C5D97-1E5F-4BCF-8693-CF10818ADF9F} = {BC85FDDA-7CA2-4A4A-A14A-A01CC2407009}
+		{D554E80E-9494-4D8E-B1F4-DFB19EDE3F72} = {BC85FDDA-7CA2-4A4A-A14A-A01CC2407009}
+		{38AA1EAA-5CF7-4FE9-A217-B499277CDF01} = {BC85FDDA-7CA2-4A4A-A14A-A01CC2407009}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D89413E0-B400-4A35-B9A8-EA6B48193503}

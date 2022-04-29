@@ -12,7 +12,7 @@ public static class EnumExtensions
             .GetCustomAttribute<DisplayAttribute>()?
             .GetName();
 
-    public static T? GetEnumFromString<T>(this string name) where T : Enum
+    public static T? GetEnumFromString<T>(this string? name) where T : Enum
     {
         var type = typeof(T);
 

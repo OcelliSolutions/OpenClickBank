@@ -42,6 +42,7 @@ public class ShippingTests : IClassFixture<SharedFixture>
         Assert.NotEqual(0, count);
     }
 
+    //TODO: The required parameter of `receipt` is not available.
     [Fact(Skip = "TODO: The required parameter of `receipt` is not available.")]
     async public void GetShippingNoticeAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {

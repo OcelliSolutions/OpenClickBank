@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using OpenClickBank;
 using OpenClickBankTests.Fixtures;
 using OpenClickBankTests.Helpers;
@@ -272,8 +274,8 @@ public class AnalyticTests : IClassFixture<SharedFixture>
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
     }
-
-    [Fact(Skip = "TODO: The AnalyticsResult object has a property of `$` which cannot be parsed at this time.")]
+    
+    [SkippableFact]
     async public void
         GetStatisticsByRoleAndDimensionAsync_AFFILIATE_CUSTOMER_COUNTRY_AdditionalPropertiesAreEmpty_ShouldPass()
     {
@@ -282,12 +284,23 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Dimension.CUSTOMER_COUNTRY, Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.Totals != null, "analyticStatus.Totals != null");
-        Skip.If(analyticStatus.Totals?.Total != null, "analyticStatus.Totals.Total != null");
-        Skip.If(analyticStatus.Totals?.Total?.Count == 0, "WARN: No data returned. Could not test");
+        Skip.If(!analyticStatus.Rows?.Row?.Any() ?? true, "WARN: No data returned. Could not test");
+        if (!analyticStatus.Rows?.Row?.Any() ?? true) return;
+        Debug.Assert(analyticStatus.Rows != null, "analyticStatus.Rows != null");
+        Debug.Assert(analyticStatus.Rows.Row != null, "analyticStatus.Rows.Row != null");
+        foreach (var row in analyticStatus.Rows.Row)
+        {
+            Debug.Assert(row.Data != null, "row.Data != null");
+            foreach (var data in row.Data)
+            {
+                Assert.NotNull(data.Attribute);
+                Assert.NotNull(data.Value?.Type);
+                Assert.NotNull(data.Value?.Dollar);
+            }
+        }
     }
-
-    [Fact(Skip = "TODO: The AnalyticsResult object has a property of `$` which cannot be parsed at this time.")]
+    
+    [SkippableFact]
     async public void
         GetStatisticsByRoleAndDimensionAsync_VENDOR_CUSTOMER_COUNTRY_AdditionalPropertiesAreEmpty_ShouldPass()
     {
@@ -296,12 +309,23 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Dimension.CUSTOMER_COUNTRY, Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.Totals != null, "analyticStatus.Totals != null");
-        Skip.If(analyticStatus.Totals?.Total != null, "analyticStatus.Totals.Total != null");
-        Skip.If(analyticStatus.Totals?.Total?.Count == 0, "WARN: No data returned. Could not test");
+        Skip.If(!analyticStatus.Rows?.Row?.Any() ?? true, "WARN: No data returned. Could not test");
+        if (!analyticStatus.Rows?.Row?.Any() ?? true) return;
+        Debug.Assert(analyticStatus.Rows != null, "analyticStatus.Rows != null");
+        Debug.Assert(analyticStatus.Rows.Row != null, "analyticStatus.Rows.Row != null");
+        foreach (var row in analyticStatus.Rows.Row)
+        {
+            Debug.Assert(row.Data != null, "row.Data != null");
+            foreach (var data in row.Data)
+            {
+                Assert.NotNull(data.Attribute);
+                Assert.NotNull(data.Value?.Type);
+                Assert.NotNull(data.Value?.Dollar);
+            }
+        }
     }
-
-    [Fact(Skip = "TODO: The AnalyticsResult object has a property of `$` which cannot be parsed at this time.")]
+    
+    [SkippableFact]
     async public void
         GetStatisticsByRoleAndDimensionSummaryAsync_AFFILIATE_PRODUCT_SKU_AdditionalPropertiesAreEmpty_ShouldPass()
     {
@@ -311,12 +335,23 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Dimension.AFFILIATE, Fixture.ApiKey.Site, SummaryType.VENDOR_ONLY);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.Totals != null, "analyticStatus.Totals != null");
-        Skip.If(analyticStatus.Totals?.Total != null, "analyticStatus.Totals.Total != null");
-        Skip.If(analyticStatus.Totals?.Total?.Count == 0, "WARN: No data returned. Could not test");
+        Skip.If(!analyticStatus.Rows?.Row?.Any() ?? true, "WARN: No data returned. Could not test");
+        if (!analyticStatus.Rows?.Row?.Any() ?? true) return;
+        Debug.Assert(analyticStatus.Rows != null, "analyticStatus.Rows != null");
+        Debug.Assert(analyticStatus.Rows.Row != null, "analyticStatus.Rows.Row != null");
+        foreach (var row in analyticStatus.Rows.Row)
+        {
+            Debug.Assert(row.Data != null, "row.Data != null");
+            foreach (var data in row.Data)
+            {
+                Assert.NotNull(data.Attribute);
+                Assert.NotNull(data.Value?.Type);
+                Assert.NotNull(data.Value?.Dollar);
+            }
+        }
     }
 
-    [Fact(Skip = "TODO: The AnalyticsResult object has a property of `$` which cannot be parsed at this time.")]
+    [SkippableFact]
     async public void
         GetStatisticsByRoleAndDimensionSummaryAsync_VENDOR_PRODUCT_SKU_AdditionalPropertiesAreEmpty_ShouldPass()
     {
@@ -326,8 +361,15 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Dimension.PRODUCT_SKU, Fixture.ApiKey.Site, SummaryType.VENDOR_ONLY);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.Totals != null, "analyticStatus.Totals != null");
-        Skip.If(analyticStatus.Totals?.Total != null, "analyticStatus.Totals.Total != null");
-        Skip.If(analyticStatus.Totals?.Total?.Count == 0, "WARN: No data returned. Could not test");
+        Skip.If(!analyticStatus.Totals?.Total?.Any() ?? true, "WARN: No data returned. Could not test");
+        if (!analyticStatus.Totals?.Total?.Any() ?? true) return;
+        Debug.Assert(analyticStatus.Totals != null, "analyticStatus.Rows != null");
+        Debug.Assert(analyticStatus.Totals.Total != null, "analyticStatus.Rows.Row != null");
+        foreach (var row in analyticStatus.Totals.Total)
+        {
+            Assert.NotNull(row.Attribute);
+            Assert.NotNull(row.Value?.Type);
+            Assert.NotNull(row.Value?.Dollar);
+        }
     }
 }
