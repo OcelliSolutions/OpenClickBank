@@ -1,0 +1,326 @@
+<html>
+	<head>
+		<style type="text/css">TD, TH{font-family: Arial; font-size: 10pt; }.ident{padding-left: 40pt;}</style>
+	</head>
+	<body>
+		<font face="Helvetica">
+			<center>
+				<h1>Products Service Description</h1>
+			</center>
+		</font>
+		<table border="1" align="center" cellspacing="0" cellpadding="8">
+			<tbody>
+				<tr>
+					<td>The following methods are available at the servlet path
+						<b>/rest/1.3/products</b>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/products/{sku}</b>
+						<br>Gets a product<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/products/schema">Product Data</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">site</td>
+											<td align="center">true</td>
+											<td>The site owning the product to be retrieved.</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>HAS_DEVELOPER_KEY, api_products_client</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>DELETE</b><b>/1.3/products/{sku}</b>
+						<br>Delete a product<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;Nothing</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">site</td>
+											<td align="center">true</td>
+											<td>The site owning product to be deleted</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>HAS_DEVELOPER_KEY, api_products_client</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>PUT</b><b>/1.3/products/{sku}</b>
+						<br>Saves a product with the passed in parameters<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;A Product Sku</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">digital</td>
+											<td align="center">false</td>
+											<td>product has digital component</td>
+										</tr>
+										<tr>
+											<td align="center">physical</td>
+											<td align="center">false</td>
+											<td>product has physical component</td>
+										</tr>
+										<tr>
+											<td align="center">digitalRecurring</td>
+											<td align="center">false</td>
+											<td>product has digital recurring component</td>
+										</tr>
+										<tr>
+											<td align="center">physicalRecurring</td>
+											<td align="center">false</td>
+											<td>product has physical recurring component</td>
+										</tr>
+										<tr>
+											<td align="center">categories</td>
+											<td align="center">false</td>
+											<td>The categories for digital products.  At least one is required for a product with a digital component, multiple may be specified. Must be either EBOOK, SOFTWARE, GAMES, AUDIO, VIDEO, or MEMBER_SITE. Providing a category for a product without a digital component will result in an error.</td>
+										</tr>
+										<tr>
+											<td align="center">skipConfirmationPage</td>
+											<td align="center">false</td>
+											<td>Whether or not to skip confirmation page.  This parameter is role restricted.  If you do not have the role, it will not be honored.</td>
+										</tr>
+										<tr>
+											<td align="center">site</td>
+											<td align="center">true</td>
+											<td>The site owning the product to be saved.</td>
+										</tr>
+										<tr>
+											<td align="center">thankYouPage</td>
+											<td align="center">false</td>
+											<td>The thank you page for desktops. Either thankYouPage or mobileThankYouPage is required</td>
+										</tr>
+										<tr>
+											<td align="center">mobileThankYouPage</td>
+											<td align="center">false</td>
+											<td>The thank you page for mobile devices.</td>
+										</tr>
+										<tr>
+											<td align="center">currency</td>
+											<td align="center">true</td>
+											<td>The currency the product is sold in.</td>
+										</tr>
+										<tr>
+											<td align="center">price</td>
+											<td align="center">true</td>
+											<td>The price for the product.  Or in the case of RECURRING or RECURRING_PHYSICAL products, the initial price.</td>
+										</tr>
+										<tr>
+											<td align="center">rebillPrice</td>
+											<td align="center">false</td>
+											<td>In the case of RECURRING or RECURRING_PHYSICAL (required) products the rebill price.</td>
+										</tr>
+										<tr>
+											<td align="center">rebillCommission</td>
+											<td align="center">false</td>
+											<td>In the case of RECURRING or RECURRING_PHYSICAL products the rebill commission.</td>
+										</tr>
+										<tr>
+											<td align="center">trialPeriod</td>
+											<td align="center">false</td>
+											<td>In the case of RECURRING or RECURRING_PHYSICAL (required) products the trial period.  Must  be either 0 or a whole number between 3 and 31.</td>
+										</tr>
+										<tr>
+											<td align="center">frequency</td>
+											<td align="center">false</td>
+											<td>In the case of RECURRING or RECURRING_PHYSICAL (required) products the rebill frequency. Must be either WEEKLY, BI_WEEKLY, MONTHLY, QUARTERLY, HALF_YEARLY or YEARLY</td>
+										</tr>
+										<tr>
+											<td align="center">duration</td>
+											<td align="center">false</td>
+											<td>In the case of RECURRING or RECURRING_PHYSICAL (required) products the rebill duration.</td>
+										</tr>
+										<tr>
+											<td align="center">shippingProfile</td>
+											<td align="center">false</td>
+											<td>In the case of PHYSICAL or RECURRING_PHYSICAL products the name of the shipping profile</td>
+										</tr>
+										<tr>
+											<td align="center">purchaseCommission</td>
+											<td align="center">false</td>
+											<td>The commission rate for the product - if unspecified the sites commission rate will be used.</td>
+										</tr>
+										<tr>
+											<td align="center">language</td>
+											<td align="center">true</td>
+											<td>The language of the product.  Must be either DE (German), EN (English), ES, (Spanish), FR (French), IT (Italian), or PT (Portuguese)</td>
+										</tr>
+										<tr>
+											<td align="center">title</td>
+											<td align="center">true</td>
+											<td>The title of the product</td>
+										</tr>
+										<tr>
+											<td align="center">description</td>
+											<td align="center">false</td>
+											<td>In the case of PHYSICAL or RECURRING_PHYSICAL (required) the description of the product.</td>
+										</tr>
+										<tr>
+											<td align="center">image</td>
+											<td align="center">false</td>
+											<td>The id of the image associated to the product</td>
+										</tr>
+										<tr>
+											<td align="center">pitchPage</td>
+											<td align="center">false</td>
+											<td>The URL where you pitch your product. This might be the same as the HopLink Target URL. Either pitchPage or mobilePitchPage is required.</td>
+										</tr>
+										<tr>
+											<td align="center">mobilePitchPage</td>
+											<td align="center">false</td>
+											<td>The URL where you pitch your product to customers on mobile devices. This might be the same as the HopLink Target URL. Either pitchPage or mobilePitchPage is required.</td>
+										</tr>
+										<tr>
+											<td align="center">saleRefundDaysLimit</td>
+											<td align="center">false</td>
+											<td>The number days within which a sale can be refunded</td>
+										</tr>
+										<tr>
+											<td align="center">rebillRefundDaysLimit</td>
+											<td align="center">false</td>
+											<td>The number days within which a rebill can be refunded</td>
+										</tr>
+										<tr>
+											<td align="center">deliveryMethod</td>
+											<td align="center">false</td>
+											<td>The method of delivery.</td>
+										</tr>
+										<tr>
+											<td align="center">deliverySpeed</td>
+											<td align="center">false</td>
+											<td>The speed of delivery.</td>
+										</tr>
+										<tr>
+											<td align="center">preRebillNotificationOverride</td>
+											<td align="center">false</td>
+											<td>When set, Pre-rebill notificaitons will be sent when the frequency is greater than the required cycle.</td>
+										</tr>
+										<tr>
+											<td align="center">preRebillNotificationLeadTime</td>
+											<td align="center">false</td>
+											<td>The number of days before the rebill notification.  When enabled, a Pre-rebill notification will be sent to the number equal to the number of days indicated in the lead time and will apply to the rest of the subscription.</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>HAS_DEVELOPER_KEY, api_products_client</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/products/list</b>
+						<br>Lists all products<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/products/schema">List of Product Data</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">site</td>
+											<td align="center">true</td>
+											<td>The site owning the products</td>
+										</tr>
+										<tr>
+											<td align="center">type</td>
+											<td align="center">false</td>
+											<td>The product types to return.d  Must be either STANDARD or RECURRING.  Will return all types if not specified</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>HAS_DEVELOPER_KEY, api_products_client</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/products/schema</b>
+						<br>Returns the XML Schema that describes the format of a ProductData object<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/products/schema">Product XML Schema</a>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

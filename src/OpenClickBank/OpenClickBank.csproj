@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PackageId>OpenClickBank</PackageId>
+		<Company>Code Cooper LLC</Company>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<Authors>Jason Cooper</Authors>
+		<Description>Using OpenAPI standards, create an interface for the ClickBank APIs.</Description>
+		<PackageProjectUrl>https://github.com/codecooper/OpenClickBank</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>openapi swagger clickbank</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<OpenApiReference Include="../../open-clickbank.yaml" CodeGenerator="NSwagCSharp" Namespace="OpenClickBank"
+		                  ClassName="{controller}Client" Link="OpenAPIs/open-clickbank.yaml" OutputPath="ClickBankClient.cs">
+			<Options>/clientBaseClass:ClickBankClientBase /OperationGenerationMode:MultipleClientsFromFirstTagAndOperationId /GenerateClientInterfaces:true /GenerateOptionalPropertiesAsNullable:true /GenerateNullableReferenceTypes:true /generateUpdateJsonSerializerSettingsMethod:false /generateDefaultValues:true /generateOptionalParameters:true /clientClassAccessModifier:internal /jsonLibrary:SystemTextJson /generateDataAnnotations:true /propertyNameGenerator:DollarGenerator</Options>
+		</OpenApiReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="11.0.1">
+			<TreatAsUsed>true</TreatAsUsed>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="6.0.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="NSwag.ApiDescription.Client" Version="13.15.10">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<Target Name="SpicNSpan" AfterTargets="Clean">
+		<RemoveDir Directories="$(ProjectDir)$(BaseIntermediateOutputPath)" />
+	</Target>
+
+</Project>

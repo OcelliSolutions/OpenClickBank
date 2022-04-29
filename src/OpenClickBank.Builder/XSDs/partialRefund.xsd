@@ -1,0 +1,12 @@
+﻿<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cb="http://www.clickbank.com/api" version="1.0">
+	<xs:element name="partialRefundData" type="partialRefundData"/>
+	<xs:complexType name="partialRefundData">
+		<xs:sequence>
+			<xs:element name="usdAmount" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="customerAmount" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="customerCurrency" type="xs:string" minOccurs="0"/>
+			<xs:element name="productAmount" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="productCurrency" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

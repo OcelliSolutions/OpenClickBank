@@ -1,0 +1,1219 @@
+<html>
+	<head>
+		<style type="text/css">TD, TH{font-family: Arial; font-size: 10pt; }.ident{padding-left: 40pt;}</style>
+	</head>
+	<body>
+		<font face="Helvetica">
+			<center>
+				<h1>Analytics Service Description</h1>
+			</center>
+		</font>
+		<table border="1" align="center" cellspacing="0" cellpadding="8">
+			<tbody>
+				<tr>
+					<td>The following methods are available at the servlet path
+						<b>/rest/1.3/analytics</b>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/status</b>
+						<br>
+						<p>Return the status &amp; last update time of the API.</p>
+						<p>The possible statuses are:</p>
+						<ul>
+							<li>GREEN (normal operation)</li>
+							<li>YELLOW (delayed data)</li>
+							<li>RED (severely delayed data or critical problem)</li>
+						</ul>
+						<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/AnalyticsStatus">An AnalyticsStatus</a>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json, text/csv</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/{role}/subscription/details/compthirty</b>
+						<br>Returns a list of subscriptions completing in the next 30 days.<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/SubscriptionDetailResult">A SubscriptionDetailResults</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">account</td>
+											<td align="center">true</td>
+											<td>The account nickname</td>
+										</tr>
+										<tr>
+											<td align="center">orderBy</td>
+											<td align="center">false</td>
+											<td>
+												<a name="validOrderBy">Valid options include:<p></p>
+													<table>
+														<style type="text/css">td.a_select { border: 1px solid black; } td.a_select_bold { font-weight: bold; } th.a_select { border:2px solid black } 
+														</style>
+													</table>
+													<table style="border:1px solid black;border-collapse:collapse" cellpadding="2px">
+														<thead>
+															<tr>
+																<th class="a_select">Value</th>
+																<th class="a_select">
+																	<a href="analytics/schema/SubscriptionDetailResultRow">SubscriptionDetailResultRow</a>
+																	<br>Equivalent</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td class="a_select a_select_bold">RECEIPT</td>
+																<td class="a_select">receipt</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">PURCHASE_DATE</td>
+																<td class="a_select">purchaseDate</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">SUB_END_DATE</td>
+																<td class="a_select">subEndDate</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">SUB_CANCEL_DATE</td>
+																<td class="a_select">subCancelDate</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">NEXT_PAYMENT_DATE</td>
+																<td class="a_select">nextPaymentDate</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">SUB_VALUE</td>
+																<td class="a_select">subValue</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">STATUS</td>
+																<td class="a_select">status</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">ITEM_NUMBER</td>
+																<td class="a_select">itemNo</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">PROCESSED_PAYMENTS_COUNT</td>
+																<td class="a_select">processedPaymentsCount</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">FUTURE_PAYMENTS_COUNT</td>
+																<td class="a_select">futurePaymentsCount</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">REFUND_COUNT</td>
+																<td class="a_select">refundCount</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">REFUND_AMOUNT</td>
+																<td class="a_select">refundAmount</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">CHARGEBACK_COUNT</td>
+																<td class="a_select">chargebackCount</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">CHARGEBACK_AMOUNT</td>
+																<td class="a_select">chargebackAmount</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">PUB_NICK_NAME</td>
+																<td class="a_select">pubNickName</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">AFFILIATE_NICK_NAME</td>
+																<td class="a_select">affNickName</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">CUSTOMER_FIRST_NAME<span style="color:red">*</span>
+																</td>
+																<td class="a_select">customerFirstName</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">CUSTOMER_LAST_NAME<span style="color:red">*</span>
+																</td>
+																<td class="a_select">customerLastName</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">CUSTOMER_DISPLAY_NAME<span style="color:red">*</span>
+																</td>
+																<td class="a_select">customerDisplayName</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">CUSTOMER_EMAIL<span style="color:red">*</span>
+																</td>
+																<td class="a_select">email</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">DURATION</td>
+																<td class="a_select">duration</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">INITIAL_SALE_AMOUNT</td>
+																<td class="a_select">initialSaleAmount</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">INITIAL_SALE_COUNT</td>
+																<td class="a_select">initialSaleCount</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">REBILL_SALE_AMOUNT</td>
+																<td class="a_select">rebillSaleAmount</td>
+															</tr>
+															<tr>
+																<td class="a_select a_select_bold">REBILL_SALE_COUNT</td>
+																<td class="a_select">rebillSaleCount</td>
+															</tr>
+														</tbody>
+													</table>
+													<span style="color:red">*</span>Customer details are only available to vendors</a>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">sortDirection</td>
+											<td align="center">false</td>
+											<td>The order in which the sorted results are returned:
+												<ul>
+													<li>
+														<b>ASC</b>
+														(ascending - default)</li>
+													<li>
+														<b>DESC</b>
+														(descending)</li>
+												</ul>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/{role}/subscription/details/compsixty</b>
+						<br>Returns a list of subscriptions completing in the next 60 days.<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/SubscriptionDetailResult">A SubscriptionDetailResults</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">account</td>
+											<td align="center">true</td>
+											<td>The account nickname</td>
+										</tr>
+										<tr>
+											<td align="center">orderBy</td>
+											<td align="center">false</td>
+											<td>See
+												<a href="#validOrderBy">compthirty orderBy</a>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">sortDirection</td>
+											<td align="center">false</td>
+											<td>The order in which the sorted results are returned:
+												<ul>
+													<li>
+														<b>ASC</b>
+														(ascending - default)</li>
+													<li>
+														<b>DESC</b>
+														(descending)</li>
+												</ul>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/{role}/subscription/details/cancelthirty</b>
+						<br>Returns a list of subscriptions canceled in the last 30 days.<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/SubscriptionDetailResult">A SubscriptionDetailResults</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">account</td>
+											<td align="center">true</td>
+											<td>The account nickname</td>
+										</tr>
+										<tr>
+											<td align="center">orderBy</td>
+											<td align="center">false</td>
+											<td>See
+												<a href="#validOrderBy">compthirty orderBy</a>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">sortDirection</td>
+											<td align="center">false</td>
+											<td>The order in which the sorted results are returned:
+												<ul>
+													<li>
+														<b>ASC</b>
+														(ascending - default)</li>
+													<li>
+														<b>DESC</b>
+														(descending)</li>
+												</ul>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/{role}/subscription/details/cancelsixty</b>
+						<br>Returns a list of subscriptions canceled in the last 60 days.<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/SubscriptionDetailResult">A SubscriptionDetailResults</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">account</td>
+											<td align="center">true</td>
+											<td>The account nickname</td>
+										</tr>
+										<tr>
+											<td align="center">orderBy</td>
+											<td align="center">false</td>
+											<td>See
+												<a href="#validOrderBy">compthirty orderBy</a>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">sortDirection</td>
+											<td align="center">false</td>
+											<td>The order in which the sorted results are returned:
+												<ul>
+													<li>
+														<b>ASC</b>
+														(ascending - default)</li>
+													<li>
+														<b>DESC</b>
+														(descending)</li>
+												</ul>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/{role}/subscription/details/startdate</b>
+						<br>Returns a list of subscriptions where the subscription start date is between (inclusive) the
+						<i>startDate</i>
+						and
+						<i>endDate</i>
+						parameters.<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/SubscriptionDetailResult">A SubscriptionDetailResults</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">account</td>
+											<td align="center">true</td>
+											<td>The account nickname</td>
+										</tr>
+										<tr>
+											<td align="center">orderBy</td>
+											<td align="center">false</td>
+											<td>See
+												<a href="#validOrderBy">compthirty orderBy</a>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">sortDirection</td>
+											<td align="center">false</td>
+											<td>The order in which the sorted results are returned:
+												<ul>
+													<li>
+														<b>ASC</b>
+														(ascending - default)</li>
+													<li>
+														<b>DESC</b>
+														(descending)</li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">startDate</td>
+											<td align="center">true</td>
+											<td>The earliest subscription start date the result list will contain. Date Format: yyyy-MM-dd</td>
+										</tr>
+										<tr>
+											<td align="center">endDate</td>
+											<td align="center">true</td>
+											<td>The latest subscription start date the result list will contain. Date Format: yyyy-MM-dd</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/{role}/subscription/details/canceldate</b>
+						<br>Returns a list of subscriptions where the subscription canceled date is between (inclusive) the
+						<i>startDate</i>
+						and
+						<i>endDate</i>
+						parameters.<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/SubscriptionDetailResult">A SubscriptionDetailResults</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">account</td>
+											<td align="center">true</td>
+											<td>The account nickname</td>
+										</tr>
+										<tr>
+											<td align="center">orderBy</td>
+											<td align="center">false</td>
+											<td>See
+												<a href="#validOrderBy">compthirty orderBy</a>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">sortDirection</td>
+											<td align="center">false</td>
+											<td>The order in which the sorted results are returned:
+												<ul>
+													<li>
+														<b>ASC</b>
+														(ascending - default)</li>
+													<li>
+														<b>DESC</b>
+														(descending)</li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">startDate</td>
+											<td align="center">true</td>
+											<td>The earliest subscription cancellation date the result list will contain. Date Format: yyyy-MM-dd</td>
+										</tr>
+										<tr>
+											<td align="center">endDate</td>
+											<td align="center">true</td>
+											<td>The latest subscription cancellation date the result list will contain. Date Format: yyyy-MM-dd</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/{role}/subscription/details/nextpmtdate</b>
+						<br>Returns a list of subscriptions where the next payment date is between (inclusive) the
+						<i>startDate</i>
+						and
+						<i>endDate</i>
+						parameters.<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/SubscriptionDetailResult">A SubscriptionDetailResults</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">account</td>
+											<td align="center">true</td>
+											<td>The account nickname</td>
+										</tr>
+										<tr>
+											<td align="center">orderBy</td>
+											<td align="center">false</td>
+											<td>See
+												<a href="#validOrderBy">compthirty orderBy</a>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">sortDirection</td>
+											<td align="center">false</td>
+											<td>The order in which the sorted results are returned:
+												<ul>
+													<li>
+														<b>ASC</b>
+														(ascending - default)</li>
+													<li>
+														<b>DESC</b>
+														(descending)</li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">startDate</td>
+											<td align="center">true</td>
+											<td>The earliest next subscription payment date the result list will contain. Date Format: yyyy-MM-dd</td>
+										</tr>
+										<tr>
+											<td align="center">endDate</td>
+											<td align="center">true</td>
+											<td>The latest next subscription payment date the result list will contain. Date Format: yyyy-MM-dd</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/{role}/subscription/details/status</b>
+						<br>
+						<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/SubscriptionDetailResult">A SubscriptionDetailResults</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">account</td>
+											<td align="center">true</td>
+											<td>The account nickname</td>
+										</tr>
+										<tr>
+											<td align="center">orderBy</td>
+											<td align="center">false</td>
+											<td>See
+												<a href="#validOrderBy">compthirty orderBy</a>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">sortDirection</td>
+											<td align="center">false</td>
+											<td>The order in which the sorted results are returned:
+												<ul>
+													<li>
+														<b>ASC</b>
+														(ascending - default)</li>
+													<li>
+														<b>DESC</b>
+														(descending)</li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">status</td>
+											<td align="center">true</td>
+											<td>The subscription status. Valid values include:<ul>
+													<li>
+														<b>ACTIVE</b>
+													</li>
+													<li>
+														<b>COMPLETED</b>
+													</li>
+													<li>
+														<b>CANCELED</b>
+													</li>
+													<li>
+														<b>RETRY_PAYMENT</b>
+													</li>
+													<li>
+														<b>REQUEST_NEW_CARD</b>
+													</li>
+												</ul>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/{role}/subscription/details</b>
+						<br>
+						<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/SubscriptionDetailResult">A SubscriptionDetailResults</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">account</td>
+											<td align="center">true</td>
+											<td>The account nickname</td>
+										</tr>
+										<tr>
+											<td align="center">orderBy</td>
+											<td align="center">false</td>
+											<td>See
+												<a href="#validOrderBy">compthirty orderBy</a>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">sortDirection</td>
+											<td align="center">false</td>
+											<td>The order in which the sorted results are returned:
+												<ul>
+													<li>
+														<b>ASC</b>
+														(ascending - default)</li>
+													<li>
+														<b>DESC</b>
+														(descending)</li>
+												</ul>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/{role}/subscription/trends</b>
+						<br>Returns statistical summations of data for subscriptions<br>
+						<br>Valid roles include:<ul>
+							<li>
+								<b>AFFILIATE</b>
+							</li>
+							<li>
+								<b>VENDOR</b>
+							</li>
+						</ul>
+						<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/SubscriptionTrendsData">A SubscriptionTrendsData</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Head Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">Page</td>
+											<td align="center">false</td>
+											<td>The page number of the results (default is page 1)</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">account</td>
+											<td align="center">true</td>
+											<td>The account nickname</td>
+										</tr>
+										<tr>
+											<td align="center">groupBy</td>
+											<td align="center">false</td>
+											<td>You may group by business date by passing DATE as the value</td>
+										</tr>
+										<tr>
+											<td align="center">productId</td>
+											<td align="center">false</td>
+											<td>The product id to report on, multiple parameter/value pairs may be passed</td>
+										</tr>
+										<tr>
+											<td align="center">startDate</td>
+											<td align="center">true</td>
+											<td>The start date (inclusive) of the time frame to report on - format is yyyy-MM-dd.</td>
+										</tr>
+										<tr>
+											<td align="center">endDate</td>
+											<td align="center">true</td>
+											<td>The end date (inclusive) of the time frame to report on - format is yyyy-MM-dd.</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/schema/AnalyticsStatus</b>
+						<br>Returns the XML Schema that describes the format of the retrieved data when an analytics status API call is made.<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;XML Schema of AnalyticsStatus object.</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/schema/SubscriptionDetailResult</b>
+						<br>Returns the XML Schema that describes the format of the retrieved data for subscriptions<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;XML Schema of SubscriptionDetailResult object.</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/schema/SubscriptionDetailResultRow</b>
+						<br>Returns the XML Schema that describes the format of the retrieved data for individual subscriptions<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;XML Schema of SubscriptionDetailResultRow object.</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/schema/SubscriptionTrendsData</b>
+						<br>Returns the XML Schema that describes the format of the retrieved data for subscription trends<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;XML Schema of SubscriptionTrendsData object.</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/{role}/{dimension}</b>
+						<br>Returns statistical data for a given role and dimension. Valid roles include:<ul>
+							<li>
+								<b>AFFILIATE</b>
+							</li>
+							<li>
+								<b>VENDOR</b>
+							</li>
+						</ul>Dimensions include:<ul>
+							<li>
+								<b>AFFILIATE</b>
+							</li>
+							<li>
+								<b>CUSTOMER_CURRENCY</b>
+							</li>
+							<li>
+								<b>CUSTOMER_COUNTRY</b>
+							</li>
+							<li>
+								<b>CUSTOMER_PROVINCE</b>
+							</li>
+							<li>
+								<b>CUSTOMER_LANGUAGE</b>
+							</li>
+							<li>
+								<b>PRODUCT_SKU –</b>
+								Only available if role = VENDOR
+							</li>
+							<li>
+								<b>TRACKING_ID</b>
+							</li>
+							<li>
+								<b>VENDOR</b>
+							</li>
+							<li>
+								<b>VENDOR_CATEGORY</b>
+							</li>
+							<li>
+								<b>VENDOR_PRODUCT_SKU –</b>
+								Only available if role = AFFILIATE
+							</li>
+						</ul>
+						<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/AnalyticsResult">An AnalyticsResult</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Head Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">Page</td>
+											<td align="center">false</td>
+											<td>The page number of the results (default is page 1)</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">account</td>
+											<td align="center">true</td>
+											<td>Account to query for.</td>
+										</tr>
+										<tr>
+											<td align="center">startDate</td>
+											<td align="center">false</td>
+											<td>The start date of the time frame to report on - format is yyyy-MM-dd. Defaults to the previous day.</td>
+										</tr>
+										<tr>
+											<td align="center">endDate</td>
+											<td align="center">false</td>
+											<td>The end date of the time frame to report on - format is yyyy-MM-dd. Defaults to the current day.</td>
+										</tr>
+										<tr>
+											<td align="center">dimensionFilter</td>
+											<td align="center">false</td>
+											<td>This parameter limits the results returned to ones with a matching dimension id. This value is case sensitive.</td>
+										</tr>
+										<tr>
+											<td align="center">select</td>
+											<td align="center">false</td>
+											<td>This optional parameter specifies the data fields to return. Multiple select parameters may be passed to select multiple values. If this parameter is absent
+												<b>all</b>
+												values will be returned. The possible values for this parameter are:<p></p>
+												<ul>
+													<li>CHARGEBACK_AMOUNT</li>
+													<li>CHARGEBACK_COUNT</li>
+													<li>CHARGEBACK_RATE</li>
+													<li>DIMENSION_VALUE</li>
+													<li>EARNINGS_PER_HOP</li>
+													<li>GROSS_SALE_COUNT</li>
+													<li>GROSS_SALE_AMOUNT</li>
+													<li>HOP_COUNT</li>
+													<li>HOPS_PER_SALE</li>
+													<li>HOPS_PER_ORDER_FORM_IMPRESSION</li>
+													<li>NET_SALE_AMOUNT</li>
+													<li>NET_SALE_COUNT</li>
+													<li>ORDER_FORM_SALE_CONVERSION</li>
+													<li>ORDER_IMPRESSION</li>
+													<li>ORDER_SUBMISSION</li>
+													<li>REBILL_AMOUNT</li>
+													<li>REBILL_COUNT</li>
+													<li>REFUND_AMOUNT</li>
+													<li>REFUND_COUNT</li>
+													<li>REFUND_RATE</li>
+													<li>SALE_AMOUNT</li>
+													<li>SALE_COUNT</li>
+													<li>UPSELL_AMOUNT</li>
+													<li>UPSELL_COUNT</li>
+												</ul>
+												<p></p>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">orderBy</td>
+											<td align="center">false</td>
+											<td>This optional parameter specifies which data field the results should be ordered by. The possible values are shown in the select values list above.</td>
+										</tr>
+										<tr>
+											<td align="center">sortAscending</td>
+											<td align="center">false</td>
+											<td>When an order by is included this may be specified with a value of true to sort ascending instead of descending</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/{role}/{dimension}/summary</b>
+						<br>Returns summary statistical data for a given role, dimension, and summary type. Valid roles include:<ul>
+							<li>
+								<b>AFFILIATE</b>
+							</li>
+							<li>
+								<b>VENDOR</b>
+							</li>
+						</ul>Dimensions include:<ul>
+							<li>
+								<b>AFFILIATE</b>
+							</li>
+							<li>
+								<b>CUSTOMER_CURRENCY</b>
+							</li>
+							<li>
+								<b>CUSTOMER_COUNTRY</b>
+							</li>
+							<li>
+								<b>CUSTOMER_PROVINCE</b>
+							</li>
+							<li>
+								<b>CUSTOMER_LANGUAGE</b>
+							</li>
+							<li>
+								<b>PRODUCT_SKU –</b>
+								Only available if role = VENDOR
+							</li>
+							<li>
+								<b>TRACKING_ID</b>
+							</li>
+							<li>
+								<b>VENDOR</b>
+							</li>
+							<li>
+								<b>VENDOR_CATEGORY</b>
+							</li>
+							<li>
+								<b>VENDOR_PRODUCT_SKU –</b>
+								Only available if role = AFFILIATE
+							</li>
+						</ul>
+						<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/AnalyticsResult">An AnalyticsResult</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Head Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">Page</td>
+											<td align="center">false</td>
+											<td>The page number of the results (default is page 1)</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">account</td>
+											<td align="center">true</td>
+											<td>Account to query for.</td>
+										</tr>
+										<tr>
+											<td align="center">summaryType</td>
+											<td align="center">true</td>
+											<td>This parameter specifies which type of summary data is desired.  The possible values for this parameter are:<ul>
+													<li>
+														<b>VENDOR_ONLY</b>
+														- this shows summary information for
+														<i>only</i>
+														the selected account</li>
+													<li>
+														<b>AFFILIATE_ONLY</b>
+														- this shows summary information which excludes the selected account</li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">startDate</td>
+											<td align="center">false</td>
+											<td>The start date of the time frame to report on - format is yyyy-MM-dd. Defaults to the previous day.</td>
+										</tr>
+										<tr>
+											<td align="center">endDate</td>
+											<td align="center">false</td>
+											<td>The end date of the time frame to report on - format is yyyy-MM-dd. Defaults to the current day.</td>
+										</tr>
+										<tr>
+											<td align="center">dimensionFilter</td>
+											<td align="center">false</td>
+											<td>This parameter limits the results returned to ones with a matching dimension id. This value is case sensitive.</td>
+										</tr>
+										<tr>
+											<td align="center">select</td>
+											<td align="center">false</td>
+											<td>This optional parameter specifies the data fields to return. Multiple select parameters may be passed to select multiple values. If this parameter is absent
+												<b>all</b>
+												values will be returned. The possible values for this parameter are:<p></p>
+												<ul>
+													<li>CHARGEBACK_AMOUNT</li>
+													<li>CHARGEBACK_COUNT</li>
+													<li>CHARGEBACK_RATE</li>
+													<li>DIMENSION_VALUE</li>
+													<li>EARNINGS_PER_HOP</li>
+													<li>GROSS_SALE_COUNT</li>
+													<li>GROSS_SALE_AMOUNT</li>
+													<li>HOP_COUNT</li>
+													<li>HOPS_PER_SALE</li>
+													<li>HOPS_PER_ORDER_FORM_IMPRESSION</li>
+													<li>NET_SALE_AMOUNT</li>
+													<li>NET_SALE_COUNT</li>
+													<li>ORDER_FORM_SALE_CONVERSION</li>
+													<li>ORDER_IMPRESSION</li>
+													<li>ORDER_SUBMISSION</li>
+													<li>REBILL_AMOUNT</li>
+													<li>REBILL_COUNT</li>
+													<li>REFUND_AMOUNT</li>
+													<li>REFUND_COUNT</li>
+													<li>REFUND_RATE</li>
+													<li>SALE_AMOUNT</li>
+													<li>SALE_COUNT</li>
+													<li>UPSELL_AMOUNT</li>
+													<li>UPSELL_COUNT</li>
+												</ul>
+												<p></p>
+											</td>
+										</tr>
+										<tr>
+											<td align="center">orderBy</td>
+											<td align="center">false</td>
+											<td>This optional parameter specifies which data field the results should be ordered by. The possible values are shown in the select values list above.</td>
+										</tr>
+										<tr>
+											<td align="center">sortAscending</td>
+											<td align="center">false</td>
+											<td>When an order by is included this may be specified with a value of true to sort ascending instead of descending</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/schema/AnalyticsResult</b>
+						<br>Returns the XML Schema that describes the format of the retrieved data for analytics query API calls.<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;XML Schema of AnalyticsResult object.</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

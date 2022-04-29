@@ -1,0 +1,47 @@
+﻿<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+	<xs:element name="orderShipData" type="orderShipData"/>
+	<xs:complexType name="orderShipData">
+		<xs:sequence>
+			<xs:element name="receipt" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="firstName" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="lastName" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="email" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="address1" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="address2" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="city" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="state" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="country" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="postalCode" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="transactionTime" type="xs:dateTime" nillable="true" minOccurs="0"/>
+			<xs:element name="isTestTransaction" type="xs:boolean" nillable="true" minOccurs="0"/>
+			<xs:element name="fullName" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="vendor" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="vendorVariables" type="vendorVariableElementArray" nillable="true" minOccurs="0"/>
+			<xs:element name="lineItemShipData" type="orderShipLineItemData" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="vendorVariableElement">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="0"/>
+			<xs:element name="value" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="orderShipLineItemData">
+		<xs:sequence>
+			<xs:element name="itemNo" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="productTitle" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="customerAmount" type="xs:decimal" nillable="true" minOccurs="0"/>
+			<xs:element name="accountAmount" type="xs:decimal" nillable="true" minOccurs="0"/>
+			<xs:element name="quantity" type="xs:int" nillable="true" minOccurs="0"/>
+			<xs:element name="shippingMethod" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="isRefundPending" type="xs:boolean" nillable="true" minOccurs="0"/>
+			<xs:element name="hasBeenRefunded" type="xs:boolean" nillable="true" minOccurs="0"/>
+			<xs:element name="hasBeenChargebacked" type="xs:boolean" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="vendorVariableElementArray" final="#all">
+		<xs:sequence>
+			<xs:element name="item" type="vendorVariableElement" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,9 @@
+﻿<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cb="http://www.clickbank.com/api" version="1.0">
+	<xs:element name="AnalyticsStatus" type="AnalyticsStatus"/>
+	<xs:complexType name="AnalyticsStatus">
+		<xs:sequence>
+			<xs:element name="status" type="xs:string"/>
+			<xs:element name="lastUpdateTime" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

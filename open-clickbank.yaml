@@ -1,0 +1,3562 @@
+openapi: 3.0.1
+info:
+  title: ClickBank API
+  description: This document is created and maintained by the community and is designed to be a non-state specific specification. Please refer to your regions documentation for specific details and deviations.Please keep in mind that there are rate limits and other terms of use enforced by ClickBank. This document is only designed to give developers a standard used for code generation and testing.
+  version: '1.3'
+servers:
+  - url: https://api.clickbank.com/rest
+paths:
+  /1.3/analytics/status:
+    get:
+      tags:
+        - Analytics
+      summary: Return the status & last update time of the API.
+      description: '<b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY'
+      operationId: GetStatus
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticStatus'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AnalyticStatus'
+  '/1.3/analytics/{role}/subscription/details/compthirty':
+    get:
+      tags:
+        - Analytics
+      summary: Returns a list of subscriptions completing in the next 30 days.
+      description: '<b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY'
+      operationId: GetSubscriptionDetailsCompletingIn30Days
+      parameters:
+        - name: role
+          in: path
+          description: A valid role
+          required: true
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+        - name: account
+          in: query
+          description: The account nickname/site.
+          required: true
+          schema:
+            type: string
+        - name: orderBy
+          in: query
+          description: Customer details are only available to vendors.
+          schema:
+            $ref: '#/components/schemas/SubscriptionDetailRowOrderBy'
+        - name: sortDirection
+          in: query
+          description: The order in which the sorted results are returned
+          schema:
+            $ref: '#/components/schemas/SortDirection'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+  '/1.3/analytics/{role}/subscription/details/compsixty':
+    get:
+      tags:
+        - Analytics
+      summary: Returns a list of subscriptions completing in the next 60 days.
+      description: '<b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY'
+      operationId: GetSubscriptionDetailsCompletingIn60Days
+      parameters:
+        - name: role
+          in: path
+          description: A valid role
+          required: true
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+        - name: account
+          in: query
+          description: The account nickname/site.
+          required: true
+          schema:
+            type: string
+        - name: orderBy
+          in: query
+          description: Customer details are only available to vendors.
+          schema:
+            $ref: '#/components/schemas/SubscriptionDetailRowOrderBy'
+        - name: sortDirection
+          in: query
+          description: The order in which the sorted results are returned
+          schema:
+            $ref: '#/components/schemas/SortDirection'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+  '/1.3/analytics/{role}/subscription/details/cancelthirty':
+    get:
+      tags:
+        - Analytics
+      summary: Returns a list of subscriptions canceled in the last 30 days.
+      description: '<b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY'
+      operationId: GetSubscriptionDetailsCanceledLast30Days
+      parameters:
+        - name: role
+          in: path
+          description: A valid role
+          required: true
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+        - name: account
+          in: query
+          description: The account nickname/site.
+          required: true
+          schema:
+            type: string
+        - name: orderBy
+          in: query
+          description: Customer details are only available to vendors.
+          schema:
+            $ref: '#/components/schemas/SubscriptionDetailRowOrderBy'
+        - name: sortDirection
+          in: query
+          description: The order in which the sorted results are returned
+          schema:
+            $ref: '#/components/schemas/SortDirection'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+  '/1.3/analytics/{role}/subscription/details/cancelsixty':
+    get:
+      tags:
+        - Analytics
+      summary: Returns a list of subscriptions canceled in the last 60 days.
+      description: '<b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY'
+      operationId: GetSubscriptionDetailsCanceledLast60Days
+      parameters:
+        - name: role
+          in: path
+          description: A valid role
+          required: true
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+        - name: account
+          in: query
+          description: The account nickname/site.
+          required: true
+          schema:
+            type: string
+        - name: orderBy
+          in: query
+          description: Customer details are only available to vendors.
+          schema:
+            $ref: '#/components/schemas/SubscriptionDetailRowOrderBy'
+        - name: sortDirection
+          in: query
+          description: The order in which the sorted results are returned
+          schema:
+            $ref: '#/components/schemas/SortDirection'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+  '/1.3/analytics/{role}/subscription/details/startdate':
+    get:
+      tags:
+        - Analytics
+      summary: Returns a list of subscriptions where the subscription start date is between (inclusive) the startDate and endDate parameters.
+      description: '<b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY'
+      operationId: GetSubscriptionDetailsByStartDate
+      parameters:
+        - name: role
+          in: path
+          description: A valid role
+          required: true
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+        - name: account
+          in: query
+          description: The account nickname/site.
+          required: true
+          schema:
+            type: string
+        - name: orderBy
+          in: query
+          description: Customer details are only available to vendors.
+          schema:
+            $ref: '#/components/schemas/SubscriptionDetailRowOrderBy'
+        - name: sortDirection
+          in: query
+          description: The order in which the sorted results are returned
+          schema:
+            $ref: '#/components/schemas/SortDirection'
+        - name: startDate
+          in: query
+          description: 'The earliest subscription start date the result list will contain. Date Format: yyyy-MM-dd.'
+          required: true
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: 'The latest subscription start date the result list will contain. Date Format: yyyy-MM-dd.'
+          required: true
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+  '/1.3/analytics/{role}/subscription/details/canceldate':
+    get:
+      tags:
+        - Analytics
+      summary: Returns a list of subscriptions where the subscription canceled date is between (inclusive) the startDate and endDate parameters.
+      description: '<b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY'
+      operationId: GetSubscriptionDetailsByCancelDate
+      parameters:
+        - name: role
+          in: path
+          description: A valid role
+          required: true
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+        - name: account
+          in: query
+          description: The account nickname/site.
+          required: true
+          schema:
+            type: string
+        - name: orderBy
+          in: query
+          description: Customer details are only available to vendors.
+          schema:
+            $ref: '#/components/schemas/SubscriptionDetailRowOrderBy'
+        - name: sortDirection
+          in: query
+          description: The order in which the sorted results are returned
+          schema:
+            $ref: '#/components/schemas/SortDirection'
+        - name: startDate
+          in: query
+          description: 'The earliest subscription cancellation date the result list will contain. Date Format: yyyy-MM-dd.'
+          required: true
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: 'The latest subscription cancellation date the result list will contain. Date Format: yyyy-MM-dd.'
+          required: true
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+  '/1.3/analytics/{role}/subscription/details/nextpmtdate':
+    get:
+      tags:
+        - Analytics
+      summary: Returns a list of subscriptions where the next payment date is between (inclusive) the startDate and endDate parameters.
+      description: '<b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY'
+      operationId: GetSubscriptionDetailsByNextPaymentDate
+      parameters:
+        - name: role
+          in: path
+          description: A valid role
+          required: true
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+        - name: account
+          in: query
+          description: The account nickname/site.
+          required: true
+          schema:
+            type: string
+        - name: orderBy
+          in: query
+          description: Customer details are only available to vendors.
+          schema:
+            $ref: '#/components/schemas/SubscriptionDetailRowOrderBy'
+        - name: sortDirection
+          in: query
+          description: The order in which the sorted results are returned
+          schema:
+            $ref: '#/components/schemas/SortDirection'
+        - name: startDate
+          in: query
+          description: 'The earliest next subscription payment date the result list will contain. Date Format: yyyy-MM-dd.'
+          required: true
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: 'The latest next subscription payment date the result list will contain. Date Format: yyyy-MM-dd.'
+          required: true
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+  '/1.3/analytics/{role}/subscription/details/status':
+    get:
+      tags:
+        - Analytics
+      description: '<b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY'
+      operationId: GetSubscriptionDetailsByStatusDate
+      parameters:
+        - name: role
+          in: path
+          description: A valid role
+          required: true
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+        - name: account
+          in: query
+          description: The account nickname/site.
+          required: true
+          schema:
+            type: string
+        - name: orderBy
+          in: query
+          description: Customer details are only available to vendors.
+          schema:
+            $ref: '#/components/schemas/SubscriptionDetailRowOrderBy'
+        - name: sortDirection
+          in: query
+          description: The order in which the sorted results are returned
+          schema:
+            $ref: '#/components/schemas/SortDirection'
+        - name: status
+          in: query
+          description: The subscription status.
+          required: true
+          schema:
+            $ref: '#/components/schemas/SubscriptionStatus'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+  '/1.3/analytics/{role}/subscription/details':
+    get:
+      tags:
+        - Analytics
+      summary: Returns a list of subscriptions details.
+      description: '<b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY'
+      operationId: GetSubscriptionDetails
+      parameters:
+        - name: role
+          in: path
+          description: A valid role
+          required: true
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+        - name: account
+          in: query
+          description: The account nickname/site.
+          required: true
+          schema:
+            type: string
+        - name: orderBy
+          in: query
+          description: Customer details are only available to vendors.
+          schema:
+            $ref: '#/components/schemas/SubscriptionDetailRowOrderBy'
+        - name: sortDirection
+          in: query
+          description: The order in which the sorted results are returned
+          schema:
+            $ref: '#/components/schemas/SortDirection'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetailResult'
+  '/1.3/analytics/{role}/subscription/trends':
+    get:
+      tags:
+        - Analytics
+      summary: Returns statistical summations of data for subscriptions.
+      description: '<b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY'
+      operationId: GetSubscriptionTrends
+      parameters:
+        - name: role
+          in: path
+          description: A valid role
+          required: true
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+        - name: page
+          in: header
+          description: The page number of the results (default is page 1).
+          schema:
+            type: integer
+            format: int32
+        - name: account
+          in: query
+          description: The account nickname/site.
+          required: true
+          schema:
+            type: string
+        - name: groupBy
+          in: query
+          description: You may group by business date by passing DATE as the value.
+          schema:
+            type: string
+        - name: productId
+          in: query
+          description: 'The product id to report on, multiple parameter/value pairs may be passed.'
+          schema:
+            type: integer
+            format: int32
+        - name: startDate
+          in: query
+          description: The start date (inclusive) of the time frame to report on - format is yyyy-MM-dd.
+          required: true
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: The end date (inclusive) of the time frame to report on - format is yyyy-MM-dd.
+          required: true
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionTrendsData'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SubscriptionTrendsData'
+        '206':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionTrendsData'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SubscriptionTrendsData'
+  '/1.3/analytics/{role}/{dimension}':
+    get:
+      tags:
+        - Analytics
+      summary: Returns statistical data for a given role and dimension.
+      description: '<b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY'
+      operationId: GetStatisticsByRoleAndDimension
+      parameters:
+        - name: role
+          in: path
+          description: A valid role
+          required: true
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+        - name: dimension
+          in: path
+          description: "PRODUCT_SKU – Only available if role = VENDOR\r\nVENDOR_PRODUCT_SKU – Only available if role = AFFILIATE"
+          required: true
+          schema:
+            $ref: '#/components/schemas/Dimension'
+        - name: page
+          in: header
+          description: The page number of the results (default is page 1).
+          schema:
+            type: integer
+            format: int32
+        - name: account
+          in: query
+          description: Account/site to query for.
+          required: true
+          schema:
+            type: string
+        - name: startDate
+          in: query
+          description: The start date of the time frame to report on - format is yyyy-MM-dd. Defaults to the previous day.
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: The end date of the time frame to report on - format is yyyy-MM-dd. Defaults to the current day.
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: dimensionFilter
+          in: query
+          description: This parameter limits the results returned to ones with a matching dimension id. This value is case sensitive.
+          schema:
+            $ref: '#/components/schemas/Dimension'
+        - name: select
+          in: query
+          description: This optional parameter specifies the data fields to return. Multiple select parameters may be passed to select multiple values. If this parameter is absent all values will be returned.
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/DimensionColumn'
+        - name: orderBy
+          in: query
+          description: This optional parameter specifies which data field the results should be ordered by.
+          schema:
+            $ref: '#/components/schemas/DimensionColumn'
+        - name: sortAscending
+          in: query
+          description: When an order by is included this may be specified with a value of true to sort ascending instead of descending
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AnalyticsResult'
+        '206':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AnalyticsResult'
+  '/1.3/analytics/{role}/{dimension}/summary':
+    get:
+      tags:
+        - Analytics
+      summary: 'Returns summary statistical data for a given role, dimension, and summary type.'
+      description: '<b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY'
+      operationId: GetStatisticsByRoleAndDimensionSummary
+      parameters:
+        - name: role
+          in: path
+          description: A valid role
+          required: true
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+        - name: dimension
+          in: path
+          description: "PRODUCT_SKU – Only available if role = VENDOR\r\nVENDOR_PRODUCT_SKU – Only available if role = AFFILIATE"
+          required: true
+          schema:
+            $ref: '#/components/schemas/Dimension'
+        - name: page
+          in: header
+          description: The page number of the results (default is page 1).
+          schema:
+            type: integer
+            format: int32
+        - name: account
+          in: query
+          description: Account/site to query for.
+          required: true
+          schema:
+            type: string
+        - name: summaryType
+          in: query
+          description: "This parameter specifies which type of summary data is desired.\r\nVENDOR_ONLY - this shows summary information for only the selected account\r\nAFFILIATE_ONLY - this shows summary information which excludes the selected account"
+          required: true
+          schema:
+            $ref: '#/components/schemas/SummaryType'
+        - name: startDate
+          in: query
+          description: The start date of the time frame to report on - format is yyyy-MM-dd. Defaults to the previous day.
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: The end date of the time frame to report on - format is yyyy-MM-dd. Defaults to the current day.
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: dimensionFilter
+          in: query
+          description: This parameter limits the results returned to ones with a matching dimension id. This value is case sensitive.
+          schema:
+            $ref: '#/components/schemas/Dimension'
+        - name: select
+          in: query
+          description: This optional parameter specifies the data fields to return. Multiple select parameters may be passed to select multiple values. If this parameter is absent all values will be returned.
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/DimensionColumn'
+        - name: orderBy
+          in: query
+          description: This optional parameter specifies which data field the results should be ordered by.
+          schema:
+            $ref: '#/components/schemas/DimensionColumn'
+        - name: sortAscending
+          in: query
+          description: When an order by is included this may be specified with a value of true to sort ascending instead of descending
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AnalyticsResult'
+        '206':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AnalyticsResult'
+  /1.3/debug:
+    get:
+      tags:
+        - Debug
+      summary: 'When you send a request to the debugging service, it returns the request context information including the security context information. This can be useful when correcting issues with the ClickBank APIs.'
+      operationId: GetDebug
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+  /1.3/images/list:
+    get:
+      tags:
+        - Image
+      summary: Lists images associated with a site.
+      description: '<b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY'
+      operationId: GetImages
+      parameters:
+        - name: site
+          in: query
+          description: The site owning the images.
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: The image type.
+          schema:
+            $ref: '#/components/schemas/ImageType'
+        - name: approvedOnly
+          in: query
+          description: 'If true only approved images [Default = true].'
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageListResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ImageListResult'
+  '/1.3/orders2/{receipt}':
+    head:
+      tags:
+        - Orders2
+      summary: 'This head request is used to identify if a particular order or a subscription is active, i.e. it has not been refunded, charge-backed or cancelled. It will return a 403 (Forbidden) if that''s the case, or a 204 if the order is still active. Note that it will also return a 403 if the order is not found, or the user does not have access to that receipt. In addition, head request on a rebill transaction will return the status of that particular rebill, not of the original transaction which may be different. It is advisable to use head requests only on the parent transactions'
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: IsActiveOrderOrSubscription
+      parameters:
+        - name: receipt
+          in: path
+          description: Receipt ID
+          required: true
+          schema:
+            type: string
+        - name: sku
+          in: query
+          description: sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+    get:
+      tags:
+        - Orders2
+      summary: Returns a list of order detail objects which match the given receipt.
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: ChangeOrderDate
+      parameters:
+        - name: receipt
+          in: path
+          description: Receipt ID
+          required: true
+          schema:
+            type: string
+        - name: changeDate
+          in: query
+          description: The date when the subscription will be next billed in format yyyy-mm-dd.
+          required: true
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: sku
+          in: query
+          description: sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+  /1.3/orders2/list:
+    get:
+      tags:
+        - Orders2
+      summary: "List orders for the authenticated user scoped to the search criteria. Only the first 100 orders will be returned. This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.\r\nThis method will return 200 if all the receipts have been obtained, or a 206 [Partial Return] if there are more results available."
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: GetOrders
+      parameters:
+        - name: page
+          in: query
+          description: 'This method supports pagination, so if the second page of the next 100 items is required a request header ''Page'' with value 2 will return them'
+          schema:
+            type: integer
+            format: int32
+        - name: startDate
+          in: query
+          description: 'The beginning date for the search (yyyy-mm-dd). If a startDate is specified, you must also specify an endDate.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: 'The end date for the search (yyyy-mm-dd). If an endDate is specified, you must also specify a startDate.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: type
+          in: query
+          description: 'The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.'
+          schema:
+            $ref: '#/components/schemas/OrderType'
+        - name: vendor
+          in: query
+          description: The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)
+          schema:
+            type: string
+        - name: affiliate
+          in: query
+          description: 'The affiliate name. Supports the word ''none'' to search for transactions without affiliates, and wildcard searches using the ''%'' character. (Wildcards are converted to %25 after url encoding is done by the client)'
+          schema:
+            type: string
+        - name: lastName
+          in: query
+          description: Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)
+          schema:
+            type: string
+        - name: item
+          in: query
+          description: The item number of the order.
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)
+          schema:
+            type: string
+        - name: tid
+          in: query
+          description: The TID (Tracking ID / Promo Code) to search on. This will search both vendor and affiliate tracking codes and be returned in the promo field.
+          schema:
+            type: string
+        - name: role
+          in: query
+          description: 'Role account was of transaction options are [VENDOR, AFFILIATE].'
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+        - name: postalCode
+          in: query
+          description: Customer's zip or postal code. Supports wildcard searches.
+          schema:
+            type: string
+        - name: amount
+          in: query
+          description: The transaction total amount.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+        '206':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+  '/1.3/orders2/{receipt}/reinstate':
+    post:
+      tags:
+        - Orders2
+      summary: '*BETA* Allows a vendor to restart a cancelled subscription.'
+      description: '<b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications'
+      operationId: ReinstateOrder
+      parameters:
+        - name: receipt
+          in: path
+          description: Receipt ID
+          required: true
+          schema:
+            type: string
+        - name: sku
+          in: query
+          description: The item number of the subscription product that should be reinstated for the order.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+  '/1.3/orders2/{receipt}/pause':
+    post:
+      tags:
+        - Orders2
+      summary: '*BETA* Allows a vendor to change the rebill date of a subscription.'
+      description: '<b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications'
+      operationId: PauseOrder
+      parameters:
+        - name: receipt
+          in: path
+          description: Receipt ID
+          required: true
+          schema:
+            type: string
+        - name: restartDate
+          in: query
+          description: The date when the subscription will be resumed in format yyyy-mm-dd
+          required: true
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: sku
+          in: query
+          description: The item number of the subscription product that should be reinstated for the order.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+  '/1.3/orders2/{receipt}/extend':
+    post:
+      tags:
+        - Orders2
+      summary: '*BETA* Allows a vendor to extend a subscription by a given number of rebill periods.'
+      description: '<b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications'
+      operationId: ExtendOrder
+      parameters:
+        - name: receipt
+          in: path
+          description: Receipt ID
+          required: true
+          schema:
+            type: string
+        - name: numPeriods
+          in: query
+          description: The number of periods to extend the subscription by.
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: sku
+          in: query
+          description: sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+  '/1.3/orders2/{receipt}/changeProduct':
+    post:
+      tags:
+        - Orders2
+      summary: '*BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.'
+      description: '<b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_order_write • api_subscription_modifications'
+      operationId: ChangeOrderProduct
+      parameters:
+        - name: receipt
+          in: path
+          description: Receipt ID
+          required: true
+          schema:
+            type: string
+        - name: oldSku
+          in: query
+          description: The SKU of the current product for the subscription.
+          required: true
+          schema:
+            type: string
+        - name: newSku
+          in: query
+          description: The SKU of the new product for the subscription.
+          required: true
+          schema:
+            type: string
+        - name: carryAffiliate
+          in: query
+          description: Determines if the affiliate from the original transaction is carried over to the new subscription.
+          schema:
+            type: string
+        - name: applyProratedRefund
+          in: query
+          description: Determines if the pro rated refund should be applied on the product change. This parameter will default to TRUE if not explicitly set.
+          schema:
+            type: boolean
+        - name: nextRebillDate
+          in: query
+          description: Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change.
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+      responses:
+        '204':
+          description: No Content
+  '/1.3/orders2/{receipt}/changeAddress':
+    post:
+      tags:
+        - Orders2
+      summary: Allows a vendor to change shipping address of a physical recurring subscription.
+      description: '<b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_order_write'
+      operationId: ChangeOrderAddress
+      parameters:
+        - name: receipt
+          in: path
+          description: Receipt ID
+          required: true
+          schema:
+            type: string
+        - name: firstName
+          in: query
+          description: Updated customer first name.
+          schema:
+            type: string
+        - name: lastName
+          in: query
+          description: Updated customer last name.
+          schema:
+            type: string
+        - name: address1
+          in: query
+          description: Updated address (line 1).
+          required: true
+          schema:
+            type: string
+        - name: address2
+          in: query
+          description: Updated address (line 2).
+          schema:
+            type: string
+        - name: city
+          in: query
+          description: Updated city.
+          required: true
+          schema:
+            type: string
+        - name: county
+          in: query
+          description: Updated county.
+          schema:
+            type: string
+        - name: province
+          in: query
+          description: Updated state or province.
+          schema:
+            type: string
+        - name: countryCode
+          in: query
+          description: Updated country code.
+          required: true
+          schema:
+            type: string
+        - name: postalCode
+          in: query
+          description: Updated postal code or Zip.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+  /1.3/orders2/count:
+    get:
+      tags:
+        - Orders2
+      summary: 'Same as the list command, except that this one returns the count of the orders returned based on the search criteria.'
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: GetOrderCount
+      parameters:
+        - name: startDate
+          in: query
+          description: The beginning date for the search (yyyy-mm-dd).
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: The end date for the search (yyyy-mm-dd).
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: type
+          in: query
+          description: 'The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.'
+          schema:
+            $ref: '#/components/schemas/OrderType'
+        - name: vendor
+          in: query
+          description: The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)
+          schema:
+            type: string
+        - name: affiliate
+          in: query
+          description: 'The affiliate name. Supports the word ''none'' to search for transactions without affiliates, and wildcard searches using the ''%'' character. (Wildcards are converted to %25 after url encoding is done by the client)'
+          schema:
+            type: string
+        - name: lastName
+          in: query
+          description: Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)
+          schema:
+            type: string
+        - name: item
+          in: query
+          description: The item number of the order.
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)
+          schema:
+            type: string
+        - name: tid
+          in: query
+          description: The TID (Tracking ID / Promo Code) to search on. This will search both vendor and affiliate tracking codes and be returned in the promo field.
+          schema:
+            type: string
+        - name: postalCode
+          in: query
+          description: Customer's zip or postal code. Supports wildcard searches.
+          schema:
+            type: string
+        - name: role
+          in: query
+          description: 'Role account was of transaction options are [VENDOR, AFFILIATE].'
+          schema:
+            $ref: '#/components/schemas/RoleAccount'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: integer
+                format: int32
+  '/1.3/orders2/{receipt}/upsells':
+    get:
+      tags:
+        - Orders2
+      summary: "Returns all the upsell transactions for the given parent upsell transaction.\r\nIf the transaction does not exist, or the user does not have access to the transaction, or if there are no upsells for this transaction, a status code of 403 (No Content) will be returned."
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: GetOrderUpsells
+      parameters:
+        - name: receipt
+          in: path
+          description: Receipt ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+  '/1.3/orders2/{receipt}/changeDate':
+    post:
+      tags:
+        - Orders2
+      summary: '*BETA* Allows a vendor to change the rebill date of a subscription.'
+      description: '<b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications'
+      operationId: GetOrder
+      parameters:
+        - name: receipt
+          in: path
+          description: Receipt ID
+          required: true
+          schema:
+            type: string
+        - name: sku
+          in: query
+          description: sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+  '/1.3/products/{sku}':
+    get:
+      tags:
+        - Product
+      summary: Gets a product.
+      description: '<b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY'
+      operationId: GetProduct
+      parameters:
+        - name: sku
+          in: path
+          description: The product sku.
+          required: true
+          schema:
+            type: string
+        - name: site
+          in: query
+          description: The site owning the product to be retrieved.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
+    delete:
+      tags:
+        - Product
+      summary: Delete a product.
+      description: '<b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY'
+      operationId: DeleteProduct
+      parameters:
+        - name: sku
+          in: path
+          description: The product sku.
+          required: true
+          schema:
+            type: string
+        - name: site
+          in: query
+          description: The site owning the product to be retrieved.
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+    put:
+      tags:
+        - Product
+      summary: Saves a product with the passed in parameters.
+      description: '<b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY'
+      operationId: CreateProduct
+      parameters:
+        - name: sku
+          in: path
+          description: The product sku.
+          required: true
+          schema:
+            type: string
+        - name: digital
+          in: query
+          description: Product has digital component.
+          schema:
+            type: boolean
+        - name: physical
+          in: query
+          description: Product has physical component.
+          schema:
+            type: boolean
+        - name: digitalRecurring
+          in: query
+          description: Product has digital recurring component.
+          schema:
+            type: boolean
+        - name: physicalRecurring
+          in: query
+          description: Product has physical recurring component.
+          schema:
+            type: boolean
+        - name: categories
+          in: query
+          description: 'The categories for digital products. At least one is required for a product with a digital component, multiple may be specified. Providing a category for a product without a digital component will result in an error.'
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ProductCategory'
+        - name: skipConfirmationPage
+          in: query
+          description: The site owning the product to be saved.
+          schema:
+            type: boolean
+        - name: site
+          in: query
+          description: The site owning the product to be saved.
+          required: true
+          schema:
+            type: string
+        - name: thankYouPage
+          in: query
+          description: The thank you page for desktops. Either thankYouPage or mobileThankYouPage is required.
+          schema:
+            type: string
+        - name: mobileThankYouPage
+          in: query
+          description: The thank you page for mobile devices.
+          schema:
+            type: string
+        - name: currency
+          in: query
+          description: The currency the product is sold in.
+          required: true
+          schema:
+            type: string
+        - name: price
+          in: query
+          description: 'The price for the product. Or in the case of RECURRING or RECURRING_PHYSICAL products, the initial price.'
+          required: true
+          schema:
+            type: number
+            format: double
+        - name: rebillPrice
+          in: query
+          description: In the case of RECURRING or RECURRING_PHYSICAL (required) products the rebill price.
+          schema:
+            type: number
+            format: double
+        - name: rebillCommission
+          in: query
+          description: In the case of RECURRING or RECURRING_PHYSICAL products the rebill commission.
+          schema:
+            type: number
+            format: double
+        - name: trialPeriod
+          in: query
+          description: In the case of RECURRING or RECURRING_PHYSICAL (required) products the trial period. Must be either 0 or a whole number between 3 and 31.
+          schema:
+            maximum: 31
+            minimum: 0
+            type: integer
+            format: int32
+        - name: frequency
+          in: query
+          description: 'In the case of RECURRING or RECURRING_PHYSICAL (required) products the rebill frequency. Must be either WEEKLY, BI_WEEKLY, MONTHLY, QUARTERLY, HALF_YEARLY or YEARLY.'
+          schema:
+            $ref: '#/components/schemas/RecurringFrequency'
+        - name: duration
+          in: query
+          description: In the case of RECURRING or RECURRING_PHYSICAL (required) products the rebill duration.
+          schema:
+            type: integer
+            format: int32
+        - name: shippingProfile
+          in: query
+          description: In the case of PHYSICAL or RECURRING_PHYSICAL products the name of the shipping profile.
+          schema:
+            type: string
+        - name: purchaseCommission
+          in: query
+          description: The commission rate for the product - if unspecified the sites commission rate will be used.
+          schema:
+            type: number
+            format: double
+        - name: language
+          in: query
+          description: 'The language of the product. Must be either DE (German), EN (English), ES, (Spanish), FR (French), IT (Italian), or PT (Portuguese).'
+          schema:
+            $ref: '#/components/schemas/Language'
+        - name: title
+          in: query
+          description: The title of the product.
+          required: true
+          schema:
+            type: string
+        - name: description
+          in: query
+          description: In the case of PHYSICAL or RECURRING_PHYSICAL (required) the description of the product.
+          schema:
+            type: string
+        - name: image
+          in: query
+          description: The id of the image associated to the product.
+          schema:
+            type: integer
+            format: int32
+        - name: pitchPage
+          in: query
+          description: The URL where you pitch your product. This might be the same as the HopLink Target URL. Either pitchPage or mobilePitchPage is required.
+          schema:
+            type: string
+        - name: mobilePitchPage
+          in: query
+          description: The URL where you pitch your product to customers on mobile devices. This might be the same as the HopLink Target URL. Either pitchPage or mobilePitchPage is required.
+          schema:
+            type: string
+        - name: saleRefundDaysLimit
+          in: query
+          description: The number days within which a sale can be refunded.
+          schema:
+            type: integer
+            format: int32
+        - name: rebillRefundDaysLimit
+          in: query
+          description: The number days within which a rebill can be refunded.
+          schema:
+            type: integer
+            format: int32
+        - name: deliveryMethod
+          in: query
+          description: The method of delivery.
+          schema:
+            type: string
+        - name: deliverySpeed
+          in: query
+          description: The speed of delivery.
+          schema:
+            type: string
+        - name: preRebillNotificationOverride
+          in: query
+          description: 'When set, Pre-rebill notifications will be sent when the frequency is greater than the required cycle.'
+          schema:
+            type: boolean
+        - name: preRebillNotificationLeadTime
+          in: query
+          description: 'The number of days before the rebill notification. When enabled, a Pre-rebill notification will be sent to the number equal to the number of days indicated in the lead time and will apply to the rest of the subscription.'
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
+  /1.3/products/list:
+    get:
+      tags:
+        - Product
+      summary: Lists all products.
+      description: '<b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY'
+      operationId: GetProducts
+      parameters:
+        - name: site
+          in: query
+          description: The site owning the products.
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: The product types to return.d Must be either STANDARD or RECURRING. Will return all types if not specified.
+          schema:
+            $ref: '#/components/schemas/ProductType'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProductList'
+        '206':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProductList'
+  /1.3/quickstats/accounts:
+    get:
+      tags:
+        - Quickstats
+      summary: Return a list of all account nicknames which the current api user has read access.
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: GetAccount
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountList'
+  /1.3/quickstats/list:
+    get:
+      tags:
+        - Quickstats
+      summary: 'Return the quickstats for the api user, based on the search criteria. If no search conditions are set, it will return the quickstats for all the accounts for the API user for the last 45 days.'
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: GetQuickstats
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountList'
+  /1.3/quickstats/count:
+    get:
+      tags:
+        - Quickstats
+      summary: 'The count service sums the quickstat sale, refund and chargeback amounts based on the search criteria. If no search conditions are set, it will return the sum of the values for the last 45 days based on all the accounts linked to the API keys. The count service is similar to the list method except for the fact that it presents the user with one total of the dates specified the search criteria instead of listing each day''s quickstat values individually. Note that the quickStatDate in the returned data will be null.'
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: GetQuickstatsSummary
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountList'
+  /1.3/shipping2/list:
+    get:
+      tags:
+        - Shipping2
+      summary: "List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned. This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.\r\nThis method will return 200 if all the orders have been obtained, or a 206 [Partial Return] if there are more results available. An important point to note is that this method will only return shippable orders matching search criteria, so if a user wants to get all orders, they will need to use the Orders Service API."
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: GetShipping
+      parameters:
+        - name: status
+          in: query
+          description: 'Can be ''shipped'', ''notshipped'' or ''all'' - to find related orders.'
+          schema:
+            $ref: '#/components/schemas/ShippingStatus'
+        - name: days
+          in: query
+          description: 'Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.'
+          schema:
+            type: integer
+            format: int32
+        - name: startDate
+          in: query
+          description: 'Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: 'Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: receipt
+          in: query
+          description: 'Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.'
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ShippingList'
+        '206':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ShippingList'
+  /1.3/shipping2/count:
+    get:
+      tags:
+        - Shipping2
+      summary: "Returns a count of physical goods orders matching the shipping criteria.\r\nAn important point to note is that this method will only return shippable orders matching search criteria, so if a user wants to get all orders, they will need to use the Orders Service API."
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: GetShippingCount
+      parameters:
+        - name: status
+          in: query
+          description: 'Can be ''shipped'', ''notshipped'' or ''all'' - to find related orders.'
+          schema:
+            $ref: '#/components/schemas/ShippingStatus'
+        - name: days
+          in: query
+          description: 'Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.'
+          schema:
+            type: integer
+            format: int32
+        - name: startDate
+          in: query
+          description: 'Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: 'Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: receipt
+          in: query
+          description: 'Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.'
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int32
+            application/xml:
+              schema:
+                type: integer
+                format: int32
+  '/1.3/shipping2/shipnotice/{receipt}':
+    get:
+      tags:
+        - Shipping2
+      summary: Returns the ship notices for the given transaction.
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: GetShippingNotice
+      parameters:
+        - name: receipt
+          in: path
+          description: Receipt ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingNoticeData'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ShippingNoticeData'
+    post:
+      tags:
+        - Shipping2
+      summary: Creates a shipping notice for the given transaction.
+      description: '<b>Permissions Required</b>: api_order_read • api_order_write • HAS_DEVELOPER_KEY'
+      operationId: CreateShippingNotice
+      parameters:
+        - name: receipt
+          in: path
+          description: Receipt ID
+          required: true
+          schema:
+            type: string
+        - name: date
+          in: query
+          description: The shipping date (yyyy-mm-dd).
+          required: true
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: carrier
+          in: query
+          description: The shipping carrier.
+          required: true
+          schema:
+            type: string
+        - name: tracking
+          in: query
+          description: The tracking id.
+          required: true
+          schema:
+            type: string
+        - name: comments
+          in: query
+          description: The TicketComments associated with the notice.
+          required: true
+          schema:
+            type: string
+        - name: item
+          in: query
+          description: The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.
+          required: true
+          schema:
+            type: string
+        - name: fillOrder
+          in: query
+          description: 'Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingNoticeData'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ShippingNoticeData'
+  '/1.3/tickets/{receipt}':
+    post:
+      tags:
+        - Ticket
+      summary: Create a ticket with the passed in parameters. Will return the created ticket if it's successful.
+      description: '<b>Permissions Required</b>: api_order_write • HAS_DEVELOPER_KEY'
+      operationId: CreateTicket
+      parameters:
+        - name: receipt
+          in: path
+          description: A valid receipt id.
+          required: true
+          schema:
+            type: string
+        - name: sku
+          in: query
+          description: sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: 'The type of the ticket. Must be either ''rfnd'', ''cncl'' or ''tech''. For ''rfnd'' the parameter refundType must also be specified. If the receipt is for a non-recurring product, either ''rfnd'' or ''cncl'' will automatically refund that sale. For any receipt of a recurring product, a ''rfnd'' will refund that receipt AND cancel any future billing, while a ''cncl'' will only cancel future billing without issuing any refunds.'
+          required: true
+          schema:
+            $ref: '#/components/schemas/QueryTicketType'
+        - name: comment
+          in: query
+          description: The comments associated with creating a ticket.
+          schema:
+            type: string
+        - name: reason
+          in: query
+          description: "The reason associated with the ticket. A ticket reason should be one of the following based on type:\r\nCNCL\r\nticket.type.cancel.1 (I did not receive additional value for the recurring payments).\r\nticket.type.cancel.2 (I was not satisfied with the subscription / Subscription did not meet expectations)\r\nticket.type.cancel.3 (I was unable to get support from the vendor)\r\nticket.type.cancel.4 (Product was not compatible with my computer)\r\nticket.type.cancel.5 (I am unable to afford continuing payments for this subscription)\r\nticket.type.cancel.6 (I did not realize that I accepted the terms for continuing payments)\r\nticket.type.cancel.7 (Other)\r\nticket.type.cancel.not.mobile (Product was not compatible with my mobile device.)\r\nRFND\r\nticket.type.refund.1 (I never received my product)\r\nticket.type.refund.2 (I was not satisfied with the product. / Product did not meet expectations)\r\nticket.type.refund.3 (Product was not compatible with my computer)\r\nticket.type.refund.4 (I was unable to get technical support)\r\nticket.type.refund.5 (I did not authorize the purchase)\r\nticket.type.refund.6 (I do not recognize the purchase)\r\nticket.type.refund.7 (Duplicate purchase. / Or already purchased product previously)\r\nticket.type.refund.returned (Product returned)\r\nticket.type.refund.8 (Other)\r\nticket.type.refund.not.mobile (Product was not compatible with my mobile device.)\r\nTECH\r\nticket.type.tech_support.1 (I am unable to log in.)\r\nticket.type.tech_support.2 (I had problems downloading the product.)\r\nticket.type.tech_support.3 (I never received a valid registration code, please send a valid code.)\r\nticket.type.tech_support.4 (I can't get the product to work.)\r\nticket.type.tech_support.9 (Other)\r\nticket.type.tech_support.10 (I never received my product.)"
+          required: true
+          schema:
+            type: string
+        - name: refundType
+          in: query
+          description: 'The type of refund. Supported values include ''FULL'', ''PARTIAL_PERCENT'', ''PARTIAL_AMOUNT'' (case sensitive). For ''PARTIAL_PERCENT'' and ''PARTIAL_AMOUNT'' the parameter refundAmount must be specified. Additionally the vendor associated with the transaction must be enabled for partial refunds in order to use both ''PARTIAL_PERCENT'' and ''PARTIAL_AMOUNT'', if vendor is not enabled and one of the partial options is specified a 403 will be returned.'
+          schema:
+            $ref: '#/components/schemas/RefundType'
+        - name: refundAmount
+          in: query
+          description: 'Specified for partial refunds indicating the amount of the transaction to be refunded. For ''PARTIAL_PERCENT'' this must be a number between 1 and 80, with no more than two digits of precision - for example 50.00. For ''PARTIAL_AMOUNT'' this is the amount to refund in the currency the customer used during the purchase. The resource /1.3/tickets/refundAmounts may be used to retrieve what amounts in the customers currency convert to.'
+          schema:
+            type: number
+            format: double
+        - name: retainSubscription
+          in: query
+          description: Specifies if the subscription should be retained after the refund has been processed.
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketData'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TicketData'
+        '403':
+          description: Forbidden
+  '/1.3/tickets/refundAmounts/{receipt}':
+    get:
+      tags:
+        - Ticket
+      summary: Returns amounts that would be refunded for a given refund type & value.
+      description: '<b>Permissions Required</b>: api_order_read'
+      operationId: GetTicketRefundAmounts
+      parameters:
+        - name: receipt
+          in: path
+          description: A valid receipt id.
+          required: true
+          schema:
+            type: string
+        - name: sku
+          in: query
+          description: line item sku/itemNo.
+          schema:
+            type: string
+        - name: refundType
+          in: query
+          description: 'The type of refund. Supported values include ''FULL'', ''PARTIAL_PERCENT'', ''PARTIAL_AMOUNT'' (case sensitive). For ''PARTIAL_PERCENT'' and ''PARTIAL_AMOUNT'' the parameter refundAmount must be specified. Additionally the vendor associated with the transaction must be enabled for partial refunds in order to use both ''PARTIAL_PERCENT'' and ''PARTIAL_AMOUNT'', if vendor is not enabled and one of the partial options is specified a 403 will be returned.'
+          required: true
+          schema:
+            $ref: '#/components/schemas/RefundType'
+        - name: refundAmount
+          in: query
+          description: 'Specified for partial refunds indicating the amount of the transaction to be refunded. For ''PARTIAL_PERCENT'' this must be a number between 1 and 80, with no more than two digits of precision - for example 50.00. For ''PARTIAL_AMOUNT'' this is the amount to refund in the currency the customer used during the purchase.'
+          schema:
+            type: number
+            format: double
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartialRefundData'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartialRefundData'
+        '403':
+          description: Forbidden
+  '/1.3/tickets/{id}':
+    get:
+      tags:
+        - Ticket
+      summary: 'Find a ticket by its ID. Will return the ticket with the given ID back. If the ticket does not exist, or the user is not authorized to view the ticket - a status code of 403 will be returned.'
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: GetTicket
+      parameters:
+        - name: id
+          in: path
+          description: A valid ticket id.
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketData'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TicketData'
+        '403':
+          description: Forbidden
+    put:
+      tags:
+        - Ticket
+      summary: 'Allows the user to close a ticket, comment on a ticket, change type of a ticket, or reopen the ticket. Will return a status code 200 if the action is successful, a 403 if user is not allowed to act on the ticket or the ticket does not exist. Upon success, this will return the ticket data. Please note that closing of a ticket manually means that the ticket is cancelled. So for example closing of an open refund ticket will cancel the refund request. If the action is not specified, the assumption is that the user is trying to comment on the ticket. Also note that reopening is only supported for closed tickets and will return a 400 status code otherwise.'
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: UpdateTicket
+      parameters:
+        - name: id
+          in: path
+          description: A valid ticket id.
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: action
+          in: query
+          description: 'The action to be taken. Supported actions are ''change'', ''close'' and ''reopen''.'
+          schema:
+            $ref: '#/components/schemas/TicketAction'
+        - name: comment
+          in: query
+          description: 'The comments that go along with the action, or comments on the ticket. Comments are required when reopening a ticket.'
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: 'If changing the type of the ticket, this will be one of rfnd, cncl, or tech. Note: Partial refunds are not allowed when changing to a rfnd ticket type. Tickets changed to rfnd will be full refunds.'
+          schema:
+            $ref: '#/components/schemas/QueryTicketType'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketData'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TicketData'
+        '403':
+          description: Forbidden
+  '/1.3/tickets/{id}/returned':
+    post:
+      tags:
+        - Ticket
+      summary: 'Acknowledges return of physical item from customer, allowing refund of transaction to complete. This call will return a status code of 204 if successful. The body of the response will be empty in this case. A 403 (Forbidden) status code will be return if access is denied. A 400 (Bad Request) will be returned if the ticket isn''t found or the ticket is not for a physical purchase.'
+      description: '<b>Permissions Required</b>: api_order_read • api_order_write • HAS_DEVELOPER_KEY'
+      operationId: AcceptReturnFromCustomer
+      parameters:
+        - name: id
+          in: path
+          description: A valid ticket id.
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingNoticeData'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ShippingNoticeData'
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /1.3/tickets/list:
+    get:
+      tags:
+        - Ticket
+      summary: 'Searches for tickets matching the search criteria. Will return a list of ticket data objects with a status code of 200. If more than 100 results are returned, it will return a status code of 206 [Partial Content]. Users can then use the ''Page'' header to determine the page needed.'
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: GetTickets
+      parameters:
+        - name: type
+          in: query
+          description: The type of the ticket. Must be either 'rfnd' / 'cncl' or 'tech'.
+          schema:
+            $ref: '#/components/schemas/QueryTicketType'
+        - name: status
+          in: query
+          description: 'The status of the ticket. Can be ''open'', ''reopened'' or ''closed''.'
+          schema:
+            $ref: '#/components/schemas/TicketStatus'
+        - name: receipt
+          in: query
+          description: 'Find a ticket by a given receipt. Will return the ticket(s) associated with the transaction. If the receipt is a subscription, all tickets with associated with each rebill of that subscription will be returned. Must be 4 or more characters in length, not counting the wildcard character (''%''). May not start with the wildcard character.'
+          schema:
+            type: string
+        - name: createDateFrom
+          in: query
+          description: 'The start of the createDate range to filter tickets by. If you provide a ''createDateFrom'', you must also provide a ''createDateTo'' to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format ''yyyy-mm-dd'', i.e ''2011-12-31'' for December 31st, 2011.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: createDateTo
+          in: query
+          description: 'The end of the createDate range to filter tickets by. If you provide a ''createDateTo'', you must also provide a ''createDateFrom'' to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format ''yyyy-mm-dd'', i.e ''2011-12-31'' for December 31st, 2011.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: updateDateFrom
+          in: query
+          description: 'The start of the updateDate range to filter tickets by. If you provide a ''createDateTo'', you must also provide a ''createDateFrom'' to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format ''yyyy-mm-dd'', i.e ''2011-12-31'' for December 31st, 2011.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: updateDateTo
+          in: query
+          description: 'The end of the updateDate range to filter tickets by. If you provide a ''createDateTo'', you must also provide a ''createDateFrom'' to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format ''yyyy-mm-dd'', i.e ''2011-12-31'' for December 31st, 2011.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: closeDateFrom
+          in: query
+          description: 'The start of the closeDate range to filter tickets by. If you provide a ''createDateTo'', you must also provide a ''createDateFrom'' to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format ''yyyy-mm-dd'', i.e ''2011-12-31'' for December 31st, 2011.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: closeDateTo
+          in: query
+          description: 'The end of the closeDate range to filter tickets by. If you provide a ''createDateTo'', you must also provide a ''createDateFrom'' to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format ''yyyy-mm-dd'', i.e ''2011-12-31'' for December 31st, 2011.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TicketList'
+  /1.3/tickets/count:
+    get:
+      tags:
+        - Ticket
+      summary: Counts the tickets matching the search criteria.
+      description: '<b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY'
+      operationId: GetTicketCount
+      parameters:
+        - name: type
+          in: query
+          description: The type of the ticket. Must be either 'rfnd' / 'cncl' or 'tech'.
+          schema:
+            $ref: '#/components/schemas/QueryTicketType'
+        - name: status
+          in: query
+          description: 'The status of the ticket. Can be ''open'', ''reopened'' or ''closed''.'
+          schema:
+            $ref: '#/components/schemas/TicketStatus'
+        - name: receipt
+          in: query
+          description: 'Counts a ticket by a given receipt. Will return the ticket(s) associated with the transaction. If the receipt is a subscription, all tickets with associated with each rebill of that subscription will be counted.'
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int32
+            application/xml:
+              schema:
+                type: integer
+                format: int32
+components:
+  schemas:
+    AccountData:
+      type: object
+      properties:
+        nickName:
+          type: string
+          nullable: true
+        quickStats:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuickStatsData'
+          nullable: true
+      additionalProperties: { }
+    AccountList:
+      type: object
+      properties:
+        accountData:
+          $ref: '#/components/schemas/AccountData'
+      additionalProperties: { }
+    ActiveStatus:
+      enum:
+        - ACTIVE
+        - INACTIVE
+      type: string
+      additionalProperties: { }
+    AnalyticAttribute:
+      enum:
+        - DIMENSION_VALUE
+        - HOP_COUNT
+        - ORDER_IMPRESSION
+        - INITIAL_ORDER_IMPRESSION
+        - UPSELL_ORDER_IMPRESSION
+        - ORDER_SUBMISSION
+        - SALE_COUNT
+        - SALE_AMOUNT
+        - REFUND_COUNT
+        - REFUND_AMOUNT
+        - CHARGEBACK_COUNT
+        - CHARGEBACK_AMOUNT
+        - REBILL_COUNT
+        - REBILL_AMOUNT
+        - UPSELL_COUNT
+        - UPSELL_AMOUNT
+        - TOTAL_ORDER_IMPRESSION
+        - GROSS_SALE_COUNT
+        - GROSS_SALE_AMOUNT
+        - NET_SALE_COUNT
+        - NET_SALE_AMOUNT
+        - EARNINGS_PER_HOP
+        - EARNINGS_PER_CLICK
+        - HOPS_PER_SALE
+        - HOPS_PER_ORDER_FORM_IMPRESSION
+        - ORDER_FORM_SALE_CONVERSION
+        - REFUND_RATE
+        - CHARGEBACK_RATE
+      type: string
+      additionalProperties: { }
+    AnalyticStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          nullable: true
+        lastUpdateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+      additionalProperties: { }
+    AnalyticsResult:
+      type: object
+      properties:
+        rows:
+          $ref: '#/components/schemas/Rows'
+        totals:
+          $ref: '#/components/schemas/Totals'
+      additionalProperties: { }
+    AnalyticsResultRow:
+      type: object
+      properties:
+        dimensionIdentifier:
+          type: string
+          nullable: true
+        dimensionValue:
+          type: string
+          nullable: true
+        accountNickName:
+          type: string
+          nullable: true
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyticsValue'
+          nullable: true
+      additionalProperties: { }
+    AnalyticsValue:
+      type: object
+      properties:
+        attribute:
+          $ref: '#/components/schemas/AnalyticAttribute'
+        value:
+          $ref: '#/components/schemas/AnalyticsValueDetail'
+      additionalProperties: { }
+    AnalyticsValueDetail:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        _:
+          type: string
+          description: The property name is actually `$` but this causes issues for code generators and is disabled for now.
+          nullable: true
+      additionalProperties: { }
+    ContactField:
+      type: object
+      properties:
+        field:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    ContractBean:
+      type: object
+      properties:
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractContact'
+          nullable: true
+        id:
+          type: integer
+          format: int32
+        status:
+          $ref: '#/components/schemas/ContractStatus'
+      additionalProperties: { }
+    ContractContact:
+      type: object
+      properties:
+        productId:
+          type: integer
+          format: int32
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        partner:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    ContractStatus:
+      enum:
+        - PENDING_START
+        - PENDING_APPROVAL
+        - ACTIVE
+        - TERMINATED
+        - TERMINATION_REQUESTED
+        - EXPIRED
+      type: string
+      additionalProperties: { }
+    Dimension:
+      enum:
+        - AFFILIATE
+        - CUSTOMER_CURRENCY
+        - CUSTOMER_COUNTRY
+        - CUSTOMER_PROVINCE
+        - CUSTOMER_LANGUAGE
+        - PRODUCT_SKU
+        - TRACKING_ID
+        - VENDOR
+        - VENDOR_CATEGORY
+        - VENDOR_PRODUCT_SKU
+      type: string
+      additionalProperties: { }
+    DimensionColumn:
+      enum:
+        - CHARGEBACK_AMOUNT
+        - CHARGEBACK_COUNT
+        - CHARGEBACK_RATE
+        - DIMENSION_VALUE
+        - EARNINGS_PER_HOP
+        - GROSS_SALE_COUNT
+        - GROSS_SALE_AMOUNT
+        - HOP_COUNT
+        - HOPS_PER_SALE
+        - HOPS_PER_ORDER_FORM_IMPRESSION
+        - NET_SALE_AMOUNT
+        - NET_SALE_COUNT
+        - ORDER_FORM_SALE_CONVERSION
+        - ORDER_IMPRESSION
+        - ORDER_SUBMISSION
+        - REBILL_AMOUNT
+        - REBILL_COUNT
+        - REFUND_AMOUNT
+        - REFUND_COUNT
+        - REFUND_RATE
+        - SALE_AMOUNT
+        - SALE_COUNT
+        - UPSELL_AMOUNT
+        - UPSELL_COUNT
+      type: string
+      additionalProperties: { }
+    ImageBean:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        type:
+          $ref: '#/components/schemas/ImageType'
+        approved:
+          type: boolean
+          nullable: true
+      additionalProperties: { }
+    ImageData:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        type:
+          $ref: '#/components/schemas/ImageType'
+        approved:
+          type: boolean
+          nullable: true
+      additionalProperties: { }
+    ImageList:
+      type: object
+      properties:
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageData'
+          nullable: true
+      additionalProperties: { }
+    ImageListResult:
+      type: object
+      properties:
+        imageList:
+          $ref: '#/components/schemas/ImageList'
+        total_record_count:
+          type: integer
+          format: int32
+      additionalProperties: { }
+    ImageType:
+      enum:
+        - PRODUCT
+        - BANNER
+        - BANNER_CLASSIC
+        - BANNER_NEW
+        - BANNER_BG
+        - CUSTOM_BANNER
+        - CUSTOM_BANNER_BG
+        - CUSTOM_ORDERFORM
+      type: string
+      additionalProperties: { }
+    Item:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    Language:
+      enum:
+        - DE
+        - EN
+        - ES
+        - FR
+        - IT
+        - PT
+      type: string
+      additionalProperties: { }
+    LineItemData:
+      type: object
+      properties:
+        itemNo:
+          type: string
+          nullable: true
+        productTitle:
+          type: string
+          nullable: true
+        recurring:
+          type: boolean
+        shippable:
+          type: boolean
+        customerAmount:
+          type: number
+          format: double
+          nullable: true
+        accountAmount:
+          type: number
+          format: double
+          nullable: true
+        quantity:
+          type: integer
+          format: int32
+          nullable: true
+        lineItemType:
+          type: string
+          nullable: true
+        rebillAmount:
+          type: number
+          format: double
+          nullable: true
+        processedPayments:
+          type: integer
+          format: int32
+          nullable: true
+        futurePayments:
+          type: integer
+          format: int32
+          nullable: true
+        nextPaymentDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        role:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    OrderData:
+      type: object
+      properties:
+        transactionTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        receipt:
+          type: string
+          nullable: true
+        trackingId:
+          type: string
+          nullable: true
+        paytmentMethod:
+          type: string
+          nullable: true
+        transactionType:
+          type: string
+          nullable: true
+        totalOrderAmount:
+          type: number
+          format: double
+          nullable: true
+        totalShippingAmount:
+          type: number
+          format: double
+          nullable: true
+        totalTaxAmount:
+          type: number
+          format: double
+          nullable: true
+        vendor:
+          type: string
+          nullable: true
+        affiliate:
+          nullable: true
+        country:
+          type: string
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        firstName:
+          type: string
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        declinedConsent:
+          type: boolean
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        postalCode:
+          type: string
+          nullable: true
+        customerContactInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactField'
+          nullable: true
+        role:
+          type: string
+          nullable: true
+        fullName:
+          type: string
+          nullable: true
+        customerRefundableState:
+          type: string
+          nullable: true
+        vendorVariables:
+          $ref: '#/components/schemas/VendorVariables'
+        lineItemData:
+          $ref: '#/components/schemas/LineItemData'
+      additionalProperties: { }
+    OrderList:
+      type: object
+      properties:
+        orderData:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderData'
+          nullable: true
+      additionalProperties: { }
+    OrderShipData:
+      type: object
+      properties:
+        receipt:
+          type: string
+          nullable: true
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        address1:
+          type: string
+          nullable: true
+        address2:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        country:
+          type: string
+          nullable: true
+        postalCode:
+          type: string
+          nullable: true
+        transactionTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        isTestTransaction:
+          type: string
+          nullable: true
+        fullName:
+          type: boolean
+          nullable: true
+        vendor:
+          type: string
+          nullable: true
+        vendorVariables:
+          $ref: '#/components/schemas/VendorVariables'
+        lineItemShipData:
+          $ref: '#/components/schemas/OrderShipLineItemData'
+      additionalProperties: { }
+    OrderShipLineItemData:
+      type: object
+      properties:
+        itemNo:
+          type: string
+          nullable: true
+        productTitle:
+          type: string
+          nullable: true
+        customerAmount:
+          type: number
+          format: double
+          nullable: true
+        accountAmount:
+          type: number
+          format: double
+          nullable: true
+        quantity:
+          type: integer
+          format: int32
+          nullable: true
+        shippingMethod:
+          type: string
+          nullable: true
+        isRefundPending:
+          type: boolean
+          nullable: true
+        hasBeenRefunded:
+          type: boolean
+          nullable: true
+        hasBeenChargebacked:
+          type: boolean
+          nullable: true
+      additionalProperties: { }
+    OrderType:
+      enum:
+        - SALE
+        - RFND
+        - CGBK
+        - FEE
+        - BILL
+        - TEST_SALE
+        - TEST_BILL
+        - TEST_RFND
+        - TEST_FEE
+      type: string
+      additionalProperties: { }
+    PartialRefundData:
+      type: object
+      additionalProperties: { }
+    PhysicalPricing:
+      type: object
+      properties:
+        shipping_profile:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    PitchPages:
+      type: object
+      properties:
+        desktop:
+          type: string
+          nullable: true
+        mobile:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    Price:
+      type: object
+      properties:
+        native_price:
+          type: number
+          format: double
+          nullable: true
+        usd:
+          type: number
+          format: double
+          nullable: true
+        usd_with_fees:
+          type: number
+          format: double
+          nullable: true
+      additionalProperties: { }
+    Pricing:
+      type: object
+      properties:
+        '@currency':
+          type: string
+          nullable: true
+        standard:
+          $ref: '#/components/schemas/StandardPricing'
+        physical:
+          $ref: '#/components/schemas/PhysicalPricing'
+        recurring:
+          $ref: '#/components/schemas/RecurringPricing'
+      additionalProperties: { }
+    Pricings:
+      type: object
+      properties:
+        pricing:
+          $ref: '#/components/schemas/Pricing'
+      additionalProperties: { }
+    Product:
+      type: object
+      properties:
+        '@sku':
+          type: string
+          nullable: true
+        id:
+          type: integer
+          format: int32
+          nullable: true
+        status:
+          $ref: '#/components/schemas/ActiveStatus'
+        digital:
+          type: boolean
+        physical:
+          type: boolean
+        digitalRecurring:
+          type: boolean
+        physicalRecurring:
+          type: boolean
+        site:
+          type: string
+          nullable: true
+        created:
+          type: string
+          nullable: true
+        updated:
+          type: string
+          nullable: true
+        approval_status:
+          $ref: '#/components/schemas/ProductApprovalStatus'
+        language:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        post_purchase_description:
+          type: string
+          nullable: true
+        image:
+          $ref: '#/components/schemas/ImageBean'
+        thank_you_pages:
+          $ref: '#/components/schemas/ThankYouPages'
+        pitch_pages:
+          $ref: '#/components/schemas/PitchPages'
+        commission:
+          $ref: '#/components/schemas/ProductCommission'
+        pricings:
+          $ref: '#/components/schemas/Pricings'
+        contracts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractBean'
+          nullable: true
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductCategory'
+          nullable: true
+        disable_geo_currency:
+          type: boolean
+          nullable: true
+        allow_currency_change:
+          type: boolean
+          nullable: true
+        us_tax_exempt:
+          type: boolean
+          nullable: true
+        revenue_recognition:
+          $ref: '#/components/schemas/RevRec'
+        reduced_upsell_markup:
+          type: boolean
+          nullable: true
+        skip_confirmation_page:
+          type: boolean
+          nullable: true
+        admin_download_url:
+          type: string
+          nullable: true
+        admin_mobile_download_url:
+          type: string
+          nullable: true
+        no_commission:
+          type: boolean
+        sale_refund_days_limit:
+          type: integer
+          format: int32
+          nullable: true
+        rebill_refund_days_limit:
+          type: integer
+          format: int32
+          nullable: true
+        admin_restrict_flexible_refund:
+          type: boolean
+          nullable: true
+        commission_tier_override:
+          type: boolean
+        deliveryMethod:
+          type: string
+          nullable: true
+        deliverySpeed:
+          type: string
+          nullable: true
+        isPartOfOrderBump:
+          type: integer
+          format: int32
+          nullable: true
+        isInitialOfOrderBump:
+          type: boolean
+        isProductOfOrderBump:
+          type: boolean
+        phoneNumberOnOrderForm:
+          type: boolean
+          nullable: true
+        delayedDelivery:
+          type: boolean
+          nullable: true
+        sendRebillNotification:
+          type: boolean
+          nullable: true
+      additionalProperties: { }
+    ProductApprovalStatus:
+      type: object
+      properties:
+        ticket_id:
+          type: integer
+          format: int32
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        last_action_performed_by:
+          $ref: '#/components/schemas/Role'
+      additionalProperties: { }
+    ProductCategory:
+      enum:
+        - EBOOK
+        - SOFTWARE
+        - GAMES
+        - AUDIO
+        - VIDEO
+        - MEMBER_SITE
+      type: string
+      additionalProperties: { }
+    ProductCommission:
+      type: object
+      properties:
+        purchase:
+          type: number
+          format: double
+          nullable: true
+        rebill:
+          type: number
+          format: double
+          nullable: true
+        no_rebill_commission:
+          type: boolean
+        commission_tier_override:
+          type: boolean
+      additionalProperties: { }
+    ProductList:
+      type: object
+      properties:
+        products:
+          $ref: '#/components/schemas/Products'
+        total_record_count:
+          type: integer
+          format: int32
+      additionalProperties: { }
+    ProductType:
+      enum:
+        - STANDARD
+        - RECURRING
+      type: string
+      additionalProperties: { }
+    Products:
+      type: object
+      properties:
+        product:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+          nullable: true
+      additionalProperties: { }
+    QueryTicketType:
+      enum:
+        - rfnd
+        - cncl
+        - tech
+      type: string
+      additionalProperties: { }
+    QuickStatsData:
+      type: object
+      properties:
+        quickStatDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        sale:
+          type: number
+          format: double
+          nullable: true
+        refund:
+          type: number
+          format: double
+          nullable: true
+        chargeback:
+          type: number
+          format: double
+          nullable: true
+      additionalProperties: { }
+    RecurringFrequency:
+      enum:
+        - WEEKLY
+        - BI_WEEKLY
+        - MONTHLY
+        - QUARTERLY
+        - HALF_YEARLY
+        - YEARLY
+        - MONTHS
+        - WEEKS
+        - DAYS
+      type: string
+      additionalProperties: { }
+    RecurringPricing:
+      type: object
+      properties:
+        price:
+          $ref: '#/components/schemas/Price'
+        frequency:
+          $ref: '#/components/schemas/RecurringFrequency'
+        duration:
+          type: integer
+          format: int32
+          nullable: true
+        trial_days:
+          type: integer
+          format: int32
+          nullable: true
+        pre_rebill_override:
+          type: boolean
+        pre_rebill_leadtime:
+          type: integer
+          format: int32
+          nullable: true
+        recurringTitle:
+          type: string
+          nullable: true
+        recurringDescription:
+          type: string
+          nullable: true
+        frequencyValue:
+          type: integer
+          format: int32
+      additionalProperties: { }
+    RefundType:
+      enum:
+        - FULL
+        - PARTIAL_PERCENT
+        - PARTIAL_AMOUNT
+        - PARTIAL_QUANTITY
+        - TAX
+      type: string
+      additionalProperties: { }
+    RefundableState:
+      enum:
+        - REFUNDABLE
+        - SUGGESTED_REFUND_BLOCK
+        - UNREFUNDABLE
+        - ALREADY_REFUNDED
+        - TOO_OLD
+        - REFUND_BLOCKED
+        - HAS_OPEN_REFUND
+        - OVER_ELV_LIMIT
+        - PROVIDER_DISCONNECTED
+      type: string
+    RevRec:
+      enum:
+        - LD
+        - VD
+        - LM
+        - LMA
+        - LMID
+        - VM
+        - I
+      type: string
+      additionalProperties: { }
+    Role:
+      enum:
+        - VENDOR
+        - CUSTOMER
+        - CBCSR
+        - CBSYSTEM
+        - USER
+      type: string
+      additionalProperties: { }
+    RoleAccount:
+      enum:
+        - VENDOR
+        - AFFILIATE
+      type: string
+      additionalProperties: { }
+    Rows:
+      type: object
+      properties:
+        row:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyticsResultRow'
+          nullable: true
+      additionalProperties: { }
+    ShippingList:
+      type: object
+      properties:
+        orderShipData:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderShipData'
+          nullable: true
+      additionalProperties: { }
+    ShippingNoticeData:
+      type: object
+      properties:
+        shipDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        carrier:
+          type: string
+          nullable: true
+        trackingId:
+          type: string
+          nullable: true
+        shippedTo:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        receipt:
+          type: string
+          nullable: true
+        itemNo:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    ShippingStatus:
+      enum:
+        - shipped
+        - notshipped
+        - all
+      type: string
+      additionalProperties: { }
+    SortDirection:
+      enum:
+        - ASC
+        - DESC
+      type: string
+      additionalProperties: { }
+    StandardPricing:
+      type: object
+      properties:
+        price:
+          $ref: '#/components/schemas/Price'
+      additionalProperties: { }
+    SubscriptionDetailResult:
+      type: object
+      properties:
+        totalCount:
+          type: integer
+          format: int32
+        data:
+          $ref: '#/components/schemas/SubscriptionDetailsDataWrapper'
+      additionalProperties: { }
+    SubscriptionDetailRowOrderBy:
+      enum:
+        - RECEIPT
+        - PURCHASE_DATE
+        - SUB_END_DATE
+        - SUB_CANCEL_DATE
+        - NEXT_PAYMENT_DATE
+        - SUB_VALUE
+        - STATUS
+        - ITEM_NUMBER
+        - PROCESSED_PAYMENTS_COUNT
+        - FUTURE_PAYMENTS_COUNT
+        - REFUND_COUNT
+        - REFUND_AMOUNT
+        - CHARGEBACK_COUNT
+        - CHARGEBACK_AMOUNT
+        - PUB_NICK_NAME
+        - AFFILIATE_NICK_NAME
+        - CUSTOMER_FIRST_NAME
+        - CUSTOMER_LAST_NAME
+        - CUSTOMER_DISPLAY_NAME
+        - CUSTOMER_EMAIL
+        - DURATION
+        - INITIAL_SALE_AMOUNT
+        - INITIAL_SALE_COUNT
+        - REBILL_SALE_AMOUNT
+        - REBILL_SALE_COUNT
+      type: string
+      additionalProperties: { }
+    SubscriptionDetailsDataWrapper:
+      type: object
+      properties:
+        row:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionDetailsRowData'
+          nullable: true
+      additionalProperties: { }
+    SubscriptionDetailsRowData:
+      type: object
+      properties:
+        affNickName:
+          type: string
+          nullable: true
+        cancelled:
+          type: boolean
+        chargebackAmount:
+          type: number
+          format: double
+          nullable: true
+        chargebackCount:
+          type: integer
+          format: int32
+        countryCode:
+          type: string
+          nullable: true
+        currencyCode:
+          type: string
+          nullable: true
+        customerDisplayName:
+          type: string
+          nullable: true
+        customerFirstName:
+          type: string
+          nullable: true
+        customerLastName:
+          type: string
+          nullable: true
+        duration:
+          type: integer
+          format: int32
+        email:
+          type: string
+          nullable: true
+        frequency:
+          type: string
+          nullable: true
+        ftxnId:
+          type: integer
+          format: int32
+        futurePaymentsCount:
+          type: integer
+          format: int32
+        initialSaleAmount:
+          type: number
+          format: double
+          nullable: true
+        initialSaleCount:
+          type: integer
+          format: int32
+        itemNo:
+          type: string
+          nullable: true
+        nextPaymentDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        paymentMethod:
+          type: string
+          nullable: true
+        processedPaymentsCount:
+          type: integer
+          format: int32
+        province:
+          type: string
+          nullable: true
+        pubNickName:
+          type: string
+          nullable: true
+        purchaseDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        rebillSaleAmount:
+          type: number
+          format: double
+          nullable: true
+        rebillSaleCount:
+          type: integer
+          format: int32
+        receipt:
+          type: string
+          nullable: true
+        refundAmount:
+          type: number
+          format: double
+          nullable: true
+        refundCount:
+          type: integer
+          format: int32
+        status:
+          type: string
+          nullable: true
+        subCancelDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        subEndDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        subValue:
+          type: number
+          format: double
+          nullable: true
+        timeStr:
+          type: string
+          nullable: true
+        trialPeriod:
+          type: string
+          nullable: true
+        txnType:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    SubscriptionProductRowData:
+      type: object
+      properties:
+        avgActiveSubCnt:
+          type: number
+          format: double
+          nullable: true
+        avgSubAge:
+          type: number
+          format: double
+          nullable: true
+        avgSubValue:
+          type: number
+          format: double
+          nullable: true
+        businessDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        cancelSubCnt:
+          type: number
+          format: double
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        duration:
+          type: integer
+          format: int32
+        frequency:
+          type: string
+          nullable: true
+        grossSales:
+          type: number
+          format: double
+          nullable: true
+        initialSaleAmt:
+          type: number
+          format: double
+          nullable: true
+        initialSaleCnt:
+          type: number
+          format: double
+          nullable: true
+        itemNo:
+          type: string
+          nullable: true
+        netSales:
+          type: number
+          format: double
+          nullable: true
+        nickname:
+          type: string
+          nullable: true
+        productId:
+          type: integer
+          format: int32
+        recurringSaleAmt:
+          type: number
+          format: double
+          nullable: true
+        recurringSaleCnt:
+          type: number
+          format: double
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        totalSalesCnt:
+          type: number
+          format: double
+          nullable: true
+        trialPeriod:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    SubscriptionStatus:
+      enum:
+        - ACTIVE
+        - COMPLETED
+        - CANCELED
+        - RETRY_PAYMENT
+        - REQUEST_NEW_CARD
+      type: string
+      additionalProperties: { }
+    SubscriptionTrendsData:
+      type: object
+      properties:
+        totalCount:
+          type: integer
+          format: int32
+        data:
+          $ref: '#/components/schemas/SubscriptionTrendsDataWrapper'
+      additionalProperties: { }
+    SubscriptionTrendsDataWrapper:
+      type: object
+      properties:
+        row:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionProductRowData'
+          nullable: true
+      additionalProperties: { }
+    SummaryType:
+      enum:
+        - VENDOR_ONLY
+        - AFFILIATE_ONLY
+      type: string
+      additionalProperties: { }
+    ThankYouPages:
+      type: object
+      properties:
+        desktop:
+          type: string
+          nullable: true
+        mobile:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    TicketAction:
+      enum:
+        - change
+        - close
+        - reopen
+      type: string
+      additionalProperties: { }
+    TicketActionType:
+      enum:
+        - ASSIGNED
+        - COMMENTED
+        - CHANGED
+        - CLOSED
+        - EXPIRED
+        - REOPENED
+        - OPENED
+        - APPROVED
+        - DISAPPROVED
+        - ATTACHMENT
+        - ADMIN_CHANGE
+        - REFUND_ACKED
+        - NEW_PHOTO_ID
+      type: string
+    TicketComments:
+      type: object
+      properties:
+        commentId:
+          type: integer
+          format: int32
+          nullable: true
+        date:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        comment:
+          type: string
+          nullable: true
+        action:
+          type: string
+          nullable: true
+        commentRole:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    TicketData:
+      type: object
+      properties:
+        ticketId:
+          type: integer
+          format: int32
+          nullable: true
+        receipt:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        openedDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        closedDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        refundType:
+          type: string
+          nullable: true
+        refundAmount:
+          type: number
+          format: double
+          nullable: true
+        customerFirstName:
+          type: string
+          nullable: true
+        customerLastName:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        emailAtOrderTime:
+          type: string
+          nullable: true
+        expirationDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        locale:
+          type: string
+          nullable: true
+        note:
+          type: string
+          nullable: true
+        productItemNo:
+          type: string
+          nullable: true
+        updateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
+        source:
+          type: string
+          nullable: true
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketComments'
+          nullable: true
+      additionalProperties: { }
+    TicketList:
+      type: object
+      properties:
+        ticketData:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketData'
+          nullable: true
+      additionalProperties: { }
+    TicketSource:
+      enum:
+        - API
+        - CUSTOMER_WAM
+        - UNKNOWN
+        - RNFDS_EMAIL
+        - CNCLS_EMAIL
+        - VENDOR_WAM
+        - VENDOR_ADMIN
+        - CSR_ADMIN
+        - SECURITY
+        - CSR_WAM
+        - CONVERSION_PROCESS
+        - BUSINESS_DEVELOPMENT_FORM
+        - COMMUNICATIONS_EMAIL
+        - ACCOUNTS_EMAIL
+        - CBCS_EMAIL
+        - ACCOUNTING_EMAIL
+        - WAM_ACCT_QUESTION
+        - WAM_WIREGROUP_DETAIL
+        - MARKETING_EMAIL
+        - PAYMENTECH_BATCH
+        - PYPL_JPY_CANCELLER
+        - ECUSTOMS
+        - LASHBACK
+        - SPAM_EMAIL
+        - CLICKBANK_DATABASE_SCRIPT
+        - API_VIRTUAL_SOURCE
+        - KOUNT
+        - PAYPAL_ADAPTIVE
+        - CB_POWERED_PROGRAM
+        - CLKBANK
+      type: string
+    TicketStatus:
+      enum:
+        - OPEN
+        - REOPENED
+        - CLOSED
+      type: string
+      additionalProperties: { }
+    TicketType:
+      enum:
+        - TECH_SUPPORT
+        - REFUND
+        - CANCEL
+        - PRODUCT_CHANGE
+        - ORDER_LOOKUP
+        - ESCALATED
+        - APPROVAL_IMAGE
+        - APPROVAL_UPSELL
+        - APPROVAL_CATEGORY_CHANGE
+        - APPROVAL_BLOG_POST
+        - APPROVAL_PRODUCT
+        - APPROVAL_ADVANCED_UPSELL
+        - APPROVAL_CSS_ORDERFORM
+        - APPROVAL_TEMPLATE_ORDERFORM
+        - APPROVAL_ORDER_BUMP_CUSTOM_TEXT
+        - APPROVAL_EXIT_OFFER
+        - APPROVAL_PHOTO_ID
+        - ACCT_QUESTION_ACCOUNTS
+        - ACCT_QUESTION_ACCOUNTING
+        - SPAM
+        - ACCOUNT_ABUSE
+        - SECURITY_CONCERN
+      type: string
+    Totals:
+      type: object
+      properties:
+        total:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyticAttribute'
+          nullable: true
+      additionalProperties: { }
+    VendorVariables:
+      type: object
+      properties:
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+          nullable: true
+      additionalProperties: { }
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      description: '&lt;Developer API Key&gt;:&lt;Clerk API Key&gt;'
+      name: authorization
+      in: header
+security:
+  - ApiKey: [ ]
+tags:
+  - name: Analytics
+    description: The Analytics API provides account and subscription analytics information
+    externalDocs:
+      url: https://api.clickbank.com/rest/1.3/analytics
+  - name: Image
+    description: The Images API lists the images associated with an account
+    externalDocs:
+      url: https://api.clickbank.com/rest/1.3/images
+  - name: Orders2
+    description: The Orders API lets you view order information and update some order parameters
+    externalDocs:
+      url: https://api.clickbank.com/rest/1.3/orders2
+  - name: Product
+    description: The Products API lets you perform CRUD product management operations
+    externalDocs:
+      url: https://api.clickbank.com/rest/1.3/products
+  - name: Quickstats
+    description: The Quickstats API provides information about your account
+    externalDocs:
+      url: https://api.clickbank.com/rest/1.3/quickstats
+  - name: Shipping2
+    description: The Shipping API provides shipping information for physical good orders by receipt or time parameters. This also contains the Ship Notice API.
+    externalDocs:
+      url: https://api.clickbank.com/rest/1.3/shipping2
+  - name: Ticket
+    description: 'The Tickets API lets you create a technical support or refund ticket, and view or update the status of an existing ticket. For refund tickets related to physical products, you can also confirm that you’ve received a returned product'
+    externalDocs:
+      url: https://api.clickbank.com/rest/1.3/tickets
