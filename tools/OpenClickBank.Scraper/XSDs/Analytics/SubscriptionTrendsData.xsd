@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cb="http://www.clickbank.com/api">
+
+  <xs:element name="SubscriptionTrendsData" type="SubscriptionTrendsData"/>
+
+  <xs:complexType name="SubscriptionTrendsData">
+    <xs:sequence>
+      <xs:element name="totalCount" type="xs:int"/>
+      <xs:element name="data" type="subscriptionTrendsDataWrapper" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="subscriptionTrendsDataWrapper">
+    <xs:sequence>
+      <xs:element name="row" type="subscriptionProductRowData" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="subscriptionProductRowData">
+    <xs:sequence>
+      <xs:element name="avgActiveSubCnt" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="avgSubAge" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="avgSubValue" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="businessDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="cancelSubCnt" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="duration" type="xs:int"/>
+      <xs:element name="frequency" type="xs:string" minOccurs="0"/>
+      <xs:element name="grossSales" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="initialSaleAmt" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="initialSaleCnt" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="itemNo" type="xs:string" minOccurs="0"/>
+      <xs:element name="netSales" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="nickname" type="xs:string" minOccurs="0"/>
+      <xs:element name="productId" type="xs:int"/>
+      <xs:element name="recurringSaleAmt" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="recurringSaleCnt" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+      <xs:element name="totalSalesCnt" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="trialPeriod" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

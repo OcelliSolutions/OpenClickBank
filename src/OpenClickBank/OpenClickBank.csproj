@@ -4,12 +4,12 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<PackageId>OpenClickBank</PackageId>
+		<PackageId>Open.ClickBank</PackageId>
 		<Company>Code Cooper LLC</Company>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
 		<Authors>Jason Cooper</Authors>
 		<Description>Using OpenAPI standards, create an interface for the ClickBank APIs.</Description>
-		<PackageProjectUrl>https://github.com/codecooper/OpenClickBank</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/codecooper/Open.ClickBank</PackageProjectUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>openapi swagger clickbank</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>

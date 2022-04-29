@@ -2,7 +2,7 @@
 
 public enum AnalyticAttribute
 {
-    NIL,
+    nil,
     DIMENSION_VALUE,
     HOP_COUNT,
     ORDER_IMPRESSION,

@@ -2,6 +2,7 @@
 
 public enum RefundType
 {
+    nil,
     FULL,
     PARTIAL_PERCENT,
     PARTIAL_AMOUNT,

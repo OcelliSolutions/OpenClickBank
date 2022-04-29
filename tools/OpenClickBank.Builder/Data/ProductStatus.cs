@@ -2,6 +2,7 @@
 
 public enum ProductStatus
 {
+    nil,
     APPROVAL_REQUIRED,
     PENDING_APPROVAL,
     UNDER_REVIEW,

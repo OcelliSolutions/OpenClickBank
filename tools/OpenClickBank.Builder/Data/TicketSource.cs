@@ -2,6 +2,7 @@
 
 public enum TicketSource
 {
+    nil,
     API,
     CUSTOMER_WAM,
     UNKNOWN,

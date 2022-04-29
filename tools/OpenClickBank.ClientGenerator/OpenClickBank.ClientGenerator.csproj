@@ -14,5 +14,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\src\OpenClickBank.Builder\OpenClickBank.Builder.csproj" />
+	  <ProjectReference Include="..\OpenClickBank.Builder\OpenClickBank.Builder.csproj" />
 	</ItemGroup>
 </Project>

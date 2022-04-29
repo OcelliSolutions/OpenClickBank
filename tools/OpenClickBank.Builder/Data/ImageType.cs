@@ -2,6 +2,7 @@
 
 public enum ImageType
 {
+    nil,
     PRODUCT,
     BANNER,
     BANNER_CLASSIC,

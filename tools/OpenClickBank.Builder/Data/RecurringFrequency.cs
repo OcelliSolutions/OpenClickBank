@@ -2,6 +2,7 @@
 
 public enum RecurringFrequency
 {
+    nil,
     WEEKLY,
     BI_WEEKLY,
     MONTHLY,

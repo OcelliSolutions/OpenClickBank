@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cb="http://www.clickbank.com/api">
+
+  <xs:element name="orderData" type="orderData"/>
+
+  <xs:complexType name="orderData">
+    <xs:sequence>
+      <xs:element name="transactionTime" type="xs:dateTime" nillable="true" minOccurs="0"/>
+      <xs:element name="receipt" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="trackingId" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="paytmentMethod" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="transactionType" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="totalOrderAmount" type="xs:decimal" nillable="true" minOccurs="0"/>
+      <xs:element name="totalShippingAmount" type="xs:decimal" nillable="true" minOccurs="0"/>
+      <xs:element name="totalTaxAmount" type="xs:decimal" nillable="true" minOccurs="0"/>
+      <xs:element name="vendor" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="affiliate" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="country" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="state" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="lastName" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="firstName" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="currency" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="declinedConsent" type="xs:boolean" nillable="true" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="postalCode" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="customerContactInfo" type="contactField" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="role" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="fullName" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="customerRefundableState" type="refundableState" nillable="true" minOccurs="0"/>
+      <xs:element name="vendorVariables" type="vendorVariableElementArray" nillable="true" minOccurs="0"/>
+      <xs:element name="lineItemData" type="lineItemData" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="contactField">
+    <xs:sequence>
+      <xs:element name="field" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="value" type="xs:string" nillable="true" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vendorVariableElement">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="value" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="lineItemData">
+    <xs:sequence>
+      <xs:element name="itemNo" type="xs:string" minOccurs="0"/>
+      <xs:element name="productTitle" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="recurring" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="shippable" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="customerAmount" type="xs:decimal" nillable="true" minOccurs="0"/>
+      <xs:element name="accountAmount" type="xs:decimal" nillable="true" minOccurs="0"/>
+      <xs:element name="quantity" type="xs:int" nillable="true" minOccurs="0"/>
+      <xs:element name="lineItemType" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="refundsBlocked" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="rebillAmount" type="xs:decimal" nillable="true" minOccurs="0"/>
+      <xs:element name="processedPayments" type="xs:int" nillable="true" minOccurs="0"/>
+      <xs:element name="futurePayments" type="xs:int" nillable="true" minOccurs="0"/>
+      <xs:element name="nextPaymentDate" type="xs:dateTime" nillable="true" minOccurs="0"/>
+      <xs:element name="status" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="role" type="xs:string" nillable="true" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="refundableState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="REFUNDABLE"/>
+      <xs:enumeration value="SUGGESTED_REFUND_BLOCK"/>
+      <xs:enumeration value="UNREFUNDABLE"/>
+      <xs:enumeration value="ALREADY_REFUNDED"/>
+      <xs:enumeration value="TOO_OLD"/>
+      <xs:enumeration value="REFUND_BLOCKED"/>
+      <xs:enumeration value="HAS_OPEN_REFUND"/>
+      <xs:enumeration value="OVER_ELV_LIMIT"/>
+      <xs:enumeration value="PROVIDER_DISCONNECTED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="vendorVariableElementArray" final="#all">
+    <xs:sequence>
+      <xs:element name="item" type="vendorVariableElement" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

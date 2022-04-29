@@ -8,11 +8,9 @@ using OpenClickBank.Builder.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers(options =>
     {
-        //ensure all endpoints report that they only work with JSON
+        //ensure all endpoints report that they only work with JSON and XML
         options.Filters.Clear();
         options.Filters.Add(new ProducesAttribute(MediaTypeNames.Application.Xml));
         options.Filters.Add(new ConsumesAttribute(MediaTypeNames.Application.Xml));
@@ -45,14 +43,15 @@ builder.Services.AddSwaggerGen(c =>
     );
     c.AddServer(new OpenApiServer { Url = "https://api.clickbank.com/rest" });
     c.EnableAnnotations(true, true);
-
     c.DocumentFilter<AdditionalPropertiesDocumentFilter>();
-    c.DocumentFilter<AdditionalSchemasDocumentFilter>();
+    //c.DocumentFilter<AdditionalSchemasDocumentFilter>();
     c.SchemaFilter<DateTimeSchemaFilter>();
     c.OperationFilter<AuthorizationOperationFilter>();
 
+    // Mass apply OperationIds for the swagger doc
     c.CustomOperationIds(e => $"{e.ActionDescriptor.RouteValues["action"]}");
 
+    // The authentication for ClickBank may look like a Basic type but in reality it is a ApiKey type.
     c.AddSecurityDefinition("ApiKey",
         new OpenApiSecurityScheme
         {
@@ -65,6 +64,7 @@ builder.Services.AddSwaggerGen(c =>
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
+            // add the Authenticate button to show on the SwaggerUI
             new OpenApiSecurityScheme
             {
                 Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "ApiKey" },
@@ -74,17 +74,9 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(policy =>
-    {
-        policy.AllowAnyOrigin();
-    });
-});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

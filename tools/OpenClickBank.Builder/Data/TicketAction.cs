@@ -2,6 +2,7 @@
 
 public enum TicketAction
 {
+    nil,
     change,
     close,
     reopen

@@ -2,6 +2,7 @@
 
 public enum ShippingStatus
 {
+    nil,
     shipped,
     notshipped,
     all

@@ -2,6 +2,7 @@
 
 public enum Role
 {
+    nil,
     VENDOR,
     CUSTOMER,
     CBCSR,

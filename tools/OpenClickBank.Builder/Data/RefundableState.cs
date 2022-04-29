@@ -2,6 +2,7 @@
 
 public enum RefundableState
 {
+    nil,
     REFUNDABLE,
     SUGGESTED_REFUND_BLOCK,
     UNREFUNDABLE,

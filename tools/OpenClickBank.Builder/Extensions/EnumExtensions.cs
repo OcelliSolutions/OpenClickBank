@@ -5,6 +5,11 @@ namespace OpenClickBank.Builder.Extensions;
 
 public static class EnumExtensions
 {
+    /// <summary>
+    /// Return the value from the [Display] attribute used on an Enum.
+    /// </summary>
+    /// <param name="enumValue"></param>
+    /// <returns></returns>
     public static string? GetDisplayName(this Enum enumValue) =>
         enumValue.GetType()
             .GetMember(enumValue.ToString())
@@ -12,6 +17,13 @@ public static class EnumExtensions
             .GetCustomAttribute<DisplayAttribute>()?
             .GetName();
 
+    /// <summary>
+    /// Return an Enum of the specified type for a given string value.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
     public static T? GetValueFromName<T>(this string name) where T : Enum
     {
         var type = typeof(T);

@@ -2,6 +2,7 @@
 
 public enum SubscriptionDetailRowOrderBy
 {
+    nil,
     RECEIPT,
     PURCHASE_DATE,
     SUB_END_DATE,

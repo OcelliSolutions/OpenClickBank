@@ -2,6 +2,7 @@
 
 public enum RevRec
 {
+    nil,
     LD,
     VD,
     LM,

@@ -2,6 +2,7 @@
 
 public enum SubscriptionStatus
 {
+    nil,
     ACTIVE,
     COMPLETED,
     CANCELED,

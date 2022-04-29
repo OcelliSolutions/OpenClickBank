@@ -18,18 +18,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenClickBank", "src\OpenCl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenClickBankTests", "tests\OpenClickBankTests\OpenClickBankTests.csproj", "{10F6040C-6C98-4C51-82B8-6BF5984ABDCB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{8831F556-3166-408E-8092-9341A74E4220}"
-	ProjectSection(SolutionItems) = preProject
-		docs\analytics.html = docs\analytics.html
-		docs\images.html = docs\images.html
-		docs\orders2.html = docs\orders2.html
-		docs\products.html = docs\products.html
-		docs\quickstats.html = docs\quickstats.html
-		docs\shipnotice.html = docs\shipnotice.html
-		docs\shipping2.html = docs\shipping2.html
-		docs\tickets.html = docs\tickets.html
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{BC85FDDA-7CA2-4A4A-A14A-A01CC2407009}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenClickBank.Builder", "tools\OpenClickBank.Builder\OpenClickBank.Builder.csproj", "{C77C5D97-1E5F-4BCF-8693-CF10818ADF9F}"

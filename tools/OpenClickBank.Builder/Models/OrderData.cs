@@ -28,8 +28,7 @@ public class OrderData
     public ContactField[]? CustomerContactInfo { get; set; }
     public string? Role { get; set; }
     public string? FullName { get; set; }
-    [EnumDataType(typeof(RefundableState))]
-    public string? CustomerRefundableState { get; set; }
+    public RefundableState? CustomerRefundableState { get; set; }
     public VendorVariables? VendorVariables { get; set; }
     public LineItemData? LineItemData { get; set; }
 }

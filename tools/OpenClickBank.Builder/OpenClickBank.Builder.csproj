@@ -25,34 +25,5 @@
 		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.1" />
 		<PackageReference Include="xunit.abstractions" Version="2.0.3" />
 	</ItemGroup>
-	<ItemGroup>
-	  <None Update="XSDs\analytic_result.xsd">
-	    <SubType>Designer</SubType>
-	  </None>
-	  <None Update="XSDs\image.xsd">
-	    <SubType>Designer</SubType>
-	  </None>
-	  <None Update="XSDs\analytic_subscriptionTrends.xsd">
-	    <SubType>Designer</SubType>
-	  </None>
-	  <None Update="XSDs\analytic_subscriptionDetail.xsd">
-	    <SubType>Designer</SubType>
-	  </None>
-	  <None Update="XSDs\analytic_status.xsd">
-	    <SubType>Designer</SubType>
-	  </None>
-	  <None Update="XSDs\quickstats.xsd">
-	    <SubType>Designer</SubType>
-	  </None>
-	  <None Update="XSDs\partialRefund.xsd">
-	    <SubType>Designer</SubType>
-	  </None>
-	  <None Update="XSDs\ticket.xsd">
-	    <SubType>Designer</SubType>
-	  </None>
-	  <None Update="XSDs\shipping.xsd">
-	    <SubType>Designer</SubType>
-	  </None>
-	</ItemGroup>
 
 </Project>

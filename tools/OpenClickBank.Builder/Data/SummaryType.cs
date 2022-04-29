@@ -2,5 +2,6 @@
 
 public enum SummaryType
 {
+    nil,
     VENDOR_ONLY, AFFILIATE_ONLY
 }

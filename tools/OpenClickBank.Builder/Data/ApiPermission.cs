@@ -2,6 +2,9 @@
 
 namespace OpenClickBank.Builder.Data;
 
+/// <summary>
+/// Permissions/scopes used when authorizing against endpoints.
+/// </summary>
 public enum ApiPermission
 {
     [Display(Name = "api_products_client")]

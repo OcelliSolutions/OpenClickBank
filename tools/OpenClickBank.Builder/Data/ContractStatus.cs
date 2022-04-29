@@ -2,6 +2,7 @@
 
 public enum ContractStatus
 {
+    nil,
     PENDING_START,
     PENDING_APPROVAL,
     ACTIVE,

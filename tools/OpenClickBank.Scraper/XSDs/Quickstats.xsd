@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cb="http://www.clickbank.com/api">
+
+  <xs:element name="accountData" type="accountData"/>
+
+  <xs:element name="quickstatsData" type="quickstatsData"/>
+
+  <xs:complexType name="accountData">
+    <xs:sequence>
+      <xs:element name="nickName" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="quickStats" type="quickstatsData" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="quickstatsData">
+    <xs:sequence>
+      <xs:element name="quickStatDate" type="xs:dateTime" nillable="true" minOccurs="0"/>
+      <xs:element name="sale" type="xs:decimal" nillable="true" minOccurs="0"/>
+      <xs:element name="refund" type="xs:decimal" nillable="true" minOccurs="0"/>
+      <xs:element name="chargeback" type="xs:decimal" nillable="true" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

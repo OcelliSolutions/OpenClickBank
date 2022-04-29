@@ -2,6 +2,7 @@
 
 public enum TicketStatus
 {
+    nil,
     OPEN,
     REOPENED,
     CLOSED

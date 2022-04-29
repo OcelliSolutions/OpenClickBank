@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cb="http://www.clickbank.com/api">
+
+  <xs:element name="Image" type="imageData"/>
+
+  <xs:complexType name="imageData">
+    <xs:sequence>
+      <xs:element name="imageid" type="xs:int" minOccurs="0"/>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+      <xs:element name="type" type="imageType" minOccurs="0"/>
+      <xs:element name="approved" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="imageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PRODUCT"/>
+      <xs:enumeration value="BANNER"/>
+      <xs:enumeration value="BANNER_CLASSIC"/>
+      <xs:enumeration value="BANNER_NEW"/>
+      <xs:enumeration value="BANNER_BG"/>
+      <xs:enumeration value="CUSTOM_BANNER"/>
+      <xs:enumeration value="CUSTOM_BANNER_BG"/>
+      <xs:enumeration value="CUSTOM_ORDERFORM"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

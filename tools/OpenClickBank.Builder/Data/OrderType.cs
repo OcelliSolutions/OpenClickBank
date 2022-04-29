@@ -2,6 +2,7 @@
 
 public enum OrderType
 {
+    nil,
     SALE,
     RFND,
     CGBK,

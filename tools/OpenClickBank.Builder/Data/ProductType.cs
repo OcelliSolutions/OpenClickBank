@@ -2,5 +2,6 @@
 
 public enum ProductType
 {
+    nil,
     STANDARD, RECURRING
 }

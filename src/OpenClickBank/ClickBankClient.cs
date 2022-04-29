@@ -6291,11 +6291,14 @@ namespace OpenClickBank
     public enum ActiveStatus
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"ACTIVE")]
-        ACTIVE = 0,
+        ACTIVE = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"INACTIVE")]
-        INACTIVE = 1,
+        INACTIVE = 2,
 
     }
 
@@ -6303,8 +6306,8 @@ namespace OpenClickBank
     public enum AnalyticAttribute
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"NIL")]
-        NIL = 0,
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"DIMENSION_VALUE")]
         DIMENSION_VALUE = 1,
@@ -6471,7 +6474,7 @@ namespace OpenClickBank
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("attribute")]
-        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        
         public AnalyticAttribute? Attribute { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("value")]
@@ -6545,7 +6548,7 @@ namespace OpenClickBank
         public int? Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("status")]
-        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        
         public ContractStatus? Status { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -6590,23 +6593,26 @@ namespace OpenClickBank
     public enum ContractStatus
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"PENDING_START")]
-        PENDING_START = 0,
+        PENDING_START = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PENDING_APPROVAL")]
-        PENDING_APPROVAL = 1,
+        PENDING_APPROVAL = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACTIVE")]
-        ACTIVE = 2,
+        ACTIVE = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TERMINATED")]
-        TERMINATED = 3,
+        TERMINATED = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TERMINATION_REQUESTED")]
-        TERMINATION_REQUESTED = 4,
+        TERMINATION_REQUESTED = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"EXPIRED")]
-        EXPIRED = 5,
+        EXPIRED = 6,
 
     }
 
@@ -6614,35 +6620,38 @@ namespace OpenClickBank
     public enum Dimension
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"AFFILIATE")]
-        AFFILIATE = 0,
+        AFFILIATE = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_CURRENCY")]
-        CUSTOMER_CURRENCY = 1,
+        CUSTOMER_CURRENCY = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_COUNTRY")]
-        CUSTOMER_COUNTRY = 2,
+        CUSTOMER_COUNTRY = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_PROVINCE")]
-        CUSTOMER_PROVINCE = 3,
+        CUSTOMER_PROVINCE = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_LANGUAGE")]
-        CUSTOMER_LANGUAGE = 4,
+        CUSTOMER_LANGUAGE = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PRODUCT_SKU")]
-        PRODUCT_SKU = 5,
+        PRODUCT_SKU = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TRACKING_ID")]
-        TRACKING_ID = 6,
+        TRACKING_ID = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR")]
-        VENDOR = 7,
+        VENDOR = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR_CATEGORY")]
-        VENDOR_CATEGORY = 8,
+        VENDOR_CATEGORY = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR_PRODUCT_SKU")]
-        VENDOR_PRODUCT_SKU = 9,
+        VENDOR_PRODUCT_SKU = 10,
 
     }
 
@@ -6650,77 +6659,80 @@ namespace OpenClickBank
     public enum DimensionColumn
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"CHARGEBACK_AMOUNT")]
-        CHARGEBACK_AMOUNT = 0,
+        CHARGEBACK_AMOUNT = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CHARGEBACK_COUNT")]
-        CHARGEBACK_COUNT = 1,
+        CHARGEBACK_COUNT = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CHARGEBACK_RATE")]
-        CHARGEBACK_RATE = 2,
+        CHARGEBACK_RATE = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"DIMENSION_VALUE")]
-        DIMENSION_VALUE = 3,
+        DIMENSION_VALUE = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"EARNINGS_PER_HOP")]
-        EARNINGS_PER_HOP = 4,
+        EARNINGS_PER_HOP = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"GROSS_SALE_COUNT")]
-        GROSS_SALE_COUNT = 5,
+        GROSS_SALE_COUNT = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"GROSS_SALE_AMOUNT")]
-        GROSS_SALE_AMOUNT = 6,
+        GROSS_SALE_AMOUNT = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"HOP_COUNT")]
-        HOP_COUNT = 7,
+        HOP_COUNT = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"HOPS_PER_SALE")]
-        HOPS_PER_SALE = 8,
+        HOPS_PER_SALE = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"HOPS_PER_ORDER_FORM_IMPRESSION")]
-        HOPS_PER_ORDER_FORM_IMPRESSION = 9,
+        HOPS_PER_ORDER_FORM_IMPRESSION = 10,
 
         [System.Runtime.Serialization.EnumMember(Value = @"NET_SALE_AMOUNT")]
-        NET_SALE_AMOUNT = 10,
+        NET_SALE_AMOUNT = 11,
 
         [System.Runtime.Serialization.EnumMember(Value = @"NET_SALE_COUNT")]
-        NET_SALE_COUNT = 11,
+        NET_SALE_COUNT = 12,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ORDER_FORM_SALE_CONVERSION")]
-        ORDER_FORM_SALE_CONVERSION = 12,
+        ORDER_FORM_SALE_CONVERSION = 13,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ORDER_IMPRESSION")]
-        ORDER_IMPRESSION = 13,
+        ORDER_IMPRESSION = 14,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ORDER_SUBMISSION")]
-        ORDER_SUBMISSION = 14,
+        ORDER_SUBMISSION = 15,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REBILL_AMOUNT")]
-        REBILL_AMOUNT = 15,
+        REBILL_AMOUNT = 16,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REBILL_COUNT")]
-        REBILL_COUNT = 16,
+        REBILL_COUNT = 17,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_AMOUNT")]
-        REFUND_AMOUNT = 17,
+        REFUND_AMOUNT = 18,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_COUNT")]
-        REFUND_COUNT = 18,
+        REFUND_COUNT = 19,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_RATE")]
-        REFUND_RATE = 19,
+        REFUND_RATE = 20,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SALE_AMOUNT")]
-        SALE_AMOUNT = 20,
+        SALE_AMOUNT = 21,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SALE_COUNT")]
-        SALE_COUNT = 21,
+        SALE_COUNT = 22,
 
         [System.Runtime.Serialization.EnumMember(Value = @"UPSELL_AMOUNT")]
-        UPSELL_AMOUNT = 22,
+        UPSELL_AMOUNT = 23,
 
         [System.Runtime.Serialization.EnumMember(Value = @"UPSELL_COUNT")]
-        UPSELL_COUNT = 23,
+        UPSELL_COUNT = 24,
 
     }
 
@@ -6735,7 +6747,7 @@ namespace OpenClickBank
         public string? Title { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        
         public ImageType? Type { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("approved")]
@@ -6763,7 +6775,7 @@ namespace OpenClickBank
         public string? Title { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        
         public ImageType? Type { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("approved")]
@@ -6823,29 +6835,32 @@ namespace OpenClickBank
     public enum ImageType
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"PRODUCT")]
-        PRODUCT = 0,
+        PRODUCT = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BANNER")]
-        BANNER = 1,
+        BANNER = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BANNER_CLASSIC")]
-        BANNER_CLASSIC = 2,
+        BANNER_CLASSIC = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BANNER_NEW")]
-        BANNER_NEW = 3,
+        BANNER_NEW = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BANNER_BG")]
-        BANNER_BG = 4,
+        BANNER_BG = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOM_BANNER")]
-        CUSTOM_BANNER = 5,
+        CUSTOM_BANNER = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOM_BANNER_BG")]
-        CUSTOM_BANNER_BG = 6,
+        CUSTOM_BANNER_BG = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOM_ORDERFORM")]
-        CUSTOM_ORDERFORM = 7,
+        CUSTOM_ORDERFORM = 8,
 
     }
 
@@ -6874,23 +6889,26 @@ namespace OpenClickBank
     public enum Language
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"DE")]
-        DE = 0,
+        DE = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"EN")]
-        EN = 1,
+        EN = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ES")]
-        ES = 2,
+        ES = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"FR")]
-        FR = 3,
+        FR = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"IT")]
-        IT = 4,
+        IT = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PT")]
-        PT = 5,
+        PT = 6,
 
     }
 
@@ -7028,7 +7046,8 @@ namespace OpenClickBank
         public string? FullName { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("customerRefundableState")]
-        public string? CustomerRefundableState { get; set; } = default!;
+        
+        public RefundableState? CustomerRefundableState { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("vendorVariables")]
         public VendorVariables? VendorVariables { get; set; } = default!;
@@ -7179,32 +7198,35 @@ namespace OpenClickBank
     public enum OrderType
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"SALE")]
-        SALE = 0,
+        SALE = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"RFND")]
-        RFND = 1,
+        RFND = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CGBK")]
-        CGBK = 2,
+        CGBK = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"FEE")]
-        FEE = 3,
+        FEE = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BILL")]
-        BILL = 4,
+        BILL = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TEST_SALE")]
-        TEST_SALE = 5,
+        TEST_SALE = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TEST_BILL")]
-        TEST_BILL = 6,
+        TEST_BILL = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TEST_RFND")]
-        TEST_RFND = 7,
+        TEST_RFND = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TEST_FEE")]
-        TEST_FEE = 8,
+        TEST_FEE = 9,
 
     }
 
@@ -7333,7 +7355,7 @@ namespace OpenClickBank
         public int? Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("status")]
-        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        
         public ActiveStatus? Status { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("digital")]
@@ -7405,7 +7427,7 @@ namespace OpenClickBank
         public bool? Us_tax_exempt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("revenue_recognition")]
-        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        
         public RevRec? Revenue_recognition { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("reduced_upsell_markup")]
@@ -7481,7 +7503,7 @@ namespace OpenClickBank
         public string? Status { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("last_action_performed_by")]
-        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        
         public Role? Last_action_performed_by { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -7499,23 +7521,26 @@ namespace OpenClickBank
     public enum ProductCategory
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"EBOOK")]
-        EBOOK = 0,
+        EBOOK = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SOFTWARE")]
-        SOFTWARE = 1,
+        SOFTWARE = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"GAMES")]
-        GAMES = 2,
+        GAMES = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"AUDIO")]
-        AUDIO = 3,
+        AUDIO = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VIDEO")]
-        VIDEO = 4,
+        VIDEO = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"MEMBER_SITE")]
-        MEMBER_SITE = 5,
+        MEMBER_SITE = 6,
 
     }
 
@@ -7571,11 +7596,14 @@ namespace OpenClickBank
     public enum ProductType
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"STANDARD")]
-        STANDARD = 0,
+        STANDARD = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"RECURRING")]
-        RECURRING = 1,
+        RECURRING = 2,
 
     }
 
@@ -7601,14 +7629,17 @@ namespace OpenClickBank
     public enum QueryTicketType
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"rfnd")]
-        Rfnd = 0,
+        Rfnd = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"cncl")]
-        Cncl = 1,
+        Cncl = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"tech")]
-        Tech = 2,
+        Tech = 3,
 
     }
 
@@ -7647,32 +7678,35 @@ namespace OpenClickBank
     public enum RecurringFrequency
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"WEEKLY")]
-        WEEKLY = 0,
+        WEEKLY = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BI_WEEKLY")]
-        BI_WEEKLY = 1,
+        BI_WEEKLY = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"MONTHLY")]
-        MONTHLY = 2,
+        MONTHLY = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"QUARTERLY")]
-        QUARTERLY = 3,
+        QUARTERLY = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"HALF_YEARLY")]
-        HALF_YEARLY = 4,
+        HALF_YEARLY = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"YEARLY")]
-        YEARLY = 5,
+        YEARLY = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"MONTHS")]
-        MONTHS = 6,
+        MONTHS = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"WEEKS")]
-        WEEKS = 7,
+        WEEKS = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"DAYS")]
-        DAYS = 8,
+        DAYS = 9,
 
     }
 
@@ -7684,7 +7718,7 @@ namespace OpenClickBank
         public Price? Price { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("frequency")]
-        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        
         public RecurringFrequency? Frequency { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("duration")]
@@ -7723,20 +7757,23 @@ namespace OpenClickBank
     public enum RefundType
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"FULL")]
-        FULL = 0,
+        FULL = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PARTIAL_PERCENT")]
-        PARTIAL_PERCENT = 1,
+        PARTIAL_PERCENT = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PARTIAL_AMOUNT")]
-        PARTIAL_AMOUNT = 2,
+        PARTIAL_AMOUNT = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PARTIAL_QUANTITY")]
-        PARTIAL_QUANTITY = 3,
+        PARTIAL_QUANTITY = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TAX")]
-        TAX = 4,
+        TAX = 5,
 
     }
 
@@ -7744,32 +7781,35 @@ namespace OpenClickBank
     public enum RefundableState
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"REFUNDABLE")]
-        REFUNDABLE = 0,
+        REFUNDABLE = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SUGGESTED_REFUND_BLOCK")]
-        SUGGESTED_REFUND_BLOCK = 1,
+        SUGGESTED_REFUND_BLOCK = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"UNREFUNDABLE")]
-        UNREFUNDABLE = 2,
+        UNREFUNDABLE = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ALREADY_REFUNDED")]
-        ALREADY_REFUNDED = 3,
+        ALREADY_REFUNDED = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TOO_OLD")]
-        TOO_OLD = 4,
+        TOO_OLD = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_BLOCKED")]
-        REFUND_BLOCKED = 5,
+        REFUND_BLOCKED = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"HAS_OPEN_REFUND")]
-        HAS_OPEN_REFUND = 6,
+        HAS_OPEN_REFUND = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"OVER_ELV_LIMIT")]
-        OVER_ELV_LIMIT = 7,
+        OVER_ELV_LIMIT = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PROVIDER_DISCONNECTED")]
-        PROVIDER_DISCONNECTED = 8,
+        PROVIDER_DISCONNECTED = 9,
 
     }
 
@@ -7777,26 +7817,29 @@ namespace OpenClickBank
     public enum RevRec
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"LD")]
-        LD = 0,
+        LD = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VD")]
-        VD = 1,
+        VD = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"LM")]
-        LM = 2,
+        LM = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"LMA")]
-        LMA = 3,
+        LMA = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"LMID")]
-        LMID = 4,
+        LMID = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VM")]
-        VM = 5,
+        VM = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"I")]
-        I = 6,
+        I = 7,
 
     }
 
@@ -7804,20 +7847,23 @@ namespace OpenClickBank
     public enum Role
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR")]
-        VENDOR = 0,
+        VENDOR = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER")]
-        CUSTOMER = 1,
+        CUSTOMER = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CBCSR")]
-        CBCSR = 2,
+        CBCSR = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CBSYSTEM")]
-        CBSYSTEM = 3,
+        CBSYSTEM = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"USER")]
-        USER = 4,
+        USER = 5,
 
     }
 
@@ -7825,11 +7871,14 @@ namespace OpenClickBank
     public enum RoleAccount
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR")]
-        VENDOR = 0,
+        VENDOR = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"AFFILIATE")]
-        AFFILIATE = 1,
+        AFFILIATE = 2,
 
     }
 
@@ -7913,14 +7962,17 @@ namespace OpenClickBank
     public enum ShippingStatus
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"shipped")]
-        Shipped = 0,
+        Shipped = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"notshipped")]
-        Notshipped = 1,
+        Notshipped = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"all")]
-        All = 2,
+        All = 3,
 
     }
 
@@ -7928,11 +7980,14 @@ namespace OpenClickBank
     public enum SortDirection
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"ASC")]
-        ASC = 0,
+        ASC = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"DESC")]
-        DESC = 1,
+        DESC = 2,
 
     }
 
@@ -7979,80 +8034,83 @@ namespace OpenClickBank
     public enum SubscriptionDetailRowOrderBy
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"RECEIPT")]
-        RECEIPT = 0,
+        RECEIPT = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PURCHASE_DATE")]
-        PURCHASE_DATE = 1,
+        PURCHASE_DATE = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SUB_END_DATE")]
-        SUB_END_DATE = 2,
+        SUB_END_DATE = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SUB_CANCEL_DATE")]
-        SUB_CANCEL_DATE = 3,
+        SUB_CANCEL_DATE = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"NEXT_PAYMENT_DATE")]
-        NEXT_PAYMENT_DATE = 4,
+        NEXT_PAYMENT_DATE = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SUB_VALUE")]
-        SUB_VALUE = 5,
+        SUB_VALUE = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"STATUS")]
-        STATUS = 6,
+        STATUS = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ITEM_NUMBER")]
-        ITEM_NUMBER = 7,
+        ITEM_NUMBER = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PROCESSED_PAYMENTS_COUNT")]
-        PROCESSED_PAYMENTS_COUNT = 8,
+        PROCESSED_PAYMENTS_COUNT = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"FUTURE_PAYMENTS_COUNT")]
-        FUTURE_PAYMENTS_COUNT = 9,
+        FUTURE_PAYMENTS_COUNT = 10,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_COUNT")]
-        REFUND_COUNT = 10,
+        REFUND_COUNT = 11,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_AMOUNT")]
-        REFUND_AMOUNT = 11,
+        REFUND_AMOUNT = 12,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CHARGEBACK_COUNT")]
-        CHARGEBACK_COUNT = 12,
+        CHARGEBACK_COUNT = 13,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CHARGEBACK_AMOUNT")]
-        CHARGEBACK_AMOUNT = 13,
+        CHARGEBACK_AMOUNT = 14,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PUB_NICK_NAME")]
-        PUB_NICK_NAME = 14,
+        PUB_NICK_NAME = 15,
 
         [System.Runtime.Serialization.EnumMember(Value = @"AFFILIATE_NICK_NAME")]
-        AFFILIATE_NICK_NAME = 15,
+        AFFILIATE_NICK_NAME = 16,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_FIRST_NAME")]
-        CUSTOMER_FIRST_NAME = 16,
+        CUSTOMER_FIRST_NAME = 17,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_LAST_NAME")]
-        CUSTOMER_LAST_NAME = 17,
+        CUSTOMER_LAST_NAME = 18,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_DISPLAY_NAME")]
-        CUSTOMER_DISPLAY_NAME = 18,
+        CUSTOMER_DISPLAY_NAME = 19,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_EMAIL")]
-        CUSTOMER_EMAIL = 19,
+        CUSTOMER_EMAIL = 20,
 
         [System.Runtime.Serialization.EnumMember(Value = @"DURATION")]
-        DURATION = 20,
+        DURATION = 21,
 
         [System.Runtime.Serialization.EnumMember(Value = @"INITIAL_SALE_AMOUNT")]
-        INITIAL_SALE_AMOUNT = 21,
+        INITIAL_SALE_AMOUNT = 22,
 
         [System.Runtime.Serialization.EnumMember(Value = @"INITIAL_SALE_COUNT")]
-        INITIAL_SALE_COUNT = 22,
+        INITIAL_SALE_COUNT = 23,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REBILL_SALE_AMOUNT")]
-        REBILL_SALE_AMOUNT = 23,
+        REBILL_SALE_AMOUNT = 24,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REBILL_SALE_COUNT")]
-        REBILL_SALE_COUNT = 24,
+        REBILL_SALE_COUNT = 25,
 
     }
 
@@ -8295,20 +8353,23 @@ namespace OpenClickBank
     public enum SubscriptionStatus
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"ACTIVE")]
-        ACTIVE = 0,
+        ACTIVE = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"COMPLETED")]
-        COMPLETED = 1,
+        COMPLETED = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CANCELED")]
-        CANCELED = 2,
+        CANCELED = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"RETRY_PAYMENT")]
-        RETRY_PAYMENT = 3,
+        RETRY_PAYMENT = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REQUEST_NEW_CARD")]
-        REQUEST_NEW_CARD = 4,
+        REQUEST_NEW_CARD = 5,
 
     }
 
@@ -8355,11 +8416,14 @@ namespace OpenClickBank
     public enum SummaryType
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR_ONLY")]
-        VENDOR_ONLY = 0,
+        VENDOR_ONLY = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"AFFILIATE_ONLY")]
-        AFFILIATE_ONLY = 1,
+        AFFILIATE_ONLY = 2,
 
     }
 
@@ -8388,14 +8452,17 @@ namespace OpenClickBank
     public enum TicketAction
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"change")]
-        Change = 0,
+        Change = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"close")]
-        Close = 1,
+        Close = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"reopen")]
-        Reopen = 2,
+        Reopen = 3,
 
     }
 
@@ -8403,44 +8470,47 @@ namespace OpenClickBank
     public enum TicketActionType
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"ASSIGNED")]
-        ASSIGNED = 0,
+        ASSIGNED = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"COMMENTED")]
-        COMMENTED = 1,
+        COMMENTED = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CHANGED")]
-        CHANGED = 2,
+        CHANGED = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CLOSED")]
-        CLOSED = 3,
+        CLOSED = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"EXPIRED")]
-        EXPIRED = 4,
+        EXPIRED = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REOPENED")]
-        REOPENED = 5,
+        REOPENED = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"OPENED")]
-        OPENED = 6,
+        OPENED = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVED")]
-        APPROVED = 7,
+        APPROVED = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"DISAPPROVED")]
-        DISAPPROVED = 8,
+        DISAPPROVED = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ATTACHMENT")]
-        ATTACHMENT = 9,
+        ATTACHMENT = 10,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ADMIN_CHANGE")]
-        ADMIN_CHANGE = 10,
+        ADMIN_CHANGE = 11,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_ACKED")]
-        REFUND_ACKED = 11,
+        REFUND_ACKED = 12,
 
         [System.Runtime.Serialization.EnumMember(Value = @"NEW_PHOTO_ID")]
-        NEW_PHOTO_ID = 12,
+        NEW_PHOTO_ID = 13,
 
     }
 
@@ -8463,10 +8533,12 @@ namespace OpenClickBank
         public string? Comment { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("action")]
-        public string? Action { get; set; } = default!;
+        
+        public TicketActionType? Action { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("commentRole")]
-        public string? CommentRole { get; set; } = default!;
+        
+        public Role? CommentRole { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -8490,10 +8562,12 @@ namespace OpenClickBank
         public string? Receipt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("status")]
-        public string? Status { get; set; } = default!;
+        
+        public TicketStatus? Status { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string? Type { get; set; } = default!;
+        
+        public TicketType? Type { get; set; } = default!;
 
         /// <summary>
         /// The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
@@ -8515,7 +8589,8 @@ namespace OpenClickBank
         public string? Description { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("refundType")]
-        public string? RefundType { get; set; } = default!;
+        
+        public RefundType? RefundType { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("refundAmount")]
         public double? RefundAmount { get; set; } = default!;
@@ -8558,7 +8633,8 @@ namespace OpenClickBank
         public System.DateTimeOffset? UpdateTime { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("source")]
-        public string? Source { get; set; } = default!;
+        
+        public TicketSource? Source { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("comments")]
         public System.Collections.Generic.ICollection<TicketComments>? Comments { get; set; } = default!;
@@ -8596,95 +8672,98 @@ namespace OpenClickBank
     public enum TicketSource
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"API")]
-        API = 0,
+        API = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_WAM")]
-        CUSTOMER_WAM = 1,
+        CUSTOMER_WAM = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"UNKNOWN")]
-        UNKNOWN = 2,
+        UNKNOWN = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"RNFDS_EMAIL")]
-        RNFDS_EMAIL = 3,
+        RNFDS_EMAIL = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CNCLS_EMAIL")]
-        CNCLS_EMAIL = 4,
+        CNCLS_EMAIL = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR_WAM")]
-        VENDOR_WAM = 5,
+        VENDOR_WAM = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR_ADMIN")]
-        VENDOR_ADMIN = 6,
+        VENDOR_ADMIN = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CSR_ADMIN")]
-        CSR_ADMIN = 7,
+        CSR_ADMIN = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SECURITY")]
-        SECURITY = 8,
+        SECURITY = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CSR_WAM")]
-        CSR_WAM = 9,
+        CSR_WAM = 10,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CONVERSION_PROCESS")]
-        CONVERSION_PROCESS = 10,
+        CONVERSION_PROCESS = 11,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BUSINESS_DEVELOPMENT_FORM")]
-        BUSINESS_DEVELOPMENT_FORM = 11,
+        BUSINESS_DEVELOPMENT_FORM = 12,
 
         [System.Runtime.Serialization.EnumMember(Value = @"COMMUNICATIONS_EMAIL")]
-        COMMUNICATIONS_EMAIL = 12,
+        COMMUNICATIONS_EMAIL = 13,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACCOUNTS_EMAIL")]
-        ACCOUNTS_EMAIL = 13,
+        ACCOUNTS_EMAIL = 14,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CBCS_EMAIL")]
-        CBCS_EMAIL = 14,
+        CBCS_EMAIL = 15,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACCOUNTING_EMAIL")]
-        ACCOUNTING_EMAIL = 15,
+        ACCOUNTING_EMAIL = 16,
 
         [System.Runtime.Serialization.EnumMember(Value = @"WAM_ACCT_QUESTION")]
-        WAM_ACCT_QUESTION = 16,
+        WAM_ACCT_QUESTION = 17,
 
         [System.Runtime.Serialization.EnumMember(Value = @"WAM_WIREGROUP_DETAIL")]
-        WAM_WIREGROUP_DETAIL = 17,
+        WAM_WIREGROUP_DETAIL = 18,
 
         [System.Runtime.Serialization.EnumMember(Value = @"MARKETING_EMAIL")]
-        MARKETING_EMAIL = 18,
+        MARKETING_EMAIL = 19,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PAYMENTECH_BATCH")]
-        PAYMENTECH_BATCH = 19,
+        PAYMENTECH_BATCH = 20,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PYPL_JPY_CANCELLER")]
-        PYPL_JPY_CANCELLER = 20,
+        PYPL_JPY_CANCELLER = 21,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ECUSTOMS")]
-        ECUSTOMS = 21,
+        ECUSTOMS = 22,
 
         [System.Runtime.Serialization.EnumMember(Value = @"LASHBACK")]
-        LASHBACK = 22,
+        LASHBACK = 23,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SPAM_EMAIL")]
-        SPAM_EMAIL = 23,
+        SPAM_EMAIL = 24,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CLICKBANK_DATABASE_SCRIPT")]
-        CLICKBANK_DATABASE_SCRIPT = 24,
+        CLICKBANK_DATABASE_SCRIPT = 25,
 
         [System.Runtime.Serialization.EnumMember(Value = @"API_VIRTUAL_SOURCE")]
-        API_VIRTUAL_SOURCE = 25,
+        API_VIRTUAL_SOURCE = 26,
 
         [System.Runtime.Serialization.EnumMember(Value = @"KOUNT")]
-        KOUNT = 26,
+        KOUNT = 27,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PAYPAL_ADAPTIVE")]
-        PAYPAL_ADAPTIVE = 27,
+        PAYPAL_ADAPTIVE = 28,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CB_POWERED_PROGRAM")]
-        CB_POWERED_PROGRAM = 28,
+        CB_POWERED_PROGRAM = 29,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CLKBANK")]
-        CLKBANK = 29,
+        CLKBANK = 30,
 
     }
 
@@ -8692,14 +8771,17 @@ namespace OpenClickBank
     public enum TicketStatus
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"OPEN")]
-        OPEN = 0,
+        OPEN = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REOPENED")]
-        REOPENED = 1,
+        REOPENED = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CLOSED")]
-        CLOSED = 2,
+        CLOSED = 3,
 
     }
 
@@ -8707,71 +8789,74 @@ namespace OpenClickBank
     public enum TicketType
     {
 
+        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
+        Nil = 0,
+
         [System.Runtime.Serialization.EnumMember(Value = @"TECH_SUPPORT")]
-        TECH_SUPPORT = 0,
+        TECH_SUPPORT = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND")]
-        REFUND = 1,
+        REFUND = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CANCEL")]
-        CANCEL = 2,
+        CANCEL = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PRODUCT_CHANGE")]
-        PRODUCT_CHANGE = 3,
+        PRODUCT_CHANGE = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ORDER_LOOKUP")]
-        ORDER_LOOKUP = 4,
+        ORDER_LOOKUP = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ESCALATED")]
-        ESCALATED = 5,
+        ESCALATED = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_IMAGE")]
-        APPROVAL_IMAGE = 6,
+        APPROVAL_IMAGE = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_UPSELL")]
-        APPROVAL_UPSELL = 7,
+        APPROVAL_UPSELL = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_CATEGORY_CHANGE")]
-        APPROVAL_CATEGORY_CHANGE = 8,
+        APPROVAL_CATEGORY_CHANGE = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_BLOG_POST")]
-        APPROVAL_BLOG_POST = 9,
+        APPROVAL_BLOG_POST = 10,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_PRODUCT")]
-        APPROVAL_PRODUCT = 10,
+        APPROVAL_PRODUCT = 11,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_ADVANCED_UPSELL")]
-        APPROVAL_ADVANCED_UPSELL = 11,
+        APPROVAL_ADVANCED_UPSELL = 12,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_CSS_ORDERFORM")]
-        APPROVAL_CSS_ORDERFORM = 12,
+        APPROVAL_CSS_ORDERFORM = 13,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_TEMPLATE_ORDERFORM")]
-        APPROVAL_TEMPLATE_ORDERFORM = 13,
+        APPROVAL_TEMPLATE_ORDERFORM = 14,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_ORDER_BUMP_CUSTOM_TEXT")]
-        APPROVAL_ORDER_BUMP_CUSTOM_TEXT = 14,
+        APPROVAL_ORDER_BUMP_CUSTOM_TEXT = 15,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_EXIT_OFFER")]
-        APPROVAL_EXIT_OFFER = 15,
+        APPROVAL_EXIT_OFFER = 16,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_PHOTO_ID")]
-        APPROVAL_PHOTO_ID = 16,
+        APPROVAL_PHOTO_ID = 17,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACCT_QUESTION_ACCOUNTS")]
-        ACCT_QUESTION_ACCOUNTS = 17,
+        ACCT_QUESTION_ACCOUNTS = 18,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACCT_QUESTION_ACCOUNTING")]
-        ACCT_QUESTION_ACCOUNTING = 18,
+        ACCT_QUESTION_ACCOUNTING = 19,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SPAM")]
-        SPAM = 19,
+        SPAM = 20,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACCOUNT_ABUSE")]
-        ACCOUNT_ABUSE = 20,
+        ACCOUNT_ABUSE = 21,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SECURITY_CONCERN")]
-        SECURITY_CONCERN = 21,
+        SECURITY_CONCERN = 22,
 
     }
 

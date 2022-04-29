@@ -2,6 +2,7 @@
 
 public enum TicketType
 {
+    nil,
     TECH_SUPPORT,
     REFUND,
     CANCEL,

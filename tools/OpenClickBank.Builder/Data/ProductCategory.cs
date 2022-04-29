@@ -2,6 +2,7 @@
 
 public enum ProductCategory
 {
+    nil,
     EBOOK,
     SOFTWARE,
     GAMES,

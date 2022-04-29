@@ -2,6 +2,7 @@
 
 public enum RoleAccount
 {
+    nil,
     VENDOR,
     AFFILIATE
 }

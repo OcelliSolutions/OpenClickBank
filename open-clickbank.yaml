@@ -2152,13 +2152,14 @@ components:
       additionalProperties: { }
     ActiveStatus:
       enum:
+        - nil
         - ACTIVE
         - INACTIVE
       type: string
       additionalProperties: { }
     AnalyticAttribute:
       enum:
-        - NIL
+        - nil
         - DIMENSION_VALUE
         - HOP_COUNT
         - ORDER_IMPRESSION
@@ -2289,6 +2290,7 @@ components:
       additionalProperties: { }
     ContractStatus:
       enum:
+        - nil
         - PENDING_START
         - PENDING_APPROVAL
         - ACTIVE
@@ -2299,6 +2301,7 @@ components:
       additionalProperties: { }
     Dimension:
       enum:
+        - nil
         - AFFILIATE
         - CUSTOMER_CURRENCY
         - CUSTOMER_COUNTRY
@@ -2313,6 +2316,7 @@ components:
       additionalProperties: { }
     DimensionColumn:
       enum:
+        - nil
         - CHARGEBACK_AMOUNT
         - CHARGEBACK_COUNT
         - CHARGEBACK_RATE
@@ -2391,6 +2395,7 @@ components:
       additionalProperties: { }
     ImageType:
       enum:
+        - nil
         - PRODUCT
         - BANNER
         - BANNER_CLASSIC
@@ -2413,6 +2418,7 @@ components:
       additionalProperties: { }
     Language:
       enum:
+        - nil
         - DE
         - EN
         - ES
@@ -2548,8 +2554,7 @@ components:
           type: string
           nullable: true
         customerRefundableState:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/RefundableState'
         vendorVariables:
           $ref: '#/components/schemas/VendorVariables'
         lineItemData:
@@ -2653,6 +2658,7 @@ components:
       additionalProperties: { }
     OrderType:
       enum:
+        - nil
         - SALE
         - RFND
         - CGBK
@@ -2859,6 +2865,7 @@ components:
       additionalProperties: { }
     ProductCategory:
       enum:
+        - nil
         - EBOOK
         - SOFTWARE
         - GAMES
@@ -2894,6 +2901,7 @@ components:
       additionalProperties: { }
     ProductType:
       enum:
+        - nil
         - STANDARD
         - RECURRING
       type: string
@@ -2909,6 +2917,7 @@ components:
       additionalProperties: { }
     QueryTicketType:
       enum:
+        - nil
         - rfnd
         - cncl
         - tech
@@ -2938,6 +2947,7 @@ components:
       additionalProperties: { }
     RecurringFrequency:
       enum:
+        - nil
         - WEEKLY
         - BI_WEEKLY
         - MONTHLY
@@ -2982,6 +2992,7 @@ components:
       additionalProperties: { }
     RefundType:
       enum:
+        - nil
         - FULL
         - PARTIAL_PERCENT
         - PARTIAL_AMOUNT
@@ -2991,6 +3002,7 @@ components:
       additionalProperties: { }
     RefundableState:
       enum:
+        - nil
         - REFUNDABLE
         - SUGGESTED_REFUND_BLOCK
         - UNREFUNDABLE
@@ -3001,8 +3013,10 @@ components:
         - OVER_ELV_LIMIT
         - PROVIDER_DISCONNECTED
       type: string
+      additionalProperties: { }
     RevRec:
       enum:
+        - nil
         - LD
         - VD
         - LM
@@ -3014,6 +3028,7 @@ components:
       additionalProperties: { }
     Role:
       enum:
+        - nil
         - VENDOR
         - CUSTOMER
         - CBCSR
@@ -3023,6 +3038,7 @@ components:
       additionalProperties: { }
     RoleAccount:
       enum:
+        - nil
         - VENDOR
         - AFFILIATE
       type: string
@@ -3075,6 +3091,7 @@ components:
       additionalProperties: { }
     ShippingStatus:
       enum:
+        - nil
         - shipped
         - notshipped
         - all
@@ -3082,6 +3099,7 @@ components:
       additionalProperties: { }
     SortDirection:
       enum:
+        - nil
         - ASC
         - DESC
       type: string
@@ -3103,6 +3121,7 @@ components:
       additionalProperties: { }
     SubscriptionDetailRowOrderBy:
       enum:
+        - nil
         - RECEIPT
         - PURCHASE_DATE
         - SUB_END_DATE
@@ -3343,6 +3362,7 @@ components:
       additionalProperties: { }
     SubscriptionStatus:
       enum:
+        - nil
         - ACTIVE
         - COMPLETED
         - CANCELED
@@ -3370,6 +3390,7 @@ components:
       additionalProperties: { }
     SummaryType:
       enum:
+        - nil
         - VENDOR_ONLY
         - AFFILIATE_ONLY
       type: string
@@ -3386,6 +3407,7 @@ components:
       additionalProperties: { }
     TicketAction:
       enum:
+        - nil
         - change
         - close
         - reopen
@@ -3393,6 +3415,7 @@ components:
       additionalProperties: { }
     TicketActionType:
       enum:
+        - nil
         - ASSIGNED
         - COMMENTED
         - CHANGED
@@ -3407,6 +3430,7 @@ components:
         - REFUND_ACKED
         - NEW_PHOTO_ID
       type: string
+      additionalProperties: { }
     TicketComments:
       type: object
       properties:
@@ -3424,11 +3448,9 @@ components:
           type: string
           nullable: true
         action:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/TicketActionType'
         commentRole:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/Role'
       additionalProperties: { }
     TicketData:
       type: object
@@ -3441,11 +3463,9 @@ components:
           type: string
           nullable: true
         status:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/TicketStatus'
         type:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/TicketType'
         openedDate:
           pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
@@ -3462,8 +3482,7 @@ components:
           type: string
           nullable: true
         refundType:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/RefundType'
         refundAmount:
           type: number
           format: double
@@ -3502,8 +3521,7 @@ components:
           format: date-time
           nullable: true
         source:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/TicketSource'
         comments:
           type: array
           items:
@@ -3521,6 +3539,7 @@ components:
       additionalProperties: { }
     TicketSource:
       enum:
+        - nil
         - API
         - CUSTOMER_WAM
         - UNKNOWN
@@ -3552,8 +3571,10 @@ components:
         - CB_POWERED_PROGRAM
         - CLKBANK
       type: string
+      additionalProperties: { }
     TicketStatus:
       enum:
+        - nil
         - OPEN
         - REOPENED
         - CLOSED
@@ -3561,6 +3582,7 @@ components:
       additionalProperties: { }
     TicketType:
       enum:
+        - nil
         - TECH_SUPPORT
         - REFUND
         - CANCEL
@@ -3584,6 +3606,7 @@ components:
         - ACCOUNT_ABUSE
         - SECURITY_CONCERN
       type: string
+      additionalProperties: { }
     Totals:
       type: object
       properties:

@@ -2,6 +2,7 @@
 
 public enum TicketActionType
 {
+    nil,
     ASSIGNED,
     COMMENTED,
     CHANGED,

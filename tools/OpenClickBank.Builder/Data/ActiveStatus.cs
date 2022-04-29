@@ -2,6 +2,7 @@
 
 public enum ActiveStatus
 {
+    nil,
     ACTIVE,
     INACTIVE
 }

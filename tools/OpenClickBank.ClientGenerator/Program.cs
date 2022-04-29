@@ -1,9 +1,13 @@
-﻿using NJsonSchema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using NJsonSchema;
 using NJsonSchema.CodeGeneration;
 using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;
 using NSwag.CodeGeneration.OperationNameGenerators;
+using OpenClickBank.Builder.Data;
 
 var document = OpenApiYamlDocument.FromFileAsync("../../../../../open-clickbank.yaml").Result;
 var settings = new CSharpClientGeneratorSettings()
@@ -25,12 +29,17 @@ var settings = new CSharpClientGeneratorSettings()
         GenerateDefaultValues = true,
         GenerateDataAnnotations = true,
         PropertyNameGenerator = new CustomPropertyNameGenerator()
+        //JsonConverters = new []{ "EnumConverter<RefundableState>" }
+        //JsonStringEnumConverter
     }
 
 };
 
 var generator = new CSharpClientGenerator(document, settings);
 var code = generator.GenerateFile();
+code = code.Replace(
+    "[System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]",
+    string.Empty);
 await File.WriteAllTextAsync("../../../../../src/OpenClickBank/ClickBankClient.cs", code);
 
 public class CustomPropertyNameGenerator : IPropertyNameGenerator
