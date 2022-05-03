@@ -105,12 +105,12 @@ ticket.type.tech_support.10 (I never received my product.)")] string? reason,
     public ActionResult AcceptReturnFromCustomer(
         [Required, SwaggerParameter(Description = "A valid ticket id.")] int id) => NoContent();
 
-
     [HttpGet("list")]
     [Authorize]
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.ApiOrderRead, ApiPermission.HasDeveloperKey })]
     [ProducesResponseType(typeof(TicketList), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(TicketList), StatusCodes.Status206PartialContent)]
     [SwaggerOperation(Summary = "Searches for tickets matching the search criteria. Will return a list of ticket data objects with a status code of 200. If more than 100 results are returned, it will return a status code of 206 [Partial Content]. Users can then use the 'Page' header to determine the page needed.")]
     public ActionResult GetTickets(
         [FromQuery, SwaggerParameter(Description = "The type of the ticket. Must be either 'rfnd' / 'cncl' or 'tech'.")] QueryTicketType? type,

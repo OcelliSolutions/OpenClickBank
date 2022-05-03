@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using OpenClickBank;
 
 namespace OpenClickBankTests.Models;
@@ -19,7 +20,7 @@ public class ApiKey
         try
         {
             var account = ClickBankService.Quickstats.GetAccountAsync().Result;
-            Site = account.AccountData?.NickName ??
+            Site = account.AccountData?.First().NickName ??
                    throw new InvalidOperationException("No account is associated with these credentials.");
         }
         catch (Exception ex)

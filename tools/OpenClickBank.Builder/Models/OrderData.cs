@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using OpenClickBank.Builder.Data;
 using System.Text.Json.Serialization;
-using OpenClickBank.Builder.Data;
 
 namespace OpenClickBank.Builder.Models;
 

@@ -32,7 +32,7 @@ public class Product
     public ProductCommission? Commission { get; set; }
     public Pricings? Pricings { get; set; }
     public ContractBean[]? Contracts { get; set; }
-    public ProductCategory[]? Categories { get; set; }
+    public ProductCategoryItem[]? Categories { get; set; }
     [JsonPropertyName("disable_geo_currency")]
     public bool? DisableGeoCurrency { get; set; }
     [JsonPropertyName("allow_currency_change")]

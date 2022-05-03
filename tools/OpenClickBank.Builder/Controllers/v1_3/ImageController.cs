@@ -17,6 +17,7 @@ public class ImageController : ControllerBase
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.ApiProductsClient, ApiPermission.HasDeveloperKey })]
     [ProducesResponseType(typeof(ImageListResult), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ImageListResult), StatusCodes.Status206PartialContent)]
     [SwaggerOperation(Summary = @"Lists images associated with a site.")]
     public ActionResult GetImages(
         [Required, FromQuery, SwaggerParameter(Description = "The site owning the images.")] string site,

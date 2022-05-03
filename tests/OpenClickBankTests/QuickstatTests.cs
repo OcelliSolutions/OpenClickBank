@@ -23,9 +23,11 @@ public class QuickstatTests : IClassFixture<SharedFixture>
     async public void GetAccountAsync_ReturnsAccountWhenAuthorized_ShouldPass()
     {
         var stats = await Fixture.ApiKey.ClickBankService.Quickstats.GetAccountAsync();
-        Assert.NotNull(stats.AccountData!.NickName);
-        Assert.Null(stats.AccountData!.QuickStats);
-
+        foreach (var accountData in stats.AccountData!)
+        {
+            Assert.NotNull(accountData.NickName);
+            Assert.Null(accountData.QuickStats);
+        }
         _additionalPropertiesHelper.CheckAdditionalProperties(stats, Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
     }
 
@@ -33,10 +35,12 @@ public class QuickstatTests : IClassFixture<SharedFixture>
     async public void GetQuickstatsAsync_ReturnsAccountWhenAuthorized_ShouldPass()
     {
         var stats = await Fixture.ApiKey.ClickBankService.Quickstats.GetQuickstatsAsync();
-        Assert.NotNull(stats.AccountData!.NickName);
-        Assert.NotNull(stats.AccountData!.QuickStats);
-        Assert.NotEmpty(stats.AccountData!.QuickStats!);
-
+        foreach (var accountData in stats.AccountData!)
+        {
+            Assert.NotNull(accountData.NickName);
+            Assert.NotNull(accountData.QuickStats);
+            Assert.NotEmpty(accountData.QuickStats!);
+        }
         _additionalPropertiesHelper.CheckAdditionalProperties(stats, Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
     }
     
@@ -44,11 +48,13 @@ public class QuickstatTests : IClassFixture<SharedFixture>
     async public void GetQuickstatsSummaryAsync_ReturnsAccountWhenAuthorized_ShouldPass()
     {
         var stats = await Fixture.ApiKey.ClickBankService.Quickstats.GetQuickstatsSummaryAsync();
-        Assert.NotNull(stats.AccountData!.NickName);
-        Assert.NotNull(stats.AccountData!.QuickStats);
-        Assert.NotEmpty(stats.AccountData!.QuickStats!);
-        Assert.Null(stats.AccountData!.QuickStats?.First().QuickStatDate);
-
+        foreach (var accountData in stats.AccountData!)
+        {
+            Assert.NotNull(accountData.NickName);
+            Assert.NotNull(accountData.QuickStats);
+            Assert.NotEmpty(accountData.QuickStats!);
+            Assert.Null(accountData.QuickStats?.First().QuickStatDate);
+        }
         _additionalPropertiesHelper.CheckAdditionalProperties(stats, Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
     }
 }

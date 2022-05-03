@@ -25,6 +25,7 @@ public class QuickstatsController : ControllerBase
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.ApiOrderRead, ApiPermission.HasDeveloperKey })]
     [ProducesResponseType(typeof(AccountList), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(AccountList), StatusCodes.Status206PartialContent)]
     [SwaggerOperation(Summary = @"Return the quickstats for the api user, based on the search criteria. If no search conditions are set, it will return the quickstats for all the accounts for the API user for the last 45 days.")]
     public ActionResult GetQuickstats() => Ok();
 

@@ -2053,6 +2053,16 @@ namespace OpenClickBank
                             return objectResponse_.Object;
                         }
                         else
+                        if (status_ == 206)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ImageListResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
                         if (status_ == 403)
                         {
                             string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -4467,6 +4477,16 @@ namespace OpenClickBank
                             return objectResponse_.Object;
                         }
                         else
+                        if (status_ == 206)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<AccountList>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
                         if (status_ == 403)
                         {
                             string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -6031,6 +6051,16 @@ namespace OpenClickBank
                             return objectResponse_.Object;
                         }
                         else
+                        if (status_ == 206)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<TicketList>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
                         if (status_ == 403)
                         {
                             string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -6274,7 +6304,7 @@ namespace OpenClickBank
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("accountData")]
-        public AccountData? AccountData { get; set; } = default!;
+        public System.Collections.Generic.ICollection<AccountData>? AccountData { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -7413,9 +7443,7 @@ namespace OpenClickBank
         public System.Collections.Generic.ICollection<ContractBean>? Contracts { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("categories")]
-
-        // TODO(system.text.json): Add string enum item converter
-        public System.Collections.Generic.ICollection<ProductCategory>? Categories { get; set; } = default!;
+        public System.Collections.Generic.ICollection<ProductCategoryItem>? Categories { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("disable_geo_currency")]
         public bool? Disable_geo_currency { get; set; } = default!;
@@ -7541,6 +7569,25 @@ namespace OpenClickBank
 
         [System.Runtime.Serialization.EnumMember(Value = @"MEMBER_SITE")]
         MEMBER_SITE = 6,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v10.0.0.0))")]
+    public partial class ProductCategoryItem
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("category")]
+        
+        public ProductCategory? Category { get; set; } = default!;
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
+
+        [System.Text.Json.Serialization.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties; }
+            set { _additionalProperties = value; }
+        }
 
     }
 

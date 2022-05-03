@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using OpenClickBank.Builder.Data;
+﻿using OpenClickBank.Builder.Data;
 
 namespace OpenClickBank.Builder.Models;
 

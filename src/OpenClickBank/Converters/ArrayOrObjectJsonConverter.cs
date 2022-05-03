@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenClickBank.Converters;
 
-public class ArrayOrObjectJsonConverter<T> : JsonConverter<ICollection<T>> where T : class, new()
+internal class ArrayOrObjectJsonConverter<T> : JsonConverter<ICollection<T>> where T : class, new()
 {
     override public ICollection<T>? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         => reader.TokenType switch

@@ -25,6 +25,7 @@ public partial class ClickBankService : ITicketClient
         CancellationToken cancellationToken = default) =>
         Tickets.AcceptReturnFromCustomerAsync(id, cancellationToken);
 
+    //TODO: create a way to identify if there is more data.
     public Task<TicketList> GetTicketsAsync(QueryTicketType? type = null, TicketStatus? status = null,
         string? receipt = null, DateTimeOffset? createDateFrom = null, DateTimeOffset? createDateTo = null,
         DateTimeOffset? updateDateFrom = null, DateTimeOffset? updateDateTo = null,

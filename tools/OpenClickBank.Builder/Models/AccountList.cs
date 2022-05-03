@@ -2,5 +2,5 @@
 
 public class AccountList
 {
-    public AccountData AccountData { get; set; } = null!;
+    public AccountData[] AccountData { get; set; } = null!;
 }

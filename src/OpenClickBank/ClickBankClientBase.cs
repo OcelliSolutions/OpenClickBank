@@ -44,8 +44,26 @@ internal class ClickBankClientBase
         settings.Converters.Add(new EnumConverter<TicketSource>());
         settings.Converters.Add(new EnumConverter<TicketStatus>());
         settings.Converters.Add(new EnumConverter<TicketType>());
+        
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<AccountData>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<AnalyticsResultRow>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<AnalyticsValue>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<ContactField>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<ContractContact>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<ContractBean>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<ImageData>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<Item>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<LineItemData>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<OrderData>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<OrderShipData>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<OrderShipLineItemData>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<Product>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<ProductCategoryItem>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<QuickStatsData>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<SubscriptionDetailsRowData>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<SubscriptionProductRowData>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<TicketComments>());
+
         settings.NumberHandling = JsonNumberHandling.AllowReadingFromString;
         settings.PropertyNameCaseInsensitive = true;
     }

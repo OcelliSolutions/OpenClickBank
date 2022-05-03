@@ -6,6 +6,8 @@ public partial class ClickBankService : IClickBankService
     protected static HttpClient? HttpClient;
     private OpenClickBankConfig? _openClickBankConfig;
 
+    public ClickBankService(string developerApiKey, string clerkApiKey) => OpenClickBankConfig = new OpenClickBankConfig(developerApiKey, clerkApiKey);
+    public ClickBankService(OpenClickBankConfig clickBankConfig) => OpenClickBankConfig = clickBankConfig;
     public ClickBankService() => OpenClickBankConfig = new OpenClickBankConfig();
 
     public IAnalyticsClient Analytics => new AnalyticsClient(HttpClient!);
