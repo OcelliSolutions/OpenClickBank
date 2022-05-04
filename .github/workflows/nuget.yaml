@@ -6,7 +6,7 @@ on:
       - 'v[0-9]+.*'
 
 env:
-  PROJECT_PATH: "src/Ocelli.OpenClickBank/OpenClickBank.csproj"
+  PROJECT_PATH: "src/Ocelli.OpenClickBank/Ocelli.OpenClickBank.csproj"
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
   NUGET_SOURCE_URL: "https://api.nuget.org/v3/index.json"
 
