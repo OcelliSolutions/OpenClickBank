@@ -6,7 +6,7 @@
 		<Nullable>enable</Nullable>
 		<PackageId>Ocelli.OpenClickBank</PackageId>
 		<Company>Code Cooper LLC</Company>
-		<PackageReadmeFile>src/Ocelli.OpenClickBank/README.md</PackageReadmeFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<Authors>Jason Cooper</Authors>
 		<Description>Using OpenAPI standards, create an interface for the ClickBank APIs.</Description>
 		<PackageProjectUrl>https://github.com/codecooper/OpenClickBank</PackageProjectUrl>
