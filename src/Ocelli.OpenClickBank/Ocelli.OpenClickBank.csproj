@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PackageId>Ocelli.OpenClickBank</PackageId>
+		<Company>Code Cooper LLC</Company>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Authors>Jason Cooper</Authors>
+		<Description>Using OpenAPI standards, create an interface for the ClickBank APIs.</Description>
+		<PackageProjectUrl>https://github.com/codecooper/OpenClickBank</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>openapi swagger clickbank ocelli</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageIcon>app_icon_128_128.jpg</PackageIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\..\app_icon_128_128.jpg">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="11.0.1">
+			<TreatAsUsed>true</TreatAsUsed>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="6.0.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="NSwag.ApiDescription.Client" Version="13.15.10">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="NSwag.CodeGeneration.CSharp" Version="13.15.10" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Update="readme.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+</Project>
