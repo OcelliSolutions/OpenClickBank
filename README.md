@@ -46,4 +46,6 @@ Don't forget to give the project a star! Thanks again!
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
+## Brought to you by
+
 ![Ocelli](https://codecooper.com/wp-content/uploads/2022/05/Ocelli-2C-horiz-tag.png)
