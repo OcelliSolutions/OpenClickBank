@@ -2459,16 +2459,6 @@ components:
         - CUSTOM_ORDERFORM
       type: string
       additionalProperties: { }
-    Item:
-      type: object
-      properties:
-        name:
-          type: string
-          nullable: true
-        value:
-          type: string
-          nullable: true
-      additionalProperties: { }
     Language:
       enum:
         - nil
@@ -2609,9 +2599,12 @@ components:
         customerRefundableState:
           $ref: '#/components/schemas/RefundableState'
         vendorVariables:
-          $ref: '#/components/schemas/VendorVariables'
+          $ref: '#/components/schemas/VendorVariableElementArray'
         lineItemData:
-          $ref: '#/components/schemas/LineItemData'
+          type: array
+          items:
+            $ref: '#/components/schemas/LineItemData'
+          nullable: true
       additionalProperties: { }
     OrderList:
       type: object
@@ -2671,9 +2664,12 @@ components:
           type: string
           nullable: true
         vendorVariables:
-          $ref: '#/components/schemas/VendorVariables'
+          $ref: '#/components/schemas/VendorVariableElementArray'
         lineItemShipData:
-          $ref: '#/components/schemas/OrderShipLineItemData'
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderShipLineItemData'
+          nullable: true
       additionalProperties: { }
     OrderShipLineItemData:
       type: object
@@ -2830,7 +2826,10 @@ components:
         commission:
           $ref: '#/components/schemas/ProductCommission'
         pricings:
-          $ref: '#/components/schemas/Pricings'
+          type: array
+          items:
+            $ref: '#/components/schemas/Pricings'
+          nullable: true
         contracts:
           type: array
           items:
@@ -3490,7 +3489,7 @@ components:
         - NEW_PHOTO_ID
       type: string
       additionalProperties: { }
-    TicketComments:
+    TicketCommentData:
       type: object
       properties:
         commentId:
@@ -3525,6 +3524,11 @@ components:
           $ref: '#/components/schemas/TicketStatus'
         type:
           $ref: '#/components/schemas/TicketType'
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketCommentData'
+          nullable: true
         openedDate:
           pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
@@ -3581,11 +3585,6 @@ components:
           nullable: true
         source:
           $ref: '#/components/schemas/TicketSource'
-        comments:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketComments'
-          nullable: true
       additionalProperties: { }
     TicketList:
       type: object
@@ -3675,13 +3674,23 @@ components:
             $ref: '#/components/schemas/AnalyticsValue'
           nullable: true
       additionalProperties: { }
-    VendorVariables:
+    VendorVariableElement:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    VendorVariableElementArray:
       type: object
       properties:
         item:
           type: array
           items:
-            $ref: '#/components/schemas/Item'
+            $ref: '#/components/schemas/VendorVariableElement'
           nullable: true
       additionalProperties: { }
   securitySchemes:

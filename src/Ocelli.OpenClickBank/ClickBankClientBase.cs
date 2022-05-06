@@ -52,17 +52,18 @@ internal class ClickBankClientBase
         settings.Converters.Add(new ArrayOrObjectJsonConverter<ContractContact>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<ContractBean>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<ImageData>());
-        settings.Converters.Add(new ArrayOrObjectJsonConverter<Item>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<VendorVariableElement>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<LineItemData>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<OrderData>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<OrderShipData>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<OrderShipLineItemData>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<Product>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<Pricings>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<ProductCategoryItem>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<QuickStatsData>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<SubscriptionDetailsRowData>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<SubscriptionProductRowData>());
-        settings.Converters.Add(new ArrayOrObjectJsonConverter<TicketComments>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<TicketCommentData>());
 
         settings.NumberHandling = JsonNumberHandling.AllowReadingFromString;
         settings.PropertyNameCaseInsensitive = true;

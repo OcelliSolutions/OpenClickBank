@@ -16,6 +16,6 @@ public class OrderShipData
     public string? IsTestTransaction { get; set; }
     public bool? FullName { get; set; }
     public string? Vendor { get; set; }
-    public VendorVariables? VendorVariables { get; set; }
-    public OrderShipLineItemData? LineItemShipData { get; set; }
+    public VendorVariableElementArray? VendorVariables { get; set; }
+    public OrderShipLineItemData[]? LineItemShipData { get; set; }
 }

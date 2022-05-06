@@ -8,6 +8,7 @@ public class TicketData
     public string? Receipt { get; set; }
     public TicketStatus? Status { get; set; }
     public TicketType? Type { get; set; }
+    public TicketCommentData[]? Comments { get; set; }
     public DateTimeOffset? OpenedDate { get; set; }
     public DateTimeOffset? ClosedDate { get; set; }
     public string? Description { get; set; }
@@ -23,5 +24,4 @@ public class TicketData
     public string? ProductItemNo { get; set; }
     public DateTimeOffset? UpdateTime { get; set; }
     public TicketSource? Source { get; set; }
-    public TicketComments[]? Comments { get; set; }
 }

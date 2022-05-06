@@ -59,7 +59,6 @@
       <xs:enumeration value="APPROVAL_IMAGE"/>
       <xs:enumeration value="APPROVAL_UPSELL"/>
       <xs:enumeration value="APPROVAL_CATEGORY_CHANGE"/>
-      <xs:enumeration value="APPROVAL_BLOG_POST"/>
       <xs:enumeration value="APPROVAL_PRODUCT"/>
       <xs:enumeration value="APPROVAL_ADVANCED_UPSELL"/>
       <xs:enumeration value="APPROVAL_CSS_ORDERFORM"/>

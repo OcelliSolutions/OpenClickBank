@@ -6898,27 +6898,6 @@ namespace Ocelli.OpenClickBank
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v10.0.0.0))")]
-    public partial class Item
-    {
-
-        [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; } = default!;
-
-        [System.Text.Json.Serialization.JsonPropertyName("value")]
-        public string? Value { get; set; } = default!;
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-
-        [System.Text.Json.Serialization.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v10.0.0.0))")]
     public enum Language
     {
 
@@ -7083,10 +7062,10 @@ namespace Ocelli.OpenClickBank
         public RefundableState? CustomerRefundableState { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("vendorVariables")]
-        public VendorVariables? VendorVariables { get; set; } = default!;
+        public VendorVariableElementArray? VendorVariables { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lineItemData")]
-        public LineItemData? LineItemData { get; set; } = default!;
+        public System.Collections.Generic.ICollection<LineItemData>? LineItemData { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -7169,10 +7148,10 @@ namespace Ocelli.OpenClickBank
         public string? Vendor { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("vendorVariables")]
-        public VendorVariables? VendorVariables { get; set; } = default!;
+        public VendorVariableElementArray? VendorVariables { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lineItemShipData")]
-        public OrderShipLineItemData? LineItemShipData { get; set; } = default!;
+        public System.Collections.Generic.ICollection<OrderShipLineItemData>? LineItemShipData { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -7440,7 +7419,7 @@ namespace Ocelli.OpenClickBank
         public ProductCommission? Commission { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("pricings")]
-        public Pricings? Pricings { get; set; } = default!;
+        public System.Collections.Generic.ICollection<Pricings>? Pricings { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("contracts")]
         public System.Collections.Generic.ICollection<ContractBean>? Contracts { get; set; } = default!;
@@ -8565,7 +8544,7 @@ namespace Ocelli.OpenClickBank
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v10.0.0.0))")]
-    public partial class TicketComments
+    public partial class TicketCommentData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("commentId")]
@@ -8618,6 +8597,9 @@ namespace Ocelli.OpenClickBank
         [System.Text.Json.Serialization.JsonPropertyName("type")]
         
         public TicketType? Type { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("comments")]
+        public System.Collections.Generic.ICollection<TicketCommentData>? Comments { get; set; } = default!;
 
         /// <summary>
         /// The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
@@ -8685,9 +8667,6 @@ namespace Ocelli.OpenClickBank
         [System.Text.Json.Serialization.JsonPropertyName("source")]
         
         public TicketSource? Source { get; set; } = default!;
-
-        [System.Text.Json.Serialization.JsonPropertyName("comments")]
-        public System.Collections.Generic.ICollection<TicketComments>? Comments { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -8929,11 +8908,32 @@ namespace Ocelli.OpenClickBank
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v10.0.0.0))")]
-    public partial class VendorVariables
+    public partial class VendorVariableElement
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string? Value { get; set; } = default!;
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
+
+        [System.Text.Json.Serialization.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties; }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v10.0.0.0))")]
+    public partial class VendorVariableElementArray
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("item")]
-        public System.Collections.Generic.ICollection<Item>? Item { get; set; } = default!;
+        public System.Collections.Generic.ICollection<VendorVariableElement>? Item { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 

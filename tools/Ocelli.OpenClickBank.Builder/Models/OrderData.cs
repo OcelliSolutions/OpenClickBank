@@ -28,6 +28,6 @@ public class OrderData
     public string? Role { get; set; }
     public string? FullName { get; set; }
     public RefundableState? CustomerRefundableState { get; set; }
-    public VendorVariables? VendorVariables { get; set; }
-    public LineItemData? LineItemData { get; set; }
+    public VendorVariableElementArray? VendorVariables { get; set; }
+    public LineItemData[]? LineItemData { get; set; }
 }

@@ -30,7 +30,7 @@ public class Product
     [JsonPropertyName("pitch_pages")]
     public PitchPages? PitchPages { get; set; }
     public ProductCommission? Commission { get; set; }
-    public Pricings? Pricings { get; set; }
+    public Pricings[]? Pricings { get; set; }
     public ContractBean[]? Contracts { get; set; }
     public ProductCategoryItem[]? Categories { get; set; }
     [JsonPropertyName("disable_geo_currency")]
