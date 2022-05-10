@@ -15,7 +15,7 @@ public class OrderData
     public decimal? TotalShippingAmount { get; set; }
     public decimal? TotalTaxAmount { get; set; }
     public string? Vendor { get; set; }
-    public object? Affiliate { get; set; }
+    public string? Affiliate { get; set; }
     public string? Country { get; set; }
     public string? State { get; set; }
     public string? LastName { get; set; }

@@ -2560,6 +2560,7 @@ components:
           type: string
           nullable: true
         affiliate:
+          type: string
           nullable: true
         country:
           type: string
@@ -2655,10 +2656,10 @@ components:
           format: date-time
           nullable: true
         isTestTransaction:
-          type: string
+          type: boolean
           nullable: true
         fullName:
-          type: boolean
+          type: string
           nullable: true
         vendor:
           type: string
@@ -3650,7 +3651,6 @@ components:
         - APPROVAL_IMAGE
         - APPROVAL_UPSELL
         - APPROVAL_CATEGORY_CHANGE
-        - APPROVAL_BLOG_POST
         - APPROVAL_PRODUCT
         - APPROVAL_ADVANCED_UPSELL
         - APPROVAL_CSS_ORDERFORM

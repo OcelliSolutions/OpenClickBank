@@ -13,8 +13,8 @@ public class OrderShipData
     public string? Country { get; set; }
     public string? PostalCode { get; set; }
     public DateTimeOffset? TransactionTime { get; set; }
-    public string? IsTestTransaction { get; set; }
-    public bool? FullName { get; set; }
+    public bool? IsTestTransaction { get; set; }
+    public string? FullName { get; set; }
     public string? Vendor { get; set; }
     public VendorVariableElementArray? VendorVariables { get; set; }
     public OrderShipLineItemData[]? LineItemShipData { get; set; }

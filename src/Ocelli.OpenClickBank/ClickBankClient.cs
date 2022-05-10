@@ -7022,7 +7022,7 @@ namespace Ocelli.OpenClickBank
         public string? Vendor { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("affiliate")]
-        public object? Affiliate { get; set; } = default!;
+        public string? Affiliate { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("country")]
         public string? Country { get; set; } = default!;
@@ -7139,10 +7139,10 @@ namespace Ocelli.OpenClickBank
         public System.DateTimeOffset? TransactionTime { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("isTestTransaction")]
-        public string? IsTestTransaction { get; set; } = default!;
+        public bool? IsTestTransaction { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("fullName")]
-        public bool? FullName { get; set; } = default!;
+        public string? FullName { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("vendor")]
         public string? Vendor { get; set; } = default!;
@@ -8848,44 +8848,41 @@ namespace Ocelli.OpenClickBank
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_CATEGORY_CHANGE")]
         APPROVAL_CATEGORY_CHANGE = 9,
 
-        [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_BLOG_POST")]
-        APPROVAL_BLOG_POST = 10,
-
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_PRODUCT")]
-        APPROVAL_PRODUCT = 11,
+        APPROVAL_PRODUCT = 10,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_ADVANCED_UPSELL")]
-        APPROVAL_ADVANCED_UPSELL = 12,
+        APPROVAL_ADVANCED_UPSELL = 11,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_CSS_ORDERFORM")]
-        APPROVAL_CSS_ORDERFORM = 13,
+        APPROVAL_CSS_ORDERFORM = 12,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_TEMPLATE_ORDERFORM")]
-        APPROVAL_TEMPLATE_ORDERFORM = 14,
+        APPROVAL_TEMPLATE_ORDERFORM = 13,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_ORDER_BUMP_CUSTOM_TEXT")]
-        APPROVAL_ORDER_BUMP_CUSTOM_TEXT = 15,
+        APPROVAL_ORDER_BUMP_CUSTOM_TEXT = 14,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_EXIT_OFFER")]
-        APPROVAL_EXIT_OFFER = 16,
+        APPROVAL_EXIT_OFFER = 15,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_PHOTO_ID")]
-        APPROVAL_PHOTO_ID = 17,
+        APPROVAL_PHOTO_ID = 16,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACCT_QUESTION_ACCOUNTS")]
-        ACCT_QUESTION_ACCOUNTS = 18,
+        ACCT_QUESTION_ACCOUNTS = 17,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACCT_QUESTION_ACCOUNTING")]
-        ACCT_QUESTION_ACCOUNTING = 19,
+        ACCT_QUESTION_ACCOUNTING = 18,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SPAM")]
-        SPAM = 20,
+        SPAM = 19,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACCOUNT_ABUSE")]
-        ACCOUNT_ABUSE = 21,
+        ACCOUNT_ABUSE = 20,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SECURITY_CONCERN")]
-        SECURITY_CONCERN = 22,
+        SECURITY_CONCERN = 21,
 
     }
 
