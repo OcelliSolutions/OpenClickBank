@@ -2203,6 +2203,7 @@ components:
             $ref: '#/components/schemas/AccountData'
           nullable: true
       additionalProperties: { }
+      nullable: true
     ActiveStatus:
       enum:
         - nil
@@ -2255,6 +2256,7 @@ components:
           description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
           format: date-time
       additionalProperties: { }
+      nullable: true
     AnalyticsResult:
       type: object
       properties:
@@ -2263,6 +2265,7 @@ components:
         totals:
           $ref: '#/components/schemas/Totals'
       additionalProperties: { }
+      nullable: true
     AnalyticsResultRow:
       type: object
       properties:
@@ -2446,6 +2449,7 @@ components:
           type: integer
           format: int32
       additionalProperties: { }
+      nullable: true
     ImageType:
       enum:
         - nil
@@ -2616,6 +2620,7 @@ components:
             $ref: '#/components/schemas/OrderData'
           nullable: true
       additionalProperties: { }
+      nullable: true
     OrderShipData:
       type: object
       properties:
@@ -2723,6 +2728,7 @@ components:
     PartialRefundData:
       type: object
       additionalProperties: { }
+      nullable: true
     PhysicalPricing:
       type: object
       properties:
@@ -2903,6 +2909,7 @@ components:
           type: boolean
           nullable: true
       additionalProperties: { }
+      nullable: true
     ProductApprovalStatus:
       type: object
       properties:
@@ -2958,6 +2965,7 @@ components:
           type: integer
           format: int32
       additionalProperties: { }
+      nullable: true
     ProductType:
       enum:
         - nil
@@ -3120,6 +3128,7 @@ components:
             $ref: '#/components/schemas/OrderShipData'
           nullable: true
       additionalProperties: { }
+      nullable: true
     ShippingNoticeData:
       type: object
       properties:
@@ -3148,6 +3157,7 @@ components:
           type: string
           nullable: true
       additionalProperties: { }
+      nullable: true
     ShippingStatus:
       enum:
         - nil
@@ -3178,6 +3188,7 @@ components:
         data:
           $ref: '#/components/schemas/SubscriptionDetailsDataWrapper'
       additionalProperties: { }
+      nullable: true
     SubscriptionDetailRowOrderBy:
       enum:
         - nil
@@ -3438,6 +3449,7 @@ components:
         data:
           $ref: '#/components/schemas/SubscriptionTrendsDataWrapper'
       additionalProperties: { }
+      nullable: true
     SubscriptionTrendsDataWrapper:
       type: object
       properties:
@@ -3587,6 +3599,7 @@ components:
         source:
           $ref: '#/components/schemas/TicketSource'
       additionalProperties: { }
+      nullable: true
     TicketList:
       type: object
       properties:
@@ -3596,6 +3609,7 @@ components:
             $ref: '#/components/schemas/TicketData'
           nullable: true
       additionalProperties: { }
+      nullable: true
     TicketSource:
       enum:
         - nil

@@ -2,7 +2,7 @@
 
 public partial class ClickBankService : IProductClient
 {
-    public Task<Product> GetProductAsync(string sku, string site,
+    public Task<Product?> GetProductAsync(string sku, string site,
         CancellationToken cancellationToken = default) =>
         Products.GetProductAsync(sku, site, cancellationToken);
 
@@ -10,7 +10,7 @@ public partial class ClickBankService : IProductClient
         CancellationToken cancellationToken = default) =>
         Products.DeleteProductAsync(sku, site, cancellationToken);
 
-    public Task<Product> CreateProductAsync(string sku, string site, string currency, double price, string title,
+    public Task<Product?> CreateProductAsync(string sku, string site, string currency, double price, string title,
         bool? digital = null,
         bool? physical = null, bool? digitalRecurring = null, bool? physicalRecurring = null,
         IEnumerable<ProductCategory>? categories = null, bool? skipConfirmationPage = null, string? thankYouPage = null,
@@ -28,7 +28,7 @@ public partial class ClickBankService : IProductClient
             description, image, pitchPage, mobilePitchPage, saleRefundDaysLimit, rebillRefundDaysLimit, deliveryMethod,
             deliverySpeed, preRebillNotificationOverride, preRebillNotificationLeadTime, cancellationToken);
 
-    public Task<ProductList> GetProductsAsync(string site, ProductType? type = null,
+    public Task<ProductList?> GetProductsAsync(string? site, ProductType? type = null,
         int? page = 1, CancellationToken cancellationToken = default) =>
         Products.GetProductsAsync(site, type, page, cancellationToken);
 }

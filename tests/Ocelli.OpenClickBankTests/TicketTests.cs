@@ -27,7 +27,7 @@ public class TicketTests : IClassFixture<SharedFixture>
             await Fixture.ApiKey.ClickBankService.Tickets.GetTicketsAsync();
         _additionalPropertiesHelper.CheckAdditionalProperties(ticketList,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(ticketList.TicketData == null, "WARN: No data returned. Could not test");
+        Skip.If(ticketList?.TicketData == null, "WARN: No data returned. Could not test");
         Skip.If(ticketList.TicketData != null && !ticketList.TicketData.Any(),
             "WARN: No data returned. Could not test");
 

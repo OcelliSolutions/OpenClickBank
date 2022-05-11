@@ -5,19 +5,19 @@ public partial class ClickBankService : IOrders2Client
     public Task IsActiveOrderOrSubscriptionAsync(string receipt, string? sku, CancellationToken cancellationToken = default) =>
         Orders.IsActiveOrderOrSubscriptionAsync(receipt, sku, cancellationToken);
 
-    public Task<OrderList> ChangeOrderDateAsync(string receipt, DateTimeOffset changeDate, string? sku = null,
+    public Task<OrderList?> ChangeOrderDateAsync(string receipt, DateTimeOffset changeDate, string? sku = null,
         CancellationToken cancellationToken = default) =>
         Orders.ChangeOrderDateAsync(receipt, changeDate, sku, cancellationToken);
 
-    public Task<OrderList> GetOrderUpsellsAsync(string receipt,
+    public Task<OrderList?> GetOrderUpsellsAsync(string receipt,
         CancellationToken cancellationToken = default) =>
         Orders.GetOrderUpsellsAsync(receipt, cancellationToken);
 
-    public Task<OrderList> GetOrderAsync(string receipt, string? sku = null,
+    public Task<OrderList?> GetOrderAsync(string receipt, string? sku = null,
         CancellationToken cancellationToken = default) =>
         Orders.GetOrderAsync(receipt, sku, cancellationToken);
 
-    public Task<OrderList> GetOrdersAsync(DateTimeOffset? startDate = null, DateTimeOffset? endDate = null,
+    public Task<OrderList?> GetOrdersAsync(DateTimeOffset? startDate = null, DateTimeOffset? endDate = null,
         OrderType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null,
         string? item = null, string? email = null, string? tid = null, RoleAccount? role = null,
         string? postalCode = null, string? amount = null, int? page = 1, 

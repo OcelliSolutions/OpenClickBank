@@ -47,6 +47,15 @@ builder.Services.AddSwaggerGen(c =>
     //c.DocumentFilter<AdditionalSchemasDocumentFilter>();
     c.SchemaFilter<DateTimeSchemaFilter>();
     c.OperationFilter<AuthorizationOperationFilter>();
+    c.OperationFilter<NullableOperationFilter>();
+    //c.UseAllOfForInheritance();
+    //c.UseOneOfForPolymorphism();
+
+
+    c.SelectSubTypesUsing(baseType =>
+    {
+        return typeof(Program).Assembly.GetTypes().Where(type => type.IsSubclassOf(baseType));
+    });
 
     // Mass apply OperationIds for the swagger doc
     c.CustomOperationIds(e => $"{e.ActionDescriptor.RouteValues["action"]}");

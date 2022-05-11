@@ -35,7 +35,7 @@ public class OrderTests : IClassFixture<SharedFixture>
             var orders =
                 await Fixture.ApiKey.ClickBankService.Orders.GetOrdersAsync(startDate: DateTimeOffset.Now.AddDays(-1),
                     endDate: DateTimeOffset.Now, page: page);
-            Debug.Assert(orders.OrderData != null, "orders.OrderData != null");
+            Debug.Assert(orders?.OrderData != null, "orders.OrderData != null");
             Assert.NotEmpty(orders.OrderData);
             foreach (var order in orders.OrderData)
                 _additionalPropertiesHelper.CheckAdditionalProperties(order,

@@ -33,11 +33,11 @@ public class ImageTests : IClassFixture<SharedFixture>
                 await Fixture.ApiKey.ClickBankService.Images.GetImagesAsync(Fixture.ApiKey.Site, page:page);
             _additionalPropertiesHelper.CheckAdditionalProperties(imageListResult,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-            if (imageListResult.ImageList is { Images: { } }) results.AddRange(imageListResult.ImageList.Images);
-            hasMoreData = imageListResult.HasMoreData;
-            totalResults = imageListResult.Total_record_count ?? 0;
+            if (imageListResult?.ImageList is { Images: { } }) results.AddRange(imageListResult.ImageList.Images!);
+            hasMoreData = imageListResult?.HasMoreData ?? false;
+            totalResults = imageListResult?.Total_record_count ?? 0;
             page++;
-            Skip.If(imageListResult.Total_record_count == 0, "WARN: No data returned. Could not test");
+            Skip.If(imageListResult?.Total_record_count == 0, "WARN: No data returned. Could not test");
         } while (hasMoreData);
 
         Assert.Equal(totalResults, results.Count);

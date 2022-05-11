@@ -30,7 +30,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
             await Fixture.ApiKey.ClickBankService.Analytics.GetStatusAsync();
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(string.IsNullOrWhiteSpace(analyticStatus.Status), "WARN: No data returned. Could not test");
+        Skip.If(string.IsNullOrWhiteSpace(analyticStatus?.Status), "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -41,7 +41,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.AFFILIATE, Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -52,7 +52,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.VENDOR, Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -63,7 +63,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.AFFILIATE, Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -74,7 +74,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.VENDOR, Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -85,7 +85,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.AFFILIATE, Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -96,7 +96,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.VENDOR, Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -107,7 +107,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.AFFILIATE, Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -118,7 +118,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.VENDOR, Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -129,7 +129,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.AFFILIATE, Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -140,7 +140,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -151,7 +151,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.AFFILIATE, Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -162,7 +162,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -173,7 +173,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.AFFILIATE, Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -184,7 +184,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.VENDOR, Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -195,7 +195,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.AFFILIATE, Fixture.ApiKey.Site, SubscriptionStatus.ACTIVE);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -207,7 +207,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 RoleAccount.AFFILIATE, Fixture.ApiKey.Site, SubscriptionStatus.COMPLETED);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -218,7 +218,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Fixture.ApiKey.Site, SubscriptionStatus.ACTIVE);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -229,7 +229,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Fixture.ApiKey.Site, SubscriptionStatus.COMPLETED);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -240,7 +240,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -251,7 +251,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+        Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
     }
 
     [SkippableFact]
@@ -269,11 +269,11 @@ public class AnalyticTests : IClassFixture<SharedFixture>
             _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
 
-            if (analyticStatus.Data is { Row: { } }) results.AddRange(analyticStatus.Data.Row);
-            hasMoreData = analyticStatus.HasMoreData;
-            totalResults = analyticStatus.TotalCount ?? 0;
+            if (analyticStatus?.Data is { Row: { } }) results.AddRange(analyticStatus.Data.Row!);
+            hasMoreData = analyticStatus?.HasMoreData ?? false;
+            totalResults = analyticStatus?.TotalCount ?? 0;
             page++;
-            Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+            Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
         } while (hasMoreData);
 
         Assert.Equal(totalResults, results.Count);
@@ -294,11 +294,11 @@ public class AnalyticTests : IClassFixture<SharedFixture>
             _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
 
-            if (analyticStatus.Data is { Row: { } }) results.AddRange(analyticStatus.Data.Row);
-            hasMoreData = analyticStatus.HasMoreData;
-            totalResults = analyticStatus.TotalCount ?? 0;
+            if (analyticStatus?.Data is { Row: { } }) results.AddRange(analyticStatus.Data.Row!);
+            hasMoreData = analyticStatus?.HasMoreData ?? false;
+            totalResults = analyticStatus?.TotalCount ?? 0;
             page++;
-            Skip.If(analyticStatus.TotalCount == 0, "WARN: No data returned. Could not test");
+            Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
         } while (hasMoreData);
 
         Assert.Equal(totalResults, results.Count);
@@ -312,10 +312,10 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Dimension.CUSTOMER_COUNTRY, Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(!analyticStatus.Rows?.Row?.Any() ?? true, "WARN: No data returned. Could not test");
-        if (!analyticStatus.Rows?.Row?.Any() ?? true) return;
-        Debug.Assert(analyticStatus.Rows != null, "analyticStatus.Rows != null");
-        Debug.Assert(analyticStatus.Rows.Row != null, "analyticStatus.Rows.Row != null");
+        Skip.If(!analyticStatus?.Rows?.Row?.Any() ?? true, "WARN: No data returned. Could not test");
+        if (!analyticStatus?.Rows?.Row?.Any() ?? true) return;
+        Debug.Assert(analyticStatus?.Rows != null, "analyticStatus.Rows != null");
+        Debug.Assert(analyticStatus?.Rows?.Row != null, "analyticStatus.Rows.Row != null");
         foreach (var row in analyticStatus.Rows.Row)
         {
             Debug.Assert(row.Data != null, "row.Data != null");
@@ -337,10 +337,9 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Dimension.CUSTOMER_COUNTRY, Fixture.ApiKey.Site);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(!analyticStatus.Rows?.Row?.Any() ?? true, "WARN: No data returned. Could not test");
-        if (!analyticStatus.Rows?.Row?.Any() ?? true) return;
-        Debug.Assert(analyticStatus.Rows != null, "analyticStatus.Rows != null");
-        Debug.Assert(analyticStatus.Rows.Row != null, "analyticStatus.Rows.Row != null");
+        Skip.If(!analyticStatus?.Rows?.Row?.Any() ?? true, "WARN: No data returned. Could not test");
+        if (!analyticStatus?.Rows?.Row?.Any() ?? true) return;
+        Debug.Assert(analyticStatus?.Rows?.Row != null, "analyticStatus.Rows.Row != null");
         foreach (var row in analyticStatus.Rows.Row)
         {
             Debug.Assert(row.Data != null, "row.Data != null");
@@ -363,10 +362,9 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Dimension.AFFILIATE, Fixture.ApiKey.Site, SummaryType.VENDOR_ONLY);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(!analyticStatus.Rows?.Row?.Any() ?? true, "WARN: No data returned. Could not test");
-        if (!analyticStatus.Rows?.Row?.Any() ?? true) return;
-        Debug.Assert(analyticStatus.Rows != null, "analyticStatus.Rows != null");
-        Debug.Assert(analyticStatus.Rows.Row != null, "analyticStatus.Rows.Row != null");
+        Skip.If(!analyticStatus?.Rows?.Row?.Any() ?? true, "WARN: No data returned. Could not test");
+        if (!analyticStatus?.Rows?.Row?.Any() ?? true) return;
+        Debug.Assert(analyticStatus?.Rows?.Row != null, "analyticStatus.Rows.Row != null");
         foreach (var row in analyticStatus.Rows.Row)
         {
             Debug.Assert(row.Data != null, "row.Data != null");
@@ -389,10 +387,9 @@ public class AnalyticTests : IClassFixture<SharedFixture>
                 Dimension.PRODUCT_SKU, Fixture.ApiKey.Site, SummaryType.VENDOR_ONLY);
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(!analyticStatus.Totals?.Total?.Any() ?? true, "WARN: No data returned. Could not test");
-        if (!analyticStatus.Totals?.Total?.Any() ?? true) return;
-        Debug.Assert(analyticStatus.Totals != null, "analyticStatus.Rows != null");
-        Debug.Assert(analyticStatus.Totals.Total != null, "analyticStatus.Rows.Row != null");
+        Skip.If(!analyticStatus?.Totals?.Total?.Any() ?? true, "WARN: No data returned. Could not test");
+        if (!analyticStatus?.Totals?.Total?.Any() ?? true) return;
+        Debug.Assert(analyticStatus?.Totals?.Total != null, "analyticStatus.Rows.Row != null");
         foreach (var row in analyticStatus.Totals.Total)
         {
             Assert.NotNull(row.Attribute);

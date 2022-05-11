@@ -36,8 +36,8 @@ public class ShippingTests : IClassFixture<SharedFixture>
                 await Fixture.ApiKey.ClickBankService.Shipping.GetShippingAsync(days:10, page: page);
             _additionalPropertiesHelper.CheckAdditionalProperties(shippingListResult,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-            Assert.NotNull(shippingListResult.OrderShipData);
-            Debug.Assert(shippingListResult.OrderShipData != null, "shippingListResult.OrderShipData != null");
+            Assert.NotNull(shippingListResult?.OrderShipData);
+            Debug.Assert(shippingListResult?.OrderShipData != null, "shippingListResult.OrderShipData != null");
             Skip.If(!shippingListResult.OrderShipData.Any(), "WARN: No data returned. Could not test");
             
             if (shippingListResult.OrderShipData != null) results.AddRange(shippingListResult.OrderShipData);
@@ -66,6 +66,6 @@ public class ShippingTests : IClassFixture<SharedFixture>
             await Fixture.ApiKey.ClickBankService.Shipping.GetShippingNoticeAsync(receipt);
         _additionalPropertiesHelper.CheckAdditionalProperties(shippingNoticeData,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Assert.NotNull(shippingNoticeData.Receipt);
+        Assert.NotNull(shippingNoticeData?.Receipt);
     }
 }

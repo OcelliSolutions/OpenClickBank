@@ -34,18 +34,25 @@ public class ProductTests : IClassFixture<SharedFixture>
         do
         {
             var productList =
-                await Fixture.ApiKey.ClickBankService.Products.GetProductsAsync(Fixture.ApiKey.Site);
+                await Fixture.ApiKey.ClickBankService.Products.GetProductsAsync(Fixture.ApiKey.Site, page: page);
             _additionalPropertiesHelper.CheckAdditionalProperties(productList,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-            Skip.If(productList.Total_record_count == 0, "WARN: No data returned. Could not test");
+            Skip.If(productList?.Total_record_count == 0, "WARN: No data returned. Could not test");
 
-            var firstProduct = productList.Products?.Product?.First();
-            if (firstProduct == null) return;
-            var product =
-                await Fixture.ApiKey.ClickBankService.Products.GetProductAsync(firstProduct.Sku!, Fixture.ApiKey.Site);
-            _additionalPropertiesHelper.CheckAdditionalProperties(product, Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-            if (productList.Products?.Product != null) results.AddRange(productList.Products.Product);
-            hasMoreData = productList.HasMoreData;
+            if (productList != null)
+            {
+                var firstProduct = productList.Products?.Product?.First();
+                if (firstProduct == null) return;
+                var product =
+                    await Fixture.ApiKey.ClickBankService.Products.GetProductAsync(firstProduct.Sku!,
+                        Fixture.ApiKey.Site);
+                _additionalPropertiesHelper.CheckAdditionalProperties(product,
+                    Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
+
+                if (productList.Products?.Product != null) results.AddRange(productList.Products.Product!);
+            }
+
+            hasMoreData = productList?.HasMoreData ?? false;
             page++;
         } while (hasMoreData);
         _testOutputHelper.WriteLine($@"Products Tested: {results.Count}");

@@ -20,7 +20,7 @@ public class ApiKey
         try
         {
             var account = ClickBankService.Quickstats.GetAccountAsync().Result;
-            Site = account.AccountData?.First().NickName ??
+            Site = account?.AccountData?.First().NickName ??
                    throw new InvalidOperationException("No account is associated with these credentials.");
         }
         catch (Exception ex)

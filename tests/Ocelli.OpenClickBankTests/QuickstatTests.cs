@@ -23,7 +23,7 @@ public class QuickstatTests : IClassFixture<SharedFixture>
     async public void GetAccountAsync_ReturnsAccountWhenAuthorized_ShouldPass()
     {
         var stats = await Fixture.ApiKey.ClickBankService.Quickstats.GetAccountAsync();
-        foreach (var accountData in stats.AccountData!)
+        foreach (var accountData in stats?.AccountData!)
         {
             Assert.NotNull(accountData.NickName);
             Assert.Null(accountData.QuickStats);
@@ -35,7 +35,7 @@ public class QuickstatTests : IClassFixture<SharedFixture>
     async public void GetQuickstatsAsync_ReturnsAccountWhenAuthorized_ShouldPass()
     {
         var stats = await Fixture.ApiKey.ClickBankService.Quickstats.GetQuickstatsAsync();
-        foreach (var accountData in stats.AccountData!)
+        foreach (var accountData in stats?.AccountData!)
         {
             Assert.NotNull(accountData.NickName);
             Assert.NotNull(accountData.QuickStats);
@@ -48,7 +48,7 @@ public class QuickstatTests : IClassFixture<SharedFixture>
     async public void GetQuickstatsSummaryAsync_ReturnsAccountWhenAuthorized_ShouldPass()
     {
         var stats = await Fixture.ApiKey.ClickBankService.Quickstats.GetQuickstatsSummaryAsync();
-        foreach (var accountData in stats.AccountData!)
+        foreach (var accountData in stats?.AccountData!)
         {
             Assert.NotNull(accountData.NickName);
             Assert.NotNull(accountData.QuickStats);
