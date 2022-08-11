@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.16.1" />
+    <PackageReference Include="XmlSchemaClassGenerator-beta" Version="2.0.719" />
   </ItemGroup>
 
   <ItemGroup>

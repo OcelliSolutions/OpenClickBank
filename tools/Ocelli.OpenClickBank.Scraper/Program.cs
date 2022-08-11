@@ -1,5 +1,6 @@
 ﻿using AngleSharp.Html;
 using AngleSharp.Html.Parser;
+using XmlSchemaClassGenerator;
 
 Console.Title = "Open:ClickBank Scraper";
 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -73,13 +74,15 @@ async Task GetXsd()
         @"https://api.clickbank.com/rest/1.3/tickets/partialRefundDataSchema",
         @"https://api.clickbank.com/rest/1.3/tickets/schema"
     };
+    
     foreach (var url in urls)
     {
         try
         {
-            var folderPathParts = new Uri(url).Segments.Skip(3).Select(s => char.ToUpper(s[0]) + s.Substring(1).Replace("/",string.Empty));
+            var folderPathParts = new Uri(url).Segments.Skip(3)
+                .Select(s => char.ToUpper(s[0]) + s.Substring(1).Replace("/", string.Empty));
             folderPathParts = folderPathParts.Where(c => !c.StartsWith("Schema"));
-            var file = $@"../../../XSDs/{ string.Join("/", folderPathParts)}.xsd";
+            var file = $@"../../../XSDs/{string.Join("/", folderPathParts)}.xsd";
             using var client = new HttpClient();
             client.DefaultRequestHeaders.Add("User-Agent", "Ocelli Open-ClickBank Scraper");
 
@@ -89,6 +92,22 @@ async Task GetXsd()
             //await using var writer = new StringWriter();
             //document.ToHtml(writer, new PrettyMarkupFormatter());
             File.WriteAllText(file, html);
+            
+            var outputFolder = $@"../../../../Ocelli.OpenClickBank.Shared";
+            var generator = new Generator
+            {
+                OutputFolder = outputFolder,
+                Log = s => Console.Out.WriteLine(s),
+                GenerateNullables = true,
+                SeparateClasses = true,
+                CollectionSettersMode = CollectionSettersMode.PublicWithoutConstructorInitialization,
+                EnableNullableReferenceAttributes = true,
+                UseShouldSerializePattern = true, 
+                NamespacePrefix = "Ocelli.OpenClickBank.Shared.Models"
+            };
+
+            generator.Generate(new List<string>(){file});
+
             Console.WriteLine($@"{file} COMPLETE");
         }
         catch (Exception ex)
