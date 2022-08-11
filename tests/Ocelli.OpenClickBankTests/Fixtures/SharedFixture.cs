@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Ocelli.OpenClickBankTests.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
-using Ocelli.OpenClickBank;
-using Ocelli.OpenClickBankTests.Models;
-using Xunit;
 
 namespace Ocelli.OpenClickBankTests.Fixtures;
 

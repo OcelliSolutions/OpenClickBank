@@ -6,6 +6,7 @@ public interface IClickBankService
     IAnalyticsClient Analytics { get; }
     IDebugClient Debugs { get; }
     IImageClient Images { get; }
+    INotificationService Notifications { get; }
     IOrders2Client Orders { get; }
     IProductClient Products { get; }
     IQuickstatsClient Quickstats { get; }

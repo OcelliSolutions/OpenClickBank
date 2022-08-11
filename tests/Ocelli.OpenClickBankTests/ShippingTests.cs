@@ -1,11 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using Ocelli.OpenClickBank;
-using Ocelli.OpenClickBankTests.Fixtures;
-using Ocelli.OpenClickBankTests.Helpers;
-using Xunit;
-using Xunit.Abstractions;
 
 namespace Ocelli.OpenClickBankTests;
 
@@ -25,7 +19,7 @@ public class ShippingTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
 
     [SkippableFact]
-    async public void GetShippingAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetShippingAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var results = new List<OrderShipData>();
         var hasMoreData = false;
@@ -48,7 +42,7 @@ public class ShippingTests : IClassFixture<SharedFixture>
     }
 
     [Fact]
-    async public void GetShippingCountAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetShippingCountAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var count =
             await Fixture.ApiKey.ClickBankService.Shipping.GetShippingCountAsync();
@@ -59,7 +53,7 @@ public class ShippingTests : IClassFixture<SharedFixture>
 
     //TODO: The required parameter of `receipt` is not available.
     [Fact(Skip = "TODO: The required parameter of `receipt` is not available.")]
-    async public void GetShippingNoticeAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetShippingNoticeAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var receipt = string.Empty;
         var shippingNoticeData =

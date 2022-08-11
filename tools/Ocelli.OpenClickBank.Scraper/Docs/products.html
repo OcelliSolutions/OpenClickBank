@@ -17,6 +17,41 @@
 				</tr>
 				<tr>
 					<td>
+						<b>DELETE</b><b>/1.3/products/{sku}</b>
+						<br>Delete a product<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;Nothing</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">site</td>
+											<td align="center">true</td>
+											<td>The site owning product to be deleted</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>HAS_DEVELOPER_KEY, api_products_client</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<b>GET</b><b>/1.3/products/{sku}</b>
 						<br>Gets a product<p></p>
 						<div class="ident">
@@ -37,41 +72,6 @@
 											<td align="center">site</td>
 											<td align="center">true</td>
 											<td>The site owning the product to be retrieved.</td>
-										</tr>
-									</tbody>
-								</table>
-							</p>
-						</div>
-						<p></p>
-						<p class="ident">
-							<b>Supported Output Types :
-							</b>application/xml, application/json</p>
-						<p class="ident">
-							<b>Required Roles :
-							</b>HAS_DEVELOPER_KEY, api_products_client</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<b>DELETE</b><b>/1.3/products/{sku}</b>
-						<br>Delete a product<p></p>
-						<div class="ident">
-							<b>Return Type:</b>&nbsp;Nothing</div>
-						<p></p>
-						<div class="ident">
-							<b>Request Parameters :</b>
-							<p>
-								<table border="1" cellspacing="0" cellpadding="2">
-									<tbody>
-										<tr>
-											<th>Name</th>
-											<th>Required</th>
-											<th>Description</th>
-										</tr>
-										<tr>
-											<td align="center">site</td>
-											<td align="center">true</td>
-											<td>The site owning product to be deleted</td>
 										</tr>
 									</tbody>
 								</table>

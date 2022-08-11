@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using Ocelli.OpenClickBank;
-using Ocelli.OpenClickBankTests.Fixtures;
-using Ocelli.OpenClickBankTests.Helpers;
-using Xunit;
-using Xunit.Abstractions;
 
 namespace Ocelli.OpenClickBankTests;
 
@@ -24,7 +18,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
 
     [SkippableFact]
-    async public void GetStatusAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetStatusAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetStatusAsync();
@@ -34,7 +28,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsCompletingIn30DaysAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsCompletingIn30DaysAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsCompletingIn30DaysAsync(
@@ -45,7 +39,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsCompletingIn30DaysAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsCompletingIn30DaysAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsCompletingIn30DaysAsync(
@@ -56,7 +50,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsCompletingIn60DaysAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsCompletingIn60DaysAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsCompletingIn60DaysAsync(
@@ -67,7 +61,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsCompletingIn60DaysAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsCompletingIn60DaysAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsCompletingIn60DaysAsync(
@@ -78,7 +72,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsCanceledLast30DaysAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsCanceledLast30DaysAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsCanceledLast30DaysAsync(
@@ -89,7 +83,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsCanceledLast30DaysAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsCanceledLast30DaysAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsCanceledLast30DaysAsync(
@@ -100,7 +94,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsCanceledLast60DaysAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsCanceledLast60DaysAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsCanceledLast60DaysAsync(
@@ -111,7 +105,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsCanceledLast60DaysAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsCanceledLast60DaysAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsCanceledLast60DaysAsync(
@@ -122,7 +116,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsByStartDateAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsByStartDateAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByStartDateAsync(
@@ -133,7 +127,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsByStartDateAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsByStartDateAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByStartDateAsync(RoleAccount.VENDOR,
@@ -144,7 +138,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsByCancelDateAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsByCancelDateAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByCancelDateAsync(
@@ -155,7 +149,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsByCancelDateAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsByCancelDateAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByCancelDateAsync(RoleAccount.VENDOR,
@@ -166,7 +160,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsByNextPaymentDateAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsByNextPaymentDateAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByNextPaymentDateAsync(
@@ -177,7 +171,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsByNextPaymentDateAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsByNextPaymentDateAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByNextPaymentDateAsync(
@@ -188,7 +182,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsByStatusDateAsync_AFFILIATE_ACTIVE_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsByStatusDateAsync_AFFILIATE_ACTIVE_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByStatusDateAsync(
@@ -199,7 +193,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void
+    public async Task
         GetSubscriptionDetailsByStatusDateAsync_AFFILIATE_COMPLETED_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
@@ -211,7 +205,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsByStatusDateAsync_VENDOR_ACTIVE_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsByStatusDateAsync_VENDOR_ACTIVE_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByStatusDateAsync(RoleAccount.VENDOR,
@@ -222,7 +216,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsByStatusDateAsync_VENDOR_COMPLETED_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsByStatusDateAsync_VENDOR_COMPLETED_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByStatusDateAsync(RoleAccount.VENDOR,
@@ -233,7 +227,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsAsync(RoleAccount.AFFILIATE,
@@ -244,7 +238,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionDetailsAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionDetailsAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsAsync(RoleAccount.VENDOR,
@@ -255,7 +249,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionTrendsAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionTrendsAsync_AFFILIATE_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var results = new List<SubscriptionProductRowData>();
         var hasMoreData = false;
@@ -280,7 +274,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void GetSubscriptionTrendsAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetSubscriptionTrendsAsync_VENDOR_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var results = new List<SubscriptionProductRowData>();
         var hasMoreData = false;
@@ -305,7 +299,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
     
     [SkippableFact]
-    async public void GetStatisticsByRoleAndDimensionAsync_AFFILIATE_CUSTOMER_COUNTRY_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetStatisticsByRoleAndDimensionAsync_AFFILIATE_CUSTOMER_COUNTRY_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetStatisticsByRoleAndDimensionAsync(RoleAccount.AFFILIATE,
@@ -329,7 +323,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
     
     [SkippableFact]
-    async public void
+    public async Task
         GetStatisticsByRoleAndDimensionAsync_VENDOR_CUSTOMER_COUNTRY_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
@@ -353,7 +347,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
     
     [SkippableFact]
-    async public void
+    public async Task
         GetStatisticsByRoleAndDimensionSummaryAsync_AFFILIATE_PRODUCT_SKU_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
@@ -378,7 +372,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    async public void
+    public async Task
         GetStatisticsByRoleAndDimensionSummaryAsync_VENDOR_PRODUCT_SKU_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =

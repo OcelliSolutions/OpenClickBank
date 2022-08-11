@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
-using Ocelli.OpenClickBank;
-using Xunit;
-using Xunit.Abstractions;
 
 namespace Ocelli.OpenClickBankTests.Helpers;
 

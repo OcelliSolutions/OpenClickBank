@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using Ocelli.OpenClickBank;
-using Ocelli.OpenClickBankTests.Fixtures;
-using Ocelli.OpenClickBankTests.Helpers;
-using Xunit;
-using Xunit.Abstractions;
+﻿using System.Collections.Generic;
 
 namespace Ocelli.OpenClickBankTests;
 
@@ -26,7 +18,7 @@ public class ProductTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
 
     [SkippableFact]
-    async public void GetProductsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetProductsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var results = new List<Product>();
         var hasMoreData = false;

@@ -1,9 +1,4 @@
 ﻿using System.Collections.Generic;
-using Ocelli.OpenClickBank;
-using Ocelli.OpenClickBankTests.Fixtures;
-using Ocelli.OpenClickBankTests.Helpers;
-using Xunit;
-using Xunit.Abstractions;
 
 namespace Ocelli.OpenClickBankTests;
 
@@ -21,7 +16,7 @@ public class ImageTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
 
     [SkippableFact]
-    async public void GetStatusAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetStatusAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var results = new List<ImageData>();
         var hasMoreData = false;

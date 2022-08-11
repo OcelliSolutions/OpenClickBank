@@ -17,30 +17,6 @@
 				</tr>
 				<tr>
 					<td>
-						<b>GET</b><b>/1.3/analytics/status</b>
-						<br>
-						<p>Return the status &amp; last update time of the API.</p>
-						<p>The possible statuses are:</p>
-						<ul>
-							<li>GREEN (normal operation)</li>
-							<li>YELLOW (delayed data)</li>
-							<li>RED (severely delayed data or critical problem)</li>
-						</ul>
-						<p></p>
-						<div class="ident">
-							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/AnalyticsStatus">An AnalyticsStatus</a>
-						</div>
-						<p></p>
-						<p class="ident">
-							<b>Supported Output Types :
-							</b>application/xml, application/json, text/csv</p>
-						<p class="ident">
-							<b>Required Roles :
-							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
 						<b>GET</b><b>/1.3/analytics/{role}/subscription/details/compthirty</b>
 						<br>Returns a list of subscriptions completing in the next 30 days.<p></p>
 						<div class="ident">
@@ -819,6 +795,30 @@
 						<p class="ident">
 							<b>Supported Output Types :
 							</b>application/xml, application/json</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/analytics/status</b>
+						<br>
+						<p>Return the status &amp; last update time of the API.</p>
+						<p>The possible statuses are:</p>
+						<ul>
+							<li>GREEN (normal operation)</li>
+							<li>YELLOW (delayed data)</li>
+							<li>RED (severely delayed data or critical problem)</li>
+						</ul>
+						<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/analytics/schema/AnalyticsStatus">An AnalyticsStatus</a>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json, text/csv</p>
 						<p class="ident">
 							<b>Required Roles :
 							</b>api_analytics_client, HAS_DEVELOPER_KEY</p>

@@ -1,11 +1,4 @@
-﻿using System.Linq;
-using Ocelli.OpenClickBank;
-using Ocelli.OpenClickBankTests.Fixtures;
-using Ocelli.OpenClickBankTests.Helpers;
-using Xunit;
-using Xunit.Abstractions;
-
-namespace Ocelli.OpenClickBankTests;
+﻿namespace Ocelli.OpenClickBankTests;
 
 [Collection("Shared collection")]
 public class TicketTests : IClassFixture<SharedFixture>
@@ -21,7 +14,7 @@ public class TicketTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
     
     [SkippableFact]
-    async public void GetTicketsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetTicketsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var ticketList =
             await Fixture.ApiKey.ClickBankService.Tickets.GetTicketsAsync();
@@ -41,7 +34,7 @@ public class TicketTests : IClassFixture<SharedFixture>
     }
 
     [Fact]
-    async public void GetTicketCountAsync_ResultsReturned_ShouldPass()
+    public async Task GetTicketCountAsync_ResultsReturned_ShouldPass()
     {
         var count =
             await Fixture.ApiKey.ClickBankService.Tickets.GetTicketCountAsync();
@@ -52,7 +45,7 @@ public class TicketTests : IClassFixture<SharedFixture>
 
     //TODO: The required parameter of `receipt` is not available.
     [Fact(Skip = "TODO: The required parameter of `receipt` is not available.")]
-    async public void GetTicketRefundAmountsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetTicketRefundAmountsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var receipt = string.Empty;
         var ticketList =

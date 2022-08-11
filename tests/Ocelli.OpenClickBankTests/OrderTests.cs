@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Ocelli.OpenClickBank;
-using Ocelli.OpenClickBankTests.Fixtures;
-using Ocelli.OpenClickBankTests.Helpers;
-using Xunit;
-using Xunit.Abstractions;
 
 namespace Ocelli.OpenClickBankTests;
 
@@ -25,7 +20,7 @@ public class OrderTests : IClassFixture<SharedFixture>
     private readonly ITestOutputHelper _testOutputHelper;
 
     [Fact]
-    async public void GetOrdersAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async Task GetOrdersAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var results = new List<OrderData>();
         var hasMoreData = false;
@@ -48,7 +43,7 @@ public class OrderTests : IClassFixture<SharedFixture>
     }
 
     [Fact]
-    async public void GetOrderCountAsync_ReturnNumber_ShouldPass()
+    public async Task GetOrderCountAsync_ReturnNumber_ShouldPass()
     {
         var orders =
             await Fixture.ApiKey.ClickBankService.Orders.GetOrderCountAsync(DateTimeOffset.Now.AddDays(-10),

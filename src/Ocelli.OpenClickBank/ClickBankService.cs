@@ -13,6 +13,7 @@ public partial class ClickBankService : IClickBankService
     public IAnalyticsClient Analytics => new AnalyticsClient(HttpClient!);
     public IDebugClient Debugs => new DebugClient(HttpClient!);
     public IImageClient Images => new ImageClient(HttpClient!);
+    public INotificationService Notifications => new NotificationService();
     public IOrders2Client Orders => new Orders2Client(HttpClient!);
     public IProductClient Products => new ProductClient(HttpClient!);
     public IShipping2Client Shipping => new Shipping2Client(HttpClient!);

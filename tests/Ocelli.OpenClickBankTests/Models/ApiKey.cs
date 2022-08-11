@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using Ocelli.OpenClickBank;
 
 namespace Ocelli.OpenClickBankTests.Models;
 

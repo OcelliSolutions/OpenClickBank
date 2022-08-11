@@ -1,10 +1,4 @@
-﻿using System.Linq;
-using Ocelli.OpenClickBankTests.Fixtures;
-using Ocelli.OpenClickBankTests.Helpers;
-using Xunit;
-using Xunit.Abstractions;
-
-namespace Ocelli.OpenClickBankTests;
+﻿namespace Ocelli.OpenClickBankTests;
 
 [Collection("Shared collection")]
 public class QuickstatTests : IClassFixture<SharedFixture>
@@ -20,7 +14,7 @@ public class QuickstatTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
 
     [Fact]
-    async public void GetAccountAsync_ReturnsAccountWhenAuthorized_ShouldPass()
+    public async Task GetAccountAsync_ReturnsAccountWhenAuthorized_ShouldPass()
     {
         var stats = await Fixture.ApiKey.ClickBankService.Quickstats.GetAccountAsync();
         foreach (var accountData in stats?.AccountData!)
@@ -32,7 +26,7 @@ public class QuickstatTests : IClassFixture<SharedFixture>
     }
 
     [Fact]
-    async public void GetQuickstatsAsync_ReturnsAccountWhenAuthorized_ShouldPass()
+    public async Task GetQuickstatsAsync_ReturnsAccountWhenAuthorized_ShouldPass()
     {
         var stats = await Fixture.ApiKey.ClickBankService.Quickstats.GetQuickstatsAsync();
         foreach (var accountData in stats?.AccountData!)
@@ -45,7 +39,7 @@ public class QuickstatTests : IClassFixture<SharedFixture>
     }
     
     [Fact]
-    async public void GetQuickstatsSummaryAsync_ReturnsAccountWhenAuthorized_ShouldPass()
+    public async Task GetQuickstatsSummaryAsync_ReturnsAccountWhenAuthorized_ShouldPass()
     {
         var stats = await Fixture.ApiKey.ClickBankService.Quickstats.GetQuickstatsSummaryAsync();
         foreach (var accountData in stats?.AccountData!)

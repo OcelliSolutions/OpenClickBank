@@ -3567,7 +3567,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ProductList?> GetProductsAsync(string? site, ProductType? type = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ProductList?> GetProductsAsync(string site, ProductType? type = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 
@@ -4005,7 +4005,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ProductList?> GetProductsAsync(string? site, ProductType? type = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ProductList?> GetProductsAsync(string site, ProductType? type = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (site == null)
                 throw new System.ArgumentNullException("site");

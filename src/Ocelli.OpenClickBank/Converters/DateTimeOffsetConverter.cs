@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Globalization;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Ocelli.OpenClickBank.Extensions;
 
@@ -10,8 +11,16 @@ internal class DateTimeOffsetConverter : JsonConverter<DateTimeOffset?>
     {
         if (reader.TokenType == JsonTokenType.String)
         {
-            reader.TryGetDateTimeOffset(out var dt);
-            return dt;
+            var simpleDate = reader.TryGetDateTimeOffset(out var dt);
+            if(simpleDate)
+                return dt;
+
+            var input = reader.GetString();
+            if (input == null) return null;
+            DateTimeOffset.TryParseExact(input, "yyyyMMddTHHmmsszzz", CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out var notificationDate);
+            return notificationDate;
         }
 
         reader.TrySkip();
