@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json;
 
-namespace Ocelli.OpenClickBankTests.Helpers;
+namespace Ocelli.OpenClickBank.Tests.Helpers;
 
 public class AdditionalPropertiesHelper
 {

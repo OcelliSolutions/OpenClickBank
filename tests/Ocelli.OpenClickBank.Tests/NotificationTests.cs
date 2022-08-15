@@ -1,9 +1,7 @@
-﻿using System;
-using System.Text.Json;
+﻿namespace Ocelli.OpenClickBank.Tests;
 
-namespace Ocelli.OpenClickBankTests;
-
-[Collection("Shared collection")]
+[TestCaseOrderer("Ocelli.OpenClickBank.Tests.Fixtures.PriorityOrderer", "Ocelli.OpenClickBank.Tests")]
+[Collection("NotificationTests")]
 public class NotificationTests : IClassFixture<SharedFixture>
 {
     private readonly ITestOutputHelper _testOutputHelper;

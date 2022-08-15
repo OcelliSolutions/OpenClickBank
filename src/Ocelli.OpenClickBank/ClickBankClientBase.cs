@@ -68,4 +68,15 @@ internal class ClickBankClientBase
         settings.NumberHandling = JsonNumberHandling.AllowReadingFromString;
         settings.PropertyNameCaseInsensitive = true;
     }
+
+}
+
+internal partial class QuickstatsClient
+{
+    partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request,
+        string url)
+    {
+        request.Headers.Accept.Clear();
+        request.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+    }
 }

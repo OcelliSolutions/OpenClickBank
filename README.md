@@ -13,6 +13,7 @@ As a developer working with this spec, there are some considerations that are no
 * Some items that are documented as arrays can also come back as objects. There is no way to know all of these instances, so just plan on all arrays behaving as such.
 * Nullable items are not simply nullable, they are *nillable* (from XML days) where an object can be returned instead of a string, date, or number. Developers may need to account for this.
   * One of the ways to work around this issue for enums is to return a default value instead of the *nil* object. Every enum has a `nil` value for this reason even though it is not a valid value.
+* Orders myst be created manually. Please use the following link to read about creating a [pay link](https://support.clickbank.com/hc/en-us/articles/360036580432-How-do-I-create-a-secure-payment-link-#:~:text=A%20payment%20link%20is%20the,it%20to%20their%20Pitch%20Page.)
 
 ### Tools
 

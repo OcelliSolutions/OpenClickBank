@@ -14,12 +14,12 @@ public class Product
     public bool Physical { get; set; }
     public bool DigitalRecurring { get; set; }
     public bool PhysicalRecurring { get; set; }
-    public string? Site { get; set; }
+    public string Site { get; set; } = null!;
     public string? Created { get; set; }
     public string? Updated { get; set; }
     [JsonPropertyName("approval_status")]
     public ProductApprovalStatus? ApprovalStatus { get; set; }
-    public string? Language { get; set; }
+    public Language? Language { get; set; }
     public string? Title { get; set; }
     public string? Description { get; set; }
     [JsonPropertyName("post_purchase_description")]

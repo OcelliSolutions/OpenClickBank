@@ -1,4 +1,6 @@
-﻿using NJsonSchema;
+﻿using System.Text.RegularExpressions;
+using System.Web;
+using NJsonSchema;
 using NJsonSchema.CodeGeneration;
 using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
@@ -7,6 +9,11 @@ using NSwag.CodeGeneration.OperationNameGenerators;
 using Ocelli.OpenClickBank.ClientGenerator;
 
 var document = OpenApiYamlDocument.FromFileAsync("../../../../../open-clickbank.yaml").Result;
+
+foreach (var operation in document.Operations)
+{
+    operation.Operation.Summary = operation.Operation.Description;
+}
 var settings = new CSharpClientGeneratorSettings()
 {
     ClassName = "{controller}Client",
@@ -25,9 +32,9 @@ var settings = new CSharpClientGeneratorSettings()
         GenerateNullableReferenceTypes = true,
         GenerateDefaultValues = true,
         GenerateDataAnnotations = true,
-        PropertyNameGenerator = new CustomPropertyNameGenerator()
+        PropertyNameGenerator = new CustomPropertyNameGenerator(),
+        ClassStyle = CSharpClassStyle.Poco
     }
-
 };
 
 var generator = new CSharpClientGenerator(document, settings);
@@ -35,6 +42,17 @@ var code = generator.GenerateFile();
 code = code.Replace(
     "[System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]",
     string.Empty);
+
+code = Regex.Replace(code, @"namespace Ocelli.OpenClickBank", $@"[assembly: System.Runtime.CompilerServices.InternalsVisibleTo(""Ocelli.OpenClickBank.Tests"")]
+namespace Ocelli.OpenClickBank");
+
+code = code.Replace("var result_ = (int)System.Convert.ChangeType(responseData_, typeof(int));",
+    "int.TryParse(responseData_, out var result_);");
+
+code = code.Replace($@"throw new ApiException(""No Content"", status_, responseText_, headers_, null);", "return null;");
+
+code = HttpUtility.HtmlDecode(code);
+
 await File.WriteAllTextAsync("../../../../../src/Ocelli.OpenClickBank/ClickBankClient.cs", code);
 
 namespace Ocelli.OpenClickBank.ClientGenerator

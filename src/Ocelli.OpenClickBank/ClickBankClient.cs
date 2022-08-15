@@ -17,6 +17,7 @@ using System.Text.Json;
 #pragma warning disable 3016 // Disable "CS3016 Arrays as attribute arguments is not CLS-compliant"
 #pragma warning disable 8603 // Disable "CS8603 Possible null reference return"
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Ocelli.OpenClickBank.Tests")]
 namespace Ocelli.OpenClickBank
 {
     using System = global::System;
@@ -27,7 +28,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Return the status &amp; last update time of the API.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -35,7 +36,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions completing in the next 30 days.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -47,7 +48,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions completing in the next 60 days.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -59,7 +60,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions canceled in the last 30 days.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -71,7 +72,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions canceled in the last 60 days.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -83,7 +84,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions where the subscription start date is between (inclusive) the startDate and endDate parameters.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -97,7 +98,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions where the subscription canceled date is between (inclusive) the startDate and endDate parameters.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -111,7 +112,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions where the next payment date is between (inclusive) the startDate and endDate parameters.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -124,6 +125,9 @@ namespace Ocelli.OpenClickBank
         System.Threading.Tasks.Task<SubscriptionDetailResult?> GetSubscriptionDetailsByNextPaymentDateAsync(RoleAccount role, string account, System.DateTimeOffset startDate, System.DateTimeOffset endDate, SubscriptionDetailRowOrderBy? orderBy = null, SortDirection? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
+        /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
         /// <param name="status">The subscription status.</param>
@@ -135,7 +139,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions details.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -147,7 +151,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns statistical summations of data for subscriptions.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -162,7 +166,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns statistical data for a given role and dimension.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="dimension">PRODUCT_SKU – Only available if role = VENDOR
@@ -181,7 +185,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns summary statistical data for a given role, dimension, and summary type.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="dimension">PRODUCT_SKU – Only available if role = VENDOR
@@ -237,7 +241,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Return the status &amp; last update time of the API.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -309,7 +313,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions completing in the next 30 days.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -402,7 +406,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions completing in the next 60 days.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -495,7 +499,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions canceled in the last 30 days.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -588,7 +592,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions canceled in the last 60 days.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -681,7 +685,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions where the subscription start date is between (inclusive) the startDate and endDate parameters.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -784,7 +788,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions where the subscription canceled date is between (inclusive) the startDate and endDate parameters.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -887,7 +891,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions where the next payment date is between (inclusive) the startDate and endDate parameters.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -989,6 +993,9 @@ namespace Ocelli.OpenClickBank
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
+        /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
         /// <param name="status">The subscription status.</param>
@@ -1085,7 +1092,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of subscriptions details.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -1178,7 +1185,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns statistical summations of data for subscriptions.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="account">The account nickname/site.</param>
@@ -1291,7 +1298,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns statistical data for a given role and dimension.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="dimension">PRODUCT_SKU – Only available if role = VENDOR
@@ -1420,7 +1427,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns summary statistical data for a given role, dimension, and summary type.
+        /// <b>Permissions Required</b>: api_analytics_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="role">A valid role</param>
         /// <param name="dimension">PRODUCT_SKU – Only available if role = VENDOR
@@ -1659,9 +1666,6 @@ namespace Ocelli.OpenClickBank
     {
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// When you send a request to the debugging service, it returns the request context information including the security context information. This can be useful when correcting issues with the ClickBank APIs.
-        /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<string> GetDebugAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
@@ -1701,9 +1705,6 @@ namespace Ocelli.OpenClickBank
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// When you send a request to the debugging service, it returns the request context information including the security context information. This can be useful when correcting issues with the ClickBank APIs.
-        /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<string> GetDebugAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
@@ -1879,7 +1880,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Lists images associated with a site.
+        /// <b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="site">The site owning the images.</param>
         /// <param name="type">The image type.</param>
@@ -1925,7 +1926,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Lists images associated with a site.
+        /// <b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="site">The site owning the images.</param>
         /// <param name="type">The image type.</param>
@@ -2127,7 +2128,17 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// This head request is used to identify if a particular order or a subscription is active, i.e. it has not been refunded, charge-backed or cancelled. It will return a 403 (Forbidden) if that's the case, or a 204 if the order is still active. Note that it will also return a 403 if the order is not found, or the user does not have access to that receipt. In addition, head request on a rebill transaction will return the status of that particular rebill, not of the original transaction which may be different. It is advisable to use head requests only on the parent transactions
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </summary>
+        /// <param name="receipt">Receipt ID</param>
+        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<OrderList?> GetOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
@@ -2137,86 +2148,69 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a list of order detail objects which match the given receipt.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
-        /// <param name="changeDate">The date when the subscription will be next billed in format yyyy-mm-dd.</param>
-        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderList?> ChangeOrderDateAsync(string receipt, System.DateTimeOffset changeDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OrderList?> GetOrderUpsellsAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// List orders for the authenticated user scoped to the search criteria. Only the first 100 orders will be returned. This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
-        /// <br/>This method will return 200 if all the receipts have been obtained, or a 206 [Partial Return] if there are more results available.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
-        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd). If a startDate is specified, you must also specify an endDate.</param>
-        /// <param name="endDate">The end date for the search (yyyy-mm-dd). If an endDate is specified, you must also specify a startDate.</param>
-        /// <param name="type">The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</param>
-        /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
         /// <param name="affiliate">The affiliate name. Supports the word 'none' to search for transactions without affiliates, and wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="lastName">Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
         /// <param name="item">The item number of the order.</param>
         /// <param name="email">The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="tid">The TID (Tracking ID / Promo Code) to search on. This will search both vendor and affiliate tracking codes and be returned in the promo field.</param>
+        /// <param name="lastName">Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
         /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE].</param>
-        /// <param name="postalCode">Customer's zip or postal code. Supports wildcard searches.</param>
+        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd).</param>
+        /// <param name="endDate">The end date for the search (yyyy-mm-dd).</param>
+        /// <param name="tid">The TID (Tracking ID / Promo Code) to search on. This will search both vendor and affiliate tracking codes and be returned in the promo field.</param>
+        /// <param name="type">The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</param>
+        /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<int> GetOrderCountAsync(string? affiliate = null, string? item = null, string? email = null, string? lastName = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, OrderType? type = null, string? vendor = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </summary>
+        /// <param name="affiliate">The affiliate name. Supports the word 'none' to search for transactions without affiliates, and wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
         /// <param name="amount">The transaction total amount.</param>
+        /// <param name="email">The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="item">The item number of the order.</param>
+        /// <param name="lastName">Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="postalCode">Customer's zip or postal code. Supports wildcard searches.</param>
+        /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE].</param>
+        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd). If a startDate is specified, you must also specify an endDate.</param>
+        /// <param name="endDate">The end date for the search (yyyy-mm-dd). If an endDate is specified, you must also specify a startDate.</param>
+        /// <param name="tid">The TID (Tracking ID / Promo Code) to search on. This will search both vendor and affiliate tracking codes and be returned in the promo field.</param>
+        /// <param name="type">The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</param>
+        /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
         /// <param name="page">This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderList?> GetOrdersAsync(System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, OrderType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null, string? amount = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OrderList?> GetOrdersAsync(string? affiliate = null, double? amount = null, string? email = null, string? item = null, string? lastName = null, string? postalCode = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, OrderType? type = null, string? vendor = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// *BETA* Allows a vendor to restart a cancelled subscription.
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_order_write • api_subscription_modifications
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
-        /// <param name="sku">The item number of the subscription product that should be reinstated for the order.</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ReinstateOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// *BETA* Allows a vendor to change the rebill date of a subscription.
-        /// </summary>
-        /// <param name="receipt">Receipt ID</param>
-        /// <param name="restartDate">The date when the subscription will be resumed in format yyyy-mm-dd</param>
-        /// <param name="sku">The item number of the subscription product that should be reinstated for the order.</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task PauseOrderAsync(string receipt, System.DateTimeOffset restartDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// *BETA* Allows a vendor to extend a subscription by a given number of rebill periods.
-        /// </summary>
-        /// <param name="receipt">Receipt ID</param>
-        /// <param name="numPeriods">The number of periods to extend the subscription by.</param>
-        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ExtendOrderAsync(string receipt, int numPeriods, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// *BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.
-        /// </summary>
-        /// <param name="receipt">Receipt ID</param>
-        /// <param name="oldSku">The SKU of the current product for the subscription.</param>
         /// <param name="newSku">The SKU of the new product for the subscription.</param>
+        /// <param name="oldSku">The SKU of the current product for the subscription.</param>
         /// <param name="carryAffiliate">Determines if the affiliate from the original transaction is carried over to the new subscription.</param>
         /// <param name="applyProratedRefund">Determines if the pro rated refund should be applied on the product change. This parameter will default to TRUE if not explicitly set.</param>
         /// <param name="nextRebillDate">Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change.</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ChangeOrderProductAsync(string receipt, string oldSku, string newSku, string? carryAffiliate = null, bool? applyProratedRefund = null, System.DateTimeOffset? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task ChangeOrderProductAsync(string receipt, string newSku, string oldSku, string? carryAffiliate = null, bool? applyProratedRefund = null, System.DateTimeOffset? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Allows a vendor to change shipping address of a physical recurring subscription.
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_order_write
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
         /// <param name="address1">Updated address (line 1).</param>
@@ -2234,42 +2228,46 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Same as the list command, except that this one returns the count of the orders returned based on the search criteria.
-        /// </summary>
-        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd).</param>
-        /// <param name="endDate">The end date for the search (yyyy-mm-dd).</param>
-        /// <param name="type">The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</param>
-        /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="affiliate">The affiliate name. Supports the word 'none' to search for transactions without affiliates, and wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="lastName">Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="item">The item number of the order.</param>
-        /// <param name="email">The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="tid">The TID (Tracking ID / Promo Code) to search on. This will search both vendor and affiliate tracking codes and be returned in the promo field.</param>
-        /// <param name="postalCode">Customer's zip or postal code. Supports wildcard searches.</param>
-        /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE].</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> GetOrderCountAsync(System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, OrderType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, string? postalCode = null, RoleAccount? role = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Returns all the upsell transactions for the given parent upsell transaction.
-        /// <br/>If the transaction does not exist, or the user does not have access to the transaction, or if there are no upsells for this transaction, a status code of 403 (No Content) will be returned.
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderList?> GetOrderUpsellsAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// *BETA* Allows a vendor to change the rebill date of a subscription.
-        /// </summary>
-        /// <param name="receipt">Receipt ID</param>
+        /// <param name="changeDate">The date on which the next payment will be made. This date must be in the future. The date format is yyyy-mm-dd.</param>
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderList?> GetOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task ChangeOrderDateAsync(string receipt, System.DateTimeOffset changeDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
+        /// </summary>
+        /// <param name="receipt">Receipt ID</param>
+        /// <param name="numPeriods">The number of periods to extend the subscription by.</param>
+        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task ExtendOrderAsync(string receipt, int numPeriods, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
+        /// </summary>
+        /// <param name="receipt">Receipt ID</param>
+        /// <param name="restartDate">The date when the subscription will be resumed in format yyyy-mm-dd</param>
+        /// <param name="sku">The item number of the subscription product that should be reinstated for the order.</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task PauseOrderAsync(string receipt, System.DateTimeOffset restartDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
+        /// </summary>
+        /// <param name="receipt">Receipt ID</param>
+        /// <param name="sku">The item number of the subscription product that should be reinstated for the order.</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task ReinstateOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 
@@ -2307,112 +2305,20 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// This head request is used to identify if a particular order or a subscription is active, i.e. it has not been refunded, charge-backed or cancelled. It will return a 403 (Forbidden) if that's the case, or a 204 if the order is still active. Note that it will also return a 403 if the order is not found, or the user does not have access to that receipt. In addition, head request on a rebill transaction will return the status of that particular rebill, not of the original transaction which may be different. It is advisable to use head requests only on the parent transactions
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
-        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task IsActiveOrderOrSubscriptionAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            if (receipt == null)
-                throw new System.ArgumentNullException("receipt");
-
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/{receipt}?");
-            urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
-            if (sku != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("sku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            urlBuilder_.Length--;
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Method = new System.Net.Http.HttpMethod("HEAD");
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 204)
-                        {
-                            return;
-                        }
-                        else
-                        if (status_ == 400)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", status_, responseText_, headers_, null);
-                        }
-                        else
-                        if (status_ == 403)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Returns a list of order detail objects which match the given receipt.
-        /// </summary>
-        /// <param name="receipt">Receipt ID</param>
-        /// <param name="changeDate">The date when the subscription will be next billed in format yyyy-mm-dd.</param>
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderList?> ChangeOrderDateAsync(string receipt, System.DateTimeOffset changeDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
 
-            if (changeDate == null)
-                throw new System.ArgumentNullException("changeDate");
-
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/{receipt}?");
             urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
-            urlBuilder_.Append(System.Uri.EscapeDataString("changeDate") + "=").Append(System.Uri.EscapeDataString(changeDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (sku != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("sku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -2482,51 +2388,191 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// List orders for the authenticated user scoped to the search criteria. Only the first 100 orders will be returned. This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
-        /// <br/>This method will return 200 if all the receipts have been obtained, or a 206 [Partial Return] if there are more results available.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
-        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd). If a startDate is specified, you must also specify an endDate.</param>
-        /// <param name="endDate">The end date for the search (yyyy-mm-dd). If an endDate is specified, you must also specify a startDate.</param>
-        /// <param name="type">The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</param>
-        /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="affiliate">The affiliate name. Supports the word 'none' to search for transactions without affiliates, and wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="lastName">Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="item">The item number of the order.</param>
-        /// <param name="email">The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="tid">The TID (Tracking ID / Promo Code) to search on. This will search both vendor and affiliate tracking codes and be returned in the promo field.</param>
-        /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE].</param>
-        /// <param name="postalCode">Customer's zip or postal code. Supports wildcard searches.</param>
-        /// <param name="amount">The transaction total amount.</param>
-        /// <param name="page">This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them</param>
+        /// <param name="receipt">Receipt ID</param>
+        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task IsActiveOrderOrSubscriptionAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/{receipt}?");
+            urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+            if (sku != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("sku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("HEAD");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 204)
+                        {
+                            return;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </summary>
+        /// <param name="receipt">Receipt ID</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrdersAsync(System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, OrderType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null, string? amount = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrderUpsellsAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/{receipt}/upsells");
+            urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<OrderList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 204)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            return null;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </summary>
+        /// <param name="affiliate">The affiliate name. Supports the word 'none' to search for transactions without affiliates, and wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="item">The item number of the order.</param>
+        /// <param name="email">The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="lastName">Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE].</param>
+        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd).</param>
+        /// <param name="endDate">The end date for the search (yyyy-mm-dd).</param>
+        /// <param name="tid">The TID (Tracking ID / Promo Code) to search on. This will search both vendor and affiliate tracking codes and be returned in the promo field.</param>
+        /// <param name="type">The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</param>
+        /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<int> GetOrderCountAsync(string? affiliate = null, string? item = null, string? email = null, string? lastName = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, OrderType? type = null, string? vendor = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/list?");
-            if (startDate != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("startDate") + "=").Append(System.Uri.EscapeDataString(startDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (endDate != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("endDate") + "=").Append(System.Uri.EscapeDataString(endDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (type != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("type") + "=").Append(System.Uri.EscapeDataString(ConvertToString(type, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (vendor != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("vendor") + "=").Append(System.Uri.EscapeDataString(ConvertToString(vendor, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/count?");
             if (affiliate != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("affiliate") + "=").Append(System.Uri.EscapeDataString(ConvertToString(affiliate, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (lastName != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("lastName") + "=").Append(System.Uri.EscapeDataString(ConvertToString(lastName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (item != null)
             {
@@ -2536,21 +2582,168 @@ namespace Ocelli.OpenClickBank
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("email") + "=").Append(System.Uri.EscapeDataString(ConvertToString(email, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            if (tid != null)
+            if (lastName != null)
             {
-                urlBuilder_.Append(System.Uri.EscapeDataString("tid") + "=").Append(System.Uri.EscapeDataString(ConvertToString(tid, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(System.Uri.EscapeDataString("lastName") + "=").Append(System.Uri.EscapeDataString(ConvertToString(lastName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (role != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("role") + "=").Append(System.Uri.EscapeDataString(ConvertToString(role, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            if (postalCode != null)
+            if (startDate != null)
             {
-                urlBuilder_.Append(System.Uri.EscapeDataString("postalCode") + "=").Append(System.Uri.EscapeDataString(ConvertToString(postalCode, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(System.Uri.EscapeDataString("startDate") + "=").Append(System.Uri.EscapeDataString(startDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (endDate != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("endDate") + "=").Append(System.Uri.EscapeDataString(endDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (tid != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("tid") + "=").Append(System.Uri.EscapeDataString(ConvertToString(tid, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (type != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("type") + "=").Append(System.Uri.EscapeDataString(ConvertToString(type, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (vendor != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("vendor") + "=").Append(System.Uri.EscapeDataString(ConvertToString(vendor, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            int.TryParse(responseData_, out var result_);
+                            return result_;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </summary>
+        /// <param name="affiliate">The affiliate name. Supports the word 'none' to search for transactions without affiliates, and wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="amount">The transaction total amount.</param>
+        /// <param name="email">The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="item">The item number of the order.</param>
+        /// <param name="lastName">Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="postalCode">Customer's zip or postal code. Supports wildcard searches.</param>
+        /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE].</param>
+        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd). If a startDate is specified, you must also specify an endDate.</param>
+        /// <param name="endDate">The end date for the search (yyyy-mm-dd). If an endDate is specified, you must also specify a startDate.</param>
+        /// <param name="tid">The TID (Tracking ID / Promo Code) to search on. This will search both vendor and affiliate tracking codes and be returned in the promo field.</param>
+        /// <param name="type">The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</param>
+        /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="page">This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrdersAsync(string? affiliate = null, double? amount = null, string? email = null, string? item = null, string? lastName = null, string? postalCode = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, OrderType? type = null, string? vendor = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/list?");
+            if (affiliate != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("affiliate") + "=").Append(System.Uri.EscapeDataString(ConvertToString(affiliate, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (amount != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("amount") + "=").Append(System.Uri.EscapeDataString(ConvertToString(amount, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (email != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("email") + "=").Append(System.Uri.EscapeDataString(ConvertToString(email, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (item != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("item") + "=").Append(System.Uri.EscapeDataString(ConvertToString(item, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (lastName != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("lastName") + "=").Append(System.Uri.EscapeDataString(ConvertToString(lastName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (postalCode != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("postalCode") + "=").Append(System.Uri.EscapeDataString(ConvertToString(postalCode, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (role != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("role") + "=").Append(System.Uri.EscapeDataString(ConvertToString(role, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (startDate != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("startDate") + "=").Append(System.Uri.EscapeDataString(startDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (endDate != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("endDate") + "=").Append(System.Uri.EscapeDataString(endDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (tid != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("tid") + "=").Append(System.Uri.EscapeDataString(ConvertToString(tid, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (type != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("type") + "=").Append(System.Uri.EscapeDataString(ConvertToString(type, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (vendor != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("vendor") + "=").Append(System.Uri.EscapeDataString(ConvertToString(vendor, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             urlBuilder_.Length--;
 
@@ -2626,288 +2819,32 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// *BETA* Allows a vendor to restart a cancelled subscription.
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_order_write • api_subscription_modifications
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
-        /// <param name="sku">The item number of the subscription product that should be reinstated for the order.</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task ReinstateOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            if (receipt == null)
-                throw new System.ArgumentNullException("receipt");
-
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/{receipt}/reinstate?");
-            urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
-            if (sku != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("sku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            urlBuilder_.Length--;
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 204)
-                        {
-                            return;
-                        }
-                        else
-                        if (status_ == 403)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// *BETA* Allows a vendor to change the rebill date of a subscription.
-        /// </summary>
-        /// <param name="receipt">Receipt ID</param>
-        /// <param name="restartDate">The date when the subscription will be resumed in format yyyy-mm-dd</param>
-        /// <param name="sku">The item number of the subscription product that should be reinstated for the order.</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task PauseOrderAsync(string receipt, System.DateTimeOffset restartDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            if (receipt == null)
-                throw new System.ArgumentNullException("receipt");
-
-            if (restartDate == null)
-                throw new System.ArgumentNullException("restartDate");
-
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/{receipt}/pause?");
-            urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
-            urlBuilder_.Append(System.Uri.EscapeDataString("restartDate") + "=").Append(System.Uri.EscapeDataString(restartDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            if (sku != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("sku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            urlBuilder_.Length--;
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 204)
-                        {
-                            return;
-                        }
-                        else
-                        if (status_ == 403)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// *BETA* Allows a vendor to extend a subscription by a given number of rebill periods.
-        /// </summary>
-        /// <param name="receipt">Receipt ID</param>
-        /// <param name="numPeriods">The number of periods to extend the subscription by.</param>
-        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task ExtendOrderAsync(string receipt, int numPeriods, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            if (receipt == null)
-                throw new System.ArgumentNullException("receipt");
-
-            if (numPeriods == null)
-                throw new System.ArgumentNullException("numPeriods");
-
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/{receipt}/extend?");
-            urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
-            urlBuilder_.Append(System.Uri.EscapeDataString("numPeriods") + "=").Append(System.Uri.EscapeDataString(ConvertToString(numPeriods, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            if (sku != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("sku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            urlBuilder_.Length--;
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 204)
-                        {
-                            return;
-                        }
-                        else
-                        if (status_ == 403)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// *BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.
-        /// </summary>
-        /// <param name="receipt">Receipt ID</param>
-        /// <param name="oldSku">The SKU of the current product for the subscription.</param>
         /// <param name="newSku">The SKU of the new product for the subscription.</param>
+        /// <param name="oldSku">The SKU of the current product for the subscription.</param>
         /// <param name="carryAffiliate">Determines if the affiliate from the original transaction is carried over to the new subscription.</param>
         /// <param name="applyProratedRefund">Determines if the pro rated refund should be applied on the product change. This parameter will default to TRUE if not explicitly set.</param>
         /// <param name="nextRebillDate">Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change.</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task ChangeOrderProductAsync(string receipt, string oldSku, string newSku, string? carryAffiliate = null, bool? applyProratedRefund = null, System.DateTimeOffset? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task ChangeOrderProductAsync(string receipt, string newSku, string oldSku, string? carryAffiliate = null, bool? applyProratedRefund = null, System.DateTimeOffset? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
 
-            if (oldSku == null)
-                throw new System.ArgumentNullException("oldSku");
-
             if (newSku == null)
                 throw new System.ArgumentNullException("newSku");
+
+            if (oldSku == null)
+                throw new System.ArgumentNullException("oldSku");
 
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/{receipt}/changeProduct?");
             urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
-            urlBuilder_.Append(System.Uri.EscapeDataString("oldSku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(oldSku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Append(System.Uri.EscapeDataString("newSku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(newSku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Append(System.Uri.EscapeDataString("oldSku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(oldSku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (carryAffiliate != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("carryAffiliate") + "=").Append(System.Uri.EscapeDataString(ConvertToString(carryAffiliate, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -2984,7 +2921,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Allows a vendor to change shipping address of a physical recurring subscription.
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_order_write
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
         /// <param name="address1">Updated address (line 1).</param>
@@ -3106,227 +3043,25 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Same as the list command, except that this one returns the count of the orders returned based on the search criteria.
-        /// </summary>
-        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd).</param>
-        /// <param name="endDate">The end date for the search (yyyy-mm-dd).</param>
-        /// <param name="type">The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</param>
-        /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="affiliate">The affiliate name. Supports the word 'none' to search for transactions without affiliates, and wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="lastName">Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="item">The item number of the order.</param>
-        /// <param name="email">The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
-        /// <param name="tid">The TID (Tracking ID / Promo Code) to search on. This will search both vendor and affiliate tracking codes and be returned in the promo field.</param>
-        /// <param name="postalCode">Customer's zip or postal code. Supports wildcard searches.</param>
-        /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE].</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<int> GetOrderCountAsync(System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, OrderType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, string? postalCode = null, RoleAccount? role = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/count?");
-            if (startDate != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("startDate") + "=").Append(System.Uri.EscapeDataString(startDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (endDate != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("endDate") + "=").Append(System.Uri.EscapeDataString(endDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (type != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("type") + "=").Append(System.Uri.EscapeDataString(ConvertToString(type, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (vendor != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("vendor") + "=").Append(System.Uri.EscapeDataString(ConvertToString(vendor, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (affiliate != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("affiliate") + "=").Append(System.Uri.EscapeDataString(ConvertToString(affiliate, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (lastName != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("lastName") + "=").Append(System.Uri.EscapeDataString(ConvertToString(lastName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (item != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("item") + "=").Append(System.Uri.EscapeDataString(ConvertToString(item, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (email != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("email") + "=").Append(System.Uri.EscapeDataString(ConvertToString(email, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (tid != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("tid") + "=").Append(System.Uri.EscapeDataString(ConvertToString(tid, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (postalCode != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("postalCode") + "=").Append(System.Uri.EscapeDataString(ConvertToString(postalCode, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (role != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("role") + "=").Append(System.Uri.EscapeDataString(ConvertToString(role, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            urlBuilder_.Length--;
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = (int)System.Convert.ChangeType(responseData_, typeof(int));
-                            return result_;
-                        }
-                        else
-                        if (status_ == 403)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Returns all the upsell transactions for the given parent upsell transaction.
-        /// <br/>If the transaction does not exist, or the user does not have access to the transaction, or if there are no upsells for this transaction, a status code of 403 (No Content) will be returned.
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrderUpsellsAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            if (receipt == null)
-                throw new System.ArgumentNullException("receipt");
-
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/{receipt}/upsells");
-            urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<OrderList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            return objectResponse_.Object;
-                        }
-                        else
-                        if (status_ == 403)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// *BETA* Allows a vendor to change the rebill date of a subscription.
-        /// </summary>
-        /// <param name="receipt">Receipt ID</param>
+        /// <param name="changeDate">The date on which the next payment will be made. This date must be in the future. The date format is yyyy-mm-dd.</param>
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task ChangeOrderDateAsync(string receipt, System.DateTimeOffset changeDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
+
+            if (changeDate == null)
+                throw new System.ArgumentNullException("changeDate");
 
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/{receipt}/changeDate?");
             urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Append(System.Uri.EscapeDataString("changeDate") + "=").Append(System.Uri.EscapeDataString(changeDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (sku != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("sku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -3341,7 +3076,6 @@ namespace Ocelli.OpenClickBank
                 {
                     request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -3366,8 +3100,263 @@ namespace Ocelli.OpenClickBank
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 204)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<OrderList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            return objectResponse_.Object;
+                            return;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        ///     
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
+        /// </summary>
+        /// <param name="receipt">Receipt ID</param>
+        /// <param name="numPeriods">The number of periods to extend the subscription by.</param>
+        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task ExtendOrderAsync(string receipt, int numPeriods, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            if (numPeriods == null)
+                throw new System.ArgumentNullException("numPeriods");
+
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/{receipt}/extend?");
+            urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Append(System.Uri.EscapeDataString("numPeriods") + "=").Append(System.Uri.EscapeDataString(ConvertToString(numPeriods, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            if (sku != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("sku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 204)
+                        {
+                            return;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
+        /// </summary>
+        /// <param name="receipt">Receipt ID</param>
+        /// <param name="restartDate">The date when the subscription will be resumed in format yyyy-mm-dd</param>
+        /// <param name="sku">The item number of the subscription product that should be reinstated for the order.</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task PauseOrderAsync(string receipt, System.DateTimeOffset restartDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            if (restartDate == null)
+                throw new System.ArgumentNullException("restartDate");
+
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/{receipt}/pause?");
+            urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Append(System.Uri.EscapeDataString("restartDate") + "=").Append(System.Uri.EscapeDataString(restartDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            if (sku != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("sku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 204)
+                        {
+                            return;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
+        /// </summary>
+        /// <param name="receipt">Receipt ID</param>
+        /// <param name="sku">The item number of the subscription product that should be reinstated for the order.</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task ReinstateOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/{receipt}/reinstate?");
+            urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+            if (sku != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("sku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 204)
+                        {
+                            return;
                         }
                         else
                         if (status_ == 403)
@@ -3501,7 +3490,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Gets a product.
+        /// <b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="sku">The product sku.</param>
         /// <param name="site">The site owning the product to be retrieved.</param>
@@ -3511,7 +3500,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Delete a product.
+        /// <b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="sku">The product sku.</param>
         /// <param name="site">The site owning the product to be retrieved.</param>
@@ -3521,12 +3510,13 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Saves a product with the passed in parameters.
+        /// <b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="sku">The product sku.</param>
         /// <param name="site">The site owning the product to be saved.</param>
         /// <param name="currency">The currency the product is sold in.</param>
         /// <param name="price">The price for the product. Or in the case of RECURRING or RECURRING_PHYSICAL products, the initial price.</param>
+        /// <param name="language">The language of the product. Must be either DE (German), EN (English), ES, (Spanish), FR (French), IT (Italian), or PT (Portuguese).</param>
         /// <param name="title">The title of the product.</param>
         /// <param name="digital">Product has digital component.</param>
         /// <param name="physical">Product has physical component.</param>
@@ -3543,7 +3533,6 @@ namespace Ocelli.OpenClickBank
         /// <param name="duration">In the case of RECURRING or RECURRING_PHYSICAL (required) products the rebill duration.</param>
         /// <param name="shippingProfile">In the case of PHYSICAL or RECURRING_PHYSICAL products the name of the shipping profile.</param>
         /// <param name="purchaseCommission">The commission rate for the product - if unspecified the sites commission rate will be used.</param>
-        /// <param name="language">The language of the product. Must be either DE (German), EN (English), ES, (Spanish), FR (French), IT (Italian), or PT (Portuguese).</param>
         /// <param name="description">In the case of PHYSICAL or RECURRING_PHYSICAL (required) the description of the product.</param>
         /// <param name="image">The id of the image associated to the product.</param>
         /// <param name="pitchPage">The URL where you pitch your product. This might be the same as the HopLink Target URL. Either pitchPage or mobilePitchPage is required.</param>
@@ -3556,11 +3545,11 @@ namespace Ocelli.OpenClickBank
         /// <param name="preRebillNotificationLeadTime">The number of days before the rebill notification. When enabled, a Pre-rebill notification will be sent to the number equal to the number of days indicated in the lead time and will apply to the rest of the subscription.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Product?> CreateProductAsync(string sku, string site, string currency, double price, string title, bool? digital = null, bool? physical = null, bool? digitalRecurring = null, bool? physicalRecurring = null, System.Collections.Generic.IEnumerable<ProductCategory>? categories = null, bool? skipConfirmationPage = null, string? thankYouPage = null, string? mobileThankYouPage = null, double? rebillPrice = null, double? rebillCommission = null, int? trialPeriod = null, RecurringFrequency? frequency = null, int? duration = null, string? shippingProfile = null, double? purchaseCommission = null, Language? language = null, string? description = null, int? image = null, string? pitchPage = null, string? mobilePitchPage = null, int? saleRefundDaysLimit = null, int? rebillRefundDaysLimit = null, string? deliveryMethod = null, string? deliverySpeed = null, bool? preRebillNotificationOverride = null, int? preRebillNotificationLeadTime = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task CreateProductAsync(string sku, string site, Currency currency, double price, Language language, string title, bool? digital = null, bool? physical = null, bool? digitalRecurring = null, bool? physicalRecurring = null, System.Collections.Generic.IEnumerable<ProductCategory>? categories = null, bool? skipConfirmationPage = null, string? thankYouPage = null, string? mobileThankYouPage = null, double? rebillPrice = null, double? rebillCommission = null, int? trialPeriod = null, RecurringFrequency? frequency = null, int? duration = null, string? shippingProfile = null, double? purchaseCommission = null, string? description = null, int? image = null, string? pitchPage = null, string? mobilePitchPage = null, int? saleRefundDaysLimit = null, int? rebillRefundDaysLimit = null, string? deliveryMethod = null, string? deliverySpeed = null, bool? preRebillNotificationOverride = null, int? preRebillNotificationLeadTime = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Lists all products.
+        /// <b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="site">The site owning the products.</param>
         /// <param name="type">The product types to return.d Must be either STANDARD or RECURRING. Will return all types if not specified.</param>
@@ -3605,7 +3594,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Gets a product.
+        /// <b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="sku">The product sku.</param>
         /// <param name="site">The site owning the product to be retrieved.</param>
@@ -3688,7 +3677,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Delete a product.
+        /// <b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="sku">The product sku.</param>
         /// <param name="site">The site owning the product to be retrieved.</param>
@@ -3769,12 +3758,13 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Saves a product with the passed in parameters.
+        /// <b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="sku">The product sku.</param>
         /// <param name="site">The site owning the product to be saved.</param>
         /// <param name="currency">The currency the product is sold in.</param>
         /// <param name="price">The price for the product. Or in the case of RECURRING or RECURRING_PHYSICAL products, the initial price.</param>
+        /// <param name="language">The language of the product. Must be either DE (German), EN (English), ES, (Spanish), FR (French), IT (Italian), or PT (Portuguese).</param>
         /// <param name="title">The title of the product.</param>
         /// <param name="digital">Product has digital component.</param>
         /// <param name="physical">Product has physical component.</param>
@@ -3791,7 +3781,6 @@ namespace Ocelli.OpenClickBank
         /// <param name="duration">In the case of RECURRING or RECURRING_PHYSICAL (required) products the rebill duration.</param>
         /// <param name="shippingProfile">In the case of PHYSICAL or RECURRING_PHYSICAL products the name of the shipping profile.</param>
         /// <param name="purchaseCommission">The commission rate for the product - if unspecified the sites commission rate will be used.</param>
-        /// <param name="language">The language of the product. Must be either DE (German), EN (English), ES, (Spanish), FR (French), IT (Italian), or PT (Portuguese).</param>
         /// <param name="description">In the case of PHYSICAL or RECURRING_PHYSICAL (required) the description of the product.</param>
         /// <param name="image">The id of the image associated to the product.</param>
         /// <param name="pitchPage">The URL where you pitch your product. This might be the same as the HopLink Target URL. Either pitchPage or mobilePitchPage is required.</param>
@@ -3804,7 +3793,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="preRebillNotificationLeadTime">The number of days before the rebill notification. When enabled, a Pre-rebill notification will be sent to the number equal to the number of days indicated in the lead time and will apply to the rest of the subscription.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<Product?> CreateProductAsync(string sku, string site, string currency, double price, string title, bool? digital = null, bool? physical = null, bool? digitalRecurring = null, bool? physicalRecurring = null, System.Collections.Generic.IEnumerable<ProductCategory>? categories = null, bool? skipConfirmationPage = null, string? thankYouPage = null, string? mobileThankYouPage = null, double? rebillPrice = null, double? rebillCommission = null, int? trialPeriod = null, RecurringFrequency? frequency = null, int? duration = null, string? shippingProfile = null, double? purchaseCommission = null, Language? language = null, string? description = null, int? image = null, string? pitchPage = null, string? mobilePitchPage = null, int? saleRefundDaysLimit = null, int? rebillRefundDaysLimit = null, string? deliveryMethod = null, string? deliverySpeed = null, bool? preRebillNotificationOverride = null, int? preRebillNotificationLeadTime = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task CreateProductAsync(string sku, string site, Currency currency, double price, Language language, string title, bool? digital = null, bool? physical = null, bool? digitalRecurring = null, bool? physicalRecurring = null, System.Collections.Generic.IEnumerable<ProductCategory>? categories = null, bool? skipConfirmationPage = null, string? thankYouPage = null, string? mobileThankYouPage = null, double? rebillPrice = null, double? rebillCommission = null, int? trialPeriod = null, RecurringFrequency? frequency = null, int? duration = null, string? shippingProfile = null, double? purchaseCommission = null, string? description = null, int? image = null, string? pitchPage = null, string? mobilePitchPage = null, int? saleRefundDaysLimit = null, int? rebillRefundDaysLimit = null, string? deliveryMethod = null, string? deliverySpeed = null, bool? preRebillNotificationOverride = null, int? preRebillNotificationLeadTime = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (sku == null)
                 throw new System.ArgumentNullException("sku");
@@ -3818,6 +3807,9 @@ namespace Ocelli.OpenClickBank
             if (price == null)
                 throw new System.ArgumentNullException("price");
 
+            if (language == null)
+                throw new System.ArgumentNullException("language");
+
             if (title == null)
                 throw new System.ArgumentNullException("title");
 
@@ -3827,6 +3819,7 @@ namespace Ocelli.OpenClickBank
             urlBuilder_.Append(System.Uri.EscapeDataString("site") + "=").Append(System.Uri.EscapeDataString(ConvertToString(site, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Append(System.Uri.EscapeDataString("currency") + "=").Append(System.Uri.EscapeDataString(ConvertToString(currency, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Append(System.Uri.EscapeDataString("price") + "=").Append(System.Uri.EscapeDataString(ConvertToString(price, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Append(System.Uri.EscapeDataString("language") + "=").Append(System.Uri.EscapeDataString(ConvertToString(language, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Append(System.Uri.EscapeDataString("title") + "=").Append(System.Uri.EscapeDataString(ConvertToString(title, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (digital != null)
             {
@@ -3888,10 +3881,6 @@ namespace Ocelli.OpenClickBank
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("purchaseCommission") + "=").Append(System.Uri.EscapeDataString(ConvertToString(purchaseCommission, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            if (language != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("language") + "=").Append(System.Uri.EscapeDataString(ConvertToString(language, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
             if (description != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("description") + "=").Append(System.Uri.EscapeDataString(ConvertToString(description, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -3942,7 +3931,6 @@ namespace Ocelli.OpenClickBank
                 {
                     request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -3967,8 +3955,12 @@ namespace Ocelli.OpenClickBank
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<Product?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            return objectResponse_.Object;
+                            return;
+                        }
+                        else
+                        if (status_ == 201)
+                        {
+                            return;
                         }
                         else
                         if (status_ == 403)
@@ -3998,7 +3990,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Lists all products.
+        /// <b>Permissions Required</b>: api_products_client • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="site">The site owning the products.</param>
         /// <param name="type">The product types to return.d Must be either STANDARD or RECURRING. Will return all types if not specified.</param>
@@ -4195,27 +4187,33 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Return a list of all account nicknames which the current api user has read access.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AccountList?> GetAccountAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AccountList?> GetAccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Return the quickstats for the api user, based on the search criteria. If no search conditions are set, it will return the quickstats for all the accounts for the API user for the last 45 days.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
+        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd). Defaults to 45 days from today if not specified.</param>
+        /// <param name="endDate">The end date for the search (yyyy-mm-dd). Defaults to today if not specified.</param>
+        /// <param name="account">The nickName of the account. Defaults to all accounts if not specified.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AccountList?> GetQuickstatsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AccountList?> GetQuickstatsAsync(System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? account = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// The count service sums the quickstat sale, refund and chargeback amounts based on the search criteria. If no search conditions are set, it will return the sum of the values for the last 45 days based on all the accounts linked to the API keys. The count service is similar to the list method except for the fact that it presents the user with one total of the dates specified the search criteria instead of listing each day's quickstat values individually. Note that the quickStatDate in the returned data will be null.
+        /// The count service sums the quickstat sale, refund and chargeback amounts based on the search criteria. If no search conditions are set, it will return the sum of the values for the last 45 days based on all the accounts linked to the API keys. The count service is similar to the list method except for the fact that it presents the user with one total of the dates specified the search criteria instead of listing each day's quickstat values individually. Note that the quickStatDate in the returned data will be null.</br><b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
+        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd). Defaults to 45 days from today if not specified.</param>
+        /// <param name="endDate">The end date for the search (yyyy-mm-dd). Defaults to today if not specified.</param>
+        /// <param name="account">The nickName of the account. Defaults to all accounts if not specified.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AccountList?> GetQuickstatsSummaryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<int> GetQuickstatsCountAsync(System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? account = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 
@@ -4253,11 +4251,11 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Return a list of all account nicknames which the current api user has read access.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AccountList?> GetAccountAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<AccountList?> GetAccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/quickstats/accounts");
@@ -4325,14 +4323,30 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Return the quickstats for the api user, based on the search criteria. If no search conditions are set, it will return the quickstats for all the accounts for the API user for the last 45 days.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
+        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd). Defaults to 45 days from today if not specified.</param>
+        /// <param name="endDate">The end date for the search (yyyy-mm-dd). Defaults to today if not specified.</param>
+        /// <param name="account">The nickName of the account. Defaults to all accounts if not specified.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AccountList?> GetQuickstatsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<AccountList?> GetQuickstatsAsync(System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? account = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/quickstats/list");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/quickstats/list?");
+            if (startDate != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("startDate") + "=").Append(System.Uri.EscapeDataString(startDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (endDate != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("endDate") + "=").Append(System.Uri.EscapeDataString(endDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (account != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("account") + "=").Append(System.Uri.EscapeDataString(ConvertToString(account, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -4397,14 +4411,30 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// The count service sums the quickstat sale, refund and chargeback amounts based on the search criteria. If no search conditions are set, it will return the sum of the values for the last 45 days based on all the accounts linked to the API keys. The count service is similar to the list method except for the fact that it presents the user with one total of the dates specified the search criteria instead of listing each day's quickstat values individually. Note that the quickStatDate in the returned data will be null.
+        /// The count service sums the quickstat sale, refund and chargeback amounts based on the search criteria. If no search conditions are set, it will return the sum of the values for the last 45 days based on all the accounts linked to the API keys. The count service is similar to the list method except for the fact that it presents the user with one total of the dates specified the search criteria instead of listing each day's quickstat values individually. Note that the quickStatDate in the returned data will be null.</br><b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
+        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd). Defaults to 45 days from today if not specified.</param>
+        /// <param name="endDate">The end date for the search (yyyy-mm-dd). Defaults to today if not specified.</param>
+        /// <param name="account">The nickName of the account. Defaults to all accounts if not specified.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AccountList?> GetQuickstatsSummaryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<int> GetQuickstatsCountAsync(System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? account = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/quickstats/count");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/quickstats/count?");
+            if (startDate != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("startDate") + "=").Append(System.Uri.EscapeDataString(startDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (endDate != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("endDate") + "=").Append(System.Uri.EscapeDataString(endDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (account != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("account") + "=").Append(System.Uri.EscapeDataString(ConvertToString(account, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -4413,7 +4443,7 @@ namespace Ocelli.OpenClickBank
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -4438,8 +4468,9 @@ namespace Ocelli.OpenClickBank
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<AccountList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            return objectResponse_.Object;
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            int.TryParse(responseData_, out var result_);
+                            return result_;
                         }
                         else
                         if (status_ == 403)
@@ -4573,8 +4604,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned. This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
-        /// <br/>This method will return 200 if all the orders have been obtained, or a 206 [Partial Return] if there are more results available. An important point to note is that this method will only return shippable orders matching search criteria, so if a user wants to get all orders, they will need to use the Orders Service API.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="status">Can be 'shipped', 'notshipped' or 'all' - to find related orders.</param>
         /// <param name="days">Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.</param>
@@ -4588,8 +4618,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a count of physical goods orders matching the shipping criteria.
-        /// <br/>An important point to note is that this method will only return shippable orders matching search criteria, so if a user wants to get all orders, they will need to use the Orders Service API.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="status">Can be 'shipped', 'notshipped' or 'all' - to find related orders.</param>
         /// <param name="days">Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.</param>
@@ -4602,7 +4631,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns the ship notices for the given transaction.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
         /// <returns>Success</returns>
@@ -4611,7 +4640,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Creates a shipping notice for the given transaction.
+        /// <b>Permissions Required</b>: api_order_read • api_order_write • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
         /// <param name="date">The shipping date (yyyy-mm-dd).</param>
@@ -4660,8 +4689,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned. This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
-        /// <br/>This method will return 200 if all the orders have been obtained, or a 206 [Partial Return] if there are more results available. An important point to note is that this method will only return shippable orders matching search criteria, so if a user wants to get all orders, they will need to use the Orders Service API.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="status">Can be 'shipped', 'notshipped' or 'all' - to find related orders.</param>
         /// <param name="days">Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.</param>
@@ -4769,8 +4797,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns a count of physical goods orders matching the shipping criteria.
-        /// <br/>An important point to note is that this method will only return shippable orders matching search criteria, so if a user wants to get all orders, they will need to use the Orders Service API.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="status">Can be 'shipped', 'notshipped' or 'all' - to find related orders.</param>
         /// <param name="days">Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.</param>
@@ -4872,7 +4899,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns the ship notices for the given transaction.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
         /// <returns>Success</returns>
@@ -4949,7 +4976,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Creates a shipping notice for the given transaction.
+        /// <b>Permissions Required</b>: api_order_read • api_order_write • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
         /// <param name="date">The shipping date (yyyy-mm-dd).</param>
@@ -5162,7 +5189,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Create a ticket with the passed in parameters. Will return the created ticket if it's successful.
+        /// <b>Permissions Required</b>: api_order_write • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="receipt">A valid receipt id.</param>
         /// <param name="type">The type of the ticket. Must be either 'rfnd', 'cncl' or 'tech'. For 'rfnd' the parameter refundType must also be specified. If the receipt is for a non-recurring product, either 'rfnd' or 'cncl' will automatically refund that sale. For any receipt of a recurring product, a 'rfnd' will refund that receipt AND cancel any future billing, while a 'cncl' will only cancel future billing without issuing any refunds.</param>
@@ -5205,7 +5232,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns amounts that would be refunded for a given refund type &amp; value.
+        /// <b>Permissions Required</b>: api_order_read
         /// </summary>
         /// <param name="receipt">A valid receipt id.</param>
         /// <param name="refundType">The type of refund. Supported values include 'FULL', 'PARTIAL_PERCENT', 'PARTIAL_AMOUNT' (case sensitive). For 'PARTIAL_PERCENT' and 'PARTIAL_AMOUNT' the parameter refundAmount must be specified. Additionally the vendor associated with the transaction must be enabled for partial refunds in order to use both 'PARTIAL_PERCENT' and 'PARTIAL_AMOUNT', if vendor is not enabled and one of the partial options is specified a 403 will be returned.</param>
@@ -5217,7 +5244,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Find a ticket by its ID. Will return the ticket with the given ID back. If the ticket does not exist, or the user is not authorized to view the ticket - a status code of 403 will be returned.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="id">A valid ticket id.</param>
         /// <returns>Success</returns>
@@ -5226,7 +5253,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Allows the user to close a ticket, comment on a ticket, change type of a ticket, or reopen the ticket. Will return a status code 200 if the action is successful, a 403 if user is not allowed to act on the ticket or the ticket does not exist. Upon success, this will return the ticket data. Please note that closing of a ticket manually means that the ticket is cancelled. So for example closing of an open refund ticket will cancel the refund request. If the action is not specified, the assumption is that the user is trying to comment on the ticket. Also note that reopening is only supported for closed tickets and will return a 400 status code otherwise.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="id">A valid ticket id.</param>
         /// <param name="action">The action to be taken. Supported actions are 'change', 'close' and 'reopen'.</param>
@@ -5238,7 +5265,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Acknowledges return of physical item from customer, allowing refund of transaction to complete. This call will return a status code of 204 if successful. The body of the response will be empty in this case. A 403 (Forbidden) status code will be return if access is denied. A 400 (Bad Request) will be returned if the ticket isn't found or the ticket is not for a physical purchase.
+        /// <b>Permissions Required</b>: api_order_read • api_order_write • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="id">A valid ticket id.</param>
         /// <returns>Success</returns>
@@ -5247,7 +5274,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Searches for tickets matching the search criteria. Will return a list of ticket data objects with a status code of 200. If more than 100 results are returned, it will return a status code of 206 [Partial Content]. Users can then use the 'Page' header to determine the page needed.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="type">The type of the ticket. Must be either 'rfnd' / 'cncl' or 'tech'.</param>
         /// <param name="status">The status of the ticket. Can be 'open', 'reopened' or 'closed'.</param>
@@ -5265,7 +5292,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Counts the tickets matching the search criteria.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="type">The type of the ticket. Must be either 'rfnd' / 'cncl' or 'tech'.</param>
         /// <param name="status">The status of the ticket. Can be 'open', 'reopened' or 'closed'.</param>
@@ -5310,7 +5337,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Create a ticket with the passed in parameters. Will return the created ticket if it's successful.
+        /// <b>Permissions Required</b>: api_order_write • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="receipt">A valid receipt id.</param>
         /// <param name="type">The type of the ticket. Must be either 'rfnd', 'cncl' or 'tech'. For 'rfnd' the parameter refundType must also be specified. If the receipt is for a non-recurring product, either 'rfnd' or 'cncl' will automatically refund that sale. For any receipt of a recurring product, a 'rfnd' will refund that receipt AND cancel any future billing, while a 'cncl' will only cancel future billing without issuing any refunds.</param>
@@ -5451,7 +5478,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Returns amounts that would be refunded for a given refund type &amp; value.
+        /// <b>Permissions Required</b>: api_order_read
         /// </summary>
         /// <param name="receipt">A valid receipt id.</param>
         /// <param name="refundType">The type of refund. Supported values include 'FULL', 'PARTIAL_PERCENT', 'PARTIAL_AMOUNT' (case sensitive). For 'PARTIAL_PERCENT' and 'PARTIAL_AMOUNT' the parameter refundAmount must be specified. Additionally the vendor associated with the transaction must be enabled for partial refunds in order to use both 'PARTIAL_PERCENT' and 'PARTIAL_AMOUNT', if vendor is not enabled and one of the partial options is specified a 403 will be returned.</param>
@@ -5544,7 +5571,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Find a ticket by its ID. Will return the ticket with the given ID back. If the ticket does not exist, or the user is not authorized to view the ticket - a status code of 403 will be returned.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="id">A valid ticket id.</param>
         /// <returns>Success</returns>
@@ -5621,7 +5648,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Allows the user to close a ticket, comment on a ticket, change type of a ticket, or reopen the ticket. Will return a status code 200 if the action is successful, a 403 if user is not allowed to act on the ticket or the ticket does not exist. Upon success, this will return the ticket data. Please note that closing of a ticket manually means that the ticket is cancelled. So for example closing of an open refund ticket will cancel the refund request. If the action is not specified, the assumption is that the user is trying to comment on the ticket. Also note that reopening is only supported for closed tickets and will return a 400 status code otherwise.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="id">A valid ticket id.</param>
         /// <param name="action">The action to be taken. Supported actions are 'change', 'close' and 'reopen'.</param>
@@ -5715,7 +5742,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Acknowledges return of physical item from customer, allowing refund of transaction to complete. This call will return a status code of 204 if successful. The body of the response will be empty in this case. A 403 (Forbidden) status code will be return if access is denied. A 400 (Bad Request) will be returned if the ticket isn't found or the ticket is not for a physical purchase.
+        /// <b>Permissions Required</b>: api_order_read • api_order_write • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="id">A valid ticket id.</param>
         /// <returns>Success</returns>
@@ -5769,7 +5796,7 @@ namespace Ocelli.OpenClickBank
                         if (status_ == 204)
                         {
                             string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No Content", status_, responseText_, headers_, null);
+                            return null;
                         }
                         else
                         if (status_ == 403)
@@ -5799,7 +5826,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Searches for tickets matching the search criteria. Will return a list of ticket data objects with a status code of 200. If more than 100 results are returned, it will return a status code of 206 [Partial Content]. Users can then use the 'Page' header to determine the page needed.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="type">The type of the ticket. Must be either 'rfnd' / 'cncl' or 'tech'.</param>
         /// <param name="status">The status of the ticket. Can be 'open', 'reopened' or 'closed'.</param>
@@ -5927,7 +5954,7 @@ namespace Ocelli.OpenClickBank
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Counts the tickets matching the search criteria.
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
         /// </summary>
         /// <param name="type">The type of the ticket. Must be either 'rfnd' / 'cncl' or 'tech'.</param>
         /// <param name="status">The status of the ticket. Can be 'open', 'reopened' or 'closed'.</param>
@@ -6482,6 +6509,102 @@ namespace Ocelli.OpenClickBank
 
         [System.Runtime.Serialization.EnumMember(Value = @"EXPIRED")]
         EXPIRED = 6,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v10.0.0.0))")]
+    public enum Currency
+    {
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ARS")]
+        ARS = 0,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"AUD")]
+        AUD = 1,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"CAD")]
+        CAD = 2,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"CHF")]
+        CHF = 3,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"CLP")]
+        CLP = 4,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"CNY")]
+        CNY = 5,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"COP")]
+        COP = 6,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"CZK")]
+        CZK = 7,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"DKK")]
+        DKK = 8,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"EUR")]
+        EUR = 9,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"GBP")]
+        GBP = 10,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"HKD")]
+        HKD = 11,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"HUF")]
+        HUF = 12,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"IDR")]
+        IDR = 13,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"INR")]
+        INR = 14,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"JPY")]
+        JPY = 15,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"KRW")]
+        KRW = 16,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"MXN")]
+        MXN = 17,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"MYR")]
+        MYR = 18,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"NOK")]
+        NOK = 19,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"NZD")]
+        NZD = 20,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"PHP")]
+        PHP = 21,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"PLN")]
+        PLN = 22,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"RUB")]
+        RUB = 23,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"SEK")]
+        SEK = 24,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"SGD")]
+        SGD = 25,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"THB")]
+        THB = 26,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"TRY")]
+        TRY = 27,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"USD")]
+        USD = 28,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ZAR")]
+        ZAR = 29,
 
     }
 
@@ -7231,7 +7354,8 @@ namespace Ocelli.OpenClickBank
         public ProductApprovalStatus? Approval_status { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("language")]
-        public string? Language { get; set; } = default!;
+        
+        public Language? Language { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("title")]
         public string? Title { get; set; } = default!;

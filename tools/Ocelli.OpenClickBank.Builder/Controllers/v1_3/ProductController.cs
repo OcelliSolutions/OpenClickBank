@@ -36,7 +36,8 @@ public class ProductController : ControllerBase
     [Authorize]
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.ApiProductsClient, ApiPermission.HasDeveloperKey })]
-    [ProducesResponseType(typeof(Product), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status201Created)]
     [SwaggerOperation(Summary = @"Saves a product with the passed in parameters.")]
     public ActionResult CreateProduct(
         [Required, SwaggerParameter(Description = "The product sku.")] string sku,
@@ -49,7 +50,7 @@ public class ProductController : ControllerBase
         [Required, FromQuery, SwaggerParameter(Description = "The site owning the product to be saved.")] string site,
         [FromQuery, SwaggerParameter(Description = "The thank you page for desktops. Either thankYouPage or mobileThankYouPage is required.")] string? thankYouPage,
         [FromQuery, SwaggerParameter(Description = "The thank you page for mobile devices.")] string? mobileThankYouPage,
-        [Required, FromQuery, SwaggerParameter(Description = "The currency the product is sold in.")] string currency,
+        [Required, FromQuery, SwaggerParameter(Description = "The currency the product is sold in.")] Currency currency,
         [Required, FromQuery, SwaggerParameter(Description = "The price for the product. Or in the case of RECURRING or RECURRING_PHYSICAL products, the initial price.")] decimal price,
         [FromQuery, SwaggerParameter(Description = "In the case of RECURRING or RECURRING_PHYSICAL (required) products the rebill price.")] decimal? rebillPrice,
         [FromQuery, SwaggerParameter(Description = "In the case of RECURRING or RECURRING_PHYSICAL products the rebill commission.")] decimal? rebillCommission,
@@ -58,7 +59,7 @@ public class ProductController : ControllerBase
         [FromQuery, SwaggerParameter(Description = "In the case of RECURRING or RECURRING_PHYSICAL (required) products the rebill duration.")] int? duration,
         [FromQuery, SwaggerParameter(Description = "In the case of PHYSICAL or RECURRING_PHYSICAL products the name of the shipping profile.")] string? shippingProfile,
         [FromQuery, SwaggerParameter(Description = "The commission rate for the product - if unspecified the sites commission rate will be used.")] decimal? purchaseCommission,
-        [FromQuery, SwaggerParameter(Description = "The language of the product. Must be either DE (German), EN (English), ES, (Spanish), FR (French), IT (Italian), or PT (Portuguese).")] Language? language,
+        [Required, FromQuery, SwaggerParameter(Description = "The language of the product. Must be either DE (German), EN (English), ES, (Spanish), FR (French), IT (Italian), or PT (Portuguese).")] Language language,
         [Required, FromQuery, SwaggerParameter(Description = "The title of the product.")] string? title,
         [FromQuery, SwaggerParameter(Description = "In the case of PHYSICAL or RECURRING_PHYSICAL (required) the description of the product.")] string? description,
         [FromQuery, SwaggerParameter(Description = "The id of the image associated to the product.")] int? image,

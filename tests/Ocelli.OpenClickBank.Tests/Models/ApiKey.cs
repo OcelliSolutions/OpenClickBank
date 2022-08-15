@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Ocelli.OpenClickBankTests.Models;
+﻿namespace Ocelli.OpenClickBank.Tests.Models;
 
 public class ApiKey
 {
@@ -17,7 +15,7 @@ public class ApiKey
         if (openClickBankConfig.DeveloperApiKey.EndsWith("xx")) return;
         try
         {
-            var account = ClickBankService.Quickstats.GetAccountAsync().Result;
+            var account = ClickBankService.Quickstats.GetAccountsAsync().Result;
             Site = account?.AccountData?.First().NickName ??
                    throw new InvalidOperationException("No account is associated with these credentials.");
         }

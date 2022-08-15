@@ -1,21 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
-namespace Ocelli.OpenClickBankTests;
+namespace Ocelli.OpenClickBank.Tests;
 
-[Collection("Shared collection")]
+[TestCaseOrderer("Ocelli.OpenClickBank.Tests.Fixtures.PriorityOrderer", "Ocelli.OpenClickBank.Tests")]
+[Collection("AnalyticTests")]
 public class AnalyticTests : IClassFixture<SharedFixture>
 {
+    private SharedFixture Fixture { get; }
+    private readonly ITestOutputHelper _testOutputHelper;
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
+    private readonly AnalyticMockClient _badRequestMockClient;
+    private readonly AnalyticMockClient _okEmptyMockClient;
+    private readonly AnalyticMockClient _okInvalidJsonMockClient;
 
     public AnalyticTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
     {
         Fixture = sharedFixture;
+        _testOutputHelper = testOutputHelper;
         _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
+        _badRequestMockClient = new AnalyticMockClient(sharedFixture.BadRequestMockHttpClient);
+        _okEmptyMockClient = new AnalyticMockClient(sharedFixture.OkEmptyMockHttpClient);
+        _okInvalidJsonMockClient = new AnalyticMockClient(sharedFixture.OkInvalidJsonMockHttpClient);
     }
-
-    private SharedFixture Fixture { get; }
 
     [SkippableFact]
     public async Task GetStatusAsync_AdditionalPropertiesAreEmpty_ShouldPass()
@@ -390,5 +396,41 @@ public class AnalyticTests : IClassFixture<SharedFixture>
             Assert.NotNull(row.Value?.Type);
             Assert.NotNull(row.Value?.Dollar);
         }
+    }
+
+    [SkippableFact]
+    public async Task BadRequestResponsesAsync() => await _badRequestMockClient.TestAllMethodsThatReturnDataAsync();
+
+    [SkippableFact]
+    public async Task OkEmptyResponsesAsync() => await _okEmptyMockClient.TestAllMethodsThatReturnDataAsync();
+
+    [SkippableFact]
+    public async Task OkInvalidJsonResponsesAsync() => await _okInvalidJsonMockClient.TestAllMethodsThatReturnDataAsync();
+
+    [SkippableFact]
+    public void ObjectResponseResult_CanReadText() => _okEmptyMockClient.ObjectResponseResult_CanReadText();
+}
+
+internal class AnalyticMockClient : AnalyticsClient, IMockTests
+{
+    public AnalyticMockClient(HttpClient httpClient) : base(httpClient)
+    {
+        BaseUrl = "https://localhost";
+    }
+
+    public void ObjectResponseResult_CanReadText()
+    {
+        var obj = new ObjectResponseResult<ApiException>(default!, string.Empty);
+        Assert.Equal(obj.Text, string.Empty);
+    }
+
+    public async Task TestAllMethodsThatReturnDataAsync()
+    {
+        ReadResponseAsString = true;
+        await Assert.ThrowsAsync<ApiException>(async () => await GetStatusAsync(cancellationToken: CancellationToken.None));
+
+        ReadResponseAsString = false;
+        //Only one method needs to be tested with `ReadResponseAsString = false`
+        await Assert.ThrowsAsync<ApiException>(async () => await GetStatusAsync(cancellationToken: CancellationToken.None));
     }
 }

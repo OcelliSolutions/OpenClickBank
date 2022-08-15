@@ -41,4 +41,5 @@ public class OpenClickBankConfig
 
     [JsonPropertyName("http_timeout_seconds")]
     public TimeSpan HttpTimeout { get; set; }
+    [JsonPropertyName("receipt")] public string? Receipt { get; set; }
 }
