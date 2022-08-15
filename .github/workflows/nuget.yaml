@@ -35,10 +35,10 @@ jobs:
       - name: "Build projects"
         run: dotnet build --no-restore --configuration Release
 
-      - name: "Test project"
-        run: dotnet test --no-build --verbosity normal --configuration Release
-        env:
-          CLICKBANK_API_KEY: ${{secrets.CLICKBANK_API_KEY}}
+      #- name: "Test project"
+      #  run: dotnet test --no-build --verbosity normal --configuration Release
+      #  env:
+      #    CLICKBANK_API_KEY: ${{secrets.CLICKBANK_API_KEY}}
 
       - name: "Get Version"
         id: version
