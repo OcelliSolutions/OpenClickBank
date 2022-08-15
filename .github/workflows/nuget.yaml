@@ -27,7 +27,7 @@ jobs:
         run: dotnet restore
 
       - name: "Write testing api keys to file"
-        run: 'echo "$CLICKBANK_API_KEY" > tests/Ocelli.OpenClickBankTests/api_key.json'
+        run: 'echo "$CLICKBANK_API_KEY" > tests/Ocelli.OpenClickBank.Tests/api_key.json'
         shell: bash
         env:
           CLICKBANK_API_KEY: ${{secrets.CLICKBANK_API_KEY}}
