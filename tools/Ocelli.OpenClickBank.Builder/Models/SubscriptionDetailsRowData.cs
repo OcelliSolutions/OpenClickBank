@@ -1,4 +1,6 @@
-﻿namespace Ocelli.OpenClickBank.Builder.Models;
+﻿using Ocelli.OpenClickBank.Builder.Data;
+
+namespace Ocelli.OpenClickBank.Builder.Models;
 
 public class SubscriptionDetailsRowData
 {
@@ -7,7 +9,7 @@ public class SubscriptionDetailsRowData
     public decimal? ChargebackAmount { get; set; }
     public int ChargebackCount { get; set; }
     public string? CountryCode { get; set; }
-    public string? CurrencyCode { get; set; }
+    public Currency? CurrencyCode { get; set; }
     public string? CustomerDisplayName { get; set; }
     public string? CustomerFirstName { get; set; }
     public string? CustomerLastName { get; set; }

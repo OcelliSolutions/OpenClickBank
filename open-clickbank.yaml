@@ -2603,8 +2603,7 @@ components:
           type: string
           nullable: true
         transactionType:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/OrderType'
         totalOrderAmount:
           type: number
           format: double
@@ -2636,8 +2635,7 @@ components:
           type: string
           nullable: true
         currency:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/Currency'
         declinedConsent:
           type: boolean
           nullable: true
@@ -2653,8 +2651,7 @@ components:
             $ref: '#/components/schemas/ContactField'
           nullable: true
         role:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/Role'
         fullName:
           type: string
           nullable: true
@@ -2823,8 +2820,7 @@ components:
       type: object
       properties:
         '@currency':
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/Currency'
         standard:
           $ref: '#/components/schemas/StandardPricing'
         physical:
@@ -3303,8 +3299,7 @@ components:
           type: string
           nullable: true
         currencyCode:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/Currency'
         customerDisplayName:
           type: string
           nullable: true
