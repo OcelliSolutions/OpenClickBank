@@ -19,11 +19,13 @@ internal class ClickBankClientBase
         settings.Converters.Add(new EnumConverter<ActiveStatus>());
         settings.Converters.Add(new EnumConverter<AnalyticAttribute>());
         settings.Converters.Add(new EnumConverter<ContractStatus>());
+        settings.Converters.Add(new EnumConverter<Currency>());
         settings.Converters.Add(new EnumConverter<Dimension>());
         settings.Converters.Add(new EnumConverter<DimensionColumn>());
         settings.Converters.Add(new EnumConverter<ImageType>());
         settings.Converters.Add(new EnumConverter<Language>());
         settings.Converters.Add(new EnumConverter<OrderType>());
+        settings.Converters.Add(new EnumConverter<PaymentMethod>());
         settings.Converters.Add(new EnumConverter<ProductCategory>());
         //settings.Converters.Add(new EnumConverter<ProductStatus>());
         settings.Converters.Add(new EnumConverter<ProductType>());

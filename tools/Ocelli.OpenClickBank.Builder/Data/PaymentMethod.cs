@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ocelli.OpenClickBank;
+namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum PaymentMethod
 {

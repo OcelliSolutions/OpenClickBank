@@ -10,10 +10,6 @@ using Ocelli.OpenClickBank.ClientGenerator;
 
 var document = OpenApiYamlDocument.FromFileAsync("../../../../../open-clickbank.yaml").Result;
 
-foreach (var operation in document.Operations)
-{
-    operation.Operation.Summary = operation.Operation.Description;
-}
 var settings = new CSharpClientGeneratorSettings()
 {
     ClassName = "{controller}Client",
