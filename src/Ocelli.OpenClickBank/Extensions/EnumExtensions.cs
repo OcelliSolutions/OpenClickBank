@@ -26,6 +26,6 @@ public static class EnumExtensions
             if (field.Name == name) return (T?)field.GetValue(null);
         }
 
-        throw new ArgumentOutOfRangeException(nameof(name));
+        throw new ArgumentOutOfRangeException(nameof(name), name, $@"{name} is not a valid value for enum {typeof(T)}");
     }
 }

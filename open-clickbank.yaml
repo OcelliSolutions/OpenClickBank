@@ -2647,7 +2647,7 @@ components:
             $ref: '#/components/schemas/ContactField'
           nullable: true
         role:
-          $ref: '#/components/schemas/Role'
+          $ref: '#/components/schemas/RoleAccount'
         fullName:
           type: string
           nullable: true

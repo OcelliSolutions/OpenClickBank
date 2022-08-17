@@ -7161,7 +7161,7 @@ namespace Ocelli.OpenClickBank
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
         
-        public Role? Role { get; set; } = default!;
+        public RoleAccount? Role { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("fullName")]
 

@@ -42,7 +42,7 @@ public class OrderTests : IClassFixture<SharedFixture>
         do
         {
             var orders =
-                await Fixture.ApiKey.ClickBankService.Orders.GetOrdersAsync(startDate: DateTimeOffset.Now.AddDays(-1),
+                await Fixture.ApiKey.ClickBankService.Orders.GetOrdersAsync(startDate: DateTimeOffset.Now.AddDays(-30),
                     endDate: DateTimeOffset.Now, page: page);
             _additionalPropertiesHelper.CheckAdditionalProperties(orders, Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
             Debug.Assert(orders?.OrderData != null, "orders.OrderData != null");
@@ -62,7 +62,7 @@ public class OrderTests : IClassFixture<SharedFixture>
     public async Task GetOrderCountAsync_ReturnNumber_ShouldPass()
     {
         var orders =
-            await Fixture.ApiKey.ClickBankService.Orders.GetOrderCountAsync(startDate: DateTimeOffset.Now.AddDays(-10),
+            await Fixture.ApiKey.ClickBankService.Orders.GetOrderCountAsync(startDate: DateTimeOffset.Now.AddDays(-30),
                 endDate: DateTimeOffset.Now);
         Assert.NotEqual(0, orders);
     }

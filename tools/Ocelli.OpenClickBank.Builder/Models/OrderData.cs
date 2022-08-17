@@ -25,7 +25,7 @@ public class OrderData
     public string? Email { get; set; }
     public string? PostalCode { get; set; }
     public ContactField[]? CustomerContactInfo { get; set; }
-    public Role? Role { get; set; }
+    public RoleAccount? Role { get; set; }
     public string? FullName { get; set; }
     public RefundableState? CustomerRefundableState { get; set; }
     public VendorVariableElementArray? VendorVariables { get; set; }
