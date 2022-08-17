@@ -1821,7 +1821,7 @@ paths:
             type: string
         - name: date
           in: query
-          description: The shipping date (yyyy-mm-dd).
+          description: 'The shipping date (yyyy-mm-dd). This date cannot be earlier than the date of purchase or later than the current date. The date is calculated in Pacific Standard Time (PST). Thus, in order to use the current date, please ensure that it is also the current date according to PST.'
           required: true
           schema:
             pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
@@ -1833,28 +1833,25 @@ paths:
           required: true
           schema:
             type: string
-        - name: tracking
-          in: query
-          description: The tracking id.
-          required: true
-          schema:
-            type: string
-        - name: comments
-          in: query
-          description: The TicketComments associated with the notice.
-          required: true
-          schema:
-            type: string
-        - name: item
-          in: query
-          description: The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.
-          required: true
-          schema:
-            type: string
         - name: fillOrder
           in: query
           description: 'Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated.'
           required: true
+          schema:
+            type: boolean
+        - name: item
+          in: query
+          description: The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.
+          schema:
+            type: string
+        - name: tracking
+          in: query
+          description: The tracking id.
+          schema:
+            type: string
+        - name: comments
+          in: query
+          description: The comments  associated with the notice.
           schema:
             type: string
       responses:

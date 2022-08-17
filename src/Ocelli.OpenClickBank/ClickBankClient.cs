@@ -4649,15 +4649,15 @@ namespace Ocelli.OpenClickBank
         /// Creates a shipping notice for the given transaction.
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
-        /// <param name="date">The shipping date (yyyy-mm-dd).</param>
+        /// <param name="date">The shipping date (yyyy-mm-dd). This date cannot be earlier than the date of purchase or later than the current date. The date is calculated in Pacific Standard Time (PST). Thus, in order to use the current date, please ensure that it is also the current date according to PST.</param>
         /// <param name="carrier">The shipping carrier.</param>
-        /// <param name="tracking">The tracking id.</param>
-        /// <param name="comments">The TicketComments associated with the notice.</param>
-        /// <param name="item">The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.</param>
         /// <param name="fillOrder">Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated.</param>
+        /// <param name="item">The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.</param>
+        /// <param name="tracking">The tracking id.</param>
+        /// <param name="comments">The comments  associated with the notice.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ShippingNoticeData?> CreateShippingNoticeAsync(string receipt, System.DateTimeOffset date, string carrier, string tracking, string comments, string item, string fillOrder, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ShippingNoticeData?> CreateShippingNoticeAsync(string receipt, System.DateTimeOffset date, string carrier, bool fillOrder, string? item = null, string? tracking = null, string? comments = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 
@@ -4987,15 +4987,15 @@ namespace Ocelli.OpenClickBank
         /// Creates a shipping notice for the given transaction.
         /// </summary>
         /// <param name="receipt">Receipt ID</param>
-        /// <param name="date">The shipping date (yyyy-mm-dd).</param>
+        /// <param name="date">The shipping date (yyyy-mm-dd). This date cannot be earlier than the date of purchase or later than the current date. The date is calculated in Pacific Standard Time (PST). Thus, in order to use the current date, please ensure that it is also the current date according to PST.</param>
         /// <param name="carrier">The shipping carrier.</param>
-        /// <param name="tracking">The tracking id.</param>
-        /// <param name="comments">The TicketComments associated with the notice.</param>
-        /// <param name="item">The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.</param>
         /// <param name="fillOrder">Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated.</param>
+        /// <param name="item">The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.</param>
+        /// <param name="tracking">The tracking id.</param>
+        /// <param name="comments">The comments  associated with the notice.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ShippingNoticeData?> CreateShippingNoticeAsync(string receipt, System.DateTimeOffset date, string carrier, string tracking, string comments, string item, string fillOrder, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ShippingNoticeData?> CreateShippingNoticeAsync(string receipt, System.DateTimeOffset date, string carrier, bool fillOrder, string? item = null, string? tracking = null, string? comments = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -5006,15 +5006,6 @@ namespace Ocelli.OpenClickBank
             if (carrier == null)
                 throw new System.ArgumentNullException("carrier");
 
-            if (tracking == null)
-                throw new System.ArgumentNullException("tracking");
-
-            if (comments == null)
-                throw new System.ArgumentNullException("comments");
-
-            if (item == null)
-                throw new System.ArgumentNullException("item");
-
             if (fillOrder == null)
                 throw new System.ArgumentNullException("fillOrder");
 
@@ -5023,10 +5014,19 @@ namespace Ocelli.OpenClickBank
             urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
             urlBuilder_.Append(System.Uri.EscapeDataString("date") + "=").Append(System.Uri.EscapeDataString(date.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Append(System.Uri.EscapeDataString("carrier") + "=").Append(System.Uri.EscapeDataString(ConvertToString(carrier, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            urlBuilder_.Append(System.Uri.EscapeDataString("tracking") + "=").Append(System.Uri.EscapeDataString(ConvertToString(tracking, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            urlBuilder_.Append(System.Uri.EscapeDataString("comments") + "=").Append(System.Uri.EscapeDataString(ConvertToString(comments, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            urlBuilder_.Append(System.Uri.EscapeDataString("item") + "=").Append(System.Uri.EscapeDataString(ConvertToString(item, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Append(System.Uri.EscapeDataString("fillOrder") + "=").Append(System.Uri.EscapeDataString(ConvertToString(fillOrder, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            if (item != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("item") + "=").Append(System.Uri.EscapeDataString(ConvertToString(item, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (tracking != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("tracking") + "=").Append(System.Uri.EscapeDataString(ConvertToString(tracking, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (comments != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("comments") + "=").Append(System.Uri.EscapeDataString(ConvertToString(comments, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
             urlBuilder_.Length--;
 
             var client_ = _httpClient;

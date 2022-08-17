@@ -50,7 +50,7 @@ An important point to note is that this method will only return shippable orders
     [ProducesResponseType(typeof(ShippingNoticeData), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Returns the ship notices for the given transaction.")]
     public ActionResult GetShippingNotice(
-        [Required][SwaggerParameter(Description = "Receipt ID")] string receipt) => Ok();
+        [Required, SwaggerParameter(Description = "Receipt ID")] string receipt) => Ok();
 
     [HttpPost("shipnotice/{receipt}")]
     [Authorize]
@@ -60,10 +60,10 @@ An important point to note is that this method will only return shippable orders
     [SwaggerOperation(Summary = "Creates a shipping notice for the given transaction.")]
     public ActionResult CreateShippingNotice(
         [Required, SwaggerParameter(Description = "Receipt ID")] string receipt,
-        [Required, FromQuery, SwaggerParameter("The shipping date (yyyy-mm-dd).")] DateTime date,
+        [Required, FromQuery, SwaggerParameter("The shipping date (yyyy-mm-dd). This date cannot be earlier than the date of purchase or later than the current date. The date is calculated in Pacific Standard Time (PST). Thus, in order to use the current date, please ensure that it is also the current date according to PST.")] DateTime date,
         [Required, FromQuery, SwaggerParameter("The shipping carrier.")] string carrier,
-        [Required, FromQuery, SwaggerParameter("The tracking id.")] string? tracking,
-        [Required, FromQuery, SwaggerParameter("The TicketComments associated with the notice.")] string? comments,
-        [Required, FromQuery, SwaggerParameter("The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.")] string? item,
-        [Required, FromQuery, SwaggerParameter("Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated.")] string? fillOrder) => Ok();
+        [Required, FromQuery, SwaggerParameter("Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated.")] bool? fillOrder,
+        [FromQuery, SwaggerParameter("The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.")] string? item,
+        [FromQuery, SwaggerParameter("The tracking id.")] string? tracking,
+        [FromQuery, SwaggerParameter("The comments  associated with the notice.")] string? comments) => Ok();
 }
