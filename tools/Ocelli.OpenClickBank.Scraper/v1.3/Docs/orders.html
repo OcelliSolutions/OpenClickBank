@@ -1,0 +1,526 @@
+<html>
+	<head>
+		<style type="text/css">TD, TH{font-family: Arial; font-size: 10pt; }.ident{padding-left: 40pt;}</style>
+	</head>
+	<body>
+		<font face="Helvetica">
+			<center>
+				<h1>Orders Service Description</h1>
+			</center>
+		</font>
+		<table border="1" align="center" cellspacing="0" cellpadding="8">
+			<tbody>
+				<tr>
+					<td>The following methods are available at the servlet path
+						<b>/rest/1.3/orders</b>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>POST</b><b>/1.3/orders/{receipt}/reinstate</b>
+						<br>*BETA* Allows a vendor to restart a cancelled subscription<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;No Content</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">sku</td>
+											<td align="center">false</td>
+											<td>The item number of the subscription product that should be reinstated for the order</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>HAS_DEVELOPER_KEY, api_subscription_modifications</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>POST</b><b>/1.3/orders/{receipt}/pause</b>
+						<br>*BETA* Allows a vendor to change the rebill date of a subscription<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;No Content</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">restartDate</td>
+											<td align="center">true</td>
+											<td>The date when the subscription will be resumed in format yyyy-mm-dd</td>
+										</tr>
+										<tr>
+											<td align="center">sku</td>
+											<td align="center">false</td>
+											<td>The item number of the subscription product that should be reinstated for the order</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>HAS_DEVELOPER_KEY, api_subscription_modifications</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>POST</b><b>/1.3/orders/{receipt}/extend</b>
+						<br>*BETA* Allows a vendor to extend a subscription by a given number of rebill periods<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;No Content</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">numPeriods</td>
+											<td align="center">true</td>
+											<td>The number of periods to extend the subscription by</td>
+										</tr>
+										<tr>
+											<td align="center">sku</td>
+											<td align="center">false</td>
+											<td>sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>HAS_DEVELOPER_KEY, api_subscription_modifications</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>POST</b><b>/1.3/orders/{receipt}/changeProduct</b>
+						<br>*BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;No Content</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">oldSku</td>
+											<td align="center">true</td>
+											<td>The SKU of the current product for the subscription.</td>
+										</tr>
+										<tr>
+											<td align="center">newSku</td>
+											<td align="center">true</td>
+											<td>The SKU of the new product for the subscription.</td>
+										</tr>
+										<tr>
+											<td align="center">carryAffiliate</td>
+											<td align="center">false</td>
+											<td>Determines if the affiliate from the original transaction is carried over to the new subscription.</td>
+										</tr>
+										<tr>
+											<td align="center">applyProratedRefund</td>
+											<td align="center">false</td>
+											<td>Determines if the prorated refund should be applied on the product change. This parameter will default to TRUE if not explicitly set</td>
+										</tr>
+										<tr>
+											<td align="center">applyProratedRefund</td>
+											<td align="center">false</td>
+											<td>Determines if the prorated refund should be applied on the product change. This parameter will default to TRUE if not explicitly set</td>
+										</tr>
+										<tr>
+											<td align="center">nextRebillDate</td>
+											<td align="center">false</td>
+											<td>Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>HAS_DEVELOPER_KEY, api_order_write, api_subscription_modifications</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>POST</b><b>/1.3/orders/{receipt}/changeAddress</b>
+						<br>Allows a vendor to change shipping address of a physical recurring subscription.<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;No Content</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">firstName</td>
+											<td align="center">false</td>
+											<td>Updated customer first name.</td>
+										</tr>
+										<tr>
+											<td align="center">lastName</td>
+											<td align="center">false</td>
+											<td>Updated customer last name.</td>
+										</tr>
+										<tr>
+											<td align="center">address1</td>
+											<td align="center">true</td>
+											<td>Updated address (line 1).</td>
+										</tr>
+										<tr>
+											<td align="center">address2</td>
+											<td align="center">false</td>
+											<td>Updated address (line 2).</td>
+										</tr>
+										<tr>
+											<td align="center">city</td>
+											<td align="center">true</td>
+											<td>Updated city.</td>
+										</tr>
+										<tr>
+											<td align="center">county</td>
+											<td align="center">false</td>
+											<td>Updated county.</td>
+										</tr>
+										<tr>
+											<td align="center">province</td>
+											<td align="center">false</td>
+											<td>Updated state or province.</td>
+										</tr>
+										<tr>
+											<td align="center">countryCode</td>
+											<td align="center">true</td>
+											<td>Updated country code.</td>
+										</tr>
+										<tr>
+											<td align="center">postalCode</td>
+											<td align="center">false</td>
+											<td>Updated postal code or Zip.</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>HAS_DEVELOPER_KEY, api_order_write</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/orders/count</b>
+						<br>Same as the list command, except that this one returns the count of the orders returned based on the search criteria.
+						<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp;Count of matching orders</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">startDate</td>
+											<td align="center">false</td>
+											<td>The beginning date for the search (yyyy-mm-dd)</td>
+										</tr>
+										<tr>
+											<td align="center">endDate</td>
+											<td align="center">false</td>
+											<td>The end date for the search (yyyy-mm-dd)</td>
+										</tr>
+										<tr>
+											<td align="center">type</td>
+											<td align="center">false</td>
+											<td>The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND / TEST_FEE].
+												<br>If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</td>
+										</tr>
+										<tr>
+											<td align="center">vendor</td>
+											<td align="center">false</td>
+											<td>The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</td>
+										</tr>
+										<tr>
+											<td align="center">affiliate</td>
+											<td align="center">false</td>
+											<td>The affiliate name. Supports the word 'none' to search for transactions without affiliates, and wildcard searches using the '%' character. (Wilcards are converted to %25 after url encoding is done by the client)</td>
+										</tr>
+										<tr>
+											<td align="center">lastName</td>
+											<td align="center">false</td>
+											<td>Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</td>
+										</tr>
+										<tr>
+											<td align="center">email</td>
+											<td align="center">false</td>
+											<td>The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</td>
+										</tr>
+										<tr>
+											<td align="center">tid</td>
+											<td align="center">false</td>
+											<td>The TID (Tracking ID / Promo Code) to search on.  This will search both vendor and affiliate tracking codes and be returned in the promo field</td>
+										</tr>
+										<tr>
+											<td align="center">role</td>
+											<td align="center">false</td>
+											<td>Role account was of transaction options are [VENDOR, AFFILIATE]</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_order_read, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>HEAD</b><b>/1.3/orders/{receipt}</b>
+						<br>This head request is used to identify if a particular order or a subscription is active, i.e. it has not been refunded, chargebacked or cancelled. It will return a 403 (Forbidden) if that's the case, or a 204 if the order is still active. Note that it will also return a 403 if the order is not found, or the user does not have access to that receipt.<br>In addition, head request on a rebill transaction will return the status of that particular  rebill, not of the original transaction which may be different. It is advisable to use head requests only on the parent transactions.<p></p>
+						<div class="ident">
+							<b>Return Type:</b>&nbsp; -
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">sku</td>
+											<td align="center">false</td>
+											<td>sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json, text/csv</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_order_read, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/orders/list</b>
+						<br>List orders for the authenticated user scoped to the search criteria. Only the first 100 orders will be returned.&nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.<p>This method will return 200 if all the receipts have been obtained, or a 206 [Partial Return] if there are more results available.
+						</p>
+						<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/orders/schema">List of OrderDatas</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">startDate</td>
+											<td align="center">false</td>
+											<td>The beginning date for the search (yyyy-mm-dd).  If a startDate is specified, you must also specify an endDate.</td>
+										</tr>
+										<tr>
+											<td align="center">endDate</td>
+											<td align="center">false</td>
+											<td>The end date for the search (yyyy-mm-dd). If an endDate is specified, you must also specify a startDate.</td>
+										</tr>
+										<tr>
+											<td align="center">type</td>
+											<td align="center">false</td>
+											<td>The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE].
+												<br>If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</td>
+										</tr>
+										<tr>
+											<td align="center">vendor</td>
+											<td align="center">false</td>
+											<td>The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</td>
+										</tr>
+										<tr>
+											<td align="center">affiliate</td>
+											<td align="center">false</td>
+											<td>The affiliate name. Supports the word 'none' to search for transactions without affiliates, and wildcard searches using the '%' character. (Wilcards are converted to %25 after url encoding is done by the client)</td>
+										</tr>
+										<tr>
+											<td align="center">lastName</td>
+											<td align="center">false</td>
+											<td>Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</td>
+										</tr>
+										<tr>
+											<td align="center">item</td>
+											<td align="center">false</td>
+											<td>The item number of the order</td>
+										</tr>
+										<tr>
+											<td align="center">email</td>
+											<td align="center">false</td>
+											<td>The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</td>
+										</tr>
+										<tr>
+											<td align="center">tid</td>
+											<td align="center">false</td>
+											<td>The TID (Tracking ID / Promo Code) to search on.  This will search both vendor and affiliate tracking codes and be returned in the promo field</td>
+										</tr>
+										<tr>
+											<td align="center">role</td>
+											<td align="center">false</td>
+											<td>Role account was of transaction options are [VENDOR, AFFILIATE]</td>
+										</tr>
+										<tr>
+											<td align="center">postalCode</td>
+											<td align="center">false</td>
+											<td>Customer's zip or postal code. Supports wildcard searches.</td>
+										</tr>
+										<tr>
+											<td align="center">amount</td>
+											<td align="center">false</td>
+											<td>The transaction total amount</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json, text/csv</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_order_read, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/orders/{receipt}</b>
+						<br>Returns a list of order detail objects which match the given receipt.<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/orders/schema">List of OrderDatas</a>
+						</div>
+						<p></p>
+						<div class="ident">
+							<b>Request Parameters :</b>
+							<p>
+								<table border="1" cellspacing="0" cellpadding="2">
+									<tbody>
+										<tr>
+											<th>Name</th>
+											<th>Required</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td align="center">sku</td>
+											<td align="center">false</td>
+											<td>sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</td>
+										</tr>
+									</tbody>
+								</table>
+							</p>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json, text/csv</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_order_read, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/orders/{receipt}/upsells</b>
+						<br>Returns all the upsell transactions for the given parent upsell transaction.
+						<br>If the transaction does not exist, or the user does not have access to the transaction, or if there are no upsells for this transaction, a status code of 403 (No Content) will be returned.<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/orders/schema">List of OrderDatas</a>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml, application/json, text/csv</p>
+						<p class="ident">
+							<b>Required Roles :
+							</b>api_order_read, HAS_DEVELOPER_KEY</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>GET</b><b>/1.3/orders/schema</b>
+						<br>Returns the XML Schema that describes the format of the retrieved data when the Orders Service API calls are made.<p></p>
+						<div class="ident">
+							<b>Return Type:</b><a href="/api/rest/1.3/orders/schema">XML Schema of OrderData object.</a>
+						</div>
+						<p></p>
+						<p class="ident">
+							<b>Supported Output Types :
+							</b>application/xml</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cb="http://www.clickbank.com/api">
+
+  <xs:element name="orderShipData" type="orderShipData"/>
+
+  <xs:complexType name="orderShipData">
+    <xs:sequence>
+      <xs:element name="receipt" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="firstname" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="lastname" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="addr1" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="addr2" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="city" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="state" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="country" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="zip" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="orderDate" type="xs:dateTime" nillable="true" minOccurs="0"/>
+      <xs:element name="isRefundPending" type="xs:boolean" nillable="true" minOccurs="0"/>
+      <xs:element name="hasBeenRefunded" type="xs:boolean" nillable="true" minOccurs="0"/>
+      <xs:element name="hasBeenChargebacked" type="xs:boolean" nillable="true" minOccurs="0"/>
+      <xs:element name="isTestTransaction" type="xs:boolean" nillable="true" minOccurs="0"/>
+      <xs:element name="displayName" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="productNo" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="orderDetails" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="site" type="xs:string" nillable="true" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

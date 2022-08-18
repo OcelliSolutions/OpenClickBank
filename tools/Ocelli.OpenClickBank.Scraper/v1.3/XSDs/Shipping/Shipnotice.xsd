@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cb="http://www.clickbank.com/api">
+
+  <xs:element name="shippingNoticeData" type="shippingNoticeData"/>
+
+  <xs:complexType name="shippingNoticeData">
+    <xs:sequence>
+      <xs:element name="shipDate" type="xs:dateTime" nillable="true" minOccurs="0"/>
+      <xs:element name="carrier" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="trackingId" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="shippedTo" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="comments" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="receipt" type="xs:string" nillable="true" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

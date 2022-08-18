@@ -2,6 +2,18 @@
 
 This is a project designed to provide developers with an easy to use and accurate OpenAPI specification for the [ClickBank APIs](https://support.clickbank.com/hc/en-us/sections/206287868-ClickBank-APIs). All endpoints, command and descriptions are faithfully ported into the specification. This allows developers to use client code generators to seamlessly consume the API into whatever language they happen to use. This also creates a NuGet package to aid .NET developers with the consumption of the API.
 
+## Usage
+
+* First, register the ClickBankService using dependency injection.
+  * if there are multiple credentials" `services.AddScoped<IClickBankService, ClickBankService>();`
+  * if there is only one set of credentials: `services.AddScoped<IClickBankService>(svc => new ClickBankService(new OpenClickBankConfig("", "")));`
+* Inject the service into a class.
+* Update the configuration if it was not assigned in the injection configuration (if required).
+  * `_clickBankService.OpenClickBankConfig = new OpenClickBankConfig(devKey, clerkKey);`
+* Under the main service is every *current* version of each endpoint. For example:
+  * Get the debug string: `_clickBankService.Debugs.GetDebugAsync(cancellationToken);`
+  * Notice that the API section references `Shipping`, this is pointed to the most current version of `shipping2` and will be updated to `shipping3` once production ready. `_clickBankService.Shipping.GetShippingNoticeAsync(receipt, cancellationToken)`
+
 ## Developer Notes
 
 As a developer working with this spec, there are some considerations that are not fully documented in the source.
