@@ -922,7 +922,7 @@ paths:
           in: query
           description: 'The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.'
           schema:
-            $ref: '#/components/schemas/OrderType'
+            $ref: '#/components/schemas/TransactionType'
         - name: vendor
           in: query
           description: The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)
@@ -1005,7 +1005,7 @@ paths:
           in: query
           description: 'The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.'
           schema:
-            $ref: '#/components/schemas/OrderType'
+            $ref: '#/components/schemas/TransactionType'
         - name: vendor
           in: query
           description: The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)
@@ -1890,7 +1890,7 @@ paths:
           description: 'The type of the ticket. Must be either ''rfnd'', ''cncl'' or ''tech''. For ''rfnd'' the parameter refundType must also be specified. If the receipt is for a non-recurring product, either ''rfnd'' or ''cncl'' will automatically refund that sale. For any receipt of a recurring product, a ''rfnd'' will refund that receipt AND cancel any future billing, while a ''cncl'' will only cancel future billing without issuing any refunds.'
           required: true
           schema:
-            $ref: '#/components/schemas/QueryTicketType'
+            $ref: '#/components/schemas/TicketTypeRequest'
         - name: comment
           in: query
           description: The comments associated with creating a ticket.
@@ -1901,7 +1901,7 @@ paths:
           description: "The reason associated with the ticket. A ticket reason should be one of the following based on type:\r\nCNCL\r\nticket.type.cancel.1 (I did not receive additional value for the recurring payments).\r\nticket.type.cancel.2 (I was not satisfied with the subscription / Subscription did not meet expectations)\r\nticket.type.cancel.3 (I was unable to get support from the vendor)\r\nticket.type.cancel.4 (Product was not compatible with my computer)\r\nticket.type.cancel.5 (I am unable to afford continuing payments for this subscription)\r\nticket.type.cancel.6 (I did not realize that I accepted the terms for continuing payments)\r\nticket.type.cancel.7 (Other)\r\nticket.type.cancel.not.mobile (Product was not compatible with my mobile device.)\r\nRFND\r\nticket.type.refund.1 (I never received my product)\r\nticket.type.refund.2 (I was not satisfied with the product. / Product did not meet expectations)\r\nticket.type.refund.3 (Product was not compatible with my computer)\r\nticket.type.refund.4 (I was unable to get technical support)\r\nticket.type.refund.5 (I did not authorize the purchase)\r\nticket.type.refund.6 (I do not recognize the purchase)\r\nticket.type.refund.7 (Duplicate purchase. / Or already purchased product previously)\r\nticket.type.refund.returned (Product returned)\r\nticket.type.refund.8 (Other)\r\nticket.type.refund.not.mobile (Product was not compatible with my mobile device.)\r\nTECH\r\nticket.type.tech_support.1 (I am unable to log in.)\r\nticket.type.tech_support.2 (I had problems downloading the product.)\r\nticket.type.tech_support.3 (I never received a valid registration code, please send a valid code.)\r\nticket.type.tech_support.4 (I can't get the product to work.)\r\nticket.type.tech_support.9 (Other)\r\nticket.type.tech_support.10 (I never received my product.)"
           required: true
           schema:
-            type: string
+            $ref: '#/components/schemas/TicketReasonRequest'
         - name: refundType
           in: query
           description: 'The type of refund. Supported values include ''FULL'', ''PARTIAL_PERCENT'', ''PARTIAL_AMOUNT'' (case sensitive). For ''PARTIAL_PERCENT'' and ''PARTIAL_AMOUNT'' the parameter refundAmount must be specified. Additionally the vendor associated with the transaction must be enabled for partial refunds in order to use both ''PARTIAL_PERCENT'' and ''PARTIAL_AMOUNT'', if vendor is not enabled and one of the partial options is specified a 403 will be returned.'
@@ -1944,11 +1944,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: sku
-          in: query
-          description: line item sku/itemNo.
-          schema:
-            type: string
         - name: refundType
           in: query
           description: 'The type of refund. Supported values include ''FULL'', ''PARTIAL_PERCENT'', ''PARTIAL_AMOUNT'' (case sensitive). For ''PARTIAL_PERCENT'' and ''PARTIAL_AMOUNT'' the parameter refundAmount must be specified. Additionally the vendor associated with the transaction must be enabled for partial refunds in order to use both ''PARTIAL_PERCENT'' and ''PARTIAL_AMOUNT'', if vendor is not enabled and one of the partial options is specified a 403 will be returned.'
@@ -1961,6 +1956,11 @@ paths:
           schema:
             type: number
             format: double
+        - name: sku
+          in: query
+          description: line item sku/itemNo.
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -2028,7 +2028,7 @@ paths:
           in: query
           description: 'If changing the type of the ticket, this will be one of rfnd, cncl, or tech. Note: Partial refunds are not allowed when changing to a rfnd ticket type. Tickets changed to rfnd will be full refunds.'
           schema:
-            $ref: '#/components/schemas/QueryTicketType'
+            $ref: '#/components/schemas/TicketTypeRequest'
       responses:
         '200':
           description: Success
@@ -2082,7 +2082,7 @@ paths:
           in: query
           description: The type of the ticket. Must be either 'rfnd' / 'cncl' or 'tech'.
           schema:
-            $ref: '#/components/schemas/QueryTicketType'
+            $ref: '#/components/schemas/TicketTypeRequest'
         - name: status
           in: query
           description: 'The status of the ticket. Can be ''open'', ''reopened'' or ''closed''.'
@@ -2175,7 +2175,7 @@ paths:
           in: query
           description: The type of the ticket. Must be either 'rfnd' / 'cncl' or 'tech'.
           schema:
-            $ref: '#/components/schemas/QueryTicketType'
+            $ref: '#/components/schemas/TicketTypeRequest'
         - name: status
           in: query
           description: 'The status of the ticket. Can be ''open'', ''reopened'' or ''closed''.'
@@ -2226,14 +2226,12 @@ components:
       nullable: true
     ActiveStatus:
       enum:
-        - nil
         - ACTIVE
         - INACTIVE
       type: string
       additionalProperties: { }
     AnalyticAttribute:
       enum:
-        - nil
         - DIMENSION_VALUE
         - HOP_COUNT
         - ORDER_IMPRESSION
@@ -2366,7 +2364,6 @@ components:
       additionalProperties: { }
     ContractStatus:
       enum:
-        - nil
         - PENDING_START
         - PENDING_APPROVAL
         - ACTIVE
@@ -2411,7 +2408,6 @@ components:
       additionalProperties: { }
     Dimension:
       enum:
-        - nil
         - AFFILIATE
         - CUSTOMER_CURRENCY
         - CUSTOMER_COUNTRY
@@ -2426,7 +2422,6 @@ components:
       additionalProperties: { }
     DimensionColumn:
       enum:
-        - nil
         - CHARGEBACK_AMOUNT
         - CHARGEBACK_COUNT
         - CHARGEBACK_RATE
@@ -2506,7 +2501,6 @@ components:
       nullable: true
     ImageType:
       enum:
-        - nil
         - PRODUCT
         - BANNER
         - BANNER_CLASSIC
@@ -2519,7 +2513,6 @@ components:
       additionalProperties: { }
     Language:
       enum:
-        - nil
         - DE
         - EN
         - ES
@@ -2554,8 +2547,7 @@ components:
           format: int32
           nullable: true
         lineItemType:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/LineItemType'
         rebillAmount:
           type: number
           format: double
@@ -2575,11 +2567,28 @@ components:
           format: date-time
           nullable: true
         status:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/LineItemStatus'
         role:
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/OrderRole'
+      additionalProperties: { }
+    LineItemStatus:
+      enum:
+        - ACTIVE
+        - AUTHORIZATION_FAILURE
+        - CANCELED
+        - COMPLETED
+        - VALIDATION_FAILURE
+      type: string
+      additionalProperties: { }
+    LineItemType:
+      enum:
+        - ORIGINAL
+        - BUMP
+        - CART
+        - STANDARD
+        - TOKEN
+        - UPSELL
+      type: string
       additionalProperties: { }
     OrderData:
       type: object
@@ -2599,7 +2608,7 @@ components:
         paytmentMethod:
           $ref: '#/components/schemas/PaymentMethod'
         transactionType:
-          $ref: '#/components/schemas/OrderType'
+          $ref: '#/components/schemas/TransactionType'
         totalOrderAmount:
           type: number
           format: double
@@ -2647,7 +2656,7 @@ components:
             $ref: '#/components/schemas/ContactField'
           nullable: true
         role:
-          $ref: '#/components/schemas/RoleAccount'
+          $ref: '#/components/schemas/OrderRole'
         fullName:
           type: string
           nullable: true
@@ -2671,6 +2680,14 @@ components:
           nullable: true
       additionalProperties: { }
       nullable: true
+    OrderRole:
+      enum:
+        - VENDOR
+        - AFFILIATE
+        - JV_TRADITIONAL
+        - JV_UPSELL
+      type: string
+      additionalProperties: { }
     OrderShipData:
       type: object
       properties:
@@ -2761,29 +2778,30 @@ components:
           type: boolean
           nullable: true
       additionalProperties: { }
-    OrderType:
-      enum:
-        - nil
-        - SALE
-        - RFND
-        - CGBK
-        - FEE
-        - BILL
-        - TEST_SALE
-        - TEST_BILL
-        - TEST_RFND
-        - TEST_FEE
-      type: string
-      additionalProperties: { }
     PartialRefundData:
       type: object
+      properties:
+        usdAmount:
+          type: number
+          format: double
+        customerAmount:
+          type: number
+          format: double
+        customerCurrency:
+          type: string
+          nullable: true
+        productAmount:
+          type: number
+          format: double
+        productCurrency:
+          type: string
+          nullable: true
       additionalProperties: { }
       nullable: true
     PaymentMethod:
       enum:
-        - nil
         - PYPL
-        - PYPL_NEW
+        - PYPL-NEW
         - VISA
         - MSTR
         - DISC
@@ -2987,7 +3005,6 @@ components:
       additionalProperties: { }
     ProductCategory:
       enum:
-        - nil
         - EBOOK
         - SOFTWARE
         - GAMES
@@ -3030,7 +3047,6 @@ components:
       nullable: true
     ProductType:
       enum:
-        - nil
         - STANDARD
         - RECURRING
       type: string
@@ -3043,14 +3059,6 @@ components:
           items:
             $ref: '#/components/schemas/Product'
           nullable: true
-      additionalProperties: { }
-    QueryTicketType:
-      enum:
-        - nil
-        - rfnd
-        - cncl
-        - tech
-      type: string
       additionalProperties: { }
     QuickStatsData:
       type: object
@@ -3076,7 +3084,6 @@ components:
       additionalProperties: { }
     RecurringFrequency:
       enum:
-        - nil
         - WEEKLY
         - BI_WEEKLY
         - MONTHLY
@@ -3121,7 +3128,6 @@ components:
       additionalProperties: { }
     RefundType:
       enum:
-        - nil
         - FULL
         - PARTIAL_PERCENT
         - PARTIAL_AMOUNT
@@ -3131,7 +3137,6 @@ components:
       additionalProperties: { }
     RefundableState:
       enum:
-        - nil
         - REFUNDABLE
         - SUGGESTED_REFUND_BLOCK
         - UNREFUNDABLE
@@ -3145,7 +3150,6 @@ components:
       additionalProperties: { }
     RevRec:
       enum:
-        - nil
         - LD
         - VD
         - LM
@@ -3157,7 +3161,6 @@ components:
       additionalProperties: { }
     Role:
       enum:
-        - nil
         - VENDOR
         - CUSTOMER
         - CBCSR
@@ -3167,7 +3170,6 @@ components:
       additionalProperties: { }
     RoleAccount:
       enum:
-        - nil
         - VENDOR
         - AFFILIATE
       type: string
@@ -3222,7 +3224,6 @@ components:
       nullable: true
     ShippingStatus:
       enum:
-        - nil
         - shipped
         - notshipped
         - all
@@ -3230,7 +3231,6 @@ components:
       additionalProperties: { }
     SortDirection:
       enum:
-        - nil
         - ASC
         - DESC
       type: string
@@ -3253,7 +3253,6 @@ components:
       nullable: true
     SubscriptionDetailRowOrderBy:
       enum:
-        - nil
         - RECEIPT
         - PURCHASE_DATE
         - SUB_END_DATE
@@ -3492,7 +3491,6 @@ components:
       additionalProperties: { }
     SubscriptionStatus:
       enum:
-        - nil
         - ACTIVE
         - COMPLETED
         - CANCELED
@@ -3521,7 +3519,6 @@ components:
       additionalProperties: { }
     SummaryType:
       enum:
-        - nil
         - VENDOR_ONLY
         - AFFILIATE_ONLY
       type: string
@@ -3538,7 +3535,6 @@ components:
       additionalProperties: { }
     TicketAction:
       enum:
-        - nil
         - change
         - close
         - reopen
@@ -3546,7 +3542,6 @@ components:
       additionalProperties: { }
     TicketActionType:
       enum:
-        - nil
         - ASSIGNED
         - COMMENTED
         - CHANGED
@@ -3670,9 +3665,36 @@ components:
           nullable: true
       additionalProperties: { }
       nullable: true
+    TicketReasonRequest:
+      enum:
+        - ticket.type.cancel.1
+        - ticket.type.cancel.2
+        - ticket.type.cancel.3
+        - ticket.type.cancel.4
+        - ticket.type.cancel.5
+        - ticket.type.cancel.6
+        - ticket.type.cancel.7
+        - ticket.type.cancel.not.mobile
+        - ticket.type.refund.1
+        - ticket.type.refund.2
+        - ticket.type.refund.3
+        - ticket.type.refund.4
+        - ticket.type.refund.5
+        - ticket.type.refund.6
+        - ticket.type.refund.7
+        - ticket.type.refund.8
+        - ticket.type.refund.returned
+        - ticket.type.refund.not.mobile
+        - ticket.type.tech_support.1
+        - ticket.type.tech_support.2
+        - ticket.type.tech_support.3
+        - ticket.type.tech_support.4
+        - ticket.type.tech_support.9
+        - ticket.type.tech_support.10
+      type: string
+      additionalProperties: { }
     TicketSource:
       enum:
-        - nil
         - API
         - CUSTOMER_WAM
         - UNKNOWN
@@ -3707,7 +3729,6 @@ components:
       additionalProperties: { }
     TicketStatus:
       enum:
-        - nil
         - OPEN
         - REOPENED
         - CLOSED
@@ -3715,7 +3736,6 @@ components:
       additionalProperties: { }
     TicketType:
       enum:
-        - nil
         - TECH_SUPPORT
         - REFUND
         - CANCEL
@@ -3725,6 +3745,7 @@ components:
         - APPROVAL_IMAGE
         - APPROVAL_UPSELL
         - APPROVAL_CATEGORY_CHANGE
+        - APPROVAL_BLOG_POST
         - APPROVAL_PRODUCT
         - APPROVAL_ADVANCED_UPSELL
         - APPROVAL_CSS_ORDERFORM
@@ -3739,6 +3760,13 @@ components:
         - SECURITY_CONCERN
       type: string
       additionalProperties: { }
+    TicketTypeRequest:
+      enum:
+        - rfnd
+        - cncl
+        - tech
+      type: string
+      additionalProperties: { }
     Totals:
       type: object
       properties:
@@ -3747,6 +3775,19 @@ components:
           items:
             $ref: '#/components/schemas/AnalyticsValue'
           nullable: true
+      additionalProperties: { }
+    TransactionType:
+      enum:
+        - SALE
+        - RFND
+        - CGBK
+        - FEE
+        - BILL
+        - TEST_SALE
+        - TEST_BILL
+        - TEST_RFND
+        - TEST_FEE
+      type: string
       additionalProperties: { }
     VendorVariableElement:
       type: object

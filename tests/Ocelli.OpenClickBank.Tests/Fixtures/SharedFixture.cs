@@ -14,10 +14,15 @@ public class SharedFixture : IDisposable
     {
         try
         {
-            var apiKeyJson = File.ReadAllText("api_key.json");
+            var fs = new FileStream(@"api_key.json", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            var sr = new StreamReader(fs);
+            var apiKeyJson = sr.ReadToEnd();
+            sr.Close();
             Debug.Assert(!string.IsNullOrWhiteSpace(apiKeyJson), "Please create a `api_key.json` file");
 
             var settings = JsonSerializer.Deserialize<OpenClickBankConfig>(apiKeyJson) ?? new OpenClickBankConfig();
+            var apiKeyParsed = JsonDocument.Parse(apiKeyJson);
+            Receipt = apiKeyParsed.RootElement.GetProperty("receipt").ToString();
 
             ApiKey = new ApiKey(settings);
             Debug.Assert(ApiKey != null, "Please specify your api key in `api_key.json` before testing");
@@ -45,6 +50,7 @@ public class SharedFixture : IDisposable
     }
 
     public ApiKey ApiKey { get; set; } = new(new OpenClickBankConfig());
+    internal string Receipt { get; set; }
     internal HttpClient BadRequestMockHttpClient { get; set; }
     internal HttpClient OkEmptyMockHttpClient { get; set; }
     internal HttpClient OkInvalidJsonMockHttpClient { get; set; }

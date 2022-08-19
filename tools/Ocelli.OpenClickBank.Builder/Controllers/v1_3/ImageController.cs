@@ -15,7 +15,7 @@ public class ImageController : ControllerBase
     [HttpGet("list")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiProductsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_PRODUCTS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(ImageListResult), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ImageListResult), StatusCodes.Status206PartialContent)]
     [SwaggerOperation(Summary = @"Lists images associated with a site.")]

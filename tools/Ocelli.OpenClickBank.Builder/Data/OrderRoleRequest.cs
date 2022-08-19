@@ -2,7 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
-public enum RoleAccount
+public enum OrderRoleRequest
 {
     [EnumMember(Value = "VENDOR")] VENDOR,
     [EnumMember(Value = "AFFILIATE")] AFFILIATE

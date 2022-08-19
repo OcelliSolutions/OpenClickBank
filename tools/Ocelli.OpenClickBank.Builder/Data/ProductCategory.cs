@@ -1,12 +1,13 @@
-﻿namespace Ocelli.OpenClickBank.Builder.Data;
+﻿using System.Runtime.Serialization;
+
+namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum ProductCategory
 {
-    nil,
-    EBOOK,
-    SOFTWARE,
-    GAMES,
-    AUDIO,
-    VIDEO,
-    MEMBER_SITE
+    [EnumMember(Value = "EBOOK")] EBOOK,
+    [EnumMember(Value = "SOFTWARE")] SOFTWARE,
+    [EnumMember(Value = "GAMES")] GAMES,
+    [EnumMember(Value = "AUDIO")] AUDIO,
+    [EnumMember(Value = "VIDEO")] VIDEO,
+    [EnumMember(Value = "MEMBER_SITE")] MEMBER_SITE
 }

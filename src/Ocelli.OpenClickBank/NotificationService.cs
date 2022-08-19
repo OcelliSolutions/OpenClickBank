@@ -37,7 +37,7 @@ public class NotificationService : INotificationService
 
         var options = new JsonSerializerOptions();
         options.PropertyNameCaseInsensitive = true;
-        options.Converters.Add(new EnumConverter<TransactionType>());
+        options.Converters.Add(new EnumConverter<NotificationTransactionType>());
         options.Converters.Add(new EnumConverter<NotificationRole>());
         options.Converters.Add(new EnumConverter<PaymentMethod>());
         options.Converters.Add(new EnumConverter<LineItemType>());

@@ -26,11 +26,13 @@ public class NotificationTests : IClassFixture<SharedFixture>
     {
         var notification = Fixture.ApiKey.ClickBankService.Notifications.DecryptNotification(Encrypted, SecretKey, InitVector);
         Assert.NotNull(notification);
+        _additionalPropertiesHelper.CheckAdditionalProperties(notification,
+            Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         if (notification == null) return;
 
         Assert.Equal(DateTimeOffset.Parse("2022-08-10 16:20:15 -07:00"), notification.TransactionTime);
         Assert.Equal("********", notification.Receipt);
-        Assert.Equal(TransactionType.TEST, notification.TransactionType);
+        Assert.Equal(NotificationTransactionType.TEST, notification.TransactionType);
         Assert.Equal("ketoboost1", notification.Vendor);
         Assert.Equal(NotificationRole.VENDOR, notification.Role);
         Assert.Equal((decimal)1.0, notification.TotalAccountAmount);

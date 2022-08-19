@@ -46,11 +46,11 @@ builder.Services.AddSwaggerGen(c =>
     c.DocumentFilter<AdditionalPropertiesDocumentFilter>();
     //c.DocumentFilter<AdditionalSchemasDocumentFilter>();
     c.SchemaFilter<DateTimeSchemaFilter>();
+    c.SchemaFilter<DescribeEnumMemberValuesFilter>();
     c.OperationFilter<AuthorizationOperationFilter>();
     c.OperationFilter<NullableOperationFilter>();
     //c.UseAllOfForInheritance();
     //c.UseOneOfForPolymorphism();
-
 
     c.SelectSubTypesUsing(baseType =>
     {

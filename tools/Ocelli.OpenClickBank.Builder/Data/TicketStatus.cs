@@ -1,9 +1,10 @@
-﻿namespace Ocelli.OpenClickBank.Builder.Data;
+﻿using System.Runtime.Serialization;
+
+namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum TicketStatus
 {
-    nil,
-    OPEN,
-    REOPENED,
-    CLOSED
+    [EnumMember(Value = "OPEN")] OPEN,
+    [EnumMember(Value = "REOPENED")] REOPENED,
+    [EnumMember(Value = "CLOSED")] CLOSED
 }

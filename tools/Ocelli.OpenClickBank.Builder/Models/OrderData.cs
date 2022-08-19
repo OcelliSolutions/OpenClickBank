@@ -10,7 +10,7 @@ public class OrderData
     public string? TrackingId { get; set; }
     [JsonPropertyName("paytmentMethod")] 
     public PaymentMethod PaymentMethod { get; set; }
-    public OrderType? TransactionType { get; set; }
+    public TransactionType? TransactionType { get; set; }
     public decimal? TotalOrderAmount { get; set; }
     public decimal? TotalShippingAmount { get; set; }
     public decimal? TotalTaxAmount { get; set; }
@@ -25,7 +25,7 @@ public class OrderData
     public string? Email { get; set; }
     public string? PostalCode { get; set; }
     public ContactField[]? CustomerContactInfo { get; set; }
-    public RoleAccount? Role { get; set; }
+    public OrderRole? Role { get; set; }
     public string? FullName { get; set; }
     public RefundableState? CustomerRefundableState { get; set; }
     public VendorVariableElementArray? VendorVariables { get; set; }

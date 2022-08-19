@@ -16,7 +16,7 @@ public class Shipping2Controller : ControllerBase
     [HttpGet("list")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiOrderRead, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(ShippingList), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ShippingList), StatusCodes.Status206PartialContent)]
     [SwaggerOperation(Summary = @"List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned. This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
@@ -32,7 +32,7 @@ This method will return 200 if all the orders have been obtained, or a 206 [Part
     [HttpGet("count")]
     [Authorize]
     [Produces("application/json", "application/xml")] //This is not a typo, passing in `plain/text` causes an 406 error.
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiOrderRead, ApiPermission.HasDeveloperKey})]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY})]
     [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = @"Returns a count of physical goods orders matching the shipping criteria.
 An important point to note is that this method will only return shippable orders matching search criteria, so if a user wants to get all orders, they will need to use the Orders Service API.")]
@@ -46,7 +46,7 @@ An important point to note is that this method will only return shippable orders
     [HttpGet("shipnotice/{receipt}")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiOrderRead, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(ShippingNoticeData), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Returns the ship notices for the given transaction.")]
     public ActionResult GetShippingNotice(
@@ -55,7 +55,7 @@ An important point to note is that this method will only return shippable orders
     [HttpPost("shipnotice/{receipt}")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiOrderRead, ApiPermission.ApiOrderWrite, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.API_ORDER_WRITE, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(ShippingNoticeData), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Creates a shipping notice for the given transaction.")]
     public ActionResult CreateShippingNotice(

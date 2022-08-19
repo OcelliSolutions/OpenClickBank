@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using System.Runtime.Serialization;
 
 namespace Ocelli.OpenClickBank.Builder.Extensions;
 
@@ -14,8 +15,8 @@ public static class EnumExtensions
         enumValue.GetType()
             .GetMember(enumValue.ToString())
             .First()
-            .GetCustomAttribute<DisplayAttribute>()?
-            .GetName();
+            .GetCustomAttribute<EnumMemberAttribute>()?
+            .Value;
 
     /// <summary>
     /// Return an Enum of the specified type for a given string value.

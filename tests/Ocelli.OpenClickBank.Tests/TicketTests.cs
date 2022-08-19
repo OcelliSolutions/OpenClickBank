@@ -27,11 +27,10 @@ public class TicketTests : IClassFixture<SharedFixture>
     [TestPriority(10)]
     public async Task CreateTicketAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        var receipt = string.Empty;
-        Skip.If(string.IsNullOrWhiteSpace(receipt), "A receipt was not provided");
+        Skip.If(string.IsNullOrWhiteSpace(Fixture.Receipt), "A receipt was not provided");
 
         var response =
-            await Fixture.ApiKey.ClickBankService.Tickets.CreateTicketAsync(receipt, QueryTicketType.Tech, "Sample");
+            await Fixture.ApiKey.ClickBankService.Tickets.CreateTicketAsync(Fixture.Receipt, TicketTypeRequest.RFND, TicketReasonRequest.TICKET_TYPE_REFUND_8, refundType: RefundType.FULL);
         _additionalPropertiesHelper.CheckAdditionalProperties(response,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         Skip.If(response == null, "WARN: No data returned. Could not test");
@@ -71,13 +70,12 @@ public class TicketTests : IClassFixture<SharedFixture>
     }
 
     //TODO: The required parameter of `receipt` is not available.
-    [Fact(Skip = "TODO: The required parameter of `receipt` is not available.")]
+    [SkippableFact]
     [TestPriority(11)]
     public async Task GetTicketRefundAmountsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        var receipt = string.Empty;
         var ticketList =
-            await Fixture.ApiKey.ClickBankService.Tickets.GetTicketRefundAmountsAsync(receipt, RefundType.FULL);
+            await Fixture.ApiKey.ClickBankService.Tickets.GetTicketRefundAmountsAsync(Fixture.Receipt, RefundType.PARTIAL_PERCENT, 10);
         _additionalPropertiesHelper.CheckAdditionalProperties(ticketList,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         //Skip.If(ticketList.TicketData == null, "WARN: No data returned. Could not test");
@@ -88,9 +86,10 @@ public class TicketTests : IClassFixture<SharedFixture>
     [TestPriority(20)]
     public async Task UpdateTicketAsync_ResultsReturned_ShouldPass()
     {
-        //TODO: figure out where this id comes from
-        var id = 0;
-        var response = await Fixture.ApiKey.ClickBankService.Tickets.UpdateTicketAsync(id, TicketAction.Close, "Sample", QueryTicketType.Cncl, cancellationToken: CancellationToken.None);
+        var ticketList =
+            await Fixture.ApiKey.ClickBankService.Tickets.GetTicketsAsync();
+        var id = ticketList?.TicketData?.First()?.TicketId ?? 0;
+        var response = await Fixture.ApiKey.ClickBankService.Tickets.UpdateTicketAsync(id, TicketAction.CLOSE, "Sample", TicketTypeRequest.CNCL, cancellationToken: CancellationToken.None);
         _additionalPropertiesHelper.CheckAdditionalProperties(response,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
     }
@@ -99,8 +98,10 @@ public class TicketTests : IClassFixture<SharedFixture>
     [TestPriority(30)]
     public async Task AcceptReturnFromCustomerAsync_ResultsReturned_ShouldPass()
     {
-        //TODO: figure out where this id comes from
-        var id = 0;
+        var ticketList =
+            await Fixture.ApiKey.ClickBankService.Tickets.GetTicketsAsync();
+        var id = ticketList?.TicketData?.FirstOrDefault(t => t.Type == TicketType.REFUND)?.TicketId ?? 0;
+        Skip.If(id == 0, "No testable tickets");
         var response = await Fixture.ApiKey.ClickBankService.Tickets.AcceptReturnFromCustomerAsync(id);
         _additionalPropertiesHelper.CheckAdditionalProperties(response,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);

@@ -1,8 +1,11 @@
-﻿namespace Ocelli.OpenClickBank.Builder.Data;
+﻿using System.Runtime.Serialization;
+
+namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum ActiveStatus
 {
-    nil,
+    [EnumMember(Value = "ACTIVE")]
     ACTIVE,
+    [EnumMember(Value = "INACTIVE")]
     INACTIVE
 }

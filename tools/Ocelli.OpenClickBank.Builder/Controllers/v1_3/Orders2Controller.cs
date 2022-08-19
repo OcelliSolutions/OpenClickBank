@@ -16,7 +16,7 @@ public class Orders2Controller : ControllerBase
     [HttpGet("{receipt}")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiOrderRead, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(OrderList), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Returns a list of order detail objects which match the given receipt.")]
     public ActionResult GetOrder(
@@ -26,7 +26,7 @@ public class Orders2Controller : ControllerBase
     [HttpGet("{receipt}/upsells")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiOrderRead, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(OrderList), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [SwaggerOperation(Summary = @"Returns all the upsell transactions for the given parent upsell transaction.
@@ -37,7 +37,7 @@ If the transaction does not exist, or the user does not have access to the trans
     [HttpGet("count")]
     [Authorize]
     [Produces("text/plain")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiOrderRead, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Same as the list command, except that this one returns the count of the orders returned based on the search criteria.")]
     public ActionResult GetOrderCount(
@@ -49,13 +49,13 @@ If the transaction does not exist, or the user does not have access to the trans
         [FromQuery, SwaggerParameter(Description = "The beginning date for the search (yyyy-mm-dd).")] DateTime? startDate,
         [FromQuery, SwaggerParameter(Description = "The end date for the search (yyyy-mm-dd).")] DateTime? endDate,
         [FromQuery, SwaggerParameter(Description = "The TID (Tracking ID / Promo Code) to search on. This will search both vendor and affiliate tracking codes and be returned in the promo field.")] string? tid,
-        [FromQuery, SwaggerParameter(Description = "The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.")] OrderType? type,
+        [FromQuery, SwaggerParameter(Description = "The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.")] TransactionType? type,
         [FromQuery, SwaggerParameter(Description = "The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)")] string? vendor) => Ok();
 
     [HttpGet("list")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiOrderRead, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(OrderList), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(OrderList), StatusCodes.Status206PartialContent)]
     [SwaggerOperation(Summary = @"List orders for the authenticated user scoped to the search criteria. Only the first 100 orders will be returned. This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
@@ -70,14 +70,14 @@ This method will return 200 if all the receipts have been obtained, or a 206 [Pa
         [FromQuery, SwaggerParameter(Description = "Role account was of transaction options are [VENDOR, AFFILIATE].")] RoleAccount? role,
         [FromQuery, SwaggerParameter(Description = "The beginning date for the search (yyyy-mm-dd). If a startDate is specified, you must also specify an endDate.")] DateTime? startDate,
         [FromQuery, SwaggerParameter(Description = "The end date for the search (yyyy-mm-dd). If an endDate is specified, you must also specify a startDate.")] DateTime? endDate,
-        [FromQuery, SwaggerParameter(Description = "The TID (Tracking ID / Promo Code) to search on. This will search both vendor and affiliate tracking codes and be returned in the promo field.")] string? tid, [FromQuery, SwaggerParameter(Description = "The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.")] OrderType? type,
+        [FromQuery, SwaggerParameter(Description = "The TID (Tracking ID / Promo Code) to search on. This will search both vendor and affiliate tracking codes and be returned in the promo field.")] string? tid, [FromQuery, SwaggerParameter(Description = "The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.")] TransactionType? type,
         [FromQuery, SwaggerParameter(Description = "The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)")] string? vendor,
         [FromHeader, SwaggerParameter(Description = "This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them")] int? page = 1) => Ok();
 
     [HttpPost("{receipt}/changeProduct")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.HasDeveloperKey, ApiPermission.ApiOrderWrite, ApiPermission.ApiSubscriptionModifications })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.HAS_DEVELOPER_KEY, ApiPermission.API_ORDER_WRITE, ApiPermission.API_SUBSCRIPTION_MODIFICATIONS })]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [SwaggerOperation(Summary = "*BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.")]
     public ActionResult ChangeOrderProduct(
@@ -91,7 +91,7 @@ This method will return 200 if all the receipts have been obtained, or a 206 [Pa
     [HttpPost("{receipt}/changeAddress")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.HasDeveloperKey, ApiPermission.ApiOrderWrite })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.HAS_DEVELOPER_KEY, ApiPermission.API_ORDER_WRITE })]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [SwaggerOperation(Summary = "Allows a vendor to change shipping address of a physical recurring subscription.")]
     public ActionResult ChangeOrderAddress(
@@ -109,7 +109,7 @@ This method will return 200 if all the receipts have been obtained, or a 206 [Pa
     [HttpPost("{receipt}/changeDate")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.HasDeveloperKey, ApiPermission.ApiSubscriptionModifications })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.HAS_DEVELOPER_KEY, ApiPermission.API_SUBSCRIPTION_MODIFICATIONS })]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [SwaggerOperation(Summary = "*BETA* Allows a vendor to change the rebill date of a subscription.")]
     public ActionResult ChangeOrderDate(
@@ -120,7 +120,7 @@ This method will return 200 if all the receipts have been obtained, or a 206 [Pa
     [HttpPost("{receipt}/extend")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.HasDeveloperKey, ApiPermission.ApiSubscriptionModifications })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.HAS_DEVELOPER_KEY, ApiPermission.API_SUBSCRIPTION_MODIFICATIONS })]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [SwaggerOperation(Summary = "*BETA* Allows a vendor to extend a subscription by a given number of rebill periods.")]
     public ActionResult ExtendOrder(
@@ -131,7 +131,7 @@ This method will return 200 if all the receipts have been obtained, or a 206 [Pa
     [HttpPost("{receipt}/pause")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.HasDeveloperKey, ApiPermission.ApiSubscriptionModifications })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.HAS_DEVELOPER_KEY, ApiPermission.API_SUBSCRIPTION_MODIFICATIONS })]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [SwaggerOperation(Summary = "*BETA* Allows a vendor to change the rebill date of a subscription.")]
     public ActionResult PauseOrder(
@@ -142,7 +142,7 @@ This method will return 200 if all the receipts have been obtained, or a 206 [Pa
     [HttpPost("{receipt}/reinstate")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.HasDeveloperKey, ApiPermission.ApiSubscriptionModifications })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.HAS_DEVELOPER_KEY, ApiPermission.API_SUBSCRIPTION_MODIFICATIONS })]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [SwaggerOperation(Summary = "*BETA* Allows a vendor to restart a cancelled subscription.")]
     public ActionResult ReinstateOrder(
@@ -152,7 +152,7 @@ This method will return 200 if all the receipts have been obtained, or a 206 [Pa
     [HttpHead("{receipt}")]
     [Authorize]
     [Produces("application/xml", "application/json")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiOrderRead, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [SwaggerOperation(Summary = "This head request is used to identify if a particular order or a subscription is active, i.e. it has not been refunded, charge-backed or cancelled. It will return a 403 (Forbidden) if that's the case, or a 204 if the order is still active. Note that it will also return a 403 if the order is not found, or the user does not have access to that receipt. In addition, head request on a rebill transaction will return the status of that particular rebill, not of the original transaction which may be different. It is advisable to use head requests only on the parent transactions")]
     public ActionResult IsActiveOrderOrSubscription([Required][SwaggerParameter(Description = "Receipt ID")] string receipt,

@@ -2172,7 +2172,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> GetOrderCountAsync(string? affiliate = null, string? item = null, string? email = null, string? lastName = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, OrderType? type = null, string? vendor = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<int> GetOrderCountAsync(string? affiliate = null, string? item = null, string? email = null, string? lastName = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, TransactionType? type = null, string? vendor = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2194,7 +2194,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderList?> GetOrdersAsync(string? affiliate = null, double? amount = null, string? email = null, string? item = null, string? lastName = null, string? postalCode = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, OrderType? type = null, string? vendor = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OrderList?> GetOrdersAsync(string? affiliate = null, double? amount = null, string? email = null, string? item = null, string? lastName = null, string? postalCode = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, TransactionType? type = null, string? vendor = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2569,7 +2569,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<int> GetOrderCountAsync(string? affiliate = null, string? item = null, string? email = null, string? lastName = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, OrderType? type = null, string? vendor = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<int> GetOrderCountAsync(string? affiliate = null, string? item = null, string? email = null, string? lastName = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, TransactionType? type = null, string? vendor = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/count?");
@@ -2697,7 +2697,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrdersAsync(string? affiliate = null, double? amount = null, string? email = null, string? item = null, string? lastName = null, string? postalCode = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, OrderType? type = null, string? vendor = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrdersAsync(string? affiliate = null, double? amount = null, string? email = null, string? item = null, string? lastName = null, string? postalCode = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, TransactionType? type = null, string? vendor = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/list?");
@@ -5236,7 +5236,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="retainSubscription">Specifies if the subscription should be retained after the refund has been processed.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TicketData?> CreateTicketAsync(string receipt, QueryTicketType type, string reason, string? sku = null, string? comment = null, RefundType? refundType = null, double? refundAmount = null, bool? retainSubscription = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TicketData?> CreateTicketAsync(string receipt, TicketTypeRequest type, TicketReasonRequest reason, string? sku = null, string? comment = null, RefundType? refundType = null, double? refundAmount = null, bool? retainSubscription = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5244,11 +5244,11 @@ namespace Ocelli.OpenClickBank
         /// </summary>
         /// <param name="receipt">A valid receipt id.</param>
         /// <param name="refundType">The type of refund. Supported values include 'FULL', 'PARTIAL_PERCENT', 'PARTIAL_AMOUNT' (case sensitive). For 'PARTIAL_PERCENT' and 'PARTIAL_AMOUNT' the parameter refundAmount must be specified. Additionally the vendor associated with the transaction must be enabled for partial refunds in order to use both 'PARTIAL_PERCENT' and 'PARTIAL_AMOUNT', if vendor is not enabled and one of the partial options is specified a 403 will be returned.</param>
-        /// <param name="sku">line item sku/itemNo.</param>
         /// <param name="refundAmount">Specified for partial refunds indicating the amount of the transaction to be refunded. For 'PARTIAL_PERCENT' this must be a number between 1 and 80, with no more than two digits of precision - for example 50.00. For 'PARTIAL_AMOUNT' this is the amount to refund in the currency the customer used during the purchase.</param>
+        /// <param name="sku">line item sku/itemNo.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.IDictionary<string, object>?> GetTicketRefundAmountsAsync(string receipt, RefundType refundType, string? sku = null, double? refundAmount = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PartialRefundData?> GetTicketRefundAmountsAsync(string receipt, RefundType refundType, double? refundAmount = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5269,7 +5269,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="type">If changing the type of the ticket, this will be one of rfnd, cncl, or tech. Note: Partial refunds are not allowed when changing to a rfnd ticket type. Tickets changed to rfnd will be full refunds.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TicketData?> UpdateTicketAsync(int id, TicketAction? action = null, string? comment = null, QueryTicketType? type = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TicketData?> UpdateTicketAsync(int id, TicketAction? action = null, string? comment = null, TicketTypeRequest? type = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5296,7 +5296,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TicketList?> GetTicketsAsync(QueryTicketType? type = null, TicketStatus? status = null, string? receipt = null, System.DateTimeOffset? createDateFrom = null, System.DateTimeOffset? createDateTo = null, System.DateTimeOffset? updateDateFrom = null, System.DateTimeOffset? updateDateTo = null, System.DateTimeOffset? closeDateFrom = null, System.DateTimeOffset? closeDateTo = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TicketList?> GetTicketsAsync(TicketTypeRequest? type = null, TicketStatus? status = null, string? receipt = null, System.DateTimeOffset? createDateFrom = null, System.DateTimeOffset? createDateTo = null, System.DateTimeOffset? updateDateFrom = null, System.DateTimeOffset? updateDateTo = null, System.DateTimeOffset? closeDateFrom = null, System.DateTimeOffset? closeDateTo = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5307,7 +5307,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="receipt">Counts a ticket by a given receipt. Will return the ticket(s) associated with the transaction. If the receipt is a subscription, all tickets with associated with each rebill of that subscription will be counted.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> GetTicketCountAsync(QueryTicketType? type = null, TicketStatus? status = null, string? receipt = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<int> GetTicketCountAsync(TicketTypeRequest? type = null, TicketStatus? status = null, string? receipt = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 
@@ -5384,7 +5384,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="retainSubscription">Specifies if the subscription should be retained after the refund has been processed.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<TicketData?> CreateTicketAsync(string receipt, QueryTicketType type, string reason, string? sku = null, string? comment = null, RefundType? refundType = null, double? refundAmount = null, bool? retainSubscription = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<TicketData?> CreateTicketAsync(string receipt, TicketTypeRequest type, TicketReasonRequest reason, string? sku = null, string? comment = null, RefundType? refundType = null, double? refundAmount = null, bool? retainSubscription = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -5490,11 +5490,11 @@ namespace Ocelli.OpenClickBank
         /// </summary>
         /// <param name="receipt">A valid receipt id.</param>
         /// <param name="refundType">The type of refund. Supported values include 'FULL', 'PARTIAL_PERCENT', 'PARTIAL_AMOUNT' (case sensitive). For 'PARTIAL_PERCENT' and 'PARTIAL_AMOUNT' the parameter refundAmount must be specified. Additionally the vendor associated with the transaction must be enabled for partial refunds in order to use both 'PARTIAL_PERCENT' and 'PARTIAL_AMOUNT', if vendor is not enabled and one of the partial options is specified a 403 will be returned.</param>
-        /// <param name="sku">line item sku/itemNo.</param>
         /// <param name="refundAmount">Specified for partial refunds indicating the amount of the transaction to be refunded. For 'PARTIAL_PERCENT' this must be a number between 1 and 80, with no more than two digits of precision - for example 50.00. For 'PARTIAL_AMOUNT' this is the amount to refund in the currency the customer used during the purchase.</param>
+        /// <param name="sku">line item sku/itemNo.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.IDictionary<string, object>?> GetTicketRefundAmountsAsync(string receipt, RefundType refundType, string? sku = null, double? refundAmount = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PartialRefundData?> GetTicketRefundAmountsAsync(string receipt, RefundType refundType, double? refundAmount = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -5506,13 +5506,13 @@ namespace Ocelli.OpenClickBank
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/tickets/refundAmounts/{receipt}?");
             urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
             urlBuilder_.Append(System.Uri.EscapeDataString("refundType") + "=").Append(System.Uri.EscapeDataString(ConvertToString(refundType, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            if (sku != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("sku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
             if (refundAmount != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("refundAmount") + "=").Append(System.Uri.EscapeDataString(ConvertToString(refundAmount, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (sku != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("sku") + "=").Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             urlBuilder_.Length--;
 
@@ -5548,7 +5548,7 @@ namespace Ocelli.OpenClickBank
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IDictionary<string, object>?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<PartialRefundData?>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
@@ -5664,7 +5664,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="type">If changing the type of the ticket, this will be one of rfnd, cncl, or tech. Note: Partial refunds are not allowed when changing to a rfnd ticket type. Tickets changed to rfnd will be full refunds.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<TicketData?> UpdateTicketAsync(int id, TicketAction? action = null, string? comment = null, QueryTicketType? type = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<TicketData?> UpdateTicketAsync(int id, TicketAction? action = null, string? comment = null, TicketTypeRequest? type = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5848,7 +5848,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<TicketList?> GetTicketsAsync(QueryTicketType? type = null, TicketStatus? status = null, string? receipt = null, System.DateTimeOffset? createDateFrom = null, System.DateTimeOffset? createDateTo = null, System.DateTimeOffset? updateDateFrom = null, System.DateTimeOffset? updateDateTo = null, System.DateTimeOffset? closeDateFrom = null, System.DateTimeOffset? closeDateTo = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<TicketList?> GetTicketsAsync(TicketTypeRequest? type = null, TicketStatus? status = null, string? receipt = null, System.DateTimeOffset? createDateFrom = null, System.DateTimeOffset? createDateTo = null, System.DateTimeOffset? updateDateFrom = null, System.DateTimeOffset? updateDateTo = null, System.DateTimeOffset? closeDateFrom = null, System.DateTimeOffset? closeDateTo = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/tickets/list?");
@@ -5969,7 +5969,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="receipt">Counts a ticket by a given receipt. Will return the ticket(s) associated with the transaction. If the receipt is a subscription, all tickets with associated with each rebill of that subscription will be counted.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<int> GetTicketCountAsync(QueryTicketType? type = null, TicketStatus? status = null, string? receipt = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<int> GetTicketCountAsync(TicketTypeRequest? type = null, TicketStatus? status = null, string? receipt = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/tickets/count?");
@@ -6201,14 +6201,11 @@ namespace Ocelli.OpenClickBank
     public enum ActiveStatus
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"ACTIVE")]
-        ACTIVE = 1,
+        ACTIVE = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"INACTIVE")]
-        INACTIVE = 2,
+        INACTIVE = 1,
 
     }
 
@@ -6216,92 +6213,89 @@ namespace Ocelli.OpenClickBank
     public enum AnalyticAttribute
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"DIMENSION_VALUE")]
-        DIMENSION_VALUE = 1,
+        DIMENSION_VALUE = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"HOP_COUNT")]
-        HOP_COUNT = 2,
+        HOP_COUNT = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ORDER_IMPRESSION")]
-        ORDER_IMPRESSION = 3,
+        ORDER_IMPRESSION = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"INITIAL_ORDER_IMPRESSION")]
-        INITIAL_ORDER_IMPRESSION = 4,
+        INITIAL_ORDER_IMPRESSION = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"UPSELL_ORDER_IMPRESSION")]
-        UPSELL_ORDER_IMPRESSION = 5,
+        UPSELL_ORDER_IMPRESSION = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ORDER_SUBMISSION")]
-        ORDER_SUBMISSION = 6,
+        ORDER_SUBMISSION = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SALE_COUNT")]
-        SALE_COUNT = 7,
+        SALE_COUNT = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SALE_AMOUNT")]
-        SALE_AMOUNT = 8,
+        SALE_AMOUNT = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_COUNT")]
-        REFUND_COUNT = 9,
+        REFUND_COUNT = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_AMOUNT")]
-        REFUND_AMOUNT = 10,
+        REFUND_AMOUNT = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CHARGEBACK_COUNT")]
-        CHARGEBACK_COUNT = 11,
+        CHARGEBACK_COUNT = 10,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CHARGEBACK_AMOUNT")]
-        CHARGEBACK_AMOUNT = 12,
+        CHARGEBACK_AMOUNT = 11,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REBILL_COUNT")]
-        REBILL_COUNT = 13,
+        REBILL_COUNT = 12,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REBILL_AMOUNT")]
-        REBILL_AMOUNT = 14,
+        REBILL_AMOUNT = 13,
 
         [System.Runtime.Serialization.EnumMember(Value = @"UPSELL_COUNT")]
-        UPSELL_COUNT = 15,
+        UPSELL_COUNT = 14,
 
         [System.Runtime.Serialization.EnumMember(Value = @"UPSELL_AMOUNT")]
-        UPSELL_AMOUNT = 16,
+        UPSELL_AMOUNT = 15,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TOTAL_ORDER_IMPRESSION")]
-        TOTAL_ORDER_IMPRESSION = 17,
+        TOTAL_ORDER_IMPRESSION = 16,
 
         [System.Runtime.Serialization.EnumMember(Value = @"GROSS_SALE_COUNT")]
-        GROSS_SALE_COUNT = 18,
+        GROSS_SALE_COUNT = 17,
 
         [System.Runtime.Serialization.EnumMember(Value = @"GROSS_SALE_AMOUNT")]
-        GROSS_SALE_AMOUNT = 19,
+        GROSS_SALE_AMOUNT = 18,
 
         [System.Runtime.Serialization.EnumMember(Value = @"NET_SALE_COUNT")]
-        NET_SALE_COUNT = 20,
+        NET_SALE_COUNT = 19,
 
         [System.Runtime.Serialization.EnumMember(Value = @"NET_SALE_AMOUNT")]
-        NET_SALE_AMOUNT = 21,
+        NET_SALE_AMOUNT = 20,
 
         [System.Runtime.Serialization.EnumMember(Value = @"EARNINGS_PER_HOP")]
-        EARNINGS_PER_HOP = 22,
+        EARNINGS_PER_HOP = 21,
 
         [System.Runtime.Serialization.EnumMember(Value = @"EARNINGS_PER_CLICK")]
-        EARNINGS_PER_CLICK = 23,
+        EARNINGS_PER_CLICK = 22,
 
         [System.Runtime.Serialization.EnumMember(Value = @"HOPS_PER_SALE")]
-        HOPS_PER_SALE = 24,
+        HOPS_PER_SALE = 23,
 
         [System.Runtime.Serialization.EnumMember(Value = @"HOPS_PER_ORDER_FORM_IMPRESSION")]
-        HOPS_PER_ORDER_FORM_IMPRESSION = 25,
+        HOPS_PER_ORDER_FORM_IMPRESSION = 24,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ORDER_FORM_SALE_CONVERSION")]
-        ORDER_FORM_SALE_CONVERSION = 26,
+        ORDER_FORM_SALE_CONVERSION = 25,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_RATE")]
-        REFUND_RATE = 27,
+        REFUND_RATE = 26,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CHARGEBACK_RATE")]
-        CHARGEBACK_RATE = 28,
+        CHARGEBACK_RATE = 27,
 
     }
 
@@ -6545,26 +6539,23 @@ namespace Ocelli.OpenClickBank
     public enum ContractStatus
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"PENDING_START")]
-        PENDING_START = 1,
+        PENDING_START = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PENDING_APPROVAL")]
-        PENDING_APPROVAL = 2,
+        PENDING_APPROVAL = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACTIVE")]
-        ACTIVE = 3,
+        ACTIVE = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TERMINATED")]
-        TERMINATED = 4,
+        TERMINATED = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TERMINATION_REQUESTED")]
-        TERMINATION_REQUESTED = 5,
+        TERMINATION_REQUESTED = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"EXPIRED")]
-        EXPIRED = 6,
+        EXPIRED = 5,
 
     }
 
@@ -6668,38 +6659,35 @@ namespace Ocelli.OpenClickBank
     public enum Dimension
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"AFFILIATE")]
-        AFFILIATE = 1,
+        AFFILIATE = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_CURRENCY")]
-        CUSTOMER_CURRENCY = 2,
+        CUSTOMER_CURRENCY = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_COUNTRY")]
-        CUSTOMER_COUNTRY = 3,
+        CUSTOMER_COUNTRY = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_PROVINCE")]
-        CUSTOMER_PROVINCE = 4,
+        CUSTOMER_PROVINCE = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_LANGUAGE")]
-        CUSTOMER_LANGUAGE = 5,
+        CUSTOMER_LANGUAGE = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PRODUCT_SKU")]
-        PRODUCT_SKU = 6,
+        PRODUCT_SKU = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TRACKING_ID")]
-        TRACKING_ID = 7,
+        TRACKING_ID = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR")]
-        VENDOR = 8,
+        VENDOR = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR_CATEGORY")]
-        VENDOR_CATEGORY = 9,
+        VENDOR_CATEGORY = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR_PRODUCT_SKU")]
-        VENDOR_PRODUCT_SKU = 10,
+        VENDOR_PRODUCT_SKU = 9,
 
     }
 
@@ -6707,80 +6695,77 @@ namespace Ocelli.OpenClickBank
     public enum DimensionColumn
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"CHARGEBACK_AMOUNT")]
-        CHARGEBACK_AMOUNT = 1,
+        CHARGEBACK_AMOUNT = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CHARGEBACK_COUNT")]
-        CHARGEBACK_COUNT = 2,
+        CHARGEBACK_COUNT = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CHARGEBACK_RATE")]
-        CHARGEBACK_RATE = 3,
+        CHARGEBACK_RATE = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"DIMENSION_VALUE")]
-        DIMENSION_VALUE = 4,
+        DIMENSION_VALUE = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"EARNINGS_PER_HOP")]
-        EARNINGS_PER_HOP = 5,
+        EARNINGS_PER_HOP = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"GROSS_SALE_COUNT")]
-        GROSS_SALE_COUNT = 6,
+        GROSS_SALE_COUNT = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"GROSS_SALE_AMOUNT")]
-        GROSS_SALE_AMOUNT = 7,
+        GROSS_SALE_AMOUNT = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"HOP_COUNT")]
-        HOP_COUNT = 8,
+        HOP_COUNT = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"HOPS_PER_SALE")]
-        HOPS_PER_SALE = 9,
+        HOPS_PER_SALE = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"HOPS_PER_ORDER_FORM_IMPRESSION")]
-        HOPS_PER_ORDER_FORM_IMPRESSION = 10,
+        HOPS_PER_ORDER_FORM_IMPRESSION = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"NET_SALE_AMOUNT")]
-        NET_SALE_AMOUNT = 11,
+        NET_SALE_AMOUNT = 10,
 
         [System.Runtime.Serialization.EnumMember(Value = @"NET_SALE_COUNT")]
-        NET_SALE_COUNT = 12,
+        NET_SALE_COUNT = 11,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ORDER_FORM_SALE_CONVERSION")]
-        ORDER_FORM_SALE_CONVERSION = 13,
+        ORDER_FORM_SALE_CONVERSION = 12,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ORDER_IMPRESSION")]
-        ORDER_IMPRESSION = 14,
+        ORDER_IMPRESSION = 13,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ORDER_SUBMISSION")]
-        ORDER_SUBMISSION = 15,
+        ORDER_SUBMISSION = 14,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REBILL_AMOUNT")]
-        REBILL_AMOUNT = 16,
+        REBILL_AMOUNT = 15,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REBILL_COUNT")]
-        REBILL_COUNT = 17,
+        REBILL_COUNT = 16,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_AMOUNT")]
-        REFUND_AMOUNT = 18,
+        REFUND_AMOUNT = 17,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_COUNT")]
-        REFUND_COUNT = 19,
+        REFUND_COUNT = 18,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_RATE")]
-        REFUND_RATE = 20,
+        REFUND_RATE = 19,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SALE_AMOUNT")]
-        SALE_AMOUNT = 21,
+        SALE_AMOUNT = 20,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SALE_COUNT")]
-        SALE_COUNT = 22,
+        SALE_COUNT = 21,
 
         [System.Runtime.Serialization.EnumMember(Value = @"UPSELL_AMOUNT")]
-        UPSELL_AMOUNT = 23,
+        UPSELL_AMOUNT = 22,
 
         [System.Runtime.Serialization.EnumMember(Value = @"UPSELL_COUNT")]
-        UPSELL_COUNT = 24,
+        UPSELL_COUNT = 23,
 
     }
 
@@ -6905,32 +6890,29 @@ namespace Ocelli.OpenClickBank
     public enum ImageType
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"PRODUCT")]
-        PRODUCT = 1,
+        PRODUCT = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BANNER")]
-        BANNER = 2,
+        BANNER = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BANNER_CLASSIC")]
-        BANNER_CLASSIC = 3,
+        BANNER_CLASSIC = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BANNER_NEW")]
-        BANNER_NEW = 4,
+        BANNER_NEW = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BANNER_BG")]
-        BANNER_BG = 5,
+        BANNER_BG = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOM_BANNER")]
-        CUSTOM_BANNER = 6,
+        CUSTOM_BANNER = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOM_BANNER_BG")]
-        CUSTOM_BANNER_BG = 7,
+        CUSTOM_BANNER_BG = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOM_ORDERFORM")]
-        CUSTOM_ORDERFORM = 8,
+        CUSTOM_ORDERFORM = 7,
 
     }
 
@@ -6938,26 +6920,23 @@ namespace Ocelli.OpenClickBank
     public enum Language
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"DE")]
-        DE = 1,
+        DE = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"EN")]
-        EN = 2,
+        EN = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ES")]
-        ES = 3,
+        ES = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"FR")]
-        FR = 4,
+        FR = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"IT")]
-        IT = 5,
+        IT = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PT")]
-        PT = 6,
+        PT = 5,
 
     }
 
@@ -7003,7 +6982,8 @@ namespace Ocelli.OpenClickBank
         [System.Text.Json.Serialization.JsonPropertyName("lineItemType")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
-        public string? LineItemType { get; set; } = default!;
+        
+        public LineItemType? LineItemType { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("rebillAmount")]
 
@@ -7033,12 +7013,14 @@ namespace Ocelli.OpenClickBank
         [System.Text.Json.Serialization.JsonPropertyName("status")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
-        public string? Status { get; set; } = default!;
+        
+        public LineItemStatus? Status { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("role")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
-        public string? Role { get; set; } = default!;
+        
+        public OrderRole? Role { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -7048,6 +7030,51 @@ namespace Ocelli.OpenClickBank
             get { return _additionalProperties; }
             set { _additionalProperties = value; }
         }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
+    public enum LineItemStatus
+    {
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ACTIVE")]
+        ACTIVE = 0,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"AUTHORIZATION_FAILURE")]
+        AUTHORIZATION_FAILURE = 1,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"CANCELED")]
+        CANCELED = 2,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"COMPLETED")]
+        COMPLETED = 3,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"VALIDATION_FAILURE")]
+        VALIDATION_FAILURE = 4,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
+    public enum LineItemType
+    {
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ORIGINAL")]
+        ORIGINAL = 0,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"BUMP")]
+        BUMP = 1,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"CART")]
+        CART = 2,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"STANDARD")]
+        STANDARD = 3,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"TOKEN")]
+        TOKEN = 4,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"UPSELL")]
+        UPSELL = 5,
 
     }
 
@@ -7084,7 +7111,7 @@ namespace Ocelli.OpenClickBank
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
         
-        public OrderType? TransactionType { get; set; } = default!;
+        public TransactionType? TransactionType { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("totalOrderAmount")]
 
@@ -7161,7 +7188,7 @@ namespace Ocelli.OpenClickBank
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
         
-        public RoleAccount? Role { get; set; } = default!;
+        public OrderRole? Role { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("fullName")]
 
@@ -7212,6 +7239,24 @@ namespace Ocelli.OpenClickBank
             get { return _additionalProperties; }
             set { _additionalProperties = value; }
         }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
+    public enum OrderRole
+    {
+
+        [System.Runtime.Serialization.EnumMember(Value = @"VENDOR")]
+        VENDOR = 0,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"AFFILIATE")]
+        AFFILIATE = 1,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"JV_TRADITIONAL")]
+        JV_TRADITIONAL = 2,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"JV_UPSELL")]
+        JV_UPSELL = 3,
 
     }
 
@@ -7376,44 +7421,42 @@ namespace Ocelli.OpenClickBank
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
-    public enum OrderType
+    public partial class PartialRefundData
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
+        [System.Text.Json.Serialization.JsonPropertyName("usdAmount")]
 
-        [System.Runtime.Serialization.EnumMember(Value = @"SALE")]
-        SALE = 1,
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
+        public double? UsdAmount { get; set; } = default!;
 
-        [System.Runtime.Serialization.EnumMember(Value = @"RFND")]
-        RFND = 2,
+        [System.Text.Json.Serialization.JsonPropertyName("customerAmount")]
 
-        [System.Runtime.Serialization.EnumMember(Value = @"CGBK")]
-        CGBK = 3,
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
+        public double? CustomerAmount { get; set; } = default!;
 
-        [System.Runtime.Serialization.EnumMember(Value = @"FEE")]
-        FEE = 4,
+        [System.Text.Json.Serialization.JsonPropertyName("customerCurrency")]
 
-        [System.Runtime.Serialization.EnumMember(Value = @"BILL")]
-        BILL = 5,
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
+        public string? CustomerCurrency { get; set; } = default!;
 
-        [System.Runtime.Serialization.EnumMember(Value = @"TEST_SALE")]
-        TEST_SALE = 6,
+        [System.Text.Json.Serialization.JsonPropertyName("productAmount")]
 
-        [System.Runtime.Serialization.EnumMember(Value = @"TEST_BILL")]
-        TEST_BILL = 7,
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
+        public double? ProductAmount { get; set; } = default!;
 
-        [System.Runtime.Serialization.EnumMember(Value = @"TEST_RFND")]
-        TEST_RFND = 8,
+        [System.Text.Json.Serialization.JsonPropertyName("productCurrency")]
 
-        [System.Runtime.Serialization.EnumMember(Value = @"TEST_FEE")]
-        TEST_FEE = 9,
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
+        public string? ProductCurrency { get; set; } = default!;
 
-    }
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
-    public partial class PartialRefundData : System.Collections.Generic.Dictionary<string, object>
-    {
+        [System.Text.Json.Serialization.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties; }
+            set { _additionalProperties = value; }
+        }
 
     }
 
@@ -7421,35 +7464,32 @@ namespace Ocelli.OpenClickBank
     public enum PaymentMethod
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"PYPL")]
-        PYPL = 1,
+        PYPL = 0,
 
-        [System.Runtime.Serialization.EnumMember(Value = @"PYPL_NEW")]
-        PYPL_NEW = 2,
+        [System.Runtime.Serialization.EnumMember(Value = @"PYPL-NEW")]
+        PYPL_NEW = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VISA")]
-        VISA = 3,
+        VISA = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"MSTR")]
-        MSTR = 4,
+        MSTR = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"DISC")]
-        DISC = 5,
+        DISC = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"AMEX")]
-        AMEX = 6,
+        AMEX = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"DNRS")]
-        DNRS = 7,
+        DNRS = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"MAES")]
-        MAES = 8,
+        MAES = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TEST")]
-        TEST = 9,
+        TEST = 8,
 
     }
 
@@ -7852,26 +7892,23 @@ namespace Ocelli.OpenClickBank
     public enum ProductCategory
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"EBOOK")]
-        EBOOK = 1,
+        EBOOK = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SOFTWARE")]
-        SOFTWARE = 2,
+        SOFTWARE = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"GAMES")]
-        GAMES = 3,
+        GAMES = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"AUDIO")]
-        AUDIO = 4,
+        AUDIO = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VIDEO")]
-        VIDEO = 5,
+        VIDEO = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"MEMBER_SITE")]
-        MEMBER_SITE = 6,
+        MEMBER_SITE = 5,
 
     }
 
@@ -7960,14 +7997,11 @@ namespace Ocelli.OpenClickBank
     public enum ProductType
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"STANDARD")]
-        STANDARD = 1,
+        STANDARD = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"RECURRING")]
-        RECURRING = 2,
+        RECURRING = 1,
 
     }
 
@@ -7988,24 +8022,6 @@ namespace Ocelli.OpenClickBank
             get { return _additionalProperties; }
             set { _additionalProperties = value; }
         }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
-    public enum QueryTicketType
-    {
-
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"rfnd")]
-        Rfnd = 1,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"cncl")]
-        Cncl = 2,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"tech")]
-        Tech = 3,
 
     }
 
@@ -8052,35 +8068,32 @@ namespace Ocelli.OpenClickBank
     public enum RecurringFrequency
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"WEEKLY")]
-        WEEKLY = 1,
+        WEEKLY = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BI_WEEKLY")]
-        BI_WEEKLY = 2,
+        BI_WEEKLY = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"MONTHLY")]
-        MONTHLY = 3,
+        MONTHLY = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"QUARTERLY")]
-        QUARTERLY = 4,
+        QUARTERLY = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"HALF_YEARLY")]
-        HALF_YEARLY = 5,
+        HALF_YEARLY = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"YEARLY")]
-        YEARLY = 6,
+        YEARLY = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"MONTHS")]
-        MONTHS = 7,
+        MONTHS = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"WEEKS")]
-        WEEKS = 8,
+        WEEKS = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"DAYS")]
-        DAYS = 9,
+        DAYS = 8,
 
     }
 
@@ -8149,23 +8162,20 @@ namespace Ocelli.OpenClickBank
     public enum RefundType
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"FULL")]
-        FULL = 1,
+        FULL = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PARTIAL_PERCENT")]
-        PARTIAL_PERCENT = 2,
+        PARTIAL_PERCENT = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PARTIAL_AMOUNT")]
-        PARTIAL_AMOUNT = 3,
+        PARTIAL_AMOUNT = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PARTIAL_QUANTITY")]
-        PARTIAL_QUANTITY = 4,
+        PARTIAL_QUANTITY = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TAX")]
-        TAX = 5,
+        TAX = 4,
 
     }
 
@@ -8173,35 +8183,32 @@ namespace Ocelli.OpenClickBank
     public enum RefundableState
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"REFUNDABLE")]
-        REFUNDABLE = 1,
+        REFUNDABLE = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SUGGESTED_REFUND_BLOCK")]
-        SUGGESTED_REFUND_BLOCK = 2,
+        SUGGESTED_REFUND_BLOCK = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"UNREFUNDABLE")]
-        UNREFUNDABLE = 3,
+        UNREFUNDABLE = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ALREADY_REFUNDED")]
-        ALREADY_REFUNDED = 4,
+        ALREADY_REFUNDED = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"TOO_OLD")]
-        TOO_OLD = 5,
+        TOO_OLD = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_BLOCKED")]
-        REFUND_BLOCKED = 6,
+        REFUND_BLOCKED = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"HAS_OPEN_REFUND")]
-        HAS_OPEN_REFUND = 7,
+        HAS_OPEN_REFUND = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"OVER_ELV_LIMIT")]
-        OVER_ELV_LIMIT = 8,
+        OVER_ELV_LIMIT = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PROVIDER_DISCONNECTED")]
-        PROVIDER_DISCONNECTED = 9,
+        PROVIDER_DISCONNECTED = 8,
 
     }
 
@@ -8209,29 +8216,26 @@ namespace Ocelli.OpenClickBank
     public enum RevRec
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"LD")]
-        LD = 1,
+        LD = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VD")]
-        VD = 2,
+        VD = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"LM")]
-        LM = 3,
+        LM = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"LMA")]
-        LMA = 4,
+        LMA = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"LMID")]
-        LMID = 5,
+        LMID = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VM")]
-        VM = 6,
+        VM = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"I")]
-        I = 7,
+        I = 6,
 
     }
 
@@ -8239,23 +8243,20 @@ namespace Ocelli.OpenClickBank
     public enum Role
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR")]
-        VENDOR = 1,
+        VENDOR = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER")]
-        CUSTOMER = 2,
+        CUSTOMER = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CBCSR")]
-        CBCSR = 3,
+        CBCSR = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CBSYSTEM")]
-        CBSYSTEM = 4,
+        CBSYSTEM = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"USER")]
-        USER = 5,
+        USER = 4,
 
     }
 
@@ -8263,14 +8264,11 @@ namespace Ocelli.OpenClickBank
     public enum RoleAccount
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR")]
-        VENDOR = 1,
+        VENDOR = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"AFFILIATE")]
-        AFFILIATE = 2,
+        AFFILIATE = 1,
 
     }
 
@@ -8372,17 +8370,14 @@ namespace Ocelli.OpenClickBank
     public enum ShippingStatus
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"shipped")]
-        Shipped = 1,
+        SHIPPED = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"notshipped")]
-        Notshipped = 2,
+        NOTSHIPPED = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"all")]
-        All = 3,
+        ALL = 2,
 
     }
 
@@ -8390,14 +8385,11 @@ namespace Ocelli.OpenClickBank
     public enum SortDirection
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"ASC")]
-        ASC = 1,
+        ASC = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"DESC")]
-        DESC = 2,
+        DESC = 1,
 
     }
 
@@ -8450,83 +8442,80 @@ namespace Ocelli.OpenClickBank
     public enum SubscriptionDetailRowOrderBy
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"RECEIPT")]
-        RECEIPT = 1,
+        RECEIPT = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PURCHASE_DATE")]
-        PURCHASE_DATE = 2,
+        PURCHASE_DATE = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SUB_END_DATE")]
-        SUB_END_DATE = 3,
+        SUB_END_DATE = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SUB_CANCEL_DATE")]
-        SUB_CANCEL_DATE = 4,
+        SUB_CANCEL_DATE = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"NEXT_PAYMENT_DATE")]
-        NEXT_PAYMENT_DATE = 5,
+        NEXT_PAYMENT_DATE = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SUB_VALUE")]
-        SUB_VALUE = 6,
+        SUB_VALUE = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"STATUS")]
-        STATUS = 7,
+        STATUS = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ITEM_NUMBER")]
-        ITEM_NUMBER = 8,
+        ITEM_NUMBER = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PROCESSED_PAYMENTS_COUNT")]
-        PROCESSED_PAYMENTS_COUNT = 9,
+        PROCESSED_PAYMENTS_COUNT = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"FUTURE_PAYMENTS_COUNT")]
-        FUTURE_PAYMENTS_COUNT = 10,
+        FUTURE_PAYMENTS_COUNT = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_COUNT")]
-        REFUND_COUNT = 11,
+        REFUND_COUNT = 10,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_AMOUNT")]
-        REFUND_AMOUNT = 12,
+        REFUND_AMOUNT = 11,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CHARGEBACK_COUNT")]
-        CHARGEBACK_COUNT = 13,
+        CHARGEBACK_COUNT = 12,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CHARGEBACK_AMOUNT")]
-        CHARGEBACK_AMOUNT = 14,
+        CHARGEBACK_AMOUNT = 13,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PUB_NICK_NAME")]
-        PUB_NICK_NAME = 15,
+        PUB_NICK_NAME = 14,
 
         [System.Runtime.Serialization.EnumMember(Value = @"AFFILIATE_NICK_NAME")]
-        AFFILIATE_NICK_NAME = 16,
+        AFFILIATE_NICK_NAME = 15,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_FIRST_NAME")]
-        CUSTOMER_FIRST_NAME = 17,
+        CUSTOMER_FIRST_NAME = 16,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_LAST_NAME")]
-        CUSTOMER_LAST_NAME = 18,
+        CUSTOMER_LAST_NAME = 17,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_DISPLAY_NAME")]
-        CUSTOMER_DISPLAY_NAME = 19,
+        CUSTOMER_DISPLAY_NAME = 18,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_EMAIL")]
-        CUSTOMER_EMAIL = 20,
+        CUSTOMER_EMAIL = 19,
 
         [System.Runtime.Serialization.EnumMember(Value = @"DURATION")]
-        DURATION = 21,
+        DURATION = 20,
 
         [System.Runtime.Serialization.EnumMember(Value = @"INITIAL_SALE_AMOUNT")]
-        INITIAL_SALE_AMOUNT = 22,
+        INITIAL_SALE_AMOUNT = 21,
 
         [System.Runtime.Serialization.EnumMember(Value = @"INITIAL_SALE_COUNT")]
-        INITIAL_SALE_COUNT = 23,
+        INITIAL_SALE_COUNT = 22,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REBILL_SALE_AMOUNT")]
-        REBILL_SALE_AMOUNT = 24,
+        REBILL_SALE_AMOUNT = 23,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REBILL_SALE_COUNT")]
-        REBILL_SALE_COUNT = 25,
+        REBILL_SALE_COUNT = 24,
 
     }
 
@@ -8883,23 +8872,20 @@ namespace Ocelli.OpenClickBank
     public enum SubscriptionStatus
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"ACTIVE")]
-        ACTIVE = 1,
+        ACTIVE = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"COMPLETED")]
-        COMPLETED = 2,
+        COMPLETED = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CANCELED")]
-        CANCELED = 3,
+        CANCELED = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"RETRY_PAYMENT")]
-        RETRY_PAYMENT = 4,
+        RETRY_PAYMENT = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REQUEST_NEW_CARD")]
-        REQUEST_NEW_CARD = 5,
+        REQUEST_NEW_CARD = 4,
 
     }
 
@@ -8952,14 +8938,11 @@ namespace Ocelli.OpenClickBank
     public enum SummaryType
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR_ONLY")]
-        VENDOR_ONLY = 1,
+        VENDOR_ONLY = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"AFFILIATE_ONLY")]
-        AFFILIATE_ONLY = 2,
+        AFFILIATE_ONLY = 1,
 
     }
 
@@ -8992,17 +8975,14 @@ namespace Ocelli.OpenClickBank
     public enum TicketAction
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"change")]
-        Change = 1,
+        CHANGE = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"close")]
-        Close = 2,
+        CLOSE = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"reopen")]
-        Reopen = 3,
+        REOPEN = 2,
 
     }
 
@@ -9010,47 +8990,44 @@ namespace Ocelli.OpenClickBank
     public enum TicketActionType
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"ASSIGNED")]
-        ASSIGNED = 1,
+        ASSIGNED = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"COMMENTED")]
-        COMMENTED = 2,
+        COMMENTED = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CHANGED")]
-        CHANGED = 3,
+        CHANGED = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CLOSED")]
-        CLOSED = 4,
+        CLOSED = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"EXPIRED")]
-        EXPIRED = 5,
+        EXPIRED = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REOPENED")]
-        REOPENED = 6,
+        REOPENED = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"OPENED")]
-        OPENED = 7,
+        OPENED = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVED")]
-        APPROVED = 8,
+        APPROVED = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"DISAPPROVED")]
-        DISAPPROVED = 9,
+        DISAPPROVED = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ATTACHMENT")]
-        ATTACHMENT = 10,
+        ATTACHMENT = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ADMIN_CHANGE")]
-        ADMIN_CHANGE = 11,
+        ADMIN_CHANGE = 10,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND_ACKED")]
-        REFUND_ACKED = 12,
+        REFUND_ACKED = 11,
 
         [System.Runtime.Serialization.EnumMember(Value = @"NEW_PHOTO_ID")]
-        NEW_PHOTO_ID = 13,
+        NEW_PHOTO_ID = 12,
 
     }
 
@@ -9261,101 +9238,176 @@ namespace Ocelli.OpenClickBank
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
+    public enum TicketReasonRequest
+    {
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.cancel.1")]
+        TICKET_TYPE_CANCEL_1 = 0,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.cancel.2")]
+        TICKET_TYPE_CANCEL_2 = 1,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.cancel.3")]
+        TICKET_TYPE_CANCEL_3 = 2,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.cancel.4")]
+        TICKET_TYPE_CANCEL_4 = 3,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.cancel.5")]
+        TICKET_TYPE_CANCEL_5 = 4,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.cancel.6")]
+        TICKET_TYPE_CANCEL_6 = 5,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.cancel.7")]
+        TICKET_TYPE_CANCEL_7 = 6,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.cancel.not.mobile")]
+        TICKET_TYPE_CANCEL_NOT_MOBILE = 7,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.refund.1")]
+        TICKET_TYPE_REFUND_1 = 8,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.refund.2")]
+        TICKET_TYPE_REFUND_2 = 9,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.refund.3")]
+        TICKET_TYPE_REFUND_3 = 10,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.refund.4")]
+        TICKET_TYPE_REFUND_4 = 11,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.refund.5")]
+        TICKET_TYPE_REFUND_5 = 12,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.refund.6")]
+        TICKET_TYPE_REFUND_6 = 13,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.refund.7")]
+        TICKET_TYPE_REFUND_7 = 14,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.refund.8")]
+        TICKET_TYPE_REFUND_8 = 15,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.refund.returned")]
+        TICKET_TYPE_REFUND_RETURNED = 16,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.refund.not.mobile")]
+        TICKET_TYPE_REFUND_NOT_MOBILE = 17,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.tech_support.1")]
+        TICKET_TYPE_TECH_SUPPORT_1 = 18,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.tech_support.2")]
+        TICKET_TYPE_TECH_SUPPORT_2 = 19,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.tech_support.3")]
+        TICKET_TYPE_TECH_SUPPORT_3 = 20,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.tech_support.4")]
+        TICKET_TYPE_TECH_SUPPORT_4 = 21,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.tech_support.9")]
+        TICKET_TYPE_TECH_SUPPORT_9 = 22,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ticket.type.tech_support.10")]
+        TICKET_TYPE_TECH_SUPPORT_10 = 23,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
     public enum TicketSource
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"API")]
-        API = 1,
+        API = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CUSTOMER_WAM")]
-        CUSTOMER_WAM = 2,
+        CUSTOMER_WAM = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"UNKNOWN")]
-        UNKNOWN = 3,
+        UNKNOWN = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"RNFDS_EMAIL")]
-        RNFDS_EMAIL = 4,
+        RNFDS_EMAIL = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CNCLS_EMAIL")]
-        CNCLS_EMAIL = 5,
+        CNCLS_EMAIL = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR_WAM")]
-        VENDOR_WAM = 6,
+        VENDOR_WAM = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"VENDOR_ADMIN")]
-        VENDOR_ADMIN = 7,
+        VENDOR_ADMIN = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CSR_ADMIN")]
-        CSR_ADMIN = 8,
+        CSR_ADMIN = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SECURITY")]
-        SECURITY = 9,
+        SECURITY = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CSR_WAM")]
-        CSR_WAM = 10,
+        CSR_WAM = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CONVERSION_PROCESS")]
-        CONVERSION_PROCESS = 11,
+        CONVERSION_PROCESS = 10,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BUSINESS_DEVELOPMENT_FORM")]
-        BUSINESS_DEVELOPMENT_FORM = 12,
+        BUSINESS_DEVELOPMENT_FORM = 11,
 
         [System.Runtime.Serialization.EnumMember(Value = @"COMMUNICATIONS_EMAIL")]
-        COMMUNICATIONS_EMAIL = 13,
+        COMMUNICATIONS_EMAIL = 12,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACCOUNTS_EMAIL")]
-        ACCOUNTS_EMAIL = 14,
+        ACCOUNTS_EMAIL = 13,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CBCS_EMAIL")]
-        CBCS_EMAIL = 15,
+        CBCS_EMAIL = 14,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACCOUNTING_EMAIL")]
-        ACCOUNTING_EMAIL = 16,
+        ACCOUNTING_EMAIL = 15,
 
         [System.Runtime.Serialization.EnumMember(Value = @"WAM_ACCT_QUESTION")]
-        WAM_ACCT_QUESTION = 17,
+        WAM_ACCT_QUESTION = 16,
 
         [System.Runtime.Serialization.EnumMember(Value = @"WAM_WIREGROUP_DETAIL")]
-        WAM_WIREGROUP_DETAIL = 18,
+        WAM_WIREGROUP_DETAIL = 17,
 
         [System.Runtime.Serialization.EnumMember(Value = @"MARKETING_EMAIL")]
-        MARKETING_EMAIL = 19,
+        MARKETING_EMAIL = 18,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PAYMENTECH_BATCH")]
-        PAYMENTECH_BATCH = 20,
+        PAYMENTECH_BATCH = 19,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PYPL_JPY_CANCELLER")]
-        PYPL_JPY_CANCELLER = 21,
+        PYPL_JPY_CANCELLER = 20,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ECUSTOMS")]
-        ECUSTOMS = 22,
+        ECUSTOMS = 21,
 
         [System.Runtime.Serialization.EnumMember(Value = @"LASHBACK")]
-        LASHBACK = 23,
+        LASHBACK = 22,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SPAM_EMAIL")]
-        SPAM_EMAIL = 24,
+        SPAM_EMAIL = 23,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CLICKBANK_DATABASE_SCRIPT")]
-        CLICKBANK_DATABASE_SCRIPT = 25,
+        CLICKBANK_DATABASE_SCRIPT = 24,
 
         [System.Runtime.Serialization.EnumMember(Value = @"API_VIRTUAL_SOURCE")]
-        API_VIRTUAL_SOURCE = 26,
+        API_VIRTUAL_SOURCE = 25,
 
         [System.Runtime.Serialization.EnumMember(Value = @"KOUNT")]
-        KOUNT = 27,
+        KOUNT = 26,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PAYPAL_ADAPTIVE")]
-        PAYPAL_ADAPTIVE = 28,
+        PAYPAL_ADAPTIVE = 27,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CB_POWERED_PROGRAM")]
-        CB_POWERED_PROGRAM = 29,
+        CB_POWERED_PROGRAM = 28,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CLKBANK")]
-        CLKBANK = 30,
+        CLKBANK = 29,
 
     }
 
@@ -9363,17 +9415,14 @@ namespace Ocelli.OpenClickBank
     public enum TicketStatus
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"OPEN")]
-        OPEN = 1,
+        OPEN = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REOPENED")]
-        REOPENED = 2,
+        REOPENED = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CLOSED")]
-        CLOSED = 3,
+        CLOSED = 2,
 
     }
 
@@ -9381,35 +9430,35 @@ namespace Ocelli.OpenClickBank
     public enum TicketType
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        Nil = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"TECH_SUPPORT")]
-        TECH_SUPPORT = 1,
+        TECH_SUPPORT = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"REFUND")]
-        REFUND = 2,
+        REFUND = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CANCEL")]
-        CANCEL = 3,
+        CANCEL = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PRODUCT_CHANGE")]
-        PRODUCT_CHANGE = 4,
+        PRODUCT_CHANGE = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ORDER_LOOKUP")]
-        ORDER_LOOKUP = 5,
+        ORDER_LOOKUP = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ESCALATED")]
-        ESCALATED = 6,
+        ESCALATED = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_IMAGE")]
-        APPROVAL_IMAGE = 7,
+        APPROVAL_IMAGE = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_UPSELL")]
-        APPROVAL_UPSELL = 8,
+        APPROVAL_UPSELL = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_CATEGORY_CHANGE")]
-        APPROVAL_CATEGORY_CHANGE = 9,
+        APPROVAL_CATEGORY_CHANGE = 8,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_BLOG_POST")]
+        APPROVAL_BLOG_POST = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_PRODUCT")]
         APPROVAL_PRODUCT = 10,
@@ -9450,6 +9499,21 @@ namespace Ocelli.OpenClickBank
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
+    public enum TicketTypeRequest
+    {
+
+        [System.Runtime.Serialization.EnumMember(Value = @"rfnd")]
+        RFND = 0,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"cncl")]
+        CNCL = 1,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"tech")]
+        TECH = 2,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
     public partial class Totals
     {
 
@@ -9466,6 +9530,39 @@ namespace Ocelli.OpenClickBank
             get { return _additionalProperties; }
             set { _additionalProperties = value; }
         }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
+    public enum TransactionType
+    {
+
+        [System.Runtime.Serialization.EnumMember(Value = @"SALE")]
+        SALE = 0,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"RFND")]
+        RFND = 1,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"CGBK")]
+        CGBK = 2,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"FEE")]
+        FEE = 3,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"BILL")]
+        BILL = 4,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"TEST_SALE")]
+        TEST_SALE = 5,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"TEST_BILL")]
+        TEST_BILL = 6,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"TEST_RFND")]
+        TEST_RFND = 7,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"TEST_FEE")]
+        TEST_FEE = 8,
 
     }
 

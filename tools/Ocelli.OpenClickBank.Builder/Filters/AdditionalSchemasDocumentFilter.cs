@@ -1,5 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 using Ocelli.OpenClickBank.Builder.Data;
+using Ocelli.OpenClickBank.Builder.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Ocelli.OpenClickBank.Builder.Filters;
@@ -15,5 +16,6 @@ internal class AdditionalSchemasDocumentFilter : IDocumentFilter
         context.SchemaGenerator.GenerateSchema(typeof(TicketType), context.SchemaRepository);
         context.SchemaGenerator.GenerateSchema(typeof(RefundType), context.SchemaRepository);
         context.SchemaGenerator.GenerateSchema(typeof(TicketSource), context.SchemaRepository);
+        context.SchemaGenerator.GenerateSchema(typeof(PartialRefundData), context.SchemaRepository);
     }
 }

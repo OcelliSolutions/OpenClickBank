@@ -2,7 +2,7 @@
 
 namespace Ocelli.OpenClickBank;
 
-public enum TransactionType
+public enum NotificationTransactionType
 {
     nil,
     [Display(Name = "SALE")] SALE,

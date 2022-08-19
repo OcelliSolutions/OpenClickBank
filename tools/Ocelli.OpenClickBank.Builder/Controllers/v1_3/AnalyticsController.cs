@@ -15,7 +15,7 @@ public class AnalyticsController : ControllerBase
     [HttpGet("status")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiAnalyticsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(AnalyticStatus), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = @"Return the status & last update time of the API.")]
     public ActionResult GetStatus() => Ok();
@@ -23,7 +23,7 @@ public class AnalyticsController : ControllerBase
     [HttpGet("{role}/subscription/details/compthirty")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiAnalyticsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(SubscriptionDetailResult), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = @"Returns a list of subscriptions completing in the next 30 days.")]
     public ActionResult GetSubscriptionDetailsCompletingIn30Days(
@@ -35,7 +35,7 @@ public class AnalyticsController : ControllerBase
     [HttpGet("{role}/subscription/details/compsixty")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiAnalyticsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(SubscriptionDetailResult), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = @"Returns a list of subscriptions completing in the next 60 days.")]
     public ActionResult GetSubscriptionDetailsCompletingIn60Days(
@@ -47,7 +47,7 @@ public class AnalyticsController : ControllerBase
     [HttpGet("{role}/subscription/details/cancelthirty")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiAnalyticsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(SubscriptionDetailResult), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = @"Returns a list of subscriptions canceled in the last 30 days.")]
     public ActionResult GetSubscriptionDetailsCanceledLast30Days(
@@ -59,7 +59,7 @@ public class AnalyticsController : ControllerBase
     [HttpGet("{role}/subscription/details/cancelsixty")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiAnalyticsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(SubscriptionDetailResult), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = @"Returns a list of subscriptions canceled in the last 60 days.")]
     public ActionResult GetSubscriptionDetailsCanceledLast60Days(
@@ -71,7 +71,7 @@ public class AnalyticsController : ControllerBase
     [HttpGet("{role}/subscription/details/startdate")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiAnalyticsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(SubscriptionDetailResult), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = @"Returns a list of subscriptions where the subscription start date is between (inclusive) the startDate and endDate parameters.")]
     public ActionResult GetSubscriptionDetailsByStartDate(
@@ -85,7 +85,7 @@ public class AnalyticsController : ControllerBase
     [HttpGet("{role}/subscription/details/canceldate")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiAnalyticsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(SubscriptionDetailResult), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = @"Returns a list of subscriptions where the subscription canceled date is between (inclusive) the startDate and endDate parameters.")]
     public ActionResult GetSubscriptionDetailsByCancelDate(
@@ -99,7 +99,7 @@ public class AnalyticsController : ControllerBase
     [HttpGet("{role}/subscription/details/nextpmtdate")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiAnalyticsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(SubscriptionDetailResult), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = @"Returns a list of subscriptions where the next payment date is between (inclusive) the startDate and endDate parameters.")]
     public ActionResult GetSubscriptionDetailsByNextPaymentDate(
@@ -113,7 +113,7 @@ public class AnalyticsController : ControllerBase
     [HttpGet("{role}/subscription/details/status")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiAnalyticsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(SubscriptionDetailResult), StatusCodes.Status200OK)]
     //[SwaggerOperation(Summary = @"Returns a list of subscriptions by the status used in the status parameter.")]
     public ActionResult GetSubscriptionDetailsByStatusDate(
@@ -126,7 +126,7 @@ public class AnalyticsController : ControllerBase
     [HttpGet("{role}/subscription/details")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiAnalyticsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(SubscriptionDetailResult), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = @"Returns a list of subscriptions details.")]
     public ActionResult GetSubscriptionDetails(
@@ -138,7 +138,7 @@ public class AnalyticsController : ControllerBase
     [HttpGet("{role}/subscription/trends")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiAnalyticsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(SubscriptionTrendsData), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(SubscriptionTrendsData), StatusCodes.Status206PartialContent)]
     [SwaggerOperation(Summary = @"Returns statistical summations of data for subscriptions.")]
@@ -154,7 +154,7 @@ public class AnalyticsController : ControllerBase
     [HttpGet("{role}/{dimension}")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiAnalyticsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(AnalyticsResult), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(AnalyticsResult), StatusCodes.Status206PartialContent)]
     [SwaggerOperation(Summary = @"Returns statistical data for a given role and dimension.")]
@@ -174,7 +174,7 @@ VENDOR_PRODUCT_SKU – Only available if role = AFFILIATE")] Dimension dimension
     [HttpGet("{role}/{dimension}/summary")]
     [Authorize]
     [Produces("application/json", "application/xml")]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ApiAnalyticsClient, ApiPermission.HasDeveloperKey })]
+    [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(AnalyticsResult), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(AnalyticsResult), StatusCodes.Status206PartialContent)]
     [SwaggerOperation(Summary = @"Returns summary statistical data for a given role, dimension, and summary type.")]

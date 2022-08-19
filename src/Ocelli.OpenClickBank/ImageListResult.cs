@@ -1,6 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
 namespace Ocelli.OpenClickBank;
+
+//TODO: Must read the response type of 206 (Partial Return). Row counts of 100 are not reliable.
 public partial class ImageListResult
 {
     [JsonPropertyName("hasMoreData")] public bool HasMoreData => ImageList?.Images?.Count == 100;

@@ -1,7 +1,9 @@
-﻿namespace Ocelli.OpenClickBank.Builder.Data;
+﻿using System.Runtime.Serialization;
+
+namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum ProductType
 {
-    nil,
-    STANDARD, RECURRING
+    [EnumMember(Value = "STANDARD")] STANDARD,
+    [EnumMember(Value = "RECURRING")] RECURRING
 }

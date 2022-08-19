@@ -31,7 +31,19 @@ public partial class ClickBankService : IClickBankService
             HttpClient.Timeout = _openClickBankConfig.HttpTimeout;
             var credentials = $"{_openClickBankConfig.DeveloperApiKey}:{_openClickBankConfig.ClerkApiKey}";
             HttpClient.DefaultRequestHeaders.Clear();
-            HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("authorization", credentials);
+            do
+            {
+                try
+                {
+                    HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("authorization", credentials);
+                    break;
+                }
+                catch (Exception)
+                {
+                    //There can be concurrent locks, just keep trying.
+                    Thread.Sleep(new Random().Next(3, 10) * 1000);
+                }
+            } while (true);
         }
     }
 }

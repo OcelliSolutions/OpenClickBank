@@ -1,7 +1,9 @@
-﻿namespace Ocelli.OpenClickBank.Builder.Data;
+﻿using System.Runtime.Serialization;
+
+namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum SummaryType
 {
-    nil,
-    VENDOR_ONLY, AFFILIATE_ONLY
+    [EnumMember(Value = "VENDOR_ONLY")] VENDOR_ONLY,
+    [EnumMember(Value = "AFFILIATE_ONLY")] AFFILIATE_ONLY
 }

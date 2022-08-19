@@ -60,9 +60,8 @@ public class ShippingTests : IClassFixture<SharedFixture>
     [Fact(Skip = "TODO: The required parameter of `receipt` is not available.")]
     public async Task GetShippingNoticeAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        var receipt = string.Empty;
         var shippingNoticeData =
-            await Fixture.ApiKey.ClickBankService.Shipping.GetShippingNoticeAsync(receipt);
+            await Fixture.ApiKey.ClickBankService.Shipping.GetShippingNoticeAsync(Fixture.Receipt);
         _additionalPropertiesHelper.CheckAdditionalProperties(shippingNoticeData,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         Assert.NotNull(shippingNoticeData?.Receipt);

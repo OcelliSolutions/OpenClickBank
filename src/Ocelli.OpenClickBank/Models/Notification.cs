@@ -9,7 +9,7 @@ public class Notification
     
     public string Receipt { get; set; } = null!;
 
-    public TransactionType TransactionType { get; set; }
+    public NotificationTransactionType TransactionType { get; set; }
     
     public string Vendor { get; set; } = null!;
 

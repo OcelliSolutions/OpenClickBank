@@ -1,9 +1,10 @@
-﻿namespace Ocelli.OpenClickBank.Builder.Data;
+﻿using System.Runtime.Serialization;
+
+namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum TicketAction
 {
-    nil,
-    change,
-    close,
-    reopen
+    [EnumMember(Value = "change")] CHANGE,
+    [EnumMember(Value = "close")] CLOSE,
+    [EnumMember(Value = "reopen")] REOPEN
 }

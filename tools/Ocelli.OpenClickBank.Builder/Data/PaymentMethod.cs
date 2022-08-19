@@ -1,26 +1,25 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Runtime.Serialization;
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum PaymentMethod
 {
-    nil,
-    [Display(Name = "PYPL")]
+    [EnumMember(Value = "PYPL")]
     PYPL,
-    [Display(Name = "PYPL-NEW")]
+    [EnumMember(Value = "PYPL-NEW")]
     PYPL_NEW,
-    [Display(Name = "VISA")]
+    [EnumMember(Value = "VISA")]
     VISA,
-    [Display(Name = "MSTR")]
+    [EnumMember(Value = "MSTR")]
     MSTR,
-    [Display(Name = "DISC")]
+    [EnumMember(Value = "DISC")]
     DISC,
-    [Display(Name = "AMEX")]
+    [EnumMember(Value = "AMEX")]
     AMEX,
-    [Display(Name = "DNRS")]
+    [EnumMember(Value = "DNRS")]
     DNRS,
-    [Display(Name = "MAES")]
+    [EnumMember(Value = "MAES")]
     MAES,
-    [Display(Name = "TEST")]
+    [EnumMember(Value = "TEST")]
     TEST,
 }

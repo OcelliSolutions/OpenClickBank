@@ -351,31 +351,6 @@ public class AnalyticTests : IClassFixture<SharedFixture>
             }
         }
     }
-    
-    [SkippableFact]
-    public async Task
-        GetStatisticsByRoleAndDimensionSummaryAsync_AFFILIATE_PRODUCT_SKU_AdditionalPropertiesAreEmpty_ShouldPass()
-    {
-        var analyticStatus =
-            await Fixture.ApiKey.ClickBankService.Analytics.GetStatisticsByRoleAndDimensionSummaryAsync(
-                RoleAccount.AFFILIATE,
-                Dimension.AFFILIATE, Fixture.ApiKey.Site, SummaryType.VENDOR_ONLY);
-        _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
-            Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(!analyticStatus?.Rows?.Row?.Any() ?? true, "WARN: No data returned. Could not test");
-        if (!analyticStatus?.Rows?.Row?.Any() ?? true) return;
-        Debug.Assert(analyticStatus?.Rows?.Row != null, "analyticStatus.Rows.Row != null");
-        foreach (var row in analyticStatus.Rows.Row)
-        {
-            Debug.Assert(row.Data != null, "row.Data != null");
-            foreach (var data in row.Data)
-            {
-                Assert.NotNull(data.Attribute);
-                Assert.NotNull(data.Value?.Type);
-                Assert.NotNull(data.Value?.Dollar);
-            }
-        }
-    }
 
     [SkippableFact]
     public async Task
@@ -388,8 +363,8 @@ public class AnalyticTests : IClassFixture<SharedFixture>
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         Skip.If(!analyticStatus?.Totals?.Total?.Any() ?? true, "WARN: No data returned. Could not test");
-        if (!analyticStatus?.Totals?.Total?.Any() ?? true) return;
-        Debug.Assert(analyticStatus?.Totals?.Total != null, "analyticStatus.Rows.Row != null");
+        if (!analyticStatus.Totals?.Total?.Any() ?? true) return;
+        Debug.Assert(analyticStatus.Totals?.Total != null, "analyticStatus.Rows.Row != null");
         foreach (var row in analyticStatus.Totals.Total)
         {
             Assert.NotNull(row.Attribute);

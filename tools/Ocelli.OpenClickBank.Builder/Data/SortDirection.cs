@@ -1,8 +1,9 @@
-﻿namespace Ocelli.OpenClickBank.Builder.Data;
+﻿using System.Runtime.Serialization;
+
+namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum SortDirection
 {
-    nil,
-    ASC,
-    DESC
+    [EnumMember(Value = "ASC")] ASC,
+    [EnumMember(Value = "DESC")] DESC
 }

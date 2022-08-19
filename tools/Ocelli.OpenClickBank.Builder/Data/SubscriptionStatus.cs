@@ -1,11 +1,12 @@
-﻿namespace Ocelli.OpenClickBank.Builder.Data;
+﻿using System.Runtime.Serialization;
+
+namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum SubscriptionStatus
 {
-    nil,
-    ACTIVE,
-    COMPLETED,
-    CANCELED,
-    RETRY_PAYMENT,
-    REQUEST_NEW_CARD
+    [EnumMember(Value = "ACTIVE")] ACTIVE,
+    [EnumMember(Value = "COMPLETED")] COMPLETED,
+    [EnumMember(Value = "CANCELED")] CANCELED,
+    [EnumMember(Value = "RETRY_PAYMENT")] RETRY_PAYMENT,
+    [EnumMember(Value = "REQUEST_NEW_CARD")] REQUEST_NEW_CARD
 }

@@ -6,7 +6,6 @@ namespace Ocelli.OpenClickBank.Tests;
 [Collection("OrderTests")]
 public class OrderTests : IClassFixture<SharedFixture>
 {
-    private string Receipt => Fixture.ApiKey.OpenClickBankConfig.Receipt ?? throw new ArgumentNullException(nameof(Fixture.ApiKey.OpenClickBankConfig.Receipt), "`receipt` must be defined in `api_keys.json`");
     private SharedFixture Fixture { get; }
     private readonly ITestOutputHelper _testOutputHelper;
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
@@ -71,7 +70,7 @@ public class OrderTests : IClassFixture<SharedFixture>
     [TestPriority(20)]
     public async Task GetOrderAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        var response = await Fixture.ApiKey.ClickBankService.Orders.GetOrderAsync(this.Receipt, cancellationToken: CancellationToken.None);
+        var response = await Fixture.ApiKey.ClickBankService.Orders.GetOrderAsync(Fixture.Receipt, cancellationToken: CancellationToken.None);
         _additionalPropertiesHelper.CheckAdditionalProperties(response, Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
     }
 
@@ -79,7 +78,7 @@ public class OrderTests : IClassFixture<SharedFixture>
     [TestPriority(20)]
     public async Task GetOrderUpsellsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        var response = await Fixture.ApiKey.ClickBankService.Orders.GetOrderUpsellsAsync(this.Receipt, CancellationToken.None);
+        var response = await Fixture.ApiKey.ClickBankService.Orders.GetOrderUpsellsAsync(Fixture.Receipt, CancellationToken.None);
         _additionalPropertiesHelper.CheckAdditionalProperties(response, Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
     }
 
@@ -90,7 +89,7 @@ public class OrderTests : IClassFixture<SharedFixture>
     [SkippableFact]
     [TestPriority(20)]
     public async Task ChangeOrderAddressAsync_CanCall() =>
-        await Fixture.ApiKey.ClickBankService.Orders.ChangeOrderAddressAsync(receipt: this.Receipt,
+        await Fixture.ApiKey.ClickBankService.Orders.ChangeOrderAddressAsync(receipt: Fixture.Receipt,
             address1: "123 Test St.", city: "Middle", county:"Nowhere", countryCode: "US", postalCode: "80030", province: "CO",
             cancellationToken: CancellationToken.None);
 
@@ -125,7 +124,7 @@ internal class OrderMockClient : Orders2Client, IMockTests
     public async Task TestAllMethodsThatReturnDataAsync()
     {
         ReadResponseAsString = true;
-        await Assert.ThrowsAsync<ApiException>(async () => await GetOrdersAsync("", 0, "", "", "", "", RoleAccount.AFFILIATE, DateTimeOffset.Now, DateTimeOffset.Now, "", OrderType.BILL, "", 1, CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await GetOrdersAsync("", 0, "", "", "", "", RoleAccount.AFFILIATE, DateTimeOffset.Now, DateTimeOffset.Now, "", TransactionType.BILL, "", 1, CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await GetOrderAsync("", "", CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await GetOrderUpsellsAsync("", CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await ChangeOrderAddressAsync("","","","","", "", "", "", "", cancellationToken: CancellationToken.None));

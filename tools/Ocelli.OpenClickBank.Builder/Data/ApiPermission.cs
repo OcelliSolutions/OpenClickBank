@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Runtime.Serialization;
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
@@ -7,52 +7,41 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 /// </summary>
 public enum ApiPermission
 {
-    [Display(Name = "api_products_client")]
-    ApiProductsClient,
-    [Display(Name = "ach-view")] AchView,
-    [Display(Name = "apiNotification")] ApiNotification,
-    [Display(Name = "contact-change")] ContactChange,
+    [EnumMember(Value = "api_products_client")] API_PRODUCTS_CLIENT,
+    [EnumMember(Value = "ach-view")] ACH_VIEW,
+    [EnumMember(Value = "apiNotification")] API_NOTIFICATION,
+    [EnumMember(Value = "contact-change")] CONTACT_CHANGE,
 
-    [Display(Name = "api_notifications_client")]
-    ApiNotificationsClient,
-    [Display(Name = "currencyConverter")] CurrencyConverter,
-    [Display(Name = "free_trials")] FreeTrials,
-    [Display(Name = "coupons")] Coupons,
-    [Display(Name = "soft_descriptor")] SoftDescriptor,
-    [Display(Name = "productLocale")] ProductLocale,
+    [EnumMember(Value = "api_notifications_client")] API_NOTIFICATIONS_CLIENT,
+    [EnumMember(Value = "currencyConverter")] CURRENCY_CONVERTER,
+    [EnumMember(Value = "free_trials")] FREE_TRIALS,
+    [EnumMember(Value = "coupons")] COUPONS,
+    [EnumMember(Value = "soft_descriptor")] SOFT_DESCRIPTOR,
+    [EnumMember(Value = "productLocale")] PRODUCT_LOCALE,
 
-    [Display(Name = "vendor-partial-refund")]
-    VendorPartialRefund,
+    [EnumMember(Value = "vendor-partial-refund")] VENDOR_PARTIAL_REFUND,
 
-    [Display(Name = "edit-orderform-quantity")]
-    EditOrderFormQuantity,
-    [Display(Name = "countdown-timer")] CountdownTimer,
-    [Display(Name = "acct-w")] AcctW,
-    [Display(Name = "flexible_refund")] FlexibleRefund,
-    [Display(Name = "ROLE_LOGGED_IN")] RoleLoggedIn,
+    [EnumMember(Value = "edit-orderform-quantity")] EDIT_ORDER_FORM_QUANTITY,
+    [EnumMember(Value = "countdown-timer")] COUNTDOWN_TIMER,
+    [EnumMember(Value = "acct-w")] ACCT_W,
+    [EnumMember(Value = "flexible_refund")] FLEXIBLE_REFUND,
+    [EnumMember(Value = "ROLE_LOGGED_IN")] ROLE_LOGGED_IN,
 
-    [Display(Name = "whitelist-exclusive")]
-    WhitelistExclusive,
-    [Display(Name = "payment-change")] PaymentChange,
-    [Display(Name = "api_order_read")] ApiOrderRead,
-    [Display(Name = "txns-r")] TxnsR,
-    [Display(Name = "admin_reports")] AdminReports,
-    [Display(Name = "account-change")] AccountChange,
-    [Display(Name = "site-change")] SiteChange,
-    [Display(Name = "api_order_write")] ApiOrderWrite,
-    [Display(Name = "multi-currency")] MultiCurrency,
+    [EnumMember(Value = "whitelist-exclusive")] WHITELIST_EXCLUSIVE,
+    [EnumMember(Value = "payment-change")] PAYMENT_CHANGE,
+    [EnumMember(Value = "api_order_read")] API_ORDER_READ,
+    [EnumMember(Value = "txns-r")] TXNS_R,
+    [EnumMember(Value = "admin_reports")] ADMIN_REPORTS,
+    [EnumMember(Value = "account-change")] ACCOUNT_CHANGE,
+    [EnumMember(Value = "site-change")] SITE_CHANGE,
+    [EnumMember(Value = "api_order_write")] API_ORDER_WRITE,
+    [EnumMember(Value = "multi-currency")] MULTI_CURRENCY,
 
-    [Display(Name = "custom_whitelist_commission")]
-    CustomWhitelistCommission,
+    [EnumMember(Value = "custom_whitelist_commission")] CUSTOM_WHITELIST_COMMISSION,
+    [EnumMember(Value = "api_analytics_client")] API_ANALYTICS_CLIENT,
+    [EnumMember(Value = "order_skip_confirmation_page")] ORDER_SKIP_CONFIRMATION_PAGE,
+    [EnumMember(Value = "user")] USER,
+    [EnumMember(Value = "HAS_DEVELOPER_KEY")] HAS_DEVELOPER_KEY,
 
-    [Display(Name = "api_analytics_client")]
-    ApiAnalyticsClient,
-
-    [Display(Name = "order_skip_confirmation_page")]
-    OrderSkipConfirmationPage,
-    [Display(Name = "user")] User,
-    [Display(Name = "HAS_DEVELOPER_KEY")] HasDeveloperKey,
-
-    [Display(Name = "api_subscription_modifications")]
-    ApiSubscriptionModifications
+    [EnumMember(Value = "api_subscription_modifications")] API_SUBSCRIPTION_MODIFICATIONS
 }

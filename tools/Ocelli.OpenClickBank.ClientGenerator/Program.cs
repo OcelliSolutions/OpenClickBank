@@ -29,7 +29,8 @@ var settings = new CSharpClientGeneratorSettings()
         GenerateDefaultValues = true,
         GenerateDataAnnotations = true,
         PropertyNameGenerator = new CustomPropertyNameGenerator(),
-        ClassStyle = CSharpClassStyle.Poco
+        ClassStyle = CSharpClassStyle.Poco, 
+        EnumNameGenerator = new CustomEnumNameGenerator()
     }
 };
 
@@ -76,5 +77,13 @@ namespace Ocelli.OpenClickBank.ClientGenerator
                 .Replace(":", "_")
                 .Replace("-", "_")
                 .Replace("#", "_");
+    }
+
+    public class CustomEnumNameGenerator : IEnumNameGenerator
+    {
+        public string Generate(int index, string name, object value, JsonSchema schema) =>
+            name
+                .Replace(".", "_")
+                .Replace("-", "_").ToUpper();
     }
 }
