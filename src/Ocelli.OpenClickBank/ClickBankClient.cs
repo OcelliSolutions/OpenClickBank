@@ -94,7 +94,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sortDirection">The order in which the sorted results are returned</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SubscriptionDetailResult?> GetSubscriptionDetailsByStartDateAsync(RoleAccount role, string account, System.DateTimeOffset startDate, System.DateTimeOffset endDate, SubscriptionDetailRowOrderBy? orderBy = null, SortDirection? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SubscriptionDetailResult?> GetSubscriptionDetailsByStartDateAsync(RoleAccount role, string account, DateOnly startDate, DateOnly endDate, SubscriptionDetailRowOrderBy? orderBy = null, SortDirection? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -108,7 +108,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sortDirection">The order in which the sorted results are returned</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SubscriptionDetailResult?> GetSubscriptionDetailsByCancelDateAsync(RoleAccount role, string account, System.DateTimeOffset startDate, System.DateTimeOffset endDate, SubscriptionDetailRowOrderBy? orderBy = null, SortDirection? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SubscriptionDetailResult?> GetSubscriptionDetailsByCancelDateAsync(RoleAccount role, string account, DateOnly startDate, DateOnly endDate, SubscriptionDetailRowOrderBy? orderBy = null, SortDirection? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -122,7 +122,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sortDirection">The order in which the sorted results are returned</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SubscriptionDetailResult?> GetSubscriptionDetailsByNextPaymentDateAsync(RoleAccount role, string account, System.DateTimeOffset startDate, System.DateTimeOffset endDate, SubscriptionDetailRowOrderBy? orderBy = null, SortDirection? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SubscriptionDetailResult?> GetSubscriptionDetailsByNextPaymentDateAsync(RoleAccount role, string account, DateOnly startDate, DateOnly endDate, SubscriptionDetailRowOrderBy? orderBy = null, SortDirection? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="role">A valid role</param>
@@ -159,7 +159,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">The page number of the results (default is page 1).</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SubscriptionTrendsData?> GetSubscriptionTrendsAsync(RoleAccount role, string account, System.DateTimeOffset startDate, System.DateTimeOffset endDate, string? groupBy = null, int? productId = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SubscriptionTrendsData?> GetSubscriptionTrendsAsync(RoleAccount role, string account, DateOnly startDate, DateOnly endDate, string? groupBy = null, int? productId = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -178,7 +178,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">The page number of the results (default is page 1).</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AnalyticsResult?> GetStatisticsByRoleAndDimensionAsync(RoleAccount role, Dimension dimension, string account, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, Dimension? dimensionFilter = null, System.Collections.Generic.IEnumerable<DimensionColumn>? select = null, DimensionColumn? orderBy = null, bool? sortAscending = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AnalyticsResult?> GetStatisticsByRoleAndDimensionAsync(RoleAccount role, Dimension dimension, string account, DateOnly? startDate = null, DateOnly? endDate = null, Dimension? dimensionFilter = null, System.Collections.Generic.IEnumerable<DimensionColumn>? select = null, DimensionColumn? orderBy = null, bool? sortAscending = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -200,7 +200,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">The page number of the results (default is page 1).</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AnalyticsResult?> GetStatisticsByRoleAndDimensionSummaryAsync(RoleAccount role, Dimension dimension, string account, SummaryType summaryType, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, Dimension? dimensionFilter = null, System.Collections.Generic.IEnumerable<DimensionColumn>? select = null, DimensionColumn? orderBy = null, bool? sortAscending = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AnalyticsResult?> GetStatisticsByRoleAndDimensionSummaryAsync(RoleAccount role, Dimension dimension, string account, SummaryType summaryType, DateOnly? startDate = null, DateOnly? endDate = null, Dimension? dimensionFilter = null, System.Collections.Generic.IEnumerable<DimensionColumn>? select = null, DimensionColumn? orderBy = null, bool? sortAscending = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 
@@ -692,7 +692,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sortDirection">The order in which the sorted results are returned</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SubscriptionDetailResult?> GetSubscriptionDetailsByStartDateAsync(RoleAccount role, string account, System.DateTimeOffset startDate, System.DateTimeOffset endDate, SubscriptionDetailRowOrderBy? orderBy = null, SortDirection? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<SubscriptionDetailResult?> GetSubscriptionDetailsByStartDateAsync(RoleAccount role, string account, DateOnly startDate, DateOnly endDate, SubscriptionDetailRowOrderBy? orderBy = null, SortDirection? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (role == null)
                 throw new System.ArgumentNullException("role");
@@ -795,7 +795,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sortDirection">The order in which the sorted results are returned</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SubscriptionDetailResult?> GetSubscriptionDetailsByCancelDateAsync(RoleAccount role, string account, System.DateTimeOffset startDate, System.DateTimeOffset endDate, SubscriptionDetailRowOrderBy? orderBy = null, SortDirection? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<SubscriptionDetailResult?> GetSubscriptionDetailsByCancelDateAsync(RoleAccount role, string account, DateOnly startDate, DateOnly endDate, SubscriptionDetailRowOrderBy? orderBy = null, SortDirection? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (role == null)
                 throw new System.ArgumentNullException("role");
@@ -898,7 +898,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sortDirection">The order in which the sorted results are returned</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SubscriptionDetailResult?> GetSubscriptionDetailsByNextPaymentDateAsync(RoleAccount role, string account, System.DateTimeOffset startDate, System.DateTimeOffset endDate, SubscriptionDetailRowOrderBy? orderBy = null, SortDirection? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<SubscriptionDetailResult?> GetSubscriptionDetailsByNextPaymentDateAsync(RoleAccount role, string account, DateOnly startDate, DateOnly endDate, SubscriptionDetailRowOrderBy? orderBy = null, SortDirection? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (role == null)
                 throw new System.ArgumentNullException("role");
@@ -1190,7 +1190,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">The page number of the results (default is page 1).</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SubscriptionTrendsData?> GetSubscriptionTrendsAsync(RoleAccount role, string account, System.DateTimeOffset startDate, System.DateTimeOffset endDate, string? groupBy = null, int? productId = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<SubscriptionTrendsData?> GetSubscriptionTrendsAsync(RoleAccount role, string account, DateOnly startDate, DateOnly endDate, string? groupBy = null, int? productId = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (role == null)
                 throw new System.ArgumentNullException("role");
@@ -1307,7 +1307,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">The page number of the results (default is page 1).</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AnalyticsResult?> GetStatisticsByRoleAndDimensionAsync(RoleAccount role, Dimension dimension, string account, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, Dimension? dimensionFilter = null, System.Collections.Generic.IEnumerable<DimensionColumn>? select = null, DimensionColumn? orderBy = null, bool? sortAscending = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<AnalyticsResult?> GetStatisticsByRoleAndDimensionAsync(RoleAccount role, Dimension dimension, string account, DateOnly? startDate = null, DateOnly? endDate = null, Dimension? dimensionFilter = null, System.Collections.Generic.IEnumerable<DimensionColumn>? select = null, DimensionColumn? orderBy = null, bool? sortAscending = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (role == null)
                 throw new System.ArgumentNullException("role");
@@ -1439,7 +1439,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">The page number of the results (default is page 1).</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AnalyticsResult?> GetStatisticsByRoleAndDimensionSummaryAsync(RoleAccount role, Dimension dimension, string account, SummaryType summaryType, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, Dimension? dimensionFilter = null, System.Collections.Generic.IEnumerable<DimensionColumn>? select = null, DimensionColumn? orderBy = null, bool? sortAscending = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<AnalyticsResult?> GetStatisticsByRoleAndDimensionSummaryAsync(RoleAccount role, Dimension dimension, string account, SummaryType summaryType, DateOnly? startDate = null, DateOnly? endDate = null, Dimension? dimensionFilter = null, System.Collections.Generic.IEnumerable<DimensionColumn>? select = null, DimensionColumn? orderBy = null, bool? sortAscending = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (role == null)
                 throw new System.ArgumentNullException("role");
@@ -2172,7 +2172,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> GetOrderCountAsync(string? affiliate = null, string? item = null, string? email = null, string? lastName = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, TransactionType? type = null, string? vendor = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<int> GetOrderCountAsync(string? affiliate = null, string? item = null, string? email = null, string? lastName = null, RoleAccount? role = null, DateOnly? startDate = null, DateOnly? endDate = null, string? tid = null, TransactionType? type = null, string? vendor = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2194,7 +2194,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderList?> GetOrdersAsync(string? affiliate = null, double? amount = null, string? email = null, string? item = null, string? lastName = null, string? postalCode = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, TransactionType? type = null, string? vendor = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OrderList?> GetOrdersAsync(string? affiliate = null, double? amount = null, string? email = null, string? item = null, string? lastName = null, string? postalCode = null, RoleAccount? role = null, DateOnly? startDate = null, DateOnly? endDate = null, string? tid = null, TransactionType? type = null, string? vendor = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2208,7 +2208,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="nextRebillDate">Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change.</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ChangeOrderProductAsync(string receipt, string newSku, string oldSku, string? carryAffiliate = null, bool? applyProratedRefund = null, System.DateTimeOffset? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task ChangeOrderProductAsync(string receipt, string newSku, string oldSku, string? carryAffiliate = null, bool? applyProratedRefund = null, DateOnly? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2237,7 +2237,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ChangeOrderDateAsync(string receipt, System.DateTimeOffset changeDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task ChangeOrderDateAsync(string receipt, DateOnly changeDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2259,7 +2259,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">The item number of the subscription product that should be reinstated for the order.</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task PauseOrderAsync(string receipt, System.DateTimeOffset restartDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task PauseOrderAsync(string receipt, DateOnly restartDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2569,7 +2569,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<int> GetOrderCountAsync(string? affiliate = null, string? item = null, string? email = null, string? lastName = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, TransactionType? type = null, string? vendor = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<int> GetOrderCountAsync(string? affiliate = null, string? item = null, string? email = null, string? lastName = null, RoleAccount? role = null, DateOnly? startDate = null, DateOnly? endDate = null, string? tid = null, TransactionType? type = null, string? vendor = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/count?");
@@ -2697,7 +2697,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrdersAsync(string? affiliate = null, double? amount = null, string? email = null, string? item = null, string? lastName = null, string? postalCode = null, RoleAccount? role = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? tid = null, TransactionType? type = null, string? vendor = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrdersAsync(string? affiliate = null, double? amount = null, string? email = null, string? item = null, string? lastName = null, string? postalCode = null, RoleAccount? role = null, DateOnly? startDate = null, DateOnly? endDate = null, string? tid = null, TransactionType? type = null, string? vendor = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/orders2/list?");
@@ -2833,7 +2833,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="nextRebillDate">Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change.</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task ChangeOrderProductAsync(string receipt, string newSku, string oldSku, string? carryAffiliate = null, bool? applyProratedRefund = null, System.DateTimeOffset? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task ChangeOrderProductAsync(string receipt, string newSku, string oldSku, string? carryAffiliate = null, bool? applyProratedRefund = null, DateOnly? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -3054,7 +3054,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase.</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task ChangeOrderDateAsync(string receipt, System.DateTimeOffset changeDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task ChangeOrderDateAsync(string receipt, DateOnly changeDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -3228,7 +3228,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">The item number of the subscription product that should be reinstated for the order.</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task PauseOrderAsync(string receipt, System.DateTimeOffset restartDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task PauseOrderAsync(string receipt, DateOnly restartDate, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -4206,7 +4206,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="account">The nickName of the account. Defaults to all accounts if not specified.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AccountList?> GetQuickstatsAsync(System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? account = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AccountList?> GetQuickstatsAsync(DateOnly? startDate = null, DateOnly? endDate = null, string? account = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4217,7 +4217,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="account">The nickName of the account. Defaults to all accounts if not specified.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> GetQuickstatsCountAsync(System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? account = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<int> GetQuickstatsCountAsync(DateOnly? startDate = null, DateOnly? endDate = null, string? account = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 
@@ -4334,7 +4334,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="account">The nickName of the account. Defaults to all accounts if not specified.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AccountList?> GetQuickstatsAsync(System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? account = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<AccountList?> GetQuickstatsAsync(DateOnly? startDate = null, DateOnly? endDate = null, string? account = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/quickstats/list?");
@@ -4422,7 +4422,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="account">The nickName of the account. Defaults to all accounts if not specified.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<int> GetQuickstatsCountAsync(System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? account = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<int> GetQuickstatsCountAsync(DateOnly? startDate = null, DateOnly? endDate = null, string? account = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/quickstats/count?");
@@ -4619,7 +4619,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ShippingList?> GetShippingAsync(ShippingStatus? status = null, int? days = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ShippingList?> GetShippingAsync(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4633,7 +4633,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="receipt">Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> GetShippingCountAsync(ShippingStatus? status = null, int? days = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? receipt = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<int> GetShippingCountAsync(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4657,7 +4657,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="comments">The comments  associated with the notice.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ShippingNoticeData?> CreateShippingNoticeAsync(string receipt, System.DateTimeOffset date, string carrier, bool fillOrder, string? item = null, string? tracking = null, string? comments = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ShippingNoticeData?> CreateShippingNoticeAsync(string receipt, DateOnly date, string carrier, bool fillOrder, string? item = null, string? tracking = null, string? comments = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 
@@ -4706,7 +4706,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ShippingList?> GetShippingAsync(ShippingStatus? status = null, int? days = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ShippingList?> GetShippingAsync(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/shipping3/list?");
@@ -4814,7 +4814,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="receipt">Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<int> GetShippingCountAsync(ShippingStatus? status = null, int? days = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? receipt = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<int> GetShippingCountAsync(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/shipping3/count?");
@@ -4995,7 +4995,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="comments">The comments  associated with the notice.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ShippingNoticeData?> CreateShippingNoticeAsync(string receipt, System.DateTimeOffset date, string carrier, bool fillOrder, string? item = null, string? tracking = null, string? comments = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ShippingNoticeData?> CreateShippingNoticeAsync(string receipt, DateOnly date, string carrier, bool fillOrder, string? item = null, string? tracking = null, string? comments = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -5296,7 +5296,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TicketList?> GetTicketsAsync(TicketTypeRequest? type = null, TicketStatus? status = null, string? receipt = null, System.DateTimeOffset? createDateFrom = null, System.DateTimeOffset? createDateTo = null, System.DateTimeOffset? updateDateFrom = null, System.DateTimeOffset? updateDateTo = null, System.DateTimeOffset? closeDateFrom = null, System.DateTimeOffset? closeDateTo = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TicketList?> GetTicketsAsync(TicketTypeRequest? type = null, TicketStatus? status = null, string? receipt = null, DateOnly? createDateFrom = null, DateOnly? createDateTo = null, DateOnly? updateDateFrom = null, DateOnly? updateDateTo = null, DateOnly? closeDateFrom = null, DateOnly? closeDateTo = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5848,7 +5848,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<TicketList?> GetTicketsAsync(TicketTypeRequest? type = null, TicketStatus? status = null, string? receipt = null, System.DateTimeOffset? createDateFrom = null, System.DateTimeOffset? createDateTo = null, System.DateTimeOffset? updateDateFrom = null, System.DateTimeOffset? updateDateTo = null, System.DateTimeOffset? closeDateFrom = null, System.DateTimeOffset? closeDateTo = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<TicketList?> GetTicketsAsync(TicketTypeRequest? type = null, TicketStatus? status = null, string? receipt = null, DateOnly? createDateFrom = null, DateOnly? createDateTo = null, DateOnly? updateDateFrom = null, DateOnly? updateDateTo = null, DateOnly? closeDateFrom = null, DateOnly? closeDateTo = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/tickets/list?");
@@ -8779,8 +8779,7 @@ namespace Ocelli.OpenClickBank
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
         [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})")]
-        [System.Text.Json.Serialization.JsonConverter(typeof(DateFormatConverter))]
-        public System.DateTimeOffset? BusinessDate { get; set; } = default!;
+        public DateOnly? BusinessDate { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("cancelSubCnt")]
 
@@ -9614,26 +9613,6 @@ namespace Ocelli.OpenClickBank
             set { _additionalProperties = value; }
         }
 
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
-    internal class DateFormatConverter : System.Text.Json.Serialization.JsonConverter<System.DateTime>
-    {
-        public override System.DateTime Read(ref System.Text.Json.Utf8JsonReader reader, System.Type typeToConvert, System.Text.Json.JsonSerializerOptions options)
-        {
-            var dateTime = reader.GetString();
-            if (dateTime == null)
-            {
-                throw new System.Text.Json.JsonException("Unexpected JsonTokenType.Null");
-            }
-
-            return System.DateTime.Parse(dateTime);
-        }
-
-        public override void Write(System.Text.Json.Utf8JsonWriter writer, System.DateTime value, System.Text.Json.JsonSerializerOptions options)
-        {
-            writer.WriteStringValue(value.ToString("yyyy-MM-dd"));
-        }
     }
 
 

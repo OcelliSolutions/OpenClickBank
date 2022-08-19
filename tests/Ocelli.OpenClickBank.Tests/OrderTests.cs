@@ -41,8 +41,8 @@ public class OrderTests : IClassFixture<SharedFixture>
         do
         {
             var orders =
-                await Fixture.ApiKey.ClickBankService.Orders.GetOrdersAsync(startDate: DateTimeOffset.Now.AddDays(-30),
-                    endDate: DateTimeOffset.Now, page: page);
+                await Fixture.ApiKey.ClickBankService.Orders.GetOrdersAsync(startDate: DateOnly.FromDateTime(DateTime.Now).AddDays(-30),
+                    endDate: DateOnly.FromDateTime(DateTime.Now), page: page);
             _additionalPropertiesHelper.CheckAdditionalProperties(orders, Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
             Debug.Assert(orders?.OrderData != null, "orders.OrderData != null");
             Assert.NotEmpty(orders.OrderData);
@@ -61,8 +61,8 @@ public class OrderTests : IClassFixture<SharedFixture>
     public async Task GetOrderCountAsync_ReturnNumber_ShouldPass()
     {
         var orders =
-            await Fixture.ApiKey.ClickBankService.Orders.GetOrderCountAsync(startDate: DateTimeOffset.Now.AddDays(-30),
-                endDate: DateTimeOffset.Now);
+            await Fixture.ApiKey.ClickBankService.Orders.GetOrderCountAsync(startDate: DateOnly.FromDateTime(DateTime.Now).AddDays(-30),
+                endDate: DateOnly.FromDateTime(DateTime.Now));
         Assert.NotEqual(0, orders);
     }
 
@@ -124,14 +124,14 @@ internal class OrderMockClient : OrdersClient, IMockTests
     public async Task TestAllMethodsThatReturnDataAsync()
     {
         ReadResponseAsString = true;
-        await Assert.ThrowsAsync<ApiException>(async () => await GetOrdersAsync("", 0, "", "", "", "", RoleAccount.AFFILIATE, DateTimeOffset.Now, DateTimeOffset.Now, "", TransactionType.BILL, "", 1, CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await GetOrdersAsync("", 0, "", "", "", "", RoleAccount.AFFILIATE, DateOnly.FromDateTime(DateTime.Now), DateOnly.FromDateTime(DateTime.Now), "", TransactionType.BILL, "", 1, CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await GetOrderAsync("", "", CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await GetOrderUpsellsAsync("", CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await ChangeOrderAddressAsync("","","","","", "", "", "", "", cancellationToken: CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await ChangeOrderDateAsync("", DateTimeOffset.Now, "",  cancellationToken: CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await ChangeOrderProductAsync("", "", "", "", false, DateTimeOffset.Now, cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await ChangeOrderDateAsync("", DateOnly.FromDateTime(DateTime.Now), "",  cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await ChangeOrderProductAsync("", "", "", "", false, DateOnly.FromDateTime(DateTime.Now), cancellationToken: CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await ExtendOrderAsync("", 1, "", cancellationToken: CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await PauseOrderAsync("", DateTimeOffset.Now, "", cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await PauseOrderAsync("", DateOnly.FromDateTime(DateTime.Now), "", cancellationToken: CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await ReinstateOrderAsync("", "", cancellationToken: CancellationToken.None));
 
         ReadResponseAsString = false;

@@ -126,7 +126,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByStartDateAsync(
-                RoleAccount.AFFILIATE, Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now);
+                RoleAccount.AFFILIATE, Fixture.ApiKey.Site, DateOnly.FromDateTime(DateTime.Now).AddDays(-30), DateOnly.FromDateTime(DateTime.Now));
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
@@ -137,7 +137,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByStartDateAsync(RoleAccount.VENDOR,
-                Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now);
+                Fixture.ApiKey.Site, DateOnly.FromDateTime(DateTime.Now).AddDays(-30), DateOnly.FromDateTime(DateTime.Now));
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
@@ -148,7 +148,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByCancelDateAsync(
-                RoleAccount.AFFILIATE, Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now);
+                RoleAccount.AFFILIATE, Fixture.ApiKey.Site, DateOnly.FromDateTime(DateTime.Now).AddDays(-30), DateOnly.FromDateTime(DateTime.Now));
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
@@ -159,7 +159,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByCancelDateAsync(RoleAccount.VENDOR,
-                Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now);
+                Fixture.ApiKey.Site, DateOnly.FromDateTime(DateTime.Now).AddDays(-30), DateOnly.FromDateTime(DateTime.Now));
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
@@ -170,7 +170,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByNextPaymentDateAsync(
-                RoleAccount.AFFILIATE, Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now);
+                RoleAccount.AFFILIATE, Fixture.ApiKey.Site, DateOnly.FromDateTime(DateTime.Now).AddDays(-30), DateOnly.FromDateTime(DateTime.Now));
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
@@ -181,7 +181,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     {
         var analyticStatus =
             await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionDetailsByNextPaymentDateAsync(
-                RoleAccount.VENDOR, Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now);
+                RoleAccount.VENDOR, Fixture.ApiKey.Site, DateOnly.FromDateTime(DateTime.Now).AddDays(-30), DateOnly.FromDateTime(DateTime.Now));
         _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         Skip.If(analyticStatus?.TotalCount == 0, "WARN: No data returned. Could not test");
@@ -265,7 +265,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
         {
             var analyticStatus =
                 await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionTrendsAsync(RoleAccount.AFFILIATE,
-                    Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now, page:page);
+                    Fixture.ApiKey.Site, DateOnly.FromDateTime(DateTime.Now).AddDays(-30), DateOnly.FromDateTime(DateTime.Now), page:page);
             _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
 
@@ -290,7 +290,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
         {
             var analyticStatus =
                 await Fixture.ApiKey.ClickBankService.Analytics.GetSubscriptionTrendsAsync(RoleAccount.VENDOR,
-                    Fixture.ApiKey.Site, DateTimeOffset.Now.AddDays(-30), DateTimeOffset.Now, page:page);
+                    Fixture.ApiKey.Site, DateOnly.FromDateTime(DateTime.Now).AddDays(-30), DateOnly.FromDateTime(DateTime.Now), page:page);
             _additionalPropertiesHelper.CheckAdditionalProperties(analyticStatus,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
 

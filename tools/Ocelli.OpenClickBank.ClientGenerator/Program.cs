@@ -30,6 +30,7 @@ var settings = new CSharpClientGeneratorSettings()
         GenerateDataAnnotations = true,
         PropertyNameGenerator = new CustomPropertyNameGenerator(),
         ClassStyle = CSharpClassStyle.Poco, 
+        DateType = "DateOnly",
         EnumNameGenerator = new CustomEnumNameGenerator()
     }
 };

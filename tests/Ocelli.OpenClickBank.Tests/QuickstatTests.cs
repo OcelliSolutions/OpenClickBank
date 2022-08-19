@@ -80,7 +80,7 @@ internal class QuickstatMockClient : QuickstatsClient, IMockTests
     {
         ReadResponseAsString = true;
         await Assert.ThrowsAsync<ApiException>(async () => await GetAccountsAsync(cancellationToken: CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await GetQuickstatsAsync(DateTimeOffset.Now, DateTimeOffset.Now, "", CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await GetQuickstatsAsync(DateOnly.FromDateTime(DateTime.Now), DateOnly.FromDateTime(DateTime.Now), "", CancellationToken.None));
 
         ReadResponseAsString = false;
         //Only one method needs to be tested with `ReadResponseAsString = false`
