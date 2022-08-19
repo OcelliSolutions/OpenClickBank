@@ -59,8 +59,9 @@ namespace Ocelli.OpenClickBank.ClientGenerator
         /// <summary>Generates the property name.</summary>
         /// <param name="property">The property.</param>
         /// <returns>The new name.</returns>
-        public virtual string Generate(JsonSchemaProperty property) =>
-            ConversionUtilities.ConvertToUpperCamelCase(property.Name
+        public virtual string Generate(JsonSchemaProperty property)
+        {
+            var name = ConversionUtilities.ConvertToUpperCamelCase(property.Name
                     .Replace("\"", string.Empty)
                     .Replace("@", string.Empty)
                     .Replace("?", string.Empty)
@@ -77,6 +78,12 @@ namespace Ocelli.OpenClickBank.ClientGenerator
                 .Replace(":", "_")
                 .Replace("-", "_")
                 .Replace("#", "_");
+
+            if (name.StartsWith("Address", StringComparison.InvariantCultureIgnoreCase))
+                return name;
+            name = Regex.Replace(name, "[0-9]", "");
+            return name;
+        }
     }
 
     public class CustomEnumNameGenerator : IEnumNameGenerator

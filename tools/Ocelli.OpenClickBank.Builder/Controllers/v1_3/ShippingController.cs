@@ -8,10 +8,10 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace Ocelli.OpenClickBank.Builder.Controllers.v1_3;
 
-[Route("1.3/shipping2")]
+[Route("1.3/shipping3")]
 [ApiController]
-[SwaggerTag("The Shipping API provides shipping information for physical good orders by receipt or time parameters. This also contains the Ship Notice API.", "https://api.clickbank.com/rest/1.3/shipping2")]
-public class Shipping2Controller : ControllerBase
+[SwaggerTag("The Shipping API provides shipping information for physical good orders by receipt or time parameters. This also contains the Ship Notice API.", "https://api.clickbank.com/rest/1.3/shipping3")]
+public class ShippingController : ControllerBase
 {
     [HttpGet("list")]
     [Authorize]

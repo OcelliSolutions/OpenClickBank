@@ -108,7 +108,7 @@ public class OrderTests : IClassFixture<SharedFixture>
     public void ObjectResponseResult_CanReadText() => _okEmptyMockClient.ObjectResponseResult_CanReadText();
 }
 
-internal class OrderMockClient : Orders2Client, IMockTests
+internal class OrderMockClient : OrdersClient, IMockTests
 {
     public OrderMockClient(HttpClient httpClient) : base(httpClient)
     {

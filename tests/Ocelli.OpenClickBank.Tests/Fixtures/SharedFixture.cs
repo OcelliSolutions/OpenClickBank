@@ -14,11 +14,24 @@ public class SharedFixture : IDisposable
     {
         try
         {
-            var fs = new FileStream(@"api_key.json", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            var sr = new StreamReader(fs);
-            var apiKeyJson = sr.ReadToEnd();
-            sr.Close();
-            Debug.Assert(!string.IsNullOrWhiteSpace(apiKeyJson), "Please create a `api_key.json` file");
+            string apiKeyJson;
+            do
+            {
+                try
+                {
+                    var fs = new FileStream(@"api_key.json", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                    var sr = new StreamReader(fs);
+                    apiKeyJson = sr.ReadToEnd();
+                    sr.Close();
+                    Debug.Assert(!string.IsNullOrWhiteSpace(apiKeyJson), "Please create a `api_key.json` file");
+                    break;
+                }
+                catch (Exception)
+                {
+                    //There can be concurrent locks, just keep trying.
+                    Thread.Sleep(new Random().Next(3, 10) * 1000);
+                }
+            } while (true);
 
             var settings = JsonSerializer.Deserialize<OpenClickBankConfig>(apiKeyJson) ?? new OpenClickBankConfig();
             var apiKeyParsed = JsonDocument.Parse(apiKeyJson);

@@ -2123,7 +2123,7 @@ namespace Ocelli.OpenClickBank
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
-    public partial interface IOrders2Client
+    public partial interface IOrdersClient
     {
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -2274,13 +2274,13 @@ namespace Ocelli.OpenClickBank
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
-    internal partial class Orders2Client : ClickBankClientBase, IOrders2Client
+    internal partial class OrdersClient : ClickBankClientBase, IOrdersClient
     {
         private string _baseUrl = "https://api.clickbank.com/rest";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<System.Text.Json.JsonSerializerOptions> _settings;
 
-        public Orders2Client(System.Net.Http.HttpClient httpClient)
+        public OrdersClient(System.Net.Http.HttpClient httpClient)
         {
             _httpClient = httpClient;
             _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings);
@@ -4603,7 +4603,7 @@ namespace Ocelli.OpenClickBank
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
-    public partial interface IShipping2Client
+    public partial interface IShippingClient
     {
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -4662,13 +4662,13 @@ namespace Ocelli.OpenClickBank
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
-    internal partial class Shipping2Client : ClickBankClientBase, IShipping2Client
+    internal partial class ShippingClient : ClickBankClientBase, IShippingClient
     {
         private string _baseUrl = "https://api.clickbank.com/rest";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<System.Text.Json.JsonSerializerOptions> _settings;
 
-        public Shipping2Client(System.Net.Http.HttpClient httpClient)
+        public ShippingClient(System.Net.Http.HttpClient httpClient)
         {
             _httpClient = httpClient;
             _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings);
@@ -4709,7 +4709,7 @@ namespace Ocelli.OpenClickBank
         public virtual async System.Threading.Tasks.Task<ShippingList?> GetShippingAsync(ShippingStatus? status = null, int? days = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/shipping2/list?");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/shipping3/list?");
             if (status != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("status") + "=").Append(System.Uri.EscapeDataString(ConvertToString(status, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -4817,7 +4817,7 @@ namespace Ocelli.OpenClickBank
         public virtual async System.Threading.Tasks.Task<int> GetShippingCountAsync(ShippingStatus? status = null, int? days = null, System.DateTimeOffset? startDate = null, System.DateTimeOffset? endDate = null, string? receipt = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/shipping2/count?");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/shipping3/count?");
             if (status != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("status") + "=").Append(System.Uri.EscapeDataString(ConvertToString(status, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -4918,7 +4918,7 @@ namespace Ocelli.OpenClickBank
                 throw new System.ArgumentNullException("receipt");
 
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/shipping2/shipnotice/{receipt}");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/shipping3/shipnotice/{receipt}");
             urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
 
             var client_ = _httpClient;
@@ -5010,7 +5010,7 @@ namespace Ocelli.OpenClickBank
                 throw new System.ArgumentNullException("fillOrder");
 
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/shipping2/shipnotice/{receipt}?");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/1.3/shipping3/shipnotice/{receipt}?");
             urlBuilder_.Replace("{receipt}", System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
             urlBuilder_.Append(System.Uri.EscapeDataString("date") + "=").Append(System.Uri.EscapeDataString(date.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Append(System.Uri.EscapeDataString("carrier") + "=").Append(System.Uri.EscapeDataString(ConvertToString(carrier, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -7284,6 +7284,11 @@ namespace Ocelli.OpenClickBank
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
         public string? Email { get; set; } = default!;
 
+        [System.Text.Json.Serialization.JsonPropertyName("phoneNumber")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
+        public string? PhoneNumber { get; set; } = default!;
+
         [System.Text.Json.Serialization.JsonPropertyName("address1")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
@@ -8296,7 +8301,7 @@ namespace Ocelli.OpenClickBank
     public partial class ShippingList
     {
 
-        [System.Text.Json.Serialization.JsonPropertyName("orderShipData")]
+        [System.Text.Json.Serialization.JsonPropertyName("orderShipData2")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
         public System.Collections.Generic.ICollection<OrderShipData>? OrderShipData { get; set; } = default!;

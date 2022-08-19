@@ -36,7 +36,7 @@ public class ShippingTests : IClassFixture<SharedFixture>
             _additionalPropertiesHelper.CheckAdditionalProperties(shippingListResult,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
             Assert.NotNull(shippingListResult?.OrderShipData);
-            Debug.Assert(shippingListResult?.OrderShipData != null, "shippingListResult.OrderShipData != null");
+            Debug.Assert(shippingListResult.OrderShipData != null, "shippingListResult.OrderShipData != null");
             Skip.If(!shippingListResult.OrderShipData.Any(), "WARN: No data returned. Could not test");
             
             if (shippingListResult.OrderShipData != null) results.AddRange(shippingListResult.OrderShipData);
@@ -57,14 +57,14 @@ public class ShippingTests : IClassFixture<SharedFixture>
     }
 
     //TODO: The required parameter of `receipt` is not available.
-    [Fact(Skip = "TODO: The required parameter of `receipt` is not available.")]
+    [SkippableFact]
     public async Task GetShippingNoticeAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var shippingNoticeData =
             await Fixture.ApiKey.ClickBankService.Shipping.GetShippingNoticeAsync(Fixture.Receipt);
         _additionalPropertiesHelper.CheckAdditionalProperties(shippingNoticeData,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Assert.NotNull(shippingNoticeData?.Receipt);
+        Skip.If(string.IsNullOrWhiteSpace(shippingNoticeData?.Receipt), "No shipping notice found for this receipt.");
     }
 
     [SkippableFact]
@@ -80,7 +80,7 @@ public class ShippingTests : IClassFixture<SharedFixture>
     public void ObjectResponseResult_CanReadText() => _okEmptyMockClient.ObjectResponseResult_CanReadText();
 }
 
-internal class ShippingMockClient : Shipping2Client, IMockTests
+internal class ShippingMockClient : ShippingClient, IMockTests
 {
     public ShippingMockClient(HttpClient httpClient) : base(httpClient)
     {

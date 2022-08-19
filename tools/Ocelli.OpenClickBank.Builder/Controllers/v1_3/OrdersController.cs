@@ -11,7 +11,7 @@ namespace Ocelli.OpenClickBank.Builder.Controllers.v1_3;
 [Route("1.3/orders2")]
 [ApiController]
 [SwaggerTag("The Orders API lets you view order information and update some order parameters", "https://api.clickbank.com/rest/1.3/orders2")]
-public class Orders2Controller : ControllerBase
+public class OrdersController : ControllerBase
 {
     [HttpGet("{receipt}")]
     [Authorize]
