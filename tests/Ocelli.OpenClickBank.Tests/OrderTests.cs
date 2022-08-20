@@ -44,12 +44,12 @@ public class OrderTests : IClassFixture<SharedFixture>
                 await Fixture.ApiKey.ClickBankService.Orders.GetOrdersAsync(startDate: DateOnly.FromDateTime(DateTime.Now).AddDays(-30),
                     endDate: DateOnly.FromDateTime(DateTime.Now), page: page);
             _additionalPropertiesHelper.CheckAdditionalProperties(orders, Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-            Debug.Assert(orders?.OrderData != null, "orders.OrderData != null");
-            Assert.NotEmpty(orders.OrderData);
-            foreach (var order in orders.OrderData)
+            Debug.Assert(orders.Result?.OrderData != null, "orders.OrderData != null");
+            Assert.NotEmpty(orders.Result.OrderData);
+            foreach (var order in orders.Result.OrderData)
                 _additionalPropertiesHelper.CheckAdditionalProperties(order,
                     Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-            if (orders.OrderData != null) results.AddRange(orders.OrderData);
+            if (orders.Result.OrderData != null) results.AddRange(orders.Result.OrderData);
             hasMoreData = orders.HasMoreData;
             page++;
         } while (hasMoreData);

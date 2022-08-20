@@ -35,11 +35,11 @@ public class ShippingTests : IClassFixture<SharedFixture>
                 await Fixture.ApiKey.ClickBankService.Shipping.GetShippingAsync(days:10, page: page);
             _additionalPropertiesHelper.CheckAdditionalProperties(shippingListResult,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-            Assert.NotNull(shippingListResult?.OrderShipData);
-            Debug.Assert(shippingListResult.OrderShipData != null, "shippingListResult.OrderShipData != null");
-            Skip.If(!shippingListResult.OrderShipData.Any(), "WARN: No data returned. Could not test");
+            Assert.NotNull(shippingListResult.Result?.OrderShipData);
+            Debug.Assert(shippingListResult.Result.OrderShipData != null, "shippingListResult.OrderShipData != null");
+            Skip.If(!shippingListResult.Result.OrderShipData.Any(), "WARN: No data returned. Could not test");
             
-            if (shippingListResult.OrderShipData != null) results.AddRange(shippingListResult.OrderShipData);
+            if (shippingListResult.Result.OrderShipData != null) results.AddRange(shippingListResult.Result.OrderShipData);
             hasMoreData = shippingListResult.HasMoreData;
             page++;
         } while (hasMoreData);

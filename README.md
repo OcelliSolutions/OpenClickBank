@@ -14,6 +14,13 @@ This is a project designed to provide developers with an easy to use and accurat
   * Get the debug string: `_clickBankService.Debugs.GetDebugAsync(cancellationToken);`
   * Notice that the API section references `Shipping`, this is pointed to the most current version of `shipping2` and will be updated to `shipping3` once production ready. `_clickBankService.Shipping.GetShippingNoticeAsync(receipt, cancellationToken)`
 
+### Pagination APIs
+
+If an endpoint has the `page` parameter, then the result is wrapped in a `ClickBankResponse` object where the results are contained in the `Results` property. 
+The headers and status codes are returned at the base layer as well as a `HashMoreData` property. `HasMoreData` is true if the reponse status code is 206.
+When `HasMoreData` is true, recall the method with the same parameters and date ranges but itterate the `page` parameter by 1. 100 items are *not* always returned
+when there is more data available.
+
 ## Developer Notes
 
 As a developer working with this spec, there are some considerations that are not fully documented in the source.

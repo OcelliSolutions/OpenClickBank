@@ -20,6 +20,19 @@ var settings = new CSharpClientGeneratorSettings()
     GenerateUpdateJsonSerializerSettingsMethod = false,
     ClientClassAccessModifier = "internal",
     AdditionalNamespaceUsages = new []{"System.Text.Json"},
+    WrapResponses = true,
+    WrapResponseMethods = new []
+    {
+        "AnalyticsClient.GetStatisticsByRoleAndDimension",
+        "AnalyticsClient.GetStatisticsByRoleAndDimensionSummary",
+        "AnalyticsClient.GetSubscriptionTrends",
+        "ImageClient.GetImages",
+        "OrdersClient.GetOrders",
+        "ProductClient.GetProducts",
+        "ShippingClient.GetShipping",
+        "TicketClient.GetTickets"
+    }, 
+    ResponseClass = "ClickBankResponse",
     CSharpGeneratorSettings =
     {
         Namespace = "Ocelli.OpenClickBank", 

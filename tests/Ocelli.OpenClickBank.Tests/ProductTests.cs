@@ -56,11 +56,11 @@ public class ProductTests : IClassFixture<SharedFixture>
                 await Fixture.ApiKey.ClickBankService.Products.GetProductsAsync(Fixture.ApiKey.Site, page: page);
             _additionalPropertiesHelper.CheckAdditionalProperties(productList,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-            Skip.If(productList?.Total_record_count == 0, "WARN: No data returned. Could not test");
+            Skip.If(productList.Result?.Total_record_count == 0, "WARN: No data returned. Could not test");
 
             if (productList != null)
             {
-                var firstProduct = productList.Products?.Product?.First();
+                var firstProduct = productList.Result?.Products?.Product?.First();
                 if (firstProduct == null) return;
                 var product =
                     await Fixture.ApiKey.ClickBankService.Products.GetProductAsync(firstProduct.Sku!,
@@ -68,10 +68,10 @@ public class ProductTests : IClassFixture<SharedFixture>
                 _additionalPropertiesHelper.CheckAdditionalProperties(product,
                     Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
 
-                if (productList.Products?.Product != null) results.AddRange(productList.Products.Product!);
+                if (productList.Result?.Products?.Product != null) results.AddRange(productList.Result.Products.Product!);
             }
-            Assert.NotNull(productList?.Products?.Product);
-            hasMoreData = productList?.HasMoreData ?? false;
+            Assert.NotNull(productList?.Result?.Products?.Product);
+            hasMoreData = productList.HasMoreData;
             page++;
         } while (hasMoreData);
         _testOutputHelper.WriteLine($@"Products Tested: {results.Count}");

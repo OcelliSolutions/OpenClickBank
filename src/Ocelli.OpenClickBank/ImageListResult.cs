@@ -3,6 +3,7 @@
 namespace Ocelli.OpenClickBank;
 
 //TODO: Must read the response type of 206 (Partial Return). Row counts of 100 are not reliable.
+/*
 public partial class ImageListResult
 {
     [JsonPropertyName("hasMoreData")] public bool HasMoreData => ImageList?.Images?.Count == 100;
@@ -31,4 +32,9 @@ public partial class ShippingList
 public partial class TicketList
 {
     [JsonPropertyName("hasMoreData")] public bool HasMoreData => TicketData?.Count == 100;
+}
+*/
+public partial class SwaggerResponse
+{
+    public bool HasMoreData => StatusCode == 206;
 }

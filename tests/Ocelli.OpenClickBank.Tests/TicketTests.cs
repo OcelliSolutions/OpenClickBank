@@ -45,11 +45,11 @@ public class TicketTests : IClassFixture<SharedFixture>
             await Fixture.ApiKey.ClickBankService.Tickets.GetTicketsAsync();
         _additionalPropertiesHelper.CheckAdditionalProperties(ticketList,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(ticketList?.TicketData == null, "WARN: No data returned. Could not test");
-        Skip.If(ticketList.TicketData != null && !ticketList.TicketData.Any(),
+        Skip.If(ticketList.Result?.TicketData == null, "WARN: No data returned. Could not test");
+        Skip.If(ticketList.Result?.TicketData != null && !ticketList.Result.TicketData.Any(),
             "WARN: No data returned. Could not test");
 
-        var firstTicket = ticketList.TicketData?.First();
+        var firstTicket = ticketList.Result?.TicketData?.First();
         if (firstTicket == null) return;
         var id = firstTicket.TicketId ?? 0;
         var ticket =
@@ -88,7 +88,7 @@ public class TicketTests : IClassFixture<SharedFixture>
     {
         var ticketList =
             await Fixture.ApiKey.ClickBankService.Tickets.GetTicketsAsync();
-        var id = ticketList?.TicketData?.First()?.TicketId ?? 0;
+        var id = ticketList.Result?.TicketData?.First()?.TicketId ?? 0;
         var response = await Fixture.ApiKey.ClickBankService.Tickets.UpdateTicketAsync(id, TicketAction.CLOSE, "Sample", TicketTypeRequest.CNCL, cancellationToken: CancellationToken.None);
         _additionalPropertiesHelper.CheckAdditionalProperties(response,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
@@ -100,7 +100,7 @@ public class TicketTests : IClassFixture<SharedFixture>
     {
         var ticketList =
             await Fixture.ApiKey.ClickBankService.Tickets.GetTicketsAsync();
-        var id = ticketList?.TicketData?.FirstOrDefault(t => t.Type == TicketType.REFUND)?.TicketId ?? 0;
+        var id = ticketList.Result?.TicketData?.FirstOrDefault(t => t.Type == TicketType.REFUND)?.TicketId ?? 0;
         Skip.If(id == 0, "No testable tickets");
         var response = await Fixture.ApiKey.ClickBankService.Tickets.AcceptReturnFromCustomerAsync(id);
         _additionalPropertiesHelper.CheckAdditionalProperties(response,
