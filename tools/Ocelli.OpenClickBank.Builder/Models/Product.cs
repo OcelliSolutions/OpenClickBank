@@ -34,17 +34,17 @@ public class Product
     public ContractBean[]? Contracts { get; set; }
     public ProductCategoryItem[]? Categories { get; set; }
     [JsonPropertyName("disable_geo_currency")]
-    public bool? DisableGeoCurrency { get; set; }
+    public bool DisableGeoCurrency { get; set; }
     [JsonPropertyName("allow_currency_change")]
-    public bool? AllowCurrencyChange { get; set; }
+    public bool AllowCurrencyChange { get; set; }
     [JsonPropertyName("us_tax_exempt")]
-    public bool? UsTaxExempt { get; set; }
+    public bool UsTaxExempt { get; set; }
     [JsonPropertyName("revenue_recognition")]
     public RevRec? RevenueRecognition { get; set; }
     [JsonPropertyName("reduced_upsell_markup")]
-    public bool? ReducedUpsellMarkup { get; set; }
+    public bool ReducedUpsellMarkup { get; set; }
     [JsonPropertyName("skip_confirmation_page")]
-    public bool? SkipConfirmationPage { get; set; }
+    public bool SkipConfirmationPage { get; set; }
     [JsonPropertyName("admin_download_url")]
     public string? AdminDownloadUrl { get; set; }
     [JsonPropertyName("admin_mobile_download_url")]
@@ -56,7 +56,7 @@ public class Product
     [JsonPropertyName("rebill_refund_days_limit")]
     public int? RebillRefundDaysLimit { get; set; }
     [JsonPropertyName("admin_restrict_flexible_refund")]
-    public bool? AdminRestrictFlexibleRefund { get; set; }
+    public bool AdminRestrictFlexibleRefund { get; set; }
     [JsonPropertyName("commission_tier_override")]
     public bool CommissionTierOverride { get; set; }
     public string? DeliveryMethod { get; set; }
@@ -64,9 +64,9 @@ public class Product
     public int? IsPartOfOrderBump { get; set; }
     public bool IsInitialOfOrderBump { get; set; }
     public bool IsProductOfOrderBump { get; set; }
-    public bool? PhoneNumberOnOrderForm { get; set; }
-    public bool? DelayedDelivery { get; set; }
-    public bool? SendRebillNotification { get; set; }
+    public bool PhoneNumberOnOrderForm { get; set; }
+    public bool DelayedDelivery { get; set; }
+    public bool SendRebillNotification { get; set; }
     //todo: go through all models and if the object is minOccurs="0", set it to be nullable. ClickBank will just not send it sometimes.
     //todo: ensure that all properties that are "unbounded" are set to arrays. They may be sent as arrays or objects.
 }

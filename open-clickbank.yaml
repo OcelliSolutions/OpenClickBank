@@ -2462,7 +2462,6 @@ components:
           $ref: '#/components/schemas/ImageType'
         approved:
           type: boolean
-          nullable: true
       additionalProperties: { }
     ImageData:
       type: object
@@ -2478,7 +2477,6 @@ components:
           $ref: '#/components/schemas/ImageType'
         approved:
           type: boolean
-          nullable: true
       additionalProperties: { }
     ImageList:
       type: object
@@ -2643,7 +2641,6 @@ components:
           $ref: '#/components/schemas/Currency'
         declinedConsent:
           type: boolean
-          nullable: true
         email:
           type: string
           nullable: true
@@ -2732,7 +2729,6 @@ components:
           nullable: true
         isTestTransaction:
           type: boolean
-          nullable: true
         fullName:
           type: string
           nullable: true
@@ -2773,13 +2769,10 @@ components:
           nullable: true
         isRefundPending:
           type: boolean
-          nullable: true
         hasBeenRefunded:
           type: boolean
-          nullable: true
         hasBeenChargebacked:
           type: boolean
-          nullable: true
       additionalProperties: { }
     PartialRefundData:
       type: object
@@ -2932,21 +2925,16 @@ components:
           nullable: true
         disable_geo_currency:
           type: boolean
-          nullable: true
         allow_currency_change:
           type: boolean
-          nullable: true
         us_tax_exempt:
           type: boolean
-          nullable: true
         revenue_recognition:
           $ref: '#/components/schemas/RevRec'
         reduced_upsell_markup:
           type: boolean
-          nullable: true
         skip_confirmation_page:
           type: boolean
-          nullable: true
         admin_download_url:
           type: string
           nullable: true
@@ -2965,7 +2953,6 @@ components:
           nullable: true
         admin_restrict_flexible_refund:
           type: boolean
-          nullable: true
         commission_tier_override:
           type: boolean
         deliveryMethod:
@@ -2984,13 +2971,10 @@ components:
           type: boolean
         phoneNumberOnOrderForm:
           type: boolean
-          nullable: true
         delayedDelivery:
           type: boolean
-          nullable: true
         sendRebillNotification:
           type: boolean
-          nullable: true
       additionalProperties: { }
       nullable: true
     ProductApprovalStatus:

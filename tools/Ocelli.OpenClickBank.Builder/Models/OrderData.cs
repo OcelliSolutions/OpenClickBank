@@ -21,7 +21,7 @@ public class OrderData
     public string? LastName { get; set; }
     public string? FirstName { get; set; }
     public Currency? Currency { get; set; }
-    public bool? DeclinedConsent { get; set; }
+    public bool DeclinedConsent { get; set; }
     public string? Email { get; set; }
     public string? PostalCode { get; set; }
     public ContactField[]? CustomerContactInfo { get; set; }

@@ -8,7 +8,7 @@ public class OrderShipLineItemData
     public decimal? AccountAmount { get; set; }
     public int? Quantity { get; set; }
     public string? ShippingMethod { get; set; }
-    public bool? IsRefundPending { get; set; }
-    public bool? HasBeenRefunded { get; set; }
-    public bool? HasBeenChargebacked { get; set; }
+    public bool IsRefundPending { get; set; }
+    public bool HasBeenRefunded { get; set; }
+    public bool HasBeenChargebacked { get; set; }
 }
