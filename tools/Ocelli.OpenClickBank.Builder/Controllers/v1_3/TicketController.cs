@@ -93,7 +93,7 @@ ticket.type.tech_support.10 (I never received my product.)")] TicketReasonReques
     [Authorize]
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.API_ORDER_WRITE, ApiPermission.HAS_DEVELOPER_KEY })]
-    [ProducesResponseType(typeof(ShippingNoticeData), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ShippingNoticeList), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [SwaggerOperation(Summary = "Acknowledges return of physical item from customer, allowing refund of transaction to complete. This call will return a status code of 204 if successful. The body of the response will be empty in this case. A 403 (Forbidden) status code will be return if access is denied. A 400 (Bad Request) will be returned if the ticket isn't found or the ticket is not for a physical purchase.")]
     public ActionResult AcceptReturnFromCustomer(

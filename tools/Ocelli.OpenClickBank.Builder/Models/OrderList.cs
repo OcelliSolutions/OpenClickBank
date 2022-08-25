@@ -2,9 +2,9 @@
 
 namespace Ocelli.OpenClickBank.Builder.Models;
 
-public class OrderList
+public class ShippingNoticeList
 {
-    public OrderList() => OrderData = new HashSet<OrderData>();
+    public ShippingNoticeList() => ShippingNoticeData = new HashSet<ShippingNoticeData>();
 
-    [JsonPropertyName("orderData")] public IEnumerable<OrderData> OrderData { get; set; }
+    [JsonPropertyName("shippingNoticeData")] public IEnumerable<ShippingNoticeData> ShippingNoticeData { get; set; }
 }

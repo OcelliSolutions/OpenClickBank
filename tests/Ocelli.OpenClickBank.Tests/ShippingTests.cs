@@ -23,6 +23,8 @@ public class ShippingTests : IClassFixture<SharedFixture>
         _okInvalidJsonMockClient = new ShippingMockClient(sharedFixture.OkInvalidJsonMockHttpClient);
     }
 
+    #region Read
+    
     [SkippableFact]
     public async Task GetShippingAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
@@ -60,12 +62,28 @@ public class ShippingTests : IClassFixture<SharedFixture>
     [SkippableFact]
     public async Task GetShippingNoticeAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        var shippingNoticeData =
+        //ClickBank will just keep adding shipping notifications without checking first. For testing only create up to 2 instances.
+        var initialCheck =
             await Fixture.ApiKey.ClickBankService.Shipping.GetShippingNoticeAsync(Fixture.Receipt);
-        _additionalPropertiesHelper.CheckAdditionalProperties(shippingNoticeData,
+
+        if (initialCheck?.ShippingNoticeData == null || initialCheck.ShippingNoticeData.Count < 2)
+        {
+            var request = await Fixture.ApiKey.ClickBankService.Shipping.CreateShippingNoticeAsync(Fixture.Receipt,
+                DateOnly.FromDateTime(DateTime.UtcNow), "ups", true, tracking: "sample", comments: "test");
+            _additionalPropertiesHelper.CheckAdditionalProperties(request,
+                Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
+        }
+
+        var response =
+            await Fixture.ApiKey.ClickBankService.Shipping.GetShippingNoticeAsync(Fixture.Receipt);
+        _additionalPropertiesHelper.CheckAdditionalProperties(response,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
-        Skip.If(string.IsNullOrWhiteSpace(shippingNoticeData?.Receipt), "No shipping notice found for this receipt.");
+        Skip.If(response == null, "No shipping notice found for this receipt.");
+        Skip.If(response.ShippingNoticeData == null, "No shipping notice found for this receipt.");
+        Skip.If(!response.ShippingNoticeData.Any(), "No shipping notice found for this receipt.");
     }
+
+    #endregion Read
 
     [SkippableFact]
     public async Task BadRequestResponsesAsync() => await _badRequestMockClient.TestAllMethodsThatReturnDataAsync();

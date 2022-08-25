@@ -10,7 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4C4AE9B-22A3-47FE-8504-0F15D83BF8DE}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		app_icon_128_128.jpg = app_icon_128_128.jpg
 		open-clickbank.yaml = open-clickbank.yaml
 		readme.md = readme.md
 	EndProjectSection
@@ -27,7 +26,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ocelli.OpenClickBank.Client
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ocelli.OpenClickBank.Scraper", "tools\Ocelli.OpenClickBank.Scraper\Ocelli.OpenClickBank.Scraper.csproj", "{38AA1EAA-5CF7-4FE9-A217-B499277CDF01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ocelli.OpenClickBank.Shared", "tools\Ocelli.OpenClickBank.Shared\Ocelli.OpenClickBank.Shared.csproj", "{74D1B5C6-9AE8-416E-BE6E-86F2A3DAF1EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ocelli.OpenClickBank.Shared", "tools\Ocelli.OpenClickBank.Shared\Ocelli.OpenClickBank.Shared.csproj", "{74D1B5C6-9AE8-416E-BE6E-86F2A3DAF1EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

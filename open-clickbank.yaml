@@ -1800,10 +1800,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ShippingNoticeData'
+                $ref: '#/components/schemas/ShippingNoticeList'
             application/xml:
               schema:
-                $ref: '#/components/schemas/ShippingNoticeData'
+                $ref: '#/components/schemas/ShippingNoticeList'
         '403':
           description: Forbidden
     post:
@@ -2062,10 +2062,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ShippingNoticeData'
+                $ref: '#/components/schemas/ShippingNoticeList'
             application/xml:
               schema:
-                $ref: '#/components/schemas/ShippingNoticeData'
+                $ref: '#/components/schemas/ShippingNoticeList'
         '204':
           description: No Content
         '403':
@@ -3206,6 +3206,16 @@ components:
           nullable: true
         itemNo:
           type: string
+          nullable: true
+      additionalProperties: { }
+      nullable: true
+    ShippingNoticeList:
+      type: object
+      properties:
+        shippingNoticeData:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingNoticeData'
           nullable: true
       additionalProperties: { }
       nullable: true

@@ -13,15 +13,8 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>openapi swagger clickbank ocelli</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageIcon>app_icon_128_128.jpg</PackageIcon>
+		<PackageIcon>app_icon_128_128.png</PackageIcon>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <None Include="..\..\app_icon_128_128.jpg">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
-	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="11.0.1">
@@ -39,13 +32,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="icon.png">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-		<None Update="readme.md">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
+		<None Include="app_icon_128_128.png" Pack="true" PackagePath="" />
+		<None Include="README.md" Pack="true" PackagePath="" />
 	</ItemGroup>
 </Project>

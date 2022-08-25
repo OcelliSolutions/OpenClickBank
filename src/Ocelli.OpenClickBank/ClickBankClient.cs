@@ -4642,7 +4642,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="receipt">Receipt ID</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ShippingNoticeData?> GetShippingNoticeAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ShippingNoticeList?> GetShippingNoticeAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4912,7 +4912,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="receipt">Receipt ID</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ShippingNoticeData?> GetShippingNoticeAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ShippingNoticeList?> GetShippingNoticeAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -4953,7 +4953,7 @@ namespace Ocelli.OpenClickBank
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ShippingNoticeData?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<ShippingNoticeList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
@@ -5278,7 +5278,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="id">A valid ticket id.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ShippingNoticeData?> AcceptReturnFromCustomerAsync(int id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ShippingNoticeList?> AcceptReturnFromCustomerAsync(int id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5755,7 +5755,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="id">A valid ticket id.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ShippingNoticeData?> AcceptReturnFromCustomerAsync(int id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ShippingNoticeList?> AcceptReturnFromCustomerAsync(int id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5797,7 +5797,7 @@ namespace Ocelli.OpenClickBank
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ShippingNoticeData?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<ShippingNoticeList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
@@ -8359,6 +8359,26 @@ namespace Ocelli.OpenClickBank
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
         public string? ItemNo { get; set; } = default!;
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
+
+        [System.Text.Json.Serialization.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties; }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v10.0.0.0))")]
+    public partial class ShippingNoticeList
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("shippingNoticeData")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
+        public System.Collections.Generic.ICollection<ShippingNoticeData?>? ShippingNoticeData { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 

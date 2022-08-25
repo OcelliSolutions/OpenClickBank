@@ -47,7 +47,7 @@ An important point to note is that this method will only return shippable orders
     [Authorize]
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
-    [ProducesResponseType(typeof(ShippingNoticeData), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ShippingNoticeList), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Returns the ship notices for the given transaction.")]
     public ActionResult GetShippingNotice(
         [Required, SwaggerParameter(Description = "Receipt ID")] string receipt) => Ok();

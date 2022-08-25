@@ -66,6 +66,7 @@ internal class ClickBankClientBase
         settings.Converters.Add(new ArrayOrObjectJsonConverter<Pricings>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<ProductCategoryItem>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<QuickStatsData>());
+        settings.Converters.Add(new ArrayOrObjectJsonConverter<ShippingNoticeData>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<SubscriptionDetailsRowData>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<SubscriptionProductRowData>());
         settings.Converters.Add(new ArrayOrObjectJsonConverter<TicketCommentData>());
