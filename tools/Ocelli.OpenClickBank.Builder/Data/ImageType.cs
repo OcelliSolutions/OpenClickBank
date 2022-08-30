@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum ImageType
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "PRODUCT")] PRODUCT,
     [EnumMember(Value = "BANNER")] BANNER,
     [EnumMember(Value = "BANNER_CLASSIC")] BANNER_CLASSIC,

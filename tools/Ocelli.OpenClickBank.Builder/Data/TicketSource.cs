@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum TicketSource
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "API")] API,
     [EnumMember(Value = "CUSTOMER_WAM")] CUSTOMER_WAM,
     [EnumMember(Value = "UNKNOWN")] UNKNOWN,

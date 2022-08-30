@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum TicketType
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "TECH_SUPPORT")] TECH_SUPPORT,
     [EnumMember(Value = "REFUND")] REFUND,
     [EnumMember(Value = "CANCEL")] CANCEL,

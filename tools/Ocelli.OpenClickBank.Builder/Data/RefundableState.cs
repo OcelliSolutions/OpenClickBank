@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum RefundableState
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "REFUNDABLE")] REFUNDABLE,
     [EnumMember(Value = "SUGGESTED_REFUND_BLOCK")] SUGGESTED_REFUND_BLOCK,
     [EnumMember(Value = "UNREFUNDABLE")] UNREFUNDABLE,

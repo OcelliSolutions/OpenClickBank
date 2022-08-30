@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum PaymentMethod
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "PYPL")]
     PYPL,
     [EnumMember(Value = "PYPL-NEW")]

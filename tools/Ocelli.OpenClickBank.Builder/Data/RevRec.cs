@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum RevRec
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "LD")] LD,
     [EnumMember(Value = "VD")] VD,
     [EnumMember(Value = "LM")] LM,

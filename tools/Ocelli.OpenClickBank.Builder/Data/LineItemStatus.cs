@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum LineItemStatus
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "ACTIVE")] ACTIVE,
     [EnumMember(Value = "AUTHORIZATION_FAILURE")] AUTHORIZATION_FAILURE,
     [EnumMember(Value = "CANCELED")] CANCELED,

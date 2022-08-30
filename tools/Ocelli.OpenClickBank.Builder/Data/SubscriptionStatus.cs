@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum SubscriptionStatus
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "ACTIVE")] ACTIVE,
     [EnumMember(Value = "COMPLETED")] COMPLETED,
     [EnumMember(Value = "CANCELED")] CANCELED,

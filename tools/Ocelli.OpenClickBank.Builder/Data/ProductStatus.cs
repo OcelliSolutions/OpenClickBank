@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum ProductStatus
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "APPROVAL_REQUIRED")] APPROVAL_REQUIRED,
     [EnumMember(Value = "PENDING_APPROVAL")] PENDING_APPROVAL,
     [EnumMember(Value = "UNDER_REVIEW")] UNDER_REVIEW,

@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum ProductCategory
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "EBOOK")] EBOOK,
     [EnumMember(Value = "SOFTWARE")] SOFTWARE,
     [EnumMember(Value = "GAMES")] GAMES,

@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum TransactionType
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "SALE")] SALE,
     [EnumMember(Value = "RFND")] RFND,
     [EnumMember(Value = "CGBK")] CGBK,

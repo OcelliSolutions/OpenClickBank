@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum Role
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "VENDOR")] VENDOR,
     [EnumMember(Value = "CUSTOMER")] CUSTOMER,
     [EnumMember(Value = "CBCSR")] CBCSR,

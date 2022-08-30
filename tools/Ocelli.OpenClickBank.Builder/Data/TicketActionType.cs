@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum TicketActionType
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "ASSIGNED")] ASSIGNED,
     [EnumMember(Value = "COMMENTED")] COMMENTED,
     [EnumMember(Value = "CHANGED")] CHANGED,

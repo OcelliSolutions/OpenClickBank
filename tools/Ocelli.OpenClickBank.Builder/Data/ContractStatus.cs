@@ -4,6 +4,7 @@ namespace Ocelli.OpenClickBank.Builder.Data;
 
 public enum ContractStatus
 {
+    [EnumMember(Value = "nil")] NIL,
     [EnumMember(Value = "PENDING_START")] PENDING_START,
     [EnumMember(Value = "PENDING_APPROVAL")] PENDING_APPROVAL,
     [EnumMember(Value = "ACTIVE")] ACTIVE,
