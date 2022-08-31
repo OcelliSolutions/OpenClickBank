@@ -2364,6 +2364,7 @@ components:
       additionalProperties: { }
     ContractStatus:
       enum:
+        - nil
         - PENDING_START
         - PENDING_APPROVAL
         - ACTIVE
@@ -2499,6 +2500,7 @@ components:
       nullable: true
     ImageType:
       enum:
+        - nil
         - PRODUCT
         - BANNER
         - BANNER_CLASSIC
@@ -2571,6 +2573,7 @@ components:
       additionalProperties: { }
     LineItemStatus:
       enum:
+        - nil
         - ACTIVE
         - AUTHORIZATION_FAILURE
         - CANCELED
@@ -2580,6 +2583,7 @@ components:
       additionalProperties: { }
     LineItemType:
       enum:
+        - nil
         - ORIGINAL
         - BUMP
         - CART
@@ -2679,6 +2683,7 @@ components:
       nullable: true
     OrderRole:
       enum:
+        - nil
         - VENDOR
         - AFFILIATE
         - JV_TRADITIONAL
@@ -2796,6 +2801,7 @@ components:
       nullable: true
     PaymentMethod:
       enum:
+        - nil
         - PYPL
         - PYPL-NEW
         - VISA
@@ -2992,6 +2998,7 @@ components:
       additionalProperties: { }
     ProductCategory:
       enum:
+        - nil
         - EBOOK
         - SOFTWARE
         - GAMES
@@ -3034,6 +3041,7 @@ components:
       nullable: true
     ProductType:
       enum:
+        - nil
         - STANDARD
         - RECURRING
       type: string
@@ -3071,6 +3079,7 @@ components:
       additionalProperties: { }
     RecurringFrequency:
       enum:
+        - nil
         - WEEKLY
         - BI_WEEKLY
         - MONTHLY
@@ -3115,6 +3124,7 @@ components:
       additionalProperties: { }
     RefundType:
       enum:
+        - nil
         - FULL
         - PARTIAL_PERCENT
         - PARTIAL_AMOUNT
@@ -3124,6 +3134,7 @@ components:
       additionalProperties: { }
     RefundableState:
       enum:
+        - nil
         - REFUNDABLE
         - SUGGESTED_REFUND_BLOCK
         - UNREFUNDABLE
@@ -3137,6 +3148,7 @@ components:
       additionalProperties: { }
     RevRec:
       enum:
+        - nil
         - LD
         - VD
         - LM
@@ -3148,6 +3160,7 @@ components:
       additionalProperties: { }
     Role:
       enum:
+        - nil
         - VENDOR
         - CUSTOMER
         - CBCSR
@@ -3157,6 +3170,7 @@ components:
       additionalProperties: { }
     RoleAccount:
       enum:
+        - nil
         - VENDOR
         - AFFILIATE
       type: string
@@ -3221,6 +3235,7 @@ components:
       nullable: true
     ShippingStatus:
       enum:
+        - nil
         - shipped
         - notshipped
         - all
@@ -3488,6 +3503,7 @@ components:
       additionalProperties: { }
     SubscriptionStatus:
       enum:
+        - nil
         - ACTIVE
         - COMPLETED
         - CANCELED
@@ -3532,6 +3548,7 @@ components:
       additionalProperties: { }
     TicketAction:
       enum:
+        - nil
         - change
         - close
         - reopen
@@ -3539,6 +3556,7 @@ components:
       additionalProperties: { }
     TicketActionType:
       enum:
+        - nil
         - ASSIGNED
         - COMMENTED
         - CHANGED
@@ -3692,6 +3710,7 @@ components:
       additionalProperties: { }
     TicketSource:
       enum:
+        - nil
         - API
         - CUSTOMER_WAM
         - UNKNOWN
@@ -3726,6 +3745,7 @@ components:
       additionalProperties: { }
     TicketStatus:
       enum:
+        - nil
         - OPEN
         - REOPENED
         - CLOSED
@@ -3733,6 +3753,7 @@ components:
       additionalProperties: { }
     TicketType:
       enum:
+        - nil
         - TECH_SUPPORT
         - REFUND
         - CANCEL
@@ -3775,6 +3796,7 @@ components:
       additionalProperties: { }
     TransactionType:
       enum:
+        - nil
         - SALE
         - RFND
         - CGBK
