@@ -305,6 +305,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
     
     [SkippableFact]
+    [Obsolete("Endpoint no longer exists")]
     public async Task GetStatisticsByRoleAndDimensionAsync_AFFILIATE_CUSTOMER_COUNTRY_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var analyticStatus =
@@ -329,6 +330,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
     
     [SkippableFact]
+    [Obsolete("Endpoint no longer exists")]
     public async Task
         GetStatisticsByRoleAndDimensionAsync_VENDOR_CUSTOMER_COUNTRY_AdditionalPropertiesAreEmpty_ShouldPass()
     {
@@ -353,6 +355,7 @@ public class AnalyticTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
+    [Obsolete("Endpoint no longer exists")]
     public async Task
         GetStatisticsByRoleAndDimensionSummaryAsync_VENDOR_PRODUCT_SKU_AdditionalPropertiesAreEmpty_ShouldPass()
     {

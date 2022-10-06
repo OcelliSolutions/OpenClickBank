@@ -178,6 +178,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">The page number of the results (default is page 1).</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
+        [System.Obsolete]
         System.Threading.Tasks.Task<ClickBankResponse<AnalyticsResult?>> GetStatisticsByRoleAndDimensionAsync(RoleAccount role, Dimension dimension, string account, DateOnly? startDate = null, DateOnly? endDate = null, Dimension? dimensionFilter = null, System.Collections.Generic.IEnumerable<DimensionColumn>? select = null, DimensionColumn? orderBy = null, bool? sortAscending = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -200,6 +201,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">The page number of the results (default is page 1).</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
+        [System.Obsolete]
         System.Threading.Tasks.Task<ClickBankResponse<AnalyticsResult?>> GetStatisticsByRoleAndDimensionSummaryAsync(RoleAccount role, Dimension dimension, string account, SummaryType summaryType, DateOnly? startDate = null, DateOnly? endDate = null, Dimension? dimensionFilter = null, System.Collections.Generic.IEnumerable<DimensionColumn>? select = null, DimensionColumn? orderBy = null, bool? sortAscending = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
@@ -1307,6 +1309,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">The page number of the results (default is page 1).</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
+        [System.Obsolete]
         public virtual async System.Threading.Tasks.Task<ClickBankResponse<AnalyticsResult?>> GetStatisticsByRoleAndDimensionAsync(RoleAccount role, Dimension dimension, string account, DateOnly? startDate = null, DateOnly? endDate = null, Dimension? dimensionFilter = null, System.Collections.Generic.IEnumerable<DimensionColumn>? select = null, DimensionColumn? orderBy = null, bool? sortAscending = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (role == null)
@@ -1439,6 +1442,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">The page number of the results (default is page 1).</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
+        [System.Obsolete]
         public virtual async System.Threading.Tasks.Task<ClickBankResponse<AnalyticsResult?>> GetStatisticsByRoleAndDimensionSummaryAsync(RoleAccount role, Dimension dimension, string account, SummaryType summaryType, DateOnly? startDate = null, DateOnly? endDate = null, Dimension? dimensionFilter = null, System.Collections.Generic.IEnumerable<DimensionColumn>? select = null, DimensionColumn? orderBy = null, bool? sortAscending = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (role == null)
@@ -9559,29 +9563,32 @@ namespace Ocelli.OpenClickBank
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_TEMPLATE_ORDERFORM")]
         APPROVAL_TEMPLATE_ORDERFORM = 14,
 
+        [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_TEMPLATE_EXITOFFER")]
+        APPROVAL_TEMPLATE_EXITOFFER = 15,
+
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_ORDER_BUMP_CUSTOM_TEXT")]
-        APPROVAL_ORDER_BUMP_CUSTOM_TEXT = 15,
+        APPROVAL_ORDER_BUMP_CUSTOM_TEXT = 16,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_EXIT_OFFER")]
-        APPROVAL_EXIT_OFFER = 16,
+        APPROVAL_EXIT_OFFER = 17,
 
         [System.Runtime.Serialization.EnumMember(Value = @"APPROVAL_PHOTO_ID")]
-        APPROVAL_PHOTO_ID = 17,
+        APPROVAL_PHOTO_ID = 18,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACCT_QUESTION_ACCOUNTS")]
-        ACCT_QUESTION_ACCOUNTS = 18,
+        ACCT_QUESTION_ACCOUNTS = 19,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACCT_QUESTION_ACCOUNTING")]
-        ACCT_QUESTION_ACCOUNTING = 19,
+        ACCT_QUESTION_ACCOUNTING = 20,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SPAM")]
-        SPAM = 20,
+        SPAM = 21,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ACCOUNT_ABUSE")]
-        ACCOUNT_ABUSE = 21,
+        ACCOUNT_ABUSE = 22,
 
         [System.Runtime.Serialization.EnumMember(Value = @"SECURITY_CONCERN")]
-        SECURITY_CONCERN = 22,
+        SECURITY_CONCERN = 23,
 
     }
 

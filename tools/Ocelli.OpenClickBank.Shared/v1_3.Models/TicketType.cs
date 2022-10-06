@@ -44,6 +44,8 @@ namespace v1_3.Models
         
         APPROVAL_TEMPLATE_ORDERFORM,
         
+        APPROVAL_TEMPLATE_EXITOFFER,
+        
         APPROVAL_ORDER_BUMP_CUSTOM_TEXT,
         
         APPROVAL_EXIT_OFFER,

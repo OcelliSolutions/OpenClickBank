@@ -34,7 +34,7 @@ public class ShippingTests : IClassFixture<SharedFixture>
         do
         {
             var shippingListResult =
-                await Fixture.ApiKey.ClickBankService.Shipping.GetShippingAsync(days:10, page: page);
+                await Fixture.ApiKey.ClickBankService.Shipping.GetShippingAsync(days:30, page: page);
             _additionalPropertiesHelper.CheckAdditionalProperties(shippingListResult,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
             Assert.NotNull(shippingListResult.Result?.OrderShipData);

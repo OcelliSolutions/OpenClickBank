@@ -621,6 +621,7 @@ paths:
                 $ref: '#/components/schemas/AnalyticsResult'
         '403':
           description: Forbidden
+      deprecated: true
   '/1.3/analytics/{role}/{dimension}/summary':
     get:
       tags:
@@ -717,6 +718,7 @@ paths:
                 $ref: '#/components/schemas/AnalyticsResult'
         '403':
           description: Forbidden
+      deprecated: true
   /1.3/debug:
     get:
       tags:
@@ -3768,6 +3770,7 @@ components:
         - APPROVAL_ADVANCED_UPSELL
         - APPROVAL_CSS_ORDERFORM
         - APPROVAL_TEMPLATE_ORDERFORM
+        - APPROVAL_TEMPLATE_EXITOFFER
         - APPROVAL_ORDER_BUMP_CUSTOM_TEXT
         - APPROVAL_EXIT_OFFER
         - APPROVAL_PHOTO_ID

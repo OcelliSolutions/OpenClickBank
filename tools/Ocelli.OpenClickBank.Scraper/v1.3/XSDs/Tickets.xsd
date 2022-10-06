@@ -63,6 +63,7 @@
       <xs:enumeration value="APPROVAL_ADVANCED_UPSELL"/>
       <xs:enumeration value="APPROVAL_CSS_ORDERFORM"/>
       <xs:enumeration value="APPROVAL_TEMPLATE_ORDERFORM"/>
+      <xs:enumeration value="APPROVAL_TEMPLATE_EXITOFFER"/>
       <xs:enumeration value="APPROVAL_ORDER_BUMP_CUSTOM_TEXT"/>
       <xs:enumeration value="APPROVAL_EXIT_OFFER"/>
       <xs:enumeration value="APPROVAL_PHOTO_ID"/>

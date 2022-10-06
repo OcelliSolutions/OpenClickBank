@@ -75,6 +75,14 @@
 				</tr>
 				<tr>
 					<td>
+						<a href="/api/rest/1.3/shipping/shipnotice">
+							<b>/1.3/shipping/shipnotice</b>
+						</a>
+						<br>[Nested Service]<br>
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<b>GET</b><b>/1.3/shipping/list</b>
 						<br>List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned.&nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.<p>This method will return 200 if all the orders have been obtained, or a 206 [Partial Return] if there are more results available. An important point to note is that this method will only return shippable orders matching search criteria, so if a user wants to get all orders, they will need to use the Orders Service API.</p>
 						<p></p>
@@ -128,14 +136,6 @@
 						<p class="ident">
 							<b>Required Roles :
 							</b>api_order_read, HAS_DEVELOPER_KEY</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href="/api/rest/1.3/shipping/shipnotice">
-							<b>/1.3/shipping/shipnotice</b>
-						</a>
-						<br>[Nested Service]<br>
 					</td>
 				</tr>
 				<tr>

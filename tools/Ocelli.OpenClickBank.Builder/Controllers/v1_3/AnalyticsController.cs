@@ -151,7 +151,7 @@ public class AnalyticsController : ControllerBase
         [Required, FromQuery, SwaggerParameter(Description = "The end date (inclusive) of the time frame to report on - format is yyyy-MM-dd.")] DateTime? endDate,
         [FromHeader, SwaggerParameter(Description = "The page number of the results (default is page 1).")] int? page = 1) => Ok();
 
-    [HttpGet("{role}/{dimension}")]
+    [HttpGet("{role}/{dimension}"), Obsolete("This endpoint is no longer available")]
     [Authorize]
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
@@ -171,7 +171,7 @@ VENDOR_PRODUCT_SKU – Only available if role = AFFILIATE")] Dimension dimension
         [FromQuery, SwaggerParameter(Description = "When an order by is included this may be specified with a value of true to sort ascending instead of descending")] bool? sortAscending,
         [FromHeader, SwaggerParameter(Description = "The page number of the results (default is page 1).")] int? page = 1) => Ok();
 
-    [HttpGet("{role}/{dimension}/summary")]
+    [HttpGet("{role}/{dimension}/summary"), Obsolete("This endpoint is no longer available")]
     [Authorize]
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ANALYTICS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
