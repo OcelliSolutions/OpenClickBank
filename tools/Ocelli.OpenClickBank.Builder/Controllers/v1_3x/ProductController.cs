@@ -10,7 +10,7 @@ namespace Ocelli.OpenClickBank.Builder.Controllers.v1_3;
 [Route("1.3/products")]
 [ApiController]
 [SwaggerTag("The Products API lets you perform CRUD product management operations", "https://api.clickbank.com/rest/1.3/products")]
-public class ProductController : ControllerBase
+public class ProductManualController : ControllerBase
 {
     [HttpGet("{sku}")]
     [Authorize]

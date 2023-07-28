@@ -10,7 +10,7 @@ namespace Ocelli.OpenClickBank.Builder.Controllers.v1_3;
 [Route("1.3/images")]
 [ApiController]
 [SwaggerTag("The Images API lists the images associated with an account", "https://api.clickbank.com/rest/1.3/images")]
-public class ImageController : ControllerBase
+public class ImageManualController : ControllerBase
 {
     [HttpGet("list")]
     [Authorize]

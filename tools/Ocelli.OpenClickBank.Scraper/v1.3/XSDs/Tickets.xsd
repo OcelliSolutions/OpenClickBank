@@ -60,6 +60,7 @@
       <xs:enumeration value="APPROVAL_UPSELL"/>
       <xs:enumeration value="APPROVAL_CATEGORY_CHANGE"/>
       <xs:enumeration value="APPROVAL_PRODUCT"/>
+      <xs:enumeration value="APPROVAL_FUNNEL"/>
       <xs:enumeration value="APPROVAL_ADVANCED_UPSELL"/>
       <xs:enumeration value="APPROVAL_CSS_ORDERFORM"/>
       <xs:enumeration value="APPROVAL_TEMPLATE_ORDERFORM"/>

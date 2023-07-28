@@ -1,10 +1,13 @@
-using System.Net.Mime;
-using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Ocelli.OpenClickBank.Builder.Filters;
+using System.Net.Mime;
+using System.Reflection;
+using System.Text.Json.Serialization;
+using Unchase.Swashbuckle.AspNetCore.Extensions.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,13 +47,10 @@ builder.Services.AddSwaggerGen(c =>
     c.AddServer(new OpenApiServer { Url = "https://api.clickbank.com/rest" });
     c.EnableAnnotations(true, true);
     c.DocumentFilter<AdditionalPropertiesDocumentFilter>();
-    //c.DocumentFilter<AdditionalSchemasDocumentFilter>();
     c.SchemaFilter<DateTimeSchemaFilter>();
     c.SchemaFilter<DescribeEnumMemberValuesFilter>();
     c.OperationFilter<AuthorizationOperationFilter>();
     c.OperationFilter<NullableOperationFilter>();
-    //c.UseAllOfForInheritance();
-    //c.UseOneOfForPolymorphism();
 
     c.SelectSubTypesUsing(baseType =>
     {
@@ -59,6 +59,17 @@ builder.Services.AddSwaggerGen(c =>
 
     // Mass apply OperationIds for the swagger doc
     c.CustomOperationIds(e => $"{e.ActionDescriptor.RouteValues["action"]}");
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    if (File.Exists(xmlPath))
+    {
+        c.IncludeXmlComments(xmlPath);
+    }
+    c.DocumentFilter<XmlCommentsDocumentFilter>(xmlPath);
+    c.OperationFilter<XmlCommentsOperationFilter>(xmlPath);
+    c.ParameterFilter<XmlCommentsParameterFilter>(xmlPath);
+    c.SchemaFilter<XmlCommentsSchemaFilter>(xmlPath);
 
     // The authentication for ClickBank may look like a Basic type but in reality it is a ApiKey type.
     c.AddSecurityDefinition("ApiKey",

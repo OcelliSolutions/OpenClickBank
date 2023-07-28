@@ -36,7 +36,7 @@ public class OrderTests : IClassFixture<SharedFixture>
     public async Task GetOrdersAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var results = new List<OrderData>();
-        var hasMoreData = false;
+        bool hasMoreData;
         var page = 1;
         do
         {
@@ -110,10 +110,7 @@ public class OrderTests : IClassFixture<SharedFixture>
 
 internal class OrderMockClient : OrdersClient, IMockTests
 {
-    public OrderMockClient(HttpClient httpClient) : base(httpClient)
-    {
-        BaseUrl = "https://localhost";
-    }
+    public OrderMockClient(HttpClient httpClient) : base(httpClient) => BaseUrl = "https://localhost";
 
     public void ObjectResponseResult_CanReadText()
     {

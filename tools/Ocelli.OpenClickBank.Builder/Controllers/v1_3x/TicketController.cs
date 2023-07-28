@@ -10,7 +10,7 @@ namespace Ocelli.OpenClickBank.Builder.Controllers.v1_3;
 [Route("1.3/tickets")]
 [ApiController]
 [SwaggerTag("The Tickets API lets you create a technical support or refund ticket, and view or update the status of an existing ticket. For refund tickets related to physical products, you can also confirm that you’ve received a returned product", "https://api.clickbank.com/rest/1.3/tickets")]
-public class TicketController : ControllerBase
+public class TicketManualController : ControllerBase
 {
     //// TODO: Figure out what the reason parameter is supposed to be. Documentation unclear
     [HttpPost("{receipt}")]
