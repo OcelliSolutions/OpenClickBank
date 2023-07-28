@@ -5,11 +5,11 @@ public interface IClickBankService
     OpenClickBankConfig OpenClickBankConfig { get; set; }
     IAnalyticsClient Analytics { get; }
     IDebugClient Debugs { get; }
-    IImageClient Images { get; }
+    IImagesClient Images { get; }
     INotificationService Notifications { get; }
-    IOrdersClient Orders { get; }
-    IProductClient Products { get; }
+    IOrders2Client Orders { get; }
+    IProductsClient Products { get; }
     IQuickstatsClient Quickstats { get; }
-    IShippingClient Shipping { get; }
-    ITicketClient Tickets { get; }
+    IShipping3Client Shipping { get; }
+    ITicketsClient Tickets { get; }
 }

@@ -12,12 +12,13 @@ public partial class ClickBankService : IClickBankService
 
     public IAnalyticsClient Analytics => new AnalyticsClient(HttpClient!);
     public IDebugClient Debugs => new DebugClient(HttpClient!);
-    public IImageClient Images => new ImageClient(HttpClient!);
+    public IImagesClient Images => new ImagesClient(HttpClient!);
     public INotificationService Notifications => new NotificationService();
-    public IOrdersClient Orders => new OrdersClient(HttpClient!);
-    public IProductClient Products => new ProductClient(HttpClient!);
-    public IShippingClient Shipping => new ShippingClient(HttpClient!);
-    public ITicketClient Tickets => new TicketClient(HttpClient!);
+    public IOrders2Client Orders => new Orders2Client(HttpClient!);
+    public IOrders2Client Orders2 => new Orders2Client(HttpClient!);
+    public IProductsClient Products => new ProductsClient(HttpClient!);
+    public IShipping3Client Shipping => new Shipping3Client(HttpClient!);
+    public ITicketsClient Tickets => new TicketsClient(HttpClient!);
     public IQuickstatsClient Quickstats => new QuickstatsClient(HttpClient!);
 
     public OpenClickBankConfig OpenClickBankConfig
