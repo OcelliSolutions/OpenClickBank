@@ -35,7 +35,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="approvedOnly">boolean - if true only approved images [Default = true]</param>
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/images/list")]
-        public abstract System.Threading.Tasks.Task List([Microsoft.AspNetCore.Mvc.FromQuery] string site, [Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromQuery] bool? approvedOnly = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
+        public abstract System.Threading.Tasks.Task GetImages([Microsoft.AspNetCore.Mvc.FromQuery] string site, [Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromQuery] bool? approvedOnly = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
 
     }
 

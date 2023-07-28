@@ -32,28 +32,27 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// </summary>
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}")]
-        public abstract System.Threading.Tasks.Task GetOrder([Microsoft.AspNetCore.Mvc.FromQuery] string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
+        public abstract System.Threading.Tasks.Task GetOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
 
         /// <summary>
         /// This head request is used to identify if a particular order or a subscription is active, i.e. it has not been refunded, chargebacked or cancelled. It will return a 403 (Forbidden) if that's the case, or a 204 if the order is still active. Note that it will also return a 403 if the order is not found, or the user does not have access to that receipt.
         /// </summary>
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
         [Microsoft.AspNetCore.Mvc.HttpHead, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}")]
-        public abstract System.Threading.Tasks.Task GetOrderStatus([Microsoft.AspNetCore.Mvc.FromQuery] string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
+        public abstract System.Threading.Tasks.Task GetOrderStatus(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
 
         /// <summary>
         /// Returns all the upsell transactions for the given parent upsell transaction.
         /// </summary>
-        /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/upsells")]
-        public abstract System.Threading.Tasks.Task Upsells([Microsoft.AspNetCore.Mvc.FromQuery] string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
+        public abstract System.Threading.Tasks.Task GetOrderUpsells(string receipt);
 
         /// <summary>
         /// *BETA* Allows a vendor to restart a cancelled subscription
         /// </summary>
         /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
         [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/reinstate")]
-        public abstract System.Threading.Tasks.Task Reinstate([Microsoft.AspNetCore.Mvc.FromQuery] string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
+        public abstract System.Threading.Tasks.Task ReinstateOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
 
         /// <summary>
         /// *BETA* Allows a vendor to change the rebill date of a subscription
@@ -61,7 +60,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="restartDate">The date when the subscription will be resumed in format yyyy-mm-dd</param>
         /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
         [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/pause")]
-        public abstract System.Threading.Tasks.Task Pause([Microsoft.AspNetCore.Mvc.FromQuery] string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime restartDate, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
+        public abstract System.Threading.Tasks.Task PauseOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime restartDate, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
 
         /// <summary>
         /// *BETA* Allows a vendor to extend a subscription by a given number of rebill periods
@@ -69,7 +68,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="numPeriods">The number of periods to extend the subscription by</param>
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
         [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/extend")]
-        public abstract System.Threading.Tasks.Task Extend([Microsoft.AspNetCore.Mvc.FromQuery] string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] int numPeriods, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
+        public abstract System.Threading.Tasks.Task ExtendOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] int numPeriods, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
 
         /// <summary>
         /// *BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.
@@ -80,7 +79,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="applyProratedRefundQuery">Determines if the prorated refund should be applied on the product change. This parameter will default to TRUE if not explicitly set</param>
         /// <param name="nextRebillDate">Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change</param>
         [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/changeProduct")]
-        public abstract System.Threading.Tasks.Task ChangeProduct([Microsoft.AspNetCore.Mvc.FromQuery] string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string oldSku, [Microsoft.AspNetCore.Mvc.FromQuery] string newSku, [Microsoft.AspNetCore.Mvc.FromQuery] bool? carryAffiliate = null, [Microsoft.AspNetCore.Mvc.FromQuery(Name = "applyProratedRefund")] bool? applyProratedRefundQuery = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? nextRebillDate = null);
+        public abstract System.Threading.Tasks.Task ChangeProductOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string oldSku, [Microsoft.AspNetCore.Mvc.FromQuery] string newSku, [Microsoft.AspNetCore.Mvc.FromQuery] bool? carryAffiliate = null, [Microsoft.AspNetCore.Mvc.FromQuery(Name = "applyProratedRefund")] bool? applyProratedRefundQuery = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? nextRebillDate = null);
 
         /// <summary>
         /// Allows a vendor to change shipping address of a physical recurring subscription.
@@ -95,7 +94,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="province">Updated state or province.</param>
         /// <param name="postalCode">Updated postal code or Zip.</param>
         [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/changeAddress")]
-        public abstract System.Threading.Tasks.Task ChangeAddress([Microsoft.AspNetCore.Mvc.FromQuery] string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string address1, [Microsoft.AspNetCore.Mvc.FromQuery] string city, [Microsoft.AspNetCore.Mvc.FromQuery] string countryCode, [Microsoft.AspNetCore.Mvc.FromQuery] string? firstName = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? lastName = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? address2 = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? county = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? province = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? postalCode = null);
+        public abstract System.Threading.Tasks.Task ChangeAddressOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string address1, [Microsoft.AspNetCore.Mvc.FromQuery] string city, [Microsoft.AspNetCore.Mvc.FromQuery] string countryCode, [Microsoft.AspNetCore.Mvc.FromQuery] string? firstName = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? lastName = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? address2 = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? county = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? province = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? postalCode = null);
 
         /// <summary>
         /// Same as the list command, except that this one returns the count of the orders returned based on the search criteria.
@@ -110,7 +109,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="tid">The TID (Tracking ID / Promo Code) to search on.  This will search both vendor and affiliate tracking codes and be returned in the promo field</param>
         /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE]</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/orders/count")]
-        public abstract System.Threading.Tasks.Task Count([Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? vendor = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? affiliate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? lastName = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? email = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? tid = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? role = null);
+        public abstract System.Threading.Tasks.Task GetOrderCount([Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? vendor = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? affiliate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? lastName = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? email = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? tid = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? role = null);
 
         /// <summary>
         /// List orders for the authenticated user scoped to the search criteria. Only the first 100 orders will be returned.&amp;nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
@@ -129,7 +128,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="amount">The transaction total amount</param>
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/orders/list")]
-        public abstract System.Threading.Tasks.Task List([Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? vendor = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? affiliate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? lastName = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? item = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? email = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? tid = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? role = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? postalCode = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? amount = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
+        public abstract System.Threading.Tasks.Task GetOrders([Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? vendor = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? affiliate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? lastName = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? item = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? email = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? tid = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? role = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? postalCode = null, [Microsoft.AspNetCore.Mvc.FromQuery] double? amount = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
 
     }
 

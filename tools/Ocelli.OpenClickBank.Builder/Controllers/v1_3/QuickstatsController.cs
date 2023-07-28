@@ -34,7 +34,13 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="endDate">The end date for the search (yyyy-mm-dd). Defaults to today if not specified</param>
         /// <param name="account">The nickName of the account. Defaults to all  accounts if not specified.</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/quickstats/count")]
-        public abstract System.Threading.Tasks.Task Count([Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? account = null);
+        public abstract System.Threading.Tasks.Task GetQuickstatCount([Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? account = null);
+
+        /// <summary>
+        /// Return a list of all account nicknames which the current api user has read access.
+        /// </summary>
+        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/quickstats/accounts")]
+        public abstract System.Threading.Tasks.Task GetQuickstatAccounts();
 
         /// <summary>
         /// Return the quickstats for the api user, based on the search criteria. If no search conditions are set, it will return the quickstats for all the accounts for the API user for the last 45 days
@@ -44,13 +50,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="account">The nickName of the account. Defaults to all  accounts if not specified.</param>
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/quickstats/list")]
-        public abstract System.Threading.Tasks.Task List([Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? account = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
-
-        /// <summary>
-        /// Return a list of all account nicknames which the current api user has read access.
-        /// </summary>
-        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/quickstats/accounts")]
-        public abstract System.Threading.Tasks.Task Accounts();
+        public abstract System.Threading.Tasks.Task GetQuickstats([Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? account = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
 
     }
 

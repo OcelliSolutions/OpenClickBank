@@ -36,7 +36,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="endDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate</param>
         /// <param name="receipt">Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/shipping/count")]
-        public abstract System.Threading.Tasks.Task Count([Microsoft.AspNetCore.Mvc.FromQuery] string? status = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? days = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? receipt = null);
+        public abstract System.Threading.Tasks.Task GetShippingCount([Microsoft.AspNetCore.Mvc.FromQuery] string? status = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? days = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? receipt = null);
 
         /// <summary>
         /// List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned.&amp;nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
@@ -48,7 +48,24 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="receipt">Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.</param>
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/shipping/list")]
-        public abstract System.Threading.Tasks.Task List([Microsoft.AspNetCore.Mvc.FromQuery] string? status = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? days = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? receipt = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
+        public abstract System.Threading.Tasks.Task GetShippings([Microsoft.AspNetCore.Mvc.FromQuery] string? status = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? days = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? receipt = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
+
+        /// <summary>
+        /// Creates a shipping notice for the given transaction.
+        /// </summary>
+        /// <param name="date">The shipping date (yyyy-mm-dd).</param>
+        /// <param name="carrier">The shipping carrier.</param>
+        /// <param name="tracking">The tracking id.</param>
+        /// <param name="comments">The comments associated with the notice.</param>
+        /// <param name="item">The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.</param>
+        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/shipping/shipnotice/{receipt}")]
+        public abstract System.Threading.Tasks.Task CreateShipNotice(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime date, [Microsoft.AspNetCore.Mvc.FromQuery] string carrier, [Microsoft.AspNetCore.Mvc.FromQuery] string? tracking = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? comments = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? item = null);
+
+        /// <summary>
+        /// Returns the ship notices for the given transaction.
+        /// </summary>
+        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/shipping/shipnotice/{receipt}")]
+        public abstract System.Threading.Tasks.Task GetShipNotice(string receipt);
 
     }
 

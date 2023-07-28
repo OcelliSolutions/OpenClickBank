@@ -28,13 +28,11 @@
 	  <None Remove="Controllers\v1_3x\**" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="JsonSubTypes" Version="2.0.1" />
-		<PackageReference Include="OneOf" Version="3.0.255" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
-		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
-		<PackageReference Include="Unchase.Swashbuckle.AspNetCore.Extensions" Version="2.7.1" />
-		<PackageReference Include="xunit.abstractions" Version="2.0.3" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\CustomSwaggerGen\CustomSwaggerGen.csproj" />
 	</ItemGroup>
 
 </Project>

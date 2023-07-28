@@ -32,7 +32,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// </summary>
         /// <param name="site">The site owning the product to be retrieved.</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/products/{sku}")]
-        public abstract System.Threading.Tasks.Task GetProduct([Microsoft.AspNetCore.Mvc.FromQuery] string sku, [Microsoft.AspNetCore.Mvc.FromQuery] string site);
+        public abstract System.Threading.Tasks.Task GetProduct(string sku, [Microsoft.AspNetCore.Mvc.FromQuery] string site);
 
         /// <summary>
         /// Saves a product with the passed in parameters
@@ -68,14 +68,14 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="preRebillNotificationOverride">When set, Pre-rebill notificaitons will be sent when the frequency is greater than the required cycle.</param>
         /// <param name="preRebillNotificationLeadTime">The number of days before the rebill notification.  When enabled, a Pre-rebill notification will be sent to the number equal to the number of days indicated in the lead time and will apply to the rest of the subscription.</param>
         [Microsoft.AspNetCore.Mvc.HttpPut, Microsoft.AspNetCore.Mvc.Route("1.3/products/{sku}")]
-        public abstract System.Threading.Tasks.Task UpdateProduct([System.ComponentModel.DataAnnotations.Required] Ocelli.OpenClickBank.Builder.Models.UpdateProductRequest request, [Microsoft.AspNetCore.Mvc.FromQuery] string sku, [Microsoft.AspNetCore.Mvc.FromQuery] string site, [Microsoft.AspNetCore.Mvc.FromQuery] string currency, [Microsoft.AspNetCore.Mvc.FromQuery] string price, [Microsoft.AspNetCore.Mvc.FromQuery] string language, [Microsoft.AspNetCore.Mvc.FromQuery] string title, [Microsoft.AspNetCore.Mvc.FromQuery] string? digital = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? physical = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? digitalRecurring = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? physicalRecurring = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? categories = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? skipConfirmationPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? thankYouPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? mobileThankYouPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? rebillPrice = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? rebillCommission = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? trialPeriod = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? frequency = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? duration = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? shippingProfile = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? purchaseCommission = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? description = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? image = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? pitchPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? mobilePitchPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? saleRefundDaysLimit = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? rebillRefundDaysLimit = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? deliveryMethod = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? deliverySpeed = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? preRebillNotificationOverride = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? preRebillNotificationLeadTime = null);
+        public abstract System.Threading.Tasks.Task UpdateProduct(string sku, [Microsoft.AspNetCore.Mvc.FromQuery] string site, [Microsoft.AspNetCore.Mvc.FromQuery] string currency, [Microsoft.AspNetCore.Mvc.FromQuery] double price, [Microsoft.AspNetCore.Mvc.FromQuery] string language, [Microsoft.AspNetCore.Mvc.FromQuery] string title, [Microsoft.AspNetCore.Mvc.FromQuery] bool? digital = null, [Microsoft.AspNetCore.Mvc.FromQuery] bool? physical = null, [Microsoft.AspNetCore.Mvc.FromQuery] bool? digitalRecurring = null, [Microsoft.AspNetCore.Mvc.FromQuery] bool? physicalRecurring = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? categories = null, [Microsoft.AspNetCore.Mvc.FromQuery] bool? skipConfirmationPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? thankYouPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? mobileThankYouPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] double? rebillPrice = null, [Microsoft.AspNetCore.Mvc.FromQuery] double? rebillCommission = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? trialPeriod = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? frequency = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? duration = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? shippingProfile = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? purchaseCommission = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? description = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? image = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? pitchPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? mobilePitchPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? saleRefundDaysLimit = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? rebillRefundDaysLimit = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? deliveryMethod = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? deliverySpeed = null, [Microsoft.AspNetCore.Mvc.FromQuery] bool? preRebillNotificationOverride = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? preRebillNotificationLeadTime = null);
 
         /// <summary>
         /// Delete a product
         /// </summary>
         /// <param name="site">The site owning product to be deleted</param>
         [Microsoft.AspNetCore.Mvc.HttpDelete, Microsoft.AspNetCore.Mvc.Route("1.3/products/{sku}")]
-        public abstract System.Threading.Tasks.Task DeleteProduct([Microsoft.AspNetCore.Mvc.FromQuery] string sku, [Microsoft.AspNetCore.Mvc.FromQuery] string site);
+        public abstract System.Threading.Tasks.Task DeleteProduct(string sku, [Microsoft.AspNetCore.Mvc.FromQuery] string site);
 
         /// <summary>
         /// Lists all products
@@ -84,7 +84,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="type">The product types to return.d  Must be either STANDARD or RECURRING.  Will return all types if not specified</param>
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/products/list")]
-        public abstract System.Threading.Tasks.Task List([Microsoft.AspNetCore.Mvc.FromQuery] string site, [Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
+        public abstract System.Threading.Tasks.Task GetProducts([Microsoft.AspNetCore.Mvc.FromQuery] string site, [Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
 
     }
 
