@@ -3,6 +3,7 @@ using System.Net;
 using System.Text.Json;
 using AngleSharp.Html;
 using AngleSharp.Html.Parser;
+using NSwag;
 using Ocelli.OpenClickBank.Scraper.Extensions;
 using Ocelli.OpenClickBank.Scraper.Models;
 using XmlSchemaClassGenerator;
@@ -22,6 +23,7 @@ internal class ScraperService
 
     public async Task GetDocumentationHtml()
     {
+        IDictionary<string, OpenApiDocument> documents = new Dictionary<string, OpenApiDocument>();
         var urlParts = new List<string>
         {
             "analytics#",
@@ -29,8 +31,8 @@ internal class ScraperService
             "orders#",
             "products#",
             "quickstats#",
-            "shipping#",
             "shipping#/shipnotice",
+            "shipping#",
             "tickets#"
         };
         var endpointList = new List<EndpointInfo>();
@@ -38,11 +40,18 @@ internal class ScraperService
         foreach (var apiVersion in _apiVersions)
         foreach (var partVersion in _partVersions)
         {
-            var url = $@"https://api.clickbank.com/rest/{apiVersion}/{part}".Replace("#", partVersion);
+            var url = $"https://api.clickbank.com/rest/{apiVersion}/{part}".Replace("#", partVersion);
             try
             {
                 var documentName = new Uri(url).Segments.Last();
-                var filePath = $@"../../../v{apiVersion}/Docs/{documentName}.html";
+                if (documentName == "shipnotice")
+                {
+                    documentName = string.Join("", new Uri(url).Segments.TakeLast(2));
+                    documentName = documentName.Replace("shipnotice", "ShipNotice");
+                    documentName = documentName.Replace("/", "");
+                }
+                var filePath = $"../../../v{apiVersion}/Docs/{documentName}.html";
+
                 using var client = new HttpClient();
                 client.DefaultRequestHeaders.Add("User-Agent", "Open-ClickBank Scraper");
 
@@ -60,9 +69,22 @@ internal class ScraperService
 
                 var openApi = DocumentExtensions.GenerateOpenApiSpec(parsedEndpoints, $"ClickBank API: {documentName}",
                     $"v{apiVersion}", documentName);
+                documents.Add(documentName, openApi);
+                if (documentName.Contains("shipping", StringComparison.InvariantCultureIgnoreCase) && !documentName.Contains("shipnotice", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    var shipNoticeDocument = documents[$"{documentName}ShipNotice"];
+                    foreach (var path in shipNoticeDocument.Paths)
+                    {
+                        openApi.Paths.Add(path.Key, path.Value);
+                    }
+                }
+
                 var controllerName = documentName.TitleCase();
                 var version = $"v{apiVersion}".Replace(".", "_");
-                        await ControllerExtensions.CreateController(openApi, controllerName, version);
+                if (!documentName.Contains("shipnotice", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    await ControllerExtensions.CreateController(openApi, controllerName, version);
+                }
                 Console.WriteLine($@"{file} COMPLETE");
             }
             catch (HttpRequestException ex)
@@ -112,13 +134,13 @@ internal class ScraperService
         foreach (var apiVersion in _apiVersions)
         foreach (var partVersion in _partVersions)
         {
-            var url = $@"https://api.clickbank.com/rest/{apiVersion}/{part}".Replace("#", partVersion);
+            var url = $"https://api.clickbank.com/rest/{apiVersion}/{part}".Replace("#", partVersion);
             try
             {
                 var folderPathParts = new Uri(url).Segments.Skip(3)
                     .Select(s => char.ToUpper(s[0]) + s[1..].Replace("/", string.Empty));
                 folderPathParts = folderPathParts.Where(c => !c.StartsWith("Schema"));
-                var filePath = $@"../../../v{apiVersion}/XSDs/{string.Join("/", folderPathParts)}.xsd";
+                var filePath = $"../../../v{apiVersion}/XSDs/{string.Join("/", folderPathParts)}.xsd";
                 using var client = new HttpClient();
                 client.DefaultRequestHeaders.Add("User-Agent", "Ocelli Open-ClickBank Scraper");
 
@@ -132,7 +154,7 @@ internal class ScraperService
                 file.Directory?.Create();
                 await File.WriteAllTextAsync(filePath, html);
 
-                const string outputFolder = @"../../../../Ocelli.OpenClickBank.Shared";
+                const string outputFolder = "../../../../Ocelli.OpenClickBank.Shared";
                 var generator = new Generator
                 {
                     OutputFolder = outputFolder,
@@ -143,12 +165,12 @@ internal class ScraperService
                     EnableNullableReferenceAttributes = true,
                     UseShouldSerializePattern = true,
                     NamespacePrefix =
-                        $@"v{apiVersion.ToString(CultureInfo.InvariantCulture).Replace(".", "_")}.Models"
+                        $"v{apiVersion.ToString(CultureInfo.InvariantCulture).Replace(".", "_")}.Models"
                 };
 
                 generator.Generate(new List<string> { filePath });
 
-                Console.WriteLine($@"{file} COMPLETE");
+                Console.WriteLine($"{file} COMPLETE");
             }
             catch (HttpRequestException ex)
             {

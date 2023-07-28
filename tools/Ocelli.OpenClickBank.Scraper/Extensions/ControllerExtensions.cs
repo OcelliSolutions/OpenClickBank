@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using NJsonSchema;
+﻿using NJsonSchema;
 using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;
@@ -51,36 +50,12 @@ public static class ControllerExtensions
             var generator = new CSharpControllerGenerator(document, settings);
             var code = generator.GenerateFile();
 
-            //Declare a new input parameter for POST and PUT methods.
-            var keyWords = new List<string>
-            {
-                "Create",
-                "Update",
-                "Send",
-                "Accept",
-                "Reject",
-                "Move",
-                "Apply",
-                "Release",
-                "Reschedule",
-                "Cancel",
-                "Calculate",
-                "Complete",
-                "PerformBulk",
-                "Adjust",
-                "Connect",
-                "Set"
-            };
-            foreach (var keyWord in keyWords)
-                code = Regex.Replace(code, $@"Task ({keyWord}\w+)\(",
-                    $@"Task $1([System.ComponentModel.DataAnnotations.Required] {modelNamespace}.$1Request request, ");
-
             code = code.Replace(", )", ")")
                 .Replace("<br/>", "")
                 .Replace("<br />", "");
             var path = $@"../../../../Ocelli.OpenClickBank.Builder/Controllers/{version}";
             CreateFoldersIfMissing(path);
-            path = Path.Combine(path, $@"{controllerName}Controller.cs");
+            path = Path.Combine(path, $"{controllerName}Controller.cs");
             await File.WriteAllTextAsync(path, code);
             await CreateExtendedControllerIfMissing(controllerName, version);
         }

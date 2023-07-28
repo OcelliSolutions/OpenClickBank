@@ -1,4 +1,5 @@
 ﻿using NJsonSchema;
+using NSwag;
 using System.Text.Json.Serialization;
 
 namespace Ocelli.OpenClickBank.Scraper.Models;
@@ -7,6 +8,7 @@ public class ParameterInfo
 {
     [JsonPropertyName("name")] public string? Name { get; set; }
     [JsonPropertyName("data_type")] public JsonObjectType DataType { get; set; } = JsonObjectType.String;
+    [JsonPropertyName("in")] public OpenApiParameterKind Kind { get; set; } = OpenApiParameterKind.Query;
     [JsonPropertyName("format")] public string? Format { get; set; }
     [JsonPropertyName("default")] public object? Default { get; set; }
 

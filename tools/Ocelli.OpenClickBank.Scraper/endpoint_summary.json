@@ -4,10 +4,12 @@
     "operation_id": null,
     "endpoint": "/1.3/images/list",
     "description": "Lists images associated with a site",
+    "notes": "",
     "parameters": [
       {
         "name": "site",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -16,6 +18,7 @@
       {
         "name": "type",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -24,6 +27,7 @@
       {
         "name": "approvedOnly",
         "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -32,6 +36,7 @@
       {
         "name": "page",
         "data_type": 4,
+        "in": 2,
         "format": null,
         "default": 1,
         "required": false,
@@ -44,6 +49,7 @@
     "operation_id": null,
     "endpoint": "/1.3/images/schema",
     "description": "Returns the XML Schema that describes the format of a ImageData object",
+    "notes": "",
     "parameters": []
   },
   {
@@ -51,10 +57,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders/{receipt}",
     "description": "Returns a list of order detail objects which match the given receipt.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -63,6 +71,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -75,10 +84,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders/{receipt}",
     "description": "This head request is used to identify if a particular order or a subscription is active, i.e. it has not been refunded, chargebacked or cancelled. It will return a 403 (Forbidden) if that\u0027s the case, or a 204 if the order is still active. Note that it will also return a 403 if the order is not found, or the user does not have access to that receipt.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -87,6 +98,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -99,10 +111,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders/{receipt}",
     "description": "In addition, head request on a rebill transaction will return the status of that particular  rebill, not of the original transaction which may be different. It is advisable to use head requests only on the parent transactions.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -111,6 +125,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -123,10 +138,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders/{receipt}/changeAddress",
     "description": "Allows a vendor to change shipping address of a physical recurring subscription.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -135,6 +152,7 @@
       {
         "name": "firstName",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -143,6 +161,7 @@
       {
         "name": "lastName",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -151,6 +170,7 @@
       {
         "name": "address1",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -159,6 +179,7 @@
       {
         "name": "address2",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -167,6 +188,7 @@
       {
         "name": "city",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -175,6 +197,7 @@
       {
         "name": "county",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -183,6 +206,7 @@
       {
         "name": "province",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -191,6 +215,7 @@
       {
         "name": "countryCode",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -199,6 +224,7 @@
       {
         "name": "postalCode",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -211,10 +237,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders/{receipt}/changeProduct",
     "description": "*BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -223,6 +251,7 @@
       {
         "name": "oldSku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -231,6 +260,7 @@
       {
         "name": "newSku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -239,6 +269,7 @@
       {
         "name": "carryAffiliate",
         "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -247,6 +278,7 @@
       {
         "name": "applyProratedRefund",
         "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -255,6 +287,7 @@
       {
         "name": "applyProratedRefund",
         "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -263,6 +296,7 @@
       {
         "name": "nextRebillDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -275,10 +309,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders/{receipt}/extend",
     "description": "*BETA* Allows a vendor to extend a subscription by a given number of rebill periods",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -287,6 +323,7 @@
       {
         "name": "numPeriods",
         "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -295,6 +332,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -307,10 +345,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders/{receipt}/pause",
     "description": "*BETA* Allows a vendor to change the rebill date of a subscription",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -319,6 +359,7 @@
       {
         "name": "restartDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": true,
@@ -327,6 +368,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -339,10 +381,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders/{receipt}/reinstate",
     "description": "*BETA* Allows a vendor to restart a cancelled subscription",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -351,6 +395,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -363,22 +408,16 @@
     "operation_id": null,
     "endpoint": "/1.3/orders/{receipt}/upsells",
     "description": "Returns all the upsell transactions for the given parent upsell transaction.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
         "description": null
-      },
-      {
-        "name": "sku",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The item number of the subscription product that should be reinstated for the order"
       }
     ]
   },
@@ -387,22 +426,16 @@
     "operation_id": null,
     "endpoint": "/1.3/orders/{receipt}/upsells",
     "description": "If the transaction does not exist, or the user does not have access to the transaction, or if there are no upsells for this transaction, a status code of 403 (No Content) will be returned.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
         "description": null
-      },
-      {
-        "name": "sku",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The item number of the subscription product that should be reinstated for the order"
       }
     ]
   },
@@ -411,10 +444,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders/count",
     "description": "Same as the list command, except that this one returns the count of the orders returned based on the search criteria.",
+    "notes": "",
     "parameters": [
       {
         "name": "startDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -423,6 +458,7 @@
       {
         "name": "endDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -431,6 +467,7 @@
       {
         "name": "type",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -439,6 +476,7 @@
       {
         "name": "vendor",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -447,6 +485,7 @@
       {
         "name": "affiliate",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -455,6 +494,7 @@
       {
         "name": "lastName",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -463,6 +503,7 @@
       {
         "name": "email",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -471,6 +512,7 @@
       {
         "name": "tid",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -479,6 +521,7 @@
       {
         "name": "role",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -491,10 +534,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders/list",
     "description": "List orders for the authenticated user scoped to the search criteria. Only the first 100 orders will be returned.\u0026nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header \u0027Page\u0027 with value 2 will return them.",
+    "notes": "",
     "parameters": [
       {
         "name": "startDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -503,6 +548,7 @@
       {
         "name": "endDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -511,6 +557,7 @@
       {
         "name": "type",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -519,6 +566,7 @@
       {
         "name": "vendor",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -527,6 +575,7 @@
       {
         "name": "affiliate",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -535,6 +584,7 @@
       {
         "name": "lastName",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -543,6 +593,7 @@
       {
         "name": "item",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -551,6 +602,7 @@
       {
         "name": "email",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -559,6 +611,7 @@
       {
         "name": "tid",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -567,6 +620,7 @@
       {
         "name": "role",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -575,6 +629,7 @@
       {
         "name": "postalCode",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -582,7 +637,8 @@
       },
       {
         "name": "amount",
-        "data_type": 64,
+        "data_type": 16,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -591,6 +647,7 @@
       {
         "name": "page",
         "data_type": 4,
+        "in": 2,
         "format": null,
         "default": 1,
         "required": false,
@@ -603,6 +660,7 @@
     "operation_id": null,
     "endpoint": "/1.3/orders/schema",
     "description": "Returns the XML Schema that describes the format of the retrieved data when the Orders Service API calls are made.",
+    "notes": "",
     "parameters": []
   },
   {
@@ -610,10 +668,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/{receipt}",
     "description": "Returns a list of order detail objects which match the given receipt.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -622,6 +682,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -634,10 +695,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/{receipt}",
     "description": "This head request is used to identify if a particular order or a subscription is active, i.e. it has not been refunded, chargebacked or cancelled. It will return a 403 (Forbidden) if that\u0027s the case, or a 204 if the order is still active. Note that it will also return a 403 if the order is not found, or the user does not have access to that receipt.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -646,6 +709,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -658,10 +722,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/{receipt}",
     "description": "In addition, head request on a rebill transaction will return the status of that particular  rebill, not of the original transaction which may be different. It is advisable to use head requests only on the parent transactions.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -670,6 +736,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -682,10 +749,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/{receipt}/changeAddress",
     "description": "Allows a vendor to change shipping address of a physical recurring subscription.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -694,6 +763,7 @@
       {
         "name": "firstName",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -702,6 +772,7 @@
       {
         "name": "lastName",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -710,6 +781,7 @@
       {
         "name": "address1",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -718,6 +790,7 @@
       {
         "name": "address2",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -726,6 +799,7 @@
       {
         "name": "city",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -734,6 +808,7 @@
       {
         "name": "county",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -742,6 +817,7 @@
       {
         "name": "province",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -750,6 +826,7 @@
       {
         "name": "countryCode",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -758,6 +835,7 @@
       {
         "name": "postalCode",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -770,10 +848,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/{receipt}/changeDate",
     "description": "*BETA* Allows a vendor to change the rebill date of a subscription",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -782,6 +862,7 @@
       {
         "name": "changeDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": true,
@@ -790,6 +871,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -802,10 +884,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/{receipt}/changeProduct",
     "description": "*BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -814,6 +898,7 @@
       {
         "name": "oldSku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -822,6 +907,7 @@
       {
         "name": "newSku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -830,6 +916,7 @@
       {
         "name": "carryAffiliate",
         "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -838,6 +925,7 @@
       {
         "name": "applyProratedRefund",
         "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -846,6 +934,7 @@
       {
         "name": "nextRebillDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -858,10 +947,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/{receipt}/extend",
     "description": "*BETA* Allows a vendor to extend a subscription by a given number of rebill periods",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -870,6 +961,7 @@
       {
         "name": "numPeriods",
         "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -878,6 +970,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -890,10 +983,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/{receipt}/pause",
     "description": "*BETA* Allows a vendor to change the rebill date of a subscription",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -902,6 +997,7 @@
       {
         "name": "restartDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": true,
@@ -910,6 +1006,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -922,10 +1019,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/{receipt}/reinstate",
     "description": "*BETA* Allows a vendor to restart a cancelled subscription",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -934,6 +1033,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -946,30 +1046,16 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/{receipt}/upsells",
     "description": "Returns all the upsell transactions for the given parent upsell transaction.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
         "description": null
-      },
-      {
-        "name": "changeDate",
-        "data_type": 64,
-        "format": "date",
-        "default": null,
-        "required": true,
-        "description": "The date when the subscription will be next billed in format yyyy-mm-dd"
-      },
-      {
-        "name": "sku",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase"
       }
     ]
   },
@@ -978,30 +1064,16 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/{receipt}/upsells",
     "description": "If the transaction does not exist, or the user does not have access to the transaction, or if there are no upsells for this transaction, a status code of 403 (No Content) will be returned.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
         "description": null
-      },
-      {
-        "name": "changeDate",
-        "data_type": 64,
-        "format": "date",
-        "default": null,
-        "required": true,
-        "description": "The date when the subscription will be next billed in format yyyy-mm-dd"
-      },
-      {
-        "name": "sku",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase"
       }
     ]
   },
@@ -1010,10 +1082,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/count",
     "description": "Same as the list command, except that this one returns the count of the orders returned based on the search criteria.",
+    "notes": "",
     "parameters": [
       {
         "name": "startDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1022,6 +1096,7 @@
       {
         "name": "endDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1030,6 +1105,7 @@
       {
         "name": "type",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1038,6 +1114,7 @@
       {
         "name": "vendor",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1046,6 +1123,7 @@
       {
         "name": "affiliate",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1054,6 +1132,7 @@
       {
         "name": "lastName",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1062,6 +1141,7 @@
       {
         "name": "item",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1070,6 +1150,7 @@
       {
         "name": "email",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1078,6 +1159,7 @@
       {
         "name": "tid",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1086,6 +1168,7 @@
       {
         "name": "postalCode",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1094,6 +1177,7 @@
       {
         "name": "role",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1106,10 +1190,12 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/list",
     "description": "List orders for the authenticated user scoped to the search criteria. Only the first 100 orders will be returned.\u0026nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header \u0027Page\u0027 with value 2 will return them.",
+    "notes": "",
     "parameters": [
       {
         "name": "startDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1118,6 +1204,7 @@
       {
         "name": "endDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1126,6 +1213,7 @@
       {
         "name": "type",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1134,6 +1222,7 @@
       {
         "name": "vendor",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1142,6 +1231,7 @@
       {
         "name": "affiliate",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1150,6 +1240,7 @@
       {
         "name": "lastName",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1158,6 +1249,7 @@
       {
         "name": "item",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1166,6 +1258,7 @@
       {
         "name": "email",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1174,6 +1267,7 @@
       {
         "name": "tid",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1182,6 +1276,7 @@
       {
         "name": "role",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1190,6 +1285,7 @@
       {
         "name": "postalCode",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1197,7 +1293,8 @@
       },
       {
         "name": "amount",
-        "data_type": 64,
+        "data_type": 16,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1206,6 +1303,7 @@
       {
         "name": "page",
         "data_type": 4,
+        "in": 2,
         "format": null,
         "default": 1,
         "required": false,
@@ -1218,6 +1316,7 @@
     "operation_id": null,
     "endpoint": "/1.3/orders2/schema",
     "description": "Returns the XML Schema that describes the format of the retrieved data when the Orders Service API calls are made.",
+    "notes": "",
     "parameters": []
   },
   {
@@ -1225,10 +1324,12 @@
     "operation_id": null,
     "endpoint": "/1.3/products/{sku}",
     "description": "Delete a product",
+    "notes": "",
     "parameters": [
       {
         "name": "sku",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -1237,6 +1338,7 @@
       {
         "name": "site",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -1249,10 +1351,12 @@
     "operation_id": null,
     "endpoint": "/1.3/products/{sku}",
     "description": "Gets a product",
+    "notes": "",
     "parameters": [
       {
         "name": "sku",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -1261,6 +1365,7 @@
       {
         "name": "site",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -1273,10 +1378,12 @@
     "operation_id": null,
     "endpoint": "/1.3/products/{sku}",
     "description": "Saves a product with the passed in parameters",
+    "notes": "",
     "parameters": [
       {
         "name": "sku",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -1284,7 +1391,8 @@
       },
       {
         "name": "digital",
-        "data_type": 64,
+        "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1292,7 +1400,8 @@
       },
       {
         "name": "physical",
-        "data_type": 64,
+        "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1300,7 +1409,8 @@
       },
       {
         "name": "digitalRecurring",
-        "data_type": 64,
+        "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1308,7 +1418,8 @@
       },
       {
         "name": "physicalRecurring",
-        "data_type": 64,
+        "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1317,6 +1428,7 @@
       {
         "name": "categories",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1324,7 +1436,8 @@
       },
       {
         "name": "skipConfirmationPage",
-        "data_type": 64,
+        "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1333,6 +1446,7 @@
       {
         "name": "site",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -1341,6 +1455,7 @@
       {
         "name": "thankYouPage",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1349,6 +1464,7 @@
       {
         "name": "mobileThankYouPage",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1357,6 +1473,7 @@
       {
         "name": "currency",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -1364,7 +1481,8 @@
       },
       {
         "name": "price",
-        "data_type": 64,
+        "data_type": 16,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -1372,7 +1490,8 @@
       },
       {
         "name": "rebillPrice",
-        "data_type": 64,
+        "data_type": 16,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1380,7 +1499,8 @@
       },
       {
         "name": "rebillCommission",
-        "data_type": 64,
+        "data_type": 16,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1388,7 +1508,8 @@
       },
       {
         "name": "trialPeriod",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1397,6 +1518,7 @@
       {
         "name": "frequency",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1404,7 +1526,8 @@
       },
       {
         "name": "duration",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1413,6 +1536,7 @@
       {
         "name": "shippingProfile",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1421,6 +1545,7 @@
       {
         "name": "purchaseCommission",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1429,6 +1554,7 @@
       {
         "name": "language",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -1437,6 +1563,7 @@
       {
         "name": "title",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -1445,6 +1572,7 @@
       {
         "name": "description",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1452,7 +1580,8 @@
       },
       {
         "name": "image",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1461,6 +1590,7 @@
       {
         "name": "pitchPage",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1469,6 +1599,7 @@
       {
         "name": "mobilePitchPage",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1476,7 +1607,8 @@
       },
       {
         "name": "saleRefundDaysLimit",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1484,7 +1616,8 @@
       },
       {
         "name": "rebillRefundDaysLimit",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1493,6 +1626,7 @@
       {
         "name": "deliveryMethod",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1501,6 +1635,7 @@
       {
         "name": "deliverySpeed",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1508,7 +1643,8 @@
       },
       {
         "name": "preRebillNotificationOverride",
-        "data_type": 64,
+        "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1516,7 +1652,8 @@
       },
       {
         "name": "preRebillNotificationLeadTime",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1529,10 +1666,12 @@
     "operation_id": null,
     "endpoint": "/1.3/products/list",
     "description": "Lists all products",
+    "notes": "",
     "parameters": [
       {
         "name": "site",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -1541,6 +1680,7 @@
       {
         "name": "type",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1549,6 +1689,7 @@
       {
         "name": "page",
         "data_type": 4,
+        "in": 2,
         "format": null,
         "default": 1,
         "required": false,
@@ -1561,6 +1702,7 @@
     "operation_id": null,
     "endpoint": "/1.3/products/schema",
     "description": "Returns the XML Schema that describes the format of a ProductData object",
+    "notes": "",
     "parameters": []
   },
   {
@@ -1568,6 +1710,7 @@
     "operation_id": null,
     "endpoint": "/1.3/quickstats/accounts",
     "description": "Return a list of all account nicknames which the current api user has read access.",
+    "notes": "",
     "parameters": []
   },
   {
@@ -1575,10 +1718,12 @@
     "operation_id": null,
     "endpoint": "/1.3/quickstats/count",
     "description": "The count service sums the quickstat sale, refund and chargeback amounts based on the search criteria. If no search conditions are set, it will return the sum of the values for the last 45 days based on all the accounts linked to the API keys. The count service is similar to the list method except for the fact that it presents the user with one total of the dates specified the search criteria instead of listing each day\u0027s quickstat values individually. Note that the quickStatDate in the returned data will be null.",
+    "notes": "",
     "parameters": [
       {
         "name": "startDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1587,6 +1732,7 @@
       {
         "name": "endDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1595,6 +1741,7 @@
       {
         "name": "account",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1607,10 +1754,12 @@
     "operation_id": null,
     "endpoint": "/1.3/quickstats/list",
     "description": "Return the quickstats for the api user, based on the search criteria. If no search conditions are set, it will return the quickstats for all the accounts for the API user for the last 45 days",
+    "notes": "",
     "parameters": [
       {
         "name": "startDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1619,6 +1768,7 @@
       {
         "name": "endDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1627,6 +1777,7 @@
       {
         "name": "account",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1635,6 +1786,7 @@
       {
         "name": "page",
         "data_type": 4,
+        "in": 2,
         "format": null,
         "default": 1,
         "required": false,
@@ -1647,6 +1799,7 @@
     "operation_id": null,
     "endpoint": "/1.3/quickstats/schema",
     "description": "Returns the XML Schema that describes the format of the retrieved data for the accounts.",
+    "notes": "",
     "parameters": []
   },
   {
@@ -1654,10 +1807,12 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping/count",
     "description": "Returns a count of physical goods orders matching the shipping criteria.",
+    "notes": "",
     "parameters": [
       {
         "name": "status",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1665,7 +1820,8 @@
       },
       {
         "name": "days",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1674,6 +1830,7 @@
       {
         "name": "startDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1682,6 +1839,7 @@
       {
         "name": "endDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1690,6 +1848,7 @@
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1702,10 +1861,12 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping/list",
     "description": "List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned.\u0026nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header \u0027Page\u0027 with value 2 will return them.",
+    "notes": "",
     "parameters": [
       {
         "name": "status",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1713,7 +1874,8 @@
       },
       {
         "name": "days",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1722,6 +1884,7 @@
       {
         "name": "startDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1730,6 +1893,7 @@
       {
         "name": "endDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1738,6 +1902,7 @@
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1746,6 +1911,7 @@
       {
         "name": "page",
         "data_type": 4,
+        "in": 2,
         "format": null,
         "default": 1,
         "required": false,
@@ -1758,6 +1924,7 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping/schema",
     "description": "Returns the XML Schema that describes the format of the retrieved data when the shipping API calls are made.",
+    "notes": "",
     "parameters": []
   },
   {
@@ -1765,10 +1932,12 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping/shipnotice/{receipt}",
     "description": "Returns the ship notices for the given transaction.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -1781,10 +1950,12 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping/shipnotice/{receipt}",
     "description": "Creates a shipping notice for the given transaction.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -1793,7 +1964,8 @@
       {
         "name": "date",
         "data_type": 64,
-        "format": null,
+        "in": 2,
+        "format": "date",
         "default": null,
         "required": true,
         "description": "The shipping date (yyyy-mm-dd)."
@@ -1801,6 +1973,7 @@
       {
         "name": "carrier",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -1809,6 +1982,7 @@
       {
         "name": "tracking",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1817,6 +1991,7 @@
       {
         "name": "comments",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1825,6 +2000,7 @@
       {
         "name": "item",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1837,6 +2013,7 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping/shipnotice/schema",
     "description": "Returns the XML Schema that describes the format of the retrieved data when the Shipnotice Service API calls are made.",
+    "notes": "",
     "parameters": []
   },
   {
@@ -1844,10 +2021,12 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping2/count",
     "description": "Returns a count of physical goods orders matching the shipping criteria.",
+    "notes": "",
     "parameters": [
       {
         "name": "status",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1855,7 +2034,8 @@
       },
       {
         "name": "days",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1864,6 +2044,7 @@
       {
         "name": "startDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1872,6 +2053,7 @@
       {
         "name": "endDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1880,6 +2062,7 @@
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1892,10 +2075,12 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping2/list",
     "description": "List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned.\u0026nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header \u0027Page\u0027 with value 2 will return them.",
+    "notes": "",
     "parameters": [
       {
         "name": "status",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1903,7 +2088,8 @@
       },
       {
         "name": "days",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1912,6 +2098,7 @@
       {
         "name": "startDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1920,6 +2107,7 @@
       {
         "name": "endDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -1928,6 +2116,7 @@
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -1936,6 +2125,7 @@
       {
         "name": "page",
         "data_type": 4,
+        "in": 2,
         "format": null,
         "default": 1,
         "required": false,
@@ -1948,6 +2138,7 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping2/schema",
     "description": "Returns the XML Schema that describes the format of the retrieved data when the shipping API calls are made.",
+    "notes": "",
     "parameters": []
   },
   {
@@ -1955,10 +2146,12 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping2/shipnotice/{receipt}",
     "description": "Returns the ship notices for the given transaction.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -1971,10 +2164,12 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping2/shipnotice/{receipt}",
     "description": "Creates a shipping notice for the given transaction.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -1983,7 +2178,8 @@
       {
         "name": "date",
         "data_type": 64,
-        "format": null,
+        "in": 2,
+        "format": "date",
         "default": null,
         "required": true,
         "description": "The shipping date (yyyy-mm-dd)."
@@ -1991,6 +2187,7 @@
       {
         "name": "carrier",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -1999,6 +2196,7 @@
       {
         "name": "tracking",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2007,6 +2205,7 @@
       {
         "name": "comments",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2015,6 +2214,7 @@
       {
         "name": "item",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2022,7 +2222,8 @@
       },
       {
         "name": "fillOrder",
-        "data_type": 64,
+        "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2035,6 +2236,7 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping2/shipnotice/schema",
     "description": "Returns the XML Schema that describes the format of the retrieved data when the Shipnotice Service API calls are made.",
+    "notes": "",
     "parameters": []
   },
   {
@@ -2042,10 +2244,12 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping3/count",
     "description": "Returns a count of physical goods orders matching the shipping criteria.",
+    "notes": "",
     "parameters": [
       {
         "name": "status",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2053,7 +2257,8 @@
       },
       {
         "name": "days",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2062,6 +2267,7 @@
       {
         "name": "startDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -2070,6 +2276,7 @@
       {
         "name": "endDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -2078,6 +2285,7 @@
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2090,10 +2298,12 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping3/list",
     "description": "List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned.\u0026nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header \u0027Page\u0027 with value 2 will return them.",
+    "notes": "",
     "parameters": [
       {
         "name": "status",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2101,7 +2311,8 @@
       },
       {
         "name": "days",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2110,6 +2321,7 @@
       {
         "name": "startDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -2118,6 +2330,7 @@
       {
         "name": "endDate",
         "data_type": 64,
+        "in": 2,
         "format": "date",
         "default": null,
         "required": false,
@@ -2126,6 +2339,7 @@
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2134,6 +2348,7 @@
       {
         "name": "page",
         "data_type": 4,
+        "in": 2,
         "format": null,
         "default": 1,
         "required": false,
@@ -2146,6 +2361,7 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping3/schema",
     "description": "Returns the XML Schema that describes the format of the retrieved data when the shipping API calls are made.",
+    "notes": "",
     "parameters": []
   },
   {
@@ -2153,10 +2369,12 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping3/shipnotice/{receipt}",
     "description": "Returns the ship notices for the given transaction.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -2169,10 +2387,12 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping3/shipnotice/{receipt}",
     "description": "Creates a shipping notice for the given transaction.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -2181,7 +2401,8 @@
       {
         "name": "date",
         "data_type": 64,
-        "format": null,
+        "in": 2,
+        "format": "date",
         "default": null,
         "required": true,
         "description": "The shipping date (yyyy-mm-dd)."
@@ -2189,6 +2410,7 @@
       {
         "name": "carrier",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -2197,6 +2419,7 @@
       {
         "name": "tracking",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2205,6 +2428,7 @@
       {
         "name": "comments",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2213,6 +2437,7 @@
       {
         "name": "item",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2220,7 +2445,8 @@
       },
       {
         "name": "fillOrder",
-        "data_type": 64,
+        "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2233,6 +2459,7 @@
     "operation_id": null,
     "endpoint": "/1.3/shipping3/shipnotice/schema",
     "description": "Returns the XML Schema that describes the format of the retrieved data when the Shipnotice Service API calls are made.",
+    "notes": "",
     "parameters": []
   },
   {
@@ -2240,38 +2467,16 @@
     "operation_id": null,
     "endpoint": "/1.3/tickets/{id}",
     "description": "Find a ticket by its ID. Will return the ticket with the given ID back. If the ticket does not exist, or the user is not authorized to view the ticket - a status code of 403 will be returned.",
+    "notes": "",
     "parameters": [
       {
         "name": "id",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
         "description": null
-      },
-      {
-        "name": "action",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The action to be taken. Supported actions are \u0027change\u0027, \u0027close\u0027 and \u0027reopen\u0027."
-      },
-      {
-        "name": "comment",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The comments that go along with the action, or comments on the ticket. Comments are required when reopening a ticket."
-      },
-      {
-        "name": "type",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "If changing the type of the ticket, this will be one of rfnd, cncl, or tech. Note: Partial refunds are not allowed when changing to a rfnd ticket type. Tickets changed to rfnd will be full refunds."
       }
     ]
   },
@@ -2280,10 +2485,12 @@
     "operation_id": null,
     "endpoint": "/1.3/tickets/{id}",
     "description": "Allows the user to close a ticket, comment on a ticket, change type of a ticket, or reopen the ticket. Will return a status code 200 if the action is successful, a 403 if user is not allowed to act on the ticket or the ticket does not exist. Upon success, this will return the ticket data. Please note that closing of a ticket manually means that the ticket is cancelled. So for example closing of an open refund ticket will cancel the refund request. If the action is not specified, the assumption is that the user is trying to comment on the ticket. Also note that reopening is only supported for closed tickets and will return a 400 status code otherwise.",
+    "notes": "",
     "parameters": [
       {
         "name": "id",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -2292,6 +2499,7 @@
       {
         "name": "action",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2300,6 +2508,7 @@
       {
         "name": "comment",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2308,6 +2517,7 @@
       {
         "name": "type",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2320,86 +2530,16 @@
     "operation_id": null,
     "endpoint": "/1.3/tickets/{id}/returned",
     "description": "Acknowledges return of physical item from customer, allowing refund of transaction to complete.  This call will return a status code of 204 if successful.  The body of the response will be empty in this case.  A 403 (Forbidden) status code will be return if access is denied.  A 400 (Bad Request) will be returned if the ticket isn\u0027t found or the ticket is not for a physical purchase.",
+    "notes": "",
     "parameters": [
       {
         "name": "id",
-        "data_type": 64,
+        "data_type": 4,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
         "description": null
-      },
-      {
-        "name": "type",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The type of the ticket. Must be either \u0027rfnd\u0027 / \u0027cncl\u0027 or \u0027tech\u0027"
-      },
-      {
-        "name": "status",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The status of the ticket. Can be \u0027open\u0027, \u0027reopened\u0027 or \u0027closed\u0027"
-      },
-      {
-        "name": "receipt",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "Find a ticket by a given receipt. Will return the ticket(s) associated with the transaction. If the receipt is a subscription, all tickets with associated with each rebill of that subscription will be returned.  Must be 4 or more characters in length, not counting the wildcard character (\u0027%\u0027).  May not start with the wildcard character."
-      },
-      {
-        "name": "createDateFrom",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The start of the createDate range to filter tickets by. If you provide a \u0027createDateFrom\u0027, you must also provide a \u0027createDateTo\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
-      },
-      {
-        "name": "createDateTo",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The end of the createDate range to filter tickets by. If you provide a \u0027createDateTo\u0027, you must also provide a \u0027createDateFrom\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
-      },
-      {
-        "name": "updateDateFrom",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The start of the updateDate range to filter tickets by. If you provide a \u0027updateDateFrom\u0027, you must also provide a \u0027updateDateTo\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
-      },
-      {
-        "name": "updateDateTo",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The end of the updateDate range to filter tickets by. If you provide a \u0027updateDateTo\u0027, you must also provide a \u0027updateDateFrom\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
-      },
-      {
-        "name": "closeDateFrom",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The start of the closeDate range to filter tickets by. If you provide a \u0027closeDateFrom\u0027, you must also provide a \u0027closeDateTo\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
-      },
-      {
-        "name": "closeDateTo",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The end of the closeDate range to filter tickets by. If you provide a \u0027closeDateTo\u0027, you must also provide a \u0027closeDateFrom\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
       }
     ]
   },
@@ -2408,10 +2548,12 @@
     "operation_id": null,
     "endpoint": "/1.3/tickets/{receipt}",
     "description": "Create a ticket with the passed in parameters. Will return the created ticket if it\u0027s successful.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -2420,6 +2562,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2428,6 +2571,7 @@
       {
         "name": "type",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -2436,6 +2580,7 @@
       {
         "name": "comment",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2444,6 +2589,7 @@
       {
         "name": "reason",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -2452,6 +2598,7 @@
       {
         "name": "refundType",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2459,7 +2606,8 @@
       },
       {
         "name": "refundAmount",
-        "data_type": 64,
+        "data_type": 16,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2467,7 +2615,8 @@
       },
       {
         "name": "retainSubscription",
-        "data_type": 64,
+        "data_type": 2,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2480,10 +2629,12 @@
     "operation_id": null,
     "endpoint": "/1.3/tickets/count",
     "description": "Counts the tickets matching the search criteria.",
+    "notes": "",
     "parameters": [
       {
         "name": "type",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2492,6 +2643,7 @@
       {
         "name": "status",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2500,6 +2652,7 @@
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2512,10 +2665,12 @@
     "operation_id": null,
     "endpoint": "/1.3/tickets/list",
     "description": "Searches for tickets matching the search criteria. Will return a list of ticket data objects with a status code of 200. If more than 100 results are returned, it will return a status code of 206 [Partial Content]. Users can then use the \u0027Page\u0027 header to determine the page needed.",
+    "notes": "",
     "parameters": [
       {
         "name": "type",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2524,6 +2679,7 @@
       {
         "name": "status",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2532,6 +2688,7 @@
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2540,7 +2697,8 @@
       {
         "name": "createDateFrom",
         "data_type": 64,
-        "format": null,
+        "in": 2,
+        "format": "date",
         "default": null,
         "required": false,
         "description": "The start of the createDate range to filter tickets by. If you provide a \u0027createDateFrom\u0027, you must also provide a \u0027createDateTo\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
@@ -2548,7 +2706,8 @@
       {
         "name": "createDateTo",
         "data_type": 64,
-        "format": null,
+        "in": 2,
+        "format": "date",
         "default": null,
         "required": false,
         "description": "The end of the createDate range to filter tickets by. If you provide a \u0027createDateTo\u0027, you must also provide a \u0027createDateFrom\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
@@ -2556,7 +2715,8 @@
       {
         "name": "updateDateFrom",
         "data_type": 64,
-        "format": null,
+        "in": 2,
+        "format": "date",
         "default": null,
         "required": false,
         "description": "The start of the updateDate range to filter tickets by. If you provide a \u0027updateDateFrom\u0027, you must also provide a \u0027updateDateTo\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
@@ -2564,7 +2724,8 @@
       {
         "name": "updateDateTo",
         "data_type": 64,
-        "format": null,
+        "in": 2,
+        "format": "date",
         "default": null,
         "required": false,
         "description": "The end of the updateDate range to filter tickets by. If you provide a \u0027updateDateTo\u0027, you must also provide a \u0027updateDateFrom\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
@@ -2572,7 +2733,8 @@
       {
         "name": "closeDateFrom",
         "data_type": 64,
-        "format": null,
+        "in": 2,
+        "format": "date",
         "default": null,
         "required": false,
         "description": "The start of the closeDate range to filter tickets by. If you provide a \u0027closeDateFrom\u0027, you must also provide a \u0027closeDateTo\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
@@ -2580,7 +2742,8 @@
       {
         "name": "closeDateTo",
         "data_type": 64,
-        "format": null,
+        "in": 2,
+        "format": "date",
         "default": null,
         "required": false,
         "description": "The end of the closeDate range to filter tickets by. If you provide a \u0027closeDateTo\u0027, you must also provide a \u0027closeDateFrom\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
@@ -2588,6 +2751,7 @@
       {
         "name": "page",
         "data_type": 4,
+        "in": 2,
         "format": null,
         "default": 1,
         "required": false,
@@ -2600,74 +2764,20 @@
     "operation_id": null,
     "endpoint": "/1.3/tickets/partialRefundDataSchema",
     "description": null,
-    "parameters": [
-      {
-        "name": "sku",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase"
-      },
-      {
-        "name": "type",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": true,
-        "description": "The type of the ticket. Must be either \u0027rfnd\u0027, \u0027cncl\u0027 or \u0027tech\u0027. For \u0027rfnd\u0027 the parameter refundType must also be specified. If the receipt is for a non-recurring product, either \u0027rfnd\u0027 or \u0027cncl\u0027 will automatically refund that sale.  For any receipt of a recurring product, a \u0027rfnd\u0027 will refund that receipt AND cancel any future billing, while a \u0027cncl\u0027 will only cancel future billing without issuing any refunds."
-      },
-      {
-        "name": "comment",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The comments associated with creating a ticket."
-      },
-      {
-        "name": "reason",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": true,
-        "description": "The reason associated with the ticket. A ticket reason should be one of the following based on type: CNCLticket.type.cancel.1 (I did not receive additional value for the recurring payments).ticket.type.cancel.2 (I was not satisfied with the subscription / Subscription did not meet expectations) ticket.type.cancel.3 (I was unable to get support from the vendor) ticket.type.cancel.4 (Product was not compatible with my computer) ticket.type.cancel.5 (I am unable to afford continuing payments for this subscription) ticket.type.cancel.6 (I did not realize that I accepted the terms for continuing payments) ticket.type.cancel.7 (Other) ticket.type.cancel.not.mobile (Product was not compatible with my mobile device.) RFNDticket.type.refund.1 (I never received my product) ticket.type.refund.2 (I was not satisfied with the product. / Product did not meet expectations) ticket.type.refund.3 (Product was not compatible with my computer) ticket.type.refund.4 (I was unable to get technical support) ticket.type.refund.5 (I did not authorize the purchase) ticket.type.refund.6 (I do not recognize the purchase) ticket.type.refund.7 (Duplicate purchase. / Or already purchased product previously) ticket.type.refund.returned (Product returned) ticket.type.refund.8 (Other) ticket.type.refund.not.mobile (Product was not compatible with my mobile device.) TECHticket.type.tech_support.1 (I am unable to log in.) ticket.type.tech_support.2 (I had problems downloading the product.) ticket.type.tech_support.3 (I never received a valid registration code, please send a valid code.) ticket.type.tech_support.4 (I can\u0027t get the product to work.) ticket.type.tech_support.9 (Other)ticket.type.tech_support.10 (I never received my product.)"
-      },
-      {
-        "name": "refundType",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "The type of refund. Supported values include \u0027FULL\u0027, \u0027PARTIAL_PERCENT\u0027, \u0027PARTIAL_AMOUNT\u0027 (case sensitive). For \u0027PARTIAL_PERCENT\u0027 and \u0027PARTIAL_AMOUNT\u0027 the parameter refundAmount must be specified.  Additionally the vendor associated with the transaction must be enabled for partial refunds in order to use both \u0027PARTIAL_PERCENT\u0027 and \u0027PARTIAL_AMOUNT\u0027, if vendor is not enabled and one of the partial options is specified a 403 will be returned."
-      },
-      {
-        "name": "refundAmount",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "Specified for partial refunds indicating the amount of the transaction to be refunded. For \u0027PARTIAL_PERCENT\u0027 this must be a number between 1 and 80, with no more than two digits of precision - for example 50.00. For \u0027PARTIAL_AMOUNT\u0027 this is the amount to refund in the currency the customer used during the purchase. The resource /1.3/tickets/refundAmounts may be used to retrieve what amounts in the customers currency convert to."
-      },
-      {
-        "name": "retainSubscription",
-        "data_type": 64,
-        "format": null,
-        "default": null,
-        "required": false,
-        "description": "Specifies if the subscription should be retained after the refund has been processed"
-      }
-    ]
+    "notes": null,
+    "parameters": []
   },
   {
     "method": "GET",
     "operation_id": null,
     "endpoint": "/1.3/tickets/refundAmounts/{receipt}",
     "description": "Returns amounts that would be refunded for a given refund type \u0026 value.",
+    "notes": "",
     "parameters": [
       {
         "name": "receipt",
         "data_type": 64,
+        "in": 3,
         "format": null,
         "default": null,
         "required": true,
@@ -2676,6 +2786,7 @@
       {
         "name": "sku",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": false,
@@ -2684,6 +2795,7 @@
       {
         "name": "refundType",
         "data_type": 64,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -2691,7 +2803,8 @@
       },
       {
         "name": "refundAmount",
-        "data_type": 64,
+        "data_type": 16,
+        "in": 2,
         "format": null,
         "default": null,
         "required": true,
@@ -2704,6 +2817,7 @@
     "operation_id": null,
     "endpoint": "/1.3/tickets/schema",
     "description": "Returns the XML Schema that describes the format of a TicketData object",
+    "notes": "",
     "parameters": []
   }
 ]

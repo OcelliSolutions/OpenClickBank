@@ -1,18 +1,95 @@
-﻿using HtmlAgilityPack;
+﻿using System.Text.Json;
+using System.Text.RegularExpressions;
+using HtmlAgilityPack;
 using NJsonSchema;
 using NSwag;
+using Ocelli.OpenClickBank.Scraper.Helpers;
 using Ocelli.OpenClickBank.Scraper.Models;
-using System.Text.Json;
-using System.Text.RegularExpressions;
 
 namespace Ocelli.OpenClickBank.Scraper.Extensions;
 
-static internal class DocumentExtensions
+internal static class DocumentExtensions
 {
-    static internal List<string> DateParameterNames = new() { "restartDate", "changeDate", "nextRebillDate" , "startDate", "endDate" };
-    static internal List<string> StringParameterNames = new() { "sku" };
-    static internal List<string> IntParameterNames = new() { "numPeriods" };
-    static internal List<string> BooleanParameterNames = new(){ "applyProratedRefund", "carryAffiliate", "approvedOnly" };
+    internal static List<string> DateParameterNames =
+        new()
+        {
+            "restartDate",
+            "changeDate",
+            "nextRebillDate",
+            "startDate",
+            "endDate",
+            "changeDate",
+            "createDateFrom",
+            "createDateTo",
+            "updateDateFrom",
+            "updateDateTo",
+            "closeDateFrom",
+            "closeDateTo",
+            "date"
+        };
+
+    internal static List<string> StringParameterNames = new() { "sku" };
+
+    internal static List<string> IntParameterNames = new()
+    {
+        "numPeriods",
+        "trialPeriod",
+        "duration",
+        "page",
+        "productId",
+        "image",
+        "saleRefundDaysLimit",
+        "rebillRefundDaysLimit",
+        "preRebillNotificationLeadTime",
+        "days",
+        "id"
+    };
+
+    internal static List<string> DoubleParameterNames = new()
+    {
+        "price",
+        "rebillPrice",
+        "rebillCommission",
+        "amount",
+        "rebillCommission",
+        "refundAmount"
+    };
+
+    internal static List<string> BooleanParameterNames = new()
+    {
+        "applyProratedRefund",
+        "carryAffiliate",
+        "approvedOnly",
+        "digital",
+        "physical",
+        "digitalRecurring",
+        "physicalRecurring",
+        "skipConfirmationPage",
+        "preRebillNotificationOverride",
+        "applyProratedRefundQuery",
+        "sortAscending",
+        "fillOrder",
+        "retainSubscription"
+    };
+
+    // convert a string to title case.
+    private static IEnumerable<char> CharsToTitleCase(this string s)
+    {
+        var newWord = true;
+        foreach (var c in s)
+        {
+            if (newWord)
+            {
+                yield return char.ToUpper(c);
+                newWord = false;
+            }
+            else
+                yield return c;
+
+            if (c == ' ') newWord = true;
+        }
+    }
+
     public static List<EndpointInfo> ExtractEndpoints(string html)
     {
         var endpoints = new List<EndpointInfo>();
@@ -33,7 +110,7 @@ static internal class DocumentExtensions
             var methodEndpointParts = methodEndpoint.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             if (methodEndpointParts.Length != 2) continue; // Ensure we have both method and endpoint
-            
+
             var endpointInfo = new EndpointInfo { Method = methodEndpointParts[0], Endpoint = methodEndpointParts[1] };
 
             //Find route parameters
@@ -44,10 +121,14 @@ static internal class DocumentExtensions
             {
                 // Extract the parameter name without curly braces
                 var parameterName = match.Groups[1].Value;
+                var parameterType = JsonObjectType.String;
+                if (IntParameterNames.Contains(parameterName)) parameterType = JsonObjectType.Integer;
+                if (BooleanParameterNames.Contains(parameterName)) parameterType = JsonObjectType.Integer;
                 var parameter = new ParameterInfo
                 {
                     Name = parameterName,
-                    DataType = JsonObjectType.String,
+                    Kind = OpenApiParameterKind.Path,
+                    DataType = parameterType,
                     Required = true
                 };
                 endpointInfo.Parameters.Add(parameter);
@@ -56,11 +137,28 @@ static internal class DocumentExtensions
 
             // Get the description text after the <br> element
             var descriptionNode = brElement.NextSibling;
-            if (descriptionNode is { Name: "#text" }) endpointInfo.Description = descriptionNode.InnerText.Trim();
+            //if (descriptionNode is { Name: "#text" }) endpointInfo.Summary = descriptionNode.InnerText.Trim();
+            if (descriptionNode is { Name: "#text" })
+            {
+                var paragraphs = new List<string>();
+                var firstParagraph = descriptionNode.InnerText.Trim();
+
+                var nextSibling = descriptionNode.NextSibling;
+                while (nextSibling is { Name: "br" } or { Name: "p" })
+                {
+                    paragraphs.Add(nextSibling.InnerText.Trim());
+                    nextSibling = nextSibling.NextSibling;
+                }
+
+                endpointInfo.Summary = firstParagraph;
+                endpointInfo.Description = string.Join("\n\n", paragraphs);
+            }
+
             // Get the <table> elements that are cousins to the <br> element
-            var tableElements = brElement.SelectNodes(".//following::table[1]");
+            var tableElements = brElement.ParentNode.SelectNodes(".//table[1]");
 
             if (tableElements != null)
+            {
                 foreach (var tableElement in tableElements)
                 {
                     var parameterRows = tableElement.SelectNodes(".//tr[position() > 1]");
@@ -81,6 +179,8 @@ static internal class DocumentExtensions
                             parameterType = JsonObjectType.Boolean;
                         else if (IntParameterNames.Contains(parameterName))
                             parameterType = JsonObjectType.Integer;
+                        else if (DoubleParameterNames.Contains(parameterName))
+                            parameterType = JsonObjectType.Number;
                         else if (DateParameterNames.Contains(parameterName))
                         {
                             parameterType = JsonObjectType.String;
@@ -92,6 +192,7 @@ static internal class DocumentExtensions
                             Name = parameterName,
                             DataType = parameterType,
                             Format = parameterFormat,
+                            Kind = OpenApiParameterKind.Query,
                             Required = columns[1].InnerText.Trim()
                                 .Equals("true", StringComparison.OrdinalIgnoreCase),
                             Description = parameterDescription
@@ -105,6 +206,7 @@ static internal class DocumentExtensions
                         {
                             Name = "page",
                             DataType = JsonObjectType.Integer,
+                            Kind = OpenApiParameterKind.Query,
                             Default = 1,
                             Required = false,
                             Description = "Page Number. Results only return 100 records at a time"
@@ -113,6 +215,7 @@ static internal class DocumentExtensions
                     }
                     //endpointInfo.Parameters = endpointInfo.Parameters.OrderBy(p => p.Name).ToList();
                 }
+            }
 
             endpoints.Add(endpointInfo);
         }
@@ -120,44 +223,45 @@ static internal class DocumentExtensions
         return endpoints;
     }
 
-    public static OpenApiDocument GenerateOpenApiSpec(List<EndpointInfo> endpoints, string title, string version, string documentName)
+    public static OpenApiDocument GenerateOpenApiSpec(List<EndpointInfo> endpoints, string title, string version,
+        string documentName)
     {
         var document = new OpenApiDocument
         {
             Info = new OpenApiInfo { Title = title, Version = version }, Swagger = "3.0.0"
         };
-        document.Servers.Add(new OpenApiServer { Url = "https://api.clickbank.com/rest" });
+        document.Servers.Add(new OpenApiServer { Url = $"https://api.clickbank.com/rest" });
 
         var groupedEndpoints = endpoints.GroupBy(e => new { e.Method, e.Endpoint });
-        
+
         foreach (var group in groupedEndpoints)
         {
             var endpoint =
                 group.First(); // Use the first endpoint in the group, assuming the data is the same for duplicates
-            if (endpoint.Endpoint?.EndsWith("schema") ?? true) continue;
-
-            var operation = new OpenApiOperation { Summary = endpoint.Description};
+            if (endpoint.Endpoint?.EndsWith("schema", StringComparison.InvariantCultureIgnoreCase) ?? true) continue;
+            
+            var operation = new OpenApiOperation { Summary = endpoint.Summary, Description = endpoint.Description };
 
             foreach (var parameter in endpoint.Parameters)
             {
                 var openApiParameter = new OpenApiParameter
                 {
                     Name = parameter.Name,
-                    Kind = OpenApiParameterKind.Query,
+                    Kind = parameter.Kind,
                     IsRequired = parameter.Required ?? false,
                     Description = parameter.Description,
                     Schema = new JsonSchema
                     {
                         Type = parameter.DataType, // Assuming string type, you can adjust based on actual data type
-                        Format = parameter.Format, 
+                        Format = parameter.Format,
                         Default = parameter.Default
                     }
                 };
 
                 operation.Parameters.Add(openApiParameter);
             }
-            
-            operation.OperationId = Helpers.OperationIdGenerator.GenerateOperationId(endpoint, documentName);
+
+            operation.OperationId = OperationIdGenerator.GenerateOperationId(endpoint, documentName);
             try
             {
                 //document.Paths.Add(endpoint.Endpoint, pathItem);
@@ -180,30 +284,10 @@ static internal class DocumentExtensions
                     $"{ex.Message}: {JsonSerializer.Serialize(new { endpoint.Method, endpoint.Endpoint })}");
             }
         }
+
         return document;
-    }
-
-    // convert a string to title case.
-    private static IEnumerable<char> CharsToTitleCase(this string s)
-    {
-        var newWord = true;
-        foreach (var c in s)
-        {
-            if (newWord)
-            {
-                yield return char.ToUpper(c);
-                newWord = false;
-            }
-            else
-            {
-                yield return c;
-            }
-
-            if (c == ' ') newWord = true;
-        }
     }
 
     //static string TitleCase(string input) => Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(input);
     public static string TitleCase(this string input) => new(input.CharsToTitleCase().ToArray());
-    
 }

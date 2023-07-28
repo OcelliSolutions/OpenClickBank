@@ -9,7 +9,9 @@ public class EndpointInfo
 
     [JsonPropertyName("endpoint")] public string Endpoint { get; set; } = null!;
 
-    [JsonPropertyName("description")] public string? Description { get; set; }
+    [JsonPropertyName("description")] public string? Summary { get; set; }
+
+    [JsonPropertyName("notes")] public string? Description { get; set; }
 
     [JsonPropertyName("parameters")] public List<ParameterInfo> Parameters { get; set; } = new();
 }

@@ -13,7 +13,7 @@ await scraperService.GetDocumentationHtml();
 Console.ForegroundColor = ConsoleColor.Yellow;
 Console.WriteLine("Saving XSDs");
 Console.ResetColor();
-//await scraperService.GetXsd();
+await scraperService.GetXsd();
 
 Console.ForegroundColor = ConsoleColor.Yellow;
 Console.WriteLine("Scrape Complete. Press any key to continue");

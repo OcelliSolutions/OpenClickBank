@@ -28,12 +28,15 @@ public static class OperationIdGenerator
 
         // Step 3: Handle reserved keywords
         var safeOperationId = HandleReservedKeywords(uniqueOperationId);
-        if (safeOperationId == rootApiName)
+        safeOperationId = new string(safeOperationId.Where(c => !char.IsDigit(c)).ToArray());
+        rootApiName = new string(rootApiName.Where(c => !char.IsDigit(c)).ToArray());
+
+        if (safeOperationId == rootApiName || safeOperationId == "shipnotice")
         {
-            safeOperationId = new string(safeOperationId.Where(c => !char.IsDigit(c)).ToArray());
+            if (safeOperationId == "shipnotice")
+                safeOperationId = "shipNotice";
 
             safeOperationId = PluralizationProvider.Singularize(safeOperationId);
-            var singularRootApiName = PluralizationProvider.Singularize(rootApiName);
             var prefix = endpointInfo.Method switch
             {
                 "GET" => "Get",
@@ -50,6 +53,35 @@ public static class OperationIdGenerator
             };
             safeOperationId = UppercaseFirstLetter(safeOperationId);
             safeOperationId = $"{prefix}{safeOperationId}{suffix}";
+        }
+        else
+        {
+            var singularRootApiName = PluralizationProvider.Singularize(rootApiName);
+            var prefix = string.Empty;
+            if (endpointInfo.Endpoint.Contains("list", StringComparison.InvariantCultureIgnoreCase))
+            {
+                prefix = "Get";
+                var pluralRootApiName = PluralizationProvider.Pluralize(rootApiName);
+                pluralRootApiName = UppercaseFirstLetter(pluralRootApiName);
+                safeOperationId = $"{prefix}{pluralRootApiName}";
+            }
+            else
+            {
+                prefix = endpointInfo.Method switch
+                {
+                    "GET" => "Get",
+                    _ => string.Empty
+                };
+
+                if (endpointInfo.Endpoint.Contains("count", StringComparison.InvariantCultureIgnoreCase))
+                    prefix = "Get";
+
+                safeOperationId = UppercaseFirstLetter(safeOperationId);
+                singularRootApiName = UppercaseFirstLetter(singularRootApiName);
+                safeOperationId = prefix == "Get"
+                    ? $"{prefix}{singularRootApiName}{safeOperationId}"
+                    : $"{safeOperationId}{singularRootApiName}";
+            }
         }
 
         // Step 5: Uppercase the first letter of the operationId
