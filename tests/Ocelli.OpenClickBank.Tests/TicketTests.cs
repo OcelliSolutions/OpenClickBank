@@ -102,7 +102,7 @@ public class TicketTests : IClassFixture<SharedFixture>
             await Fixture.ApiKey.ClickBankService.Tickets.GetTicketsAsync();
         var id = ticketList.Result?.TicketData?.FirstOrDefault(t => t.Type == TicketType.REFUND)?.TicketId ?? 0;
         Skip.If(id == 0, "No testable tickets");
-        var response = await Fixture.ApiKey.ClickBankService.Tickets.AcceptReturnFromCustomerAsync(id);
+        var response = await Fixture.ApiKey.ClickBankService.Tickets.ReturnedTicketAsync(id);
         _additionalPropertiesHelper.CheckAdditionalProperties(response,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
     }
@@ -120,7 +120,7 @@ public class TicketTests : IClassFixture<SharedFixture>
     public void ObjectResponseResult_CanReadText() => _okEmptyMockClient.ObjectResponseResult_CanReadText();
 }
 
-internal class TicketMockClient : TicketClient, IMockTests
+internal class TicketMockClient : TicketsClient, IMockTests
 {
     public TicketMockClient(HttpClient httpClient) : base(httpClient)
     {

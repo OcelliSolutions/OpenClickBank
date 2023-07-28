@@ -4,23 +4,23 @@ namespace Ocelli.OpenClickBank.Tests;
 
 [TestCaseOrderer("Ocelli.OpenClickBank.Tests.Fixtures.PriorityOrderer", "Ocelli.OpenClickBank.Tests")]
 [Collection("ShippingTests")]
-public class ShippingTests : IClassFixture<SharedFixture>
+public class Shipping3Tests : IClassFixture<SharedFixture>
 {
     private SharedFixture Fixture { get; }
     private readonly ITestOutputHelper _testOutputHelper;
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
-    private readonly ShippingMockClient _badRequestMockClient;
-    private readonly ShippingMockClient _okEmptyMockClient;
-    private readonly ShippingMockClient _okInvalidJsonMockClient;
+    private readonly Shipping3MockClient _badRequestMockClient;
+    private readonly Shipping3MockClient _okEmptyMockClient;
+    private readonly Shipping3MockClient _okInvalidJsonMockClient;
 
-    public ShippingTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
+    public Shipping3Tests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
     {
         Fixture = sharedFixture;
         _testOutputHelper = testOutputHelper;
         _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
-        _badRequestMockClient = new ShippingMockClient(sharedFixture.BadRequestMockHttpClient);
-        _okEmptyMockClient = new ShippingMockClient(sharedFixture.OkEmptyMockHttpClient);
-        _okInvalidJsonMockClient = new ShippingMockClient(sharedFixture.OkInvalidJsonMockHttpClient);
+        _badRequestMockClient = new Shipping3MockClient(sharedFixture.BadRequestMockHttpClient);
+        _okEmptyMockClient = new Shipping3MockClient(sharedFixture.OkEmptyMockHttpClient);
+        _okInvalidJsonMockClient = new Shipping3MockClient(sharedFixture.OkInvalidJsonMockHttpClient);
     }
 
     #region Read
@@ -34,7 +34,7 @@ public class ShippingTests : IClassFixture<SharedFixture>
         do
         {
             var shippingListResult =
-                await Fixture.ApiKey.ClickBankService.Shipping.GetShippingAsync(days:30, page: page);
+                await Fixture.ApiKey.ClickBankService.Shipping.GetShippingsAsync(days:30, page: page);
             _additionalPropertiesHelper.CheckAdditionalProperties(shippingListResult,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
             Assert.NotNull(shippingListResult.Result?.OrderShipData);
@@ -64,18 +64,18 @@ public class ShippingTests : IClassFixture<SharedFixture>
     {
         //ClickBank will just keep adding shipping notifications without checking first. For testing only create up to 2 instances.
         var initialCheck =
-            await Fixture.ApiKey.ClickBankService.Shipping.GetShippingNoticeAsync(Fixture.Receipt);
+            await Fixture.ApiKey.ClickBankService.Shipping.GetShipNoticeAsync(Fixture.Receipt);
 
         if (initialCheck?.ShippingNoticeData == null || initialCheck.ShippingNoticeData.Count < 2)
         {
-            var request = await Fixture.ApiKey.ClickBankService.Shipping.CreateShippingNoticeAsync(Fixture.Receipt,
-                DateOnly.FromDateTime(DateTime.UtcNow), "ups", true, tracking: "sample", comments: "test");
+            var request = await Fixture.ApiKey.ClickBankService.Shipping.CreateShipNoticeAsync(Fixture.Receipt,
+                DateOnly.FromDateTime(DateTime.UtcNow), "ups", tracking: "sample", comments: "test", fillOrder: false);
             _additionalPropertiesHelper.CheckAdditionalProperties(request,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         }
 
         var response =
-            await Fixture.ApiKey.ClickBankService.Shipping.GetShippingNoticeAsync(Fixture.Receipt);
+            await Fixture.ApiKey.ClickBankService.Shipping.GetShipNoticeAsync(Fixture.Receipt);
         _additionalPropertiesHelper.CheckAdditionalProperties(response,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         Skip.If(response == null, "No shipping notice found for this receipt.");
@@ -98,9 +98,9 @@ public class ShippingTests : IClassFixture<SharedFixture>
     public void ObjectResponseResult_CanReadText() => _okEmptyMockClient.ObjectResponseResult_CanReadText();
 }
 
-internal class ShippingMockClient : ShippingClient, IMockTests
+internal class Shipping3MockClient : Shipping3Client, IMockTests
 {
-    public ShippingMockClient(HttpClient httpClient) : base(httpClient)
+    public Shipping3MockClient(HttpClient httpClient) : base(httpClient)
     {
         BaseUrl = "https://localhost";
     }

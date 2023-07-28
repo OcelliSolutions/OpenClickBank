@@ -57,7 +57,7 @@ public class ImageTests : IClassFixture<SharedFixture>
     public void ObjectResponseResult_CanReadText() => _okEmptyMockClient.ObjectResponseResult_CanReadText();
 }
 
-internal class ImageMockClient : ImageClient, IMockTests
+internal class ImageMockClient : ImagesClient, IMockTests
 {
     public ImageMockClient(HttpClient httpClient) : base(httpClient)
     {

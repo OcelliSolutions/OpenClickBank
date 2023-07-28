@@ -26,11 +26,14 @@ var settings = new CSharpClientGeneratorSettings()
         "AnalyticsClient.GetStatisticsByRoleAndDimension",
         "AnalyticsClient.GetStatisticsByRoleAndDimensionSummary",
         "AnalyticsClient.GetSubscriptionTrends",
-        "ImageClient.GetImages",
+        "ImagesClient.GetImages",
         "OrdersClient.GetOrders",
-        "ProductClient.GetProducts",
-        "ShippingClient.GetShipping",
-        "TicketClient.GetTickets"
+        "Orders2Client.GetOrders",
+        "ProductsClient.GetProducts",
+        "ShippingClient.GetShippings",
+        "Shipping2Client.GetShippings",
+        "Shipping3Client.GetShippings",
+        "TicketsClient.GetTickets"
     }, 
     ResponseClass = "ClickBankResponse",
     CSharpGeneratorSettings =

@@ -4,23 +4,23 @@ namespace Ocelli.OpenClickBank.Tests;
 
 [TestCaseOrderer("Ocelli.OpenClickBank.Tests.Fixtures.PriorityOrderer", "Ocelli.OpenClickBank.Tests")]
 [Collection("OrderTests")]
-public class OrderTests : IClassFixture<SharedFixture>
+public class Order2Tests : IClassFixture<SharedFixture>
 {
     private SharedFixture Fixture { get; }
     private readonly ITestOutputHelper _testOutputHelper;
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
-    private readonly OrderMockClient _badRequestMockClient;
-    private readonly OrderMockClient _okEmptyMockClient;
-    private readonly OrderMockClient _okInvalidJsonMockClient;
+    private readonly Order2MockClient _badRequestMockClient;
+    private readonly Order2MockClient _okEmptyMockClient;
+    private readonly Order2MockClient _okInvalidJsonMockClient;
 
-    public OrderTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
+    public Order2Tests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
     {
         Fixture = sharedFixture;
         _testOutputHelper = testOutputHelper;
         _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
-        _badRequestMockClient = new OrderMockClient(sharedFixture.BadRequestMockHttpClient);
-        _okEmptyMockClient = new OrderMockClient(sharedFixture.OkEmptyMockHttpClient);
-        _okInvalidJsonMockClient = new OrderMockClient(sharedFixture.OkInvalidJsonMockHttpClient);
+        _badRequestMockClient = new Order2MockClient(sharedFixture.BadRequestMockHttpClient);
+        _okEmptyMockClient = new Order2MockClient(sharedFixture.OkEmptyMockHttpClient);
+        _okInvalidJsonMockClient = new Order2MockClient(sharedFixture.OkInvalidJsonMockHttpClient);
     }
 
     #region Create
@@ -89,7 +89,7 @@ public class OrderTests : IClassFixture<SharedFixture>
     [SkippableFact]
     [TestPriority(20)]
     public async Task ChangeOrderAddressAsync_CanCall() =>
-        await Fixture.ApiKey.ClickBankService.Orders.ChangeOrderAddressAsync(receipt: Fixture.Receipt,
+        await Fixture.ApiKey.ClickBankService.Orders.ChangeAddressOrderAsync(receipt: Fixture.Receipt,
             address1: "123 Test St.", city: "Middle", county:"Nowhere", countryCode: "US", postalCode: "80030", province: "CO",
             cancellationToken: CancellationToken.None);
 
@@ -108,9 +108,9 @@ public class OrderTests : IClassFixture<SharedFixture>
     public void ObjectResponseResult_CanReadText() => _okEmptyMockClient.ObjectResponseResult_CanReadText();
 }
 
-internal class OrderMockClient : OrdersClient, IMockTests
+internal class Order2MockClient : Orders2Client, IMockTests
 {
-    public OrderMockClient(HttpClient httpClient) : base(httpClient) => BaseUrl = "https://localhost";
+    public Order2MockClient(HttpClient httpClient) : base(httpClient) => BaseUrl = "https://localhost";
 
     public void ObjectResponseResult_CanReadText()
     {
@@ -121,12 +121,14 @@ internal class OrderMockClient : OrdersClient, IMockTests
     public async Task TestAllMethodsThatReturnDataAsync()
     {
         ReadResponseAsString = true;
-        await Assert.ThrowsAsync<ApiException>(async () => await GetOrdersAsync("", 0, "", "", "", "", RoleAccount.AFFILIATE, DateOnly.FromDateTime(DateTime.Now), DateOnly.FromDateTime(DateTime.Now), "", TransactionType.BILL, "", 1, CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await GetOrdersAsync(DateOnly.FromDateTime(DateTime.Now),
+            DateOnly.FromDateTime(DateTime.Now), TransactionType.BILL, "", "", "", "", "", "", RoleAccount.AFFILIATE,
+            "", 0, 1, CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await GetOrderAsync("", "", CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await GetOrderUpsellsAsync("", CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await ChangeOrderAddressAsync("","","","","", "", "", "", "", cancellationToken: CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await ChangeOrderDateAsync("", DateOnly.FromDateTime(DateTime.Now), "",  cancellationToken: CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await ChangeOrderProductAsync("", "", "", "", false, DateOnly.FromDateTime(DateTime.Now), cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await ChangeAddressOrderAsync("","","","","", "", "", "", "", cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await ChangeDateOrderAsync("", DateOnly.FromDateTime(DateTime.Now), "",  cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await ChangeProductOrderAsync("", "", "", false, false, DateOnly.FromDateTime(DateTime.Now), cancellationToken: CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await ExtendOrderAsync("", 1, "", cancellationToken: CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await PauseOrderAsync("", DateOnly.FromDateTime(DateTime.Now), "", cancellationToken: CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await ReinstateOrderAsync("", "", cancellationToken: CancellationToken.None));

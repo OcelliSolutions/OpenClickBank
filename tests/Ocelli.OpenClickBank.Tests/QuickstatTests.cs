@@ -24,7 +24,7 @@ public class QuickstatTests : IClassFixture<SharedFixture>
     [SkippableFact]
     public async Task GetAccountAsync_ReturnsAccountWhenAuthorized_ShouldPass()
     {
-        var stats = await Fixture.ApiKey.ClickBankService.Quickstats.GetAccountsAsync();
+        var stats = await Fixture.ApiKey.ClickBankService.Quickstats.GetQuickstatAccountsAsync();
         foreach (var accountData in stats?.AccountData!)
         {
             Assert.NotNull(accountData.NickName);
@@ -50,7 +50,7 @@ public class QuickstatTests : IClassFixture<SharedFixture>
     [SkippableFact]
     public async Task GetQuickstatsCountAsync_ReturnsAccountWhenAuthorized_ShouldPass()
     {
-        var stats = await Fixture.ApiKey.ClickBankService.Quickstats.GetQuickstatsCountAsync();
+        var stats = await Fixture.ApiKey.ClickBankService.Quickstats.GetQuickstatCountAsync();
     }
 
     [SkippableFact]
@@ -79,11 +79,11 @@ internal class QuickstatMockClient : QuickstatsClient, IMockTests
     public async Task TestAllMethodsThatReturnDataAsync()
     {
         ReadResponseAsString = true;
-        await Assert.ThrowsAsync<ApiException>(async () => await GetAccountsAsync(cancellationToken: CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await GetQuickstatsAsync(DateOnly.FromDateTime(DateTime.Now), DateOnly.FromDateTime(DateTime.Now), "", CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await GetQuickstatAccountsAsync(cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await GetQuickstatsAsync(DateOnly.FromDateTime(DateTime.Now), DateOnly.FromDateTime(DateTime.Now), "", 1, CancellationToken.None));
 
         ReadResponseAsString = false;
         //Only one method needs to be tested with `ReadResponseAsString = false`
-        await Assert.ThrowsAsync<ApiException>(async () => await GetAccountsAsync(cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await GetQuickstatAccountsAsync(cancellationToken: CancellationToken.None));
     }
 }
