@@ -17,18 +17,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AutoMapper" Version="11.0.1">
-			<TreatAsUsed>true</TreatAsUsed>
-		</PackageReference>
-		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="6.0.8">
+		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="7.0.9">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="NSwag.ApiDescription.Client" Version="13.16.1">
+		<PackageReference Include="NSwag.ApiDescription.Client" Version="13.19.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="NSwag.CodeGeneration.CSharp" Version="13.16.1" />
 	</ItemGroup>
 
 	<ItemGroup>

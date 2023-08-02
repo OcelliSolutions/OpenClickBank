@@ -1,10 +1,13 @@
-using System.Net.Mime;
-using System.Text.Json.Serialization;
+using CustomSwaggerGen;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
 using Ocelli.OpenClickBank.Builder.Filters;
+using System.Net.Mime;
+using System.Reflection;
+using System.Text.Json.Serialization;
+using System.Xml.XPath;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +33,15 @@ builder.Services.AddControllers(options =>
 builder.Services.TryAddEnumerable(ServiceDescriptor
     .Transient<IApplicationModelProvider, ProduceResponseTypeModelProvider>());
 builder.Services.AddEndpointsApiExplorer();
+
+// TODO: Remove this once they have been added to SwaggerGen proper
+var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+if (File.Exists(xmlPath))
+{
+    builder.Services.AddSingleton(new XPathDocument(xmlPath));
+}
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("1.3", new OpenApiInfo
@@ -41,16 +53,13 @@ builder.Services.AddSwaggerGen(c =>
                 "Please keep in mind that there are rate limits and other terms of use enforced by ClickBank. This document is only designed to give developers a standard used for code generation and testing."
         }
     );
-    c.AddServer(new OpenApiServer { Url = "https://api.clickbank.com/rest" });
+    c.AddServer(new OpenApiServer { Url = "https://api.clickbank.com" });
     c.EnableAnnotations(true, true);
     c.DocumentFilter<AdditionalPropertiesDocumentFilter>();
-    //c.DocumentFilter<AdditionalSchemasDocumentFilter>();
     c.SchemaFilter<DateTimeSchemaFilter>();
     c.SchemaFilter<DescribeEnumMemberValuesFilter>();
     c.OperationFilter<AuthorizationOperationFilter>();
-    c.OperationFilter<NullableOperationFilter>();
-    //c.UseAllOfForInheritance();
-    //c.UseOneOfForPolymorphism();
+    c.OperationFilter<NullableOperationFilter>(); 
 
     c.SelectSubTypesUsing(baseType =>
     {
@@ -59,6 +68,14 @@ builder.Services.AddSwaggerGen(c =>
 
     // Mass apply OperationIds for the swagger doc
     c.CustomOperationIds(e => $"{e.ActionDescriptor.RouteValues["action"]}");
+
+    if (File.Exists(xmlPath))
+    {
+        c.IncludeXmlComments(xmlPath);
+    }
+
+    // TODO: Remove this once they have been added to SwaggerGen proper
+    c.AddCustomSwaggerGenFilters();
 
     // The authentication for ClickBank may look like a Basic type but in reality it is a ApiKey type.
     c.AddSecurityDefinition("ApiKey",

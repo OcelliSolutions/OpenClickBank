@@ -1,0 +1,2823 @@
+[
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/images/list",
+    "description": "Lists images associated with a site",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "site",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The site owning the images"
+      },
+      {
+        "name": "type",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The image type.  Must be PRODUCT, BANNER, or BANNER_BG"
+      },
+      {
+        "name": "approvedOnly",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "boolean - if true only approved images [Default = true]"
+      },
+      {
+        "name": "page",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": 1,
+        "required": false,
+        "description": "Page Number. Results only return 100 records at a time"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/images/schema",
+    "description": "Returns the XML Schema that describes the format of a ImageData object",
+    "notes": "",
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/orders/{receipt}",
+    "description": "Returns a list of order detail objects which match the given receipt.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase"
+      }
+    ]
+  },
+  {
+    "method": "HEAD",
+    "operation_id": null,
+    "endpoint": "/1.3/orders/{receipt}",
+    "description": "This head request is used to identify if a particular order or a subscription is active, i.e. it has not been refunded, chargebacked or cancelled. It will return a 403 (Forbidden) if that\u0027s the case, or a 204 if the order is still active. Note that it will also return a 403 if the order is not found, or the user does not have access to that receipt.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase"
+      }
+    ]
+  },
+  {
+    "method": "HEAD",
+    "operation_id": null,
+    "endpoint": "/1.3/orders/{receipt}",
+    "description": "In addition, head request on a rebill transaction will return the status of that particular  rebill, not of the original transaction which may be different. It is advisable to use head requests only on the parent transactions.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/orders/{receipt}/changeAddress",
+    "description": "Allows a vendor to change shipping address of a physical recurring subscription.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "firstName",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Updated customer first name."
+      },
+      {
+        "name": "lastName",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Updated customer last name."
+      },
+      {
+        "name": "address1",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "Updated address (line 1)."
+      },
+      {
+        "name": "address2",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Updated address (line 2)."
+      },
+      {
+        "name": "city",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "Updated city."
+      },
+      {
+        "name": "county",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Updated county."
+      },
+      {
+        "name": "province",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Updated state or province."
+      },
+      {
+        "name": "countryCode",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "Updated country code."
+      },
+      {
+        "name": "postalCode",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Updated postal code or Zip."
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/orders/{receipt}/changeProduct",
+    "description": "*BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "oldSku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The SKU of the current product for the subscription."
+      },
+      {
+        "name": "newSku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The SKU of the new product for the subscription."
+      },
+      {
+        "name": "carryAffiliate",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Determines if the affiliate from the original transaction is carried over to the new subscription."
+      },
+      {
+        "name": "applyProratedRefund",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Determines if the prorated refund should be applied on the product change. This parameter will default to TRUE if not explicitly set"
+      },
+      {
+        "name": "applyProratedRefund",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Determines if the prorated refund should be applied on the product change. This parameter will default to TRUE if not explicitly set"
+      },
+      {
+        "name": "nextRebillDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/orders/{receipt}/extend",
+    "description": "*BETA* Allows a vendor to extend a subscription by a given number of rebill periods",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "numPeriods",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The number of periods to extend the subscription by"
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/orders/{receipt}/pause",
+    "description": "*BETA* Allows a vendor to change the rebill date of a subscription",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "restartDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": true,
+        "description": "The date when the subscription will be resumed in format yyyy-mm-dd"
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The item number of the subscription product that should be reinstated for the order"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/orders/{receipt}/reinstate",
+    "description": "*BETA* Allows a vendor to restart a cancelled subscription",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The item number of the subscription product that should be reinstated for the order"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/orders/{receipt}/upsells",
+    "description": "Returns all the upsell transactions for the given parent upsell transaction.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/orders/{receipt}/upsells",
+    "description": "If the transaction does not exist, or the user does not have access to the transaction, or if there are no upsells for this transaction, a status code of 403 (No Content) will be returned.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/orders/count",
+    "description": "Same as the list command, except that this one returns the count of the orders returned based on the search criteria.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "startDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The beginning date for the search (yyyy-mm-dd)"
+      },
+      {
+        "name": "endDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The end date for the search (yyyy-mm-dd)"
+      },
+      {
+        "name": "type",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND / TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned."
+      },
+      {
+        "name": "vendor",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The vendor name. Supports wildcard searches using the \u0027%\u0027 character. (Wildcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "affiliate",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The affiliate name. Supports the word \u0027none\u0027 to search for transactions without affiliates, and wildcard searches using the \u0027%\u0027 character. (Wilcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "lastName",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Customers last name. Supports wildcard searches using the \u0027%\u0027 character. (Wildcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "email",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The email of the customer. Supports wildcard searches using the \u0027%\u0027 character. (Wildcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "tid",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The TID (Tracking ID / Promo Code) to search on.  This will search both vendor and affiliate tracking codes and be returned in the promo field"
+      },
+      {
+        "name": "role",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Role account was of transaction options are [VENDOR, AFFILIATE]"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/orders/list",
+    "description": "List orders for the authenticated user scoped to the search criteria. Only the first 100 orders will be returned.\u0026nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header \u0027Page\u0027 with value 2 will return them.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "startDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The beginning date for the search (yyyy-mm-dd).  If a startDate is specified, you must also specify an endDate."
+      },
+      {
+        "name": "endDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The end date for the search (yyyy-mm-dd). If an endDate is specified, you must also specify a startDate."
+      },
+      {
+        "name": "type",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned."
+      },
+      {
+        "name": "vendor",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The vendor name. Supports wildcard searches using the \u0027%\u0027 character. (Wildcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "affiliate",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The affiliate name. Supports the word \u0027none\u0027 to search for transactions without affiliates, and wildcard searches using the \u0027%\u0027 character. (Wilcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "lastName",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Customers last name. Supports wildcard searches using the \u0027%\u0027 character. (Wildcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "item",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The item number of the order"
+      },
+      {
+        "name": "email",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The email of the customer. Supports wildcard searches using the \u0027%\u0027 character. (Wildcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "tid",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The TID (Tracking ID / Promo Code) to search on.  This will search both vendor and affiliate tracking codes and be returned in the promo field"
+      },
+      {
+        "name": "role",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Role account was of transaction options are [VENDOR, AFFILIATE]"
+      },
+      {
+        "name": "postalCode",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Customer\u0027s zip or postal code. Supports wildcard searches."
+      },
+      {
+        "name": "amount",
+        "data_type": 16,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The transaction total amount"
+      },
+      {
+        "name": "page",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": 1,
+        "required": false,
+        "description": "Page Number. Results only return 100 records at a time"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/orders/schema",
+    "description": "Returns the XML Schema that describes the format of the retrieved data when the Orders Service API calls are made.",
+    "notes": "",
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/{receipt}",
+    "description": "Returns a list of order detail objects which match the given receipt.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase"
+      }
+    ]
+  },
+  {
+    "method": "HEAD",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/{receipt}",
+    "description": "This head request is used to identify if a particular order or a subscription is active, i.e. it has not been refunded, chargebacked or cancelled. It will return a 403 (Forbidden) if that\u0027s the case, or a 204 if the order is still active. Note that it will also return a 403 if the order is not found, or the user does not have access to that receipt.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase"
+      }
+    ]
+  },
+  {
+    "method": "HEAD",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/{receipt}",
+    "description": "In addition, head request on a rebill transaction will return the status of that particular  rebill, not of the original transaction which may be different. It is advisable to use head requests only on the parent transactions.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/{receipt}/changeAddress",
+    "description": "Allows a vendor to change shipping address of a physical recurring subscription.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "firstName",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Updated customer first name."
+      },
+      {
+        "name": "lastName",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Updated customer last name."
+      },
+      {
+        "name": "address1",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "Updated address (line 1)."
+      },
+      {
+        "name": "address2",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Updated address (line 2)."
+      },
+      {
+        "name": "city",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "Updated city."
+      },
+      {
+        "name": "county",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Updated county."
+      },
+      {
+        "name": "province",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Updated state or province."
+      },
+      {
+        "name": "countryCode",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "Updated country code."
+      },
+      {
+        "name": "postalCode",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Updated postal code or Zip."
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/{receipt}/changeDate",
+    "description": "*BETA* Allows a vendor to change the rebill date of a subscription",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "changeDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": true,
+        "description": "The date when the subscription will be next billed in format yyyy-mm-dd"
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/{receipt}/changeProduct",
+    "description": "*BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "oldSku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The SKU of the current product for the subscription."
+      },
+      {
+        "name": "newSku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The SKU of the new product for the subscription."
+      },
+      {
+        "name": "carryAffiliate",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Determines if the affiliate from the original transaction is carried over to the new subscription."
+      },
+      {
+        "name": "applyProratedRefund",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Determines if the pro rated refund should be applied on the product change. This parameter will default to TRUE if not explicitly set"
+      },
+      {
+        "name": "nextRebillDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/{receipt}/extend",
+    "description": "*BETA* Allows a vendor to extend a subscription by a given number of rebill periods",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "numPeriods",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The number of periods to extend the subscription by"
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/{receipt}/pause",
+    "description": "*BETA* Allows a vendor to change the rebill date of a subscription",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "restartDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": true,
+        "description": "The date when the subscription will be resumed in format yyyy-mm-dd"
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The item number of the subscription product that should be reinstated for the order"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/{receipt}/reinstate",
+    "description": "*BETA* Allows a vendor to restart a cancelled subscription",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The item number of the subscription product that should be reinstated for the order"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/{receipt}/upsells",
+    "description": "Returns all the upsell transactions for the given parent upsell transaction.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/{receipt}/upsells",
+    "description": "If the transaction does not exist, or the user does not have access to the transaction, or if there are no upsells for this transaction, a status code of 403 (No Content) will be returned.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/count",
+    "description": "Same as the list command, except that this one returns the count of the orders returned based on the search criteria.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "startDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The beginning date for the search (yyyy-mm-dd)"
+      },
+      {
+        "name": "endDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The end date for the search (yyyy-mm-dd)"
+      },
+      {
+        "name": "type",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND / TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned."
+      },
+      {
+        "name": "vendor",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The vendor name. Supports wildcard searches using the \u0027%\u0027 character. (Wildcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "affiliate",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The affiliate name. Supports the word \u0027none\u0027 to search for transactions without affiliates, and wildcard searches using the \u0027%\u0027 character. (Wilcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "lastName",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Customers last name. Supports wildcard searches using the \u0027%\u0027 character. (Wildcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "item",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The item number of the order"
+      },
+      {
+        "name": "email",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The email of the customer. Supports wildcard searches using the \u0027%\u0027 character. (Wildcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "tid",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The TID (Tracking ID / Promo Code) to search on.  This will search both vendor and affiliate tracking codes and be returned in the promo field"
+      },
+      {
+        "name": "postalCode",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Customer\u0027s zip or postal code. Supports wildcard searches."
+      },
+      {
+        "name": "role",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Role account was of transaction options are [VENDOR, AFFILIATE]"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/list",
+    "description": "List orders for the authenticated user scoped to the search criteria. Only the first 100 orders will be returned.\u0026nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header \u0027Page\u0027 with value 2 will return them.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "startDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The beginning date for the search (yyyy-mm-dd).  If a startDate is specified, you must also specify an endDate."
+      },
+      {
+        "name": "endDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The end date for the search (yyyy-mm-dd). If an endDate is specified, you must also specify a startDate."
+      },
+      {
+        "name": "type",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned."
+      },
+      {
+        "name": "vendor",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The vendor name. Supports wildcard searches using the \u0027%\u0027 character. (Wildcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "affiliate",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The affiliate name. Supports the word \u0027none\u0027 to search for transactions without affiliates, and wildcard searches using the \u0027%\u0027 character. (Wilcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "lastName",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Customers last name. Supports wildcard searches using the \u0027%\u0027 character. (Wildcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "item",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The item number of the order"
+      },
+      {
+        "name": "email",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The email of the customer. Supports wildcard searches using the \u0027%\u0027 character. (Wildcards are converted to %25 after url encoding is done by the client)"
+      },
+      {
+        "name": "tid",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The TID (Tracking ID / Promo Code) to search on.  This will search both vendor and affiliate tracking codes and be returned in the promo field"
+      },
+      {
+        "name": "role",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Role account was of transaction options are [VENDOR, AFFILIATE]"
+      },
+      {
+        "name": "postalCode",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Customer\u0027s zip or postal code. Supports wildcard searches."
+      },
+      {
+        "name": "amount",
+        "data_type": 16,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The transaction total amount"
+      },
+      {
+        "name": "page",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": 1,
+        "required": false,
+        "description": "Page Number. Results only return 100 records at a time"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/orders2/schema",
+    "description": "Returns the XML Schema that describes the format of the retrieved data when the Orders Service API calls are made.",
+    "notes": "",
+    "parameters": []
+  },
+  {
+    "method": "DELETE",
+    "operation_id": null,
+    "endpoint": "/1.3/products/{sku}",
+    "description": "Delete a product",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "site",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The site owning product to be deleted"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/products/{sku}",
+    "description": "Gets a product",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "site",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The site owning the product to be retrieved."
+      }
+    ]
+  },
+  {
+    "method": "PUT",
+    "operation_id": null,
+    "endpoint": "/1.3/products/{sku}",
+    "description": "Saves a product with the passed in parameters",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "digital",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "product has digital component"
+      },
+      {
+        "name": "physical",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "product has physical component"
+      },
+      {
+        "name": "digitalRecurring",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "product has digital recurring component"
+      },
+      {
+        "name": "physicalRecurring",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "product has physical recurring component"
+      },
+      {
+        "name": "categories",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The categories for digital products.  At least one is required for a product with a digital component, multiple may be specified. Must be either EBOOK, SOFTWARE, GAMES, AUDIO, VIDEO, or MEMBER_SITE. Providing a category for a product without a digital component will result in an error."
+      },
+      {
+        "name": "skipConfirmationPage",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Whether or not to skip confirmation page.  This parameter is role restricted.  If you do not have the role, it will not be honored."
+      },
+      {
+        "name": "site",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The site owning the product to be saved."
+      },
+      {
+        "name": "thankYouPage",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The thank you page for desktops. Either thankYouPage or mobileThankYouPage is required"
+      },
+      {
+        "name": "mobileThankYouPage",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The thank you page for mobile devices."
+      },
+      {
+        "name": "currency",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The currency the product is sold in."
+      },
+      {
+        "name": "price",
+        "data_type": 16,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The price for the product.  Or in the case of RECURRING or RECURRING_PHYSICAL products, the initial price."
+      },
+      {
+        "name": "rebillPrice",
+        "data_type": 16,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "In the case of RECURRING or RECURRING_PHYSICAL (required) products the rebill price."
+      },
+      {
+        "name": "rebillCommission",
+        "data_type": 16,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "In the case of RECURRING or RECURRING_PHYSICAL products the rebill commission."
+      },
+      {
+        "name": "trialPeriod",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "In the case of RECURRING or RECURRING_PHYSICAL (required) products the trial period.  Must  be either 0 or a whole number between 3 and 31."
+      },
+      {
+        "name": "frequency",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "In the case of RECURRING or RECURRING_PHYSICAL (required) products the rebill frequency. Must be either WEEKLY, BI_WEEKLY, MONTHLY, QUARTERLY, HALF_YEARLY or YEARLY"
+      },
+      {
+        "name": "duration",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "In the case of RECURRING or RECURRING_PHYSICAL (required) products the rebill duration."
+      },
+      {
+        "name": "shippingProfile",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "In the case of PHYSICAL or RECURRING_PHYSICAL products the name of the shipping profile"
+      },
+      {
+        "name": "purchaseCommission",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The commission rate for the product - if unspecified the sites commission rate will be used."
+      },
+      {
+        "name": "language",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The language of the product.  Must be either DE (German), EN (English), ES, (Spanish), FR (French), IT (Italian), or PT (Portuguese)"
+      },
+      {
+        "name": "title",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The title of the product"
+      },
+      {
+        "name": "description",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "In the case of PHYSICAL or RECURRING_PHYSICAL (required) the description of the product."
+      },
+      {
+        "name": "image",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The id of the image associated to the product"
+      },
+      {
+        "name": "pitchPage",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The URL where you pitch your product. This might be the same as the HopLink Target URL. Either pitchPage or mobilePitchPage is required."
+      },
+      {
+        "name": "mobilePitchPage",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The URL where you pitch your product to customers on mobile devices. This might be the same as the HopLink Target URL. Either pitchPage or mobilePitchPage is required."
+      },
+      {
+        "name": "saleRefundDaysLimit",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The number days within which a sale can be refunded"
+      },
+      {
+        "name": "rebillRefundDaysLimit",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The number days within which a rebill can be refunded"
+      },
+      {
+        "name": "deliveryMethod",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The method of delivery."
+      },
+      {
+        "name": "deliverySpeed",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The speed of delivery."
+      },
+      {
+        "name": "preRebillNotificationOverride",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "When set, Pre-rebill notificaitons will be sent when the frequency is greater than the required cycle."
+      },
+      {
+        "name": "preRebillNotificationLeadTime",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The number of days before the rebill notification.  When enabled, a Pre-rebill notification will be sent to the number equal to the number of days indicated in the lead time and will apply to the rest of the subscription."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/products/list",
+    "description": "Lists all products",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "site",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The site owning the products"
+      },
+      {
+        "name": "type",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The product types to return.d  Must be either STANDARD or RECURRING.  Will return all types if not specified"
+      },
+      {
+        "name": "page",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": 1,
+        "required": false,
+        "description": "Page Number. Results only return 100 records at a time"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/products/schema",
+    "description": "Returns the XML Schema that describes the format of a ProductData object",
+    "notes": "",
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/quickstats/accounts",
+    "description": "Return a list of all account nicknames which the current api user has read access.",
+    "notes": "",
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/quickstats/count",
+    "description": "The count service sums the quickstat sale, refund and chargeback amounts based on the search criteria. If no search conditions are set, it will return the sum of the values for the last 45 days based on all the accounts linked to the API keys. The count service is similar to the list method except for the fact that it presents the user with one total of the dates specified the search criteria instead of listing each day\u0027s quickstat values individually. Note that the quickStatDate in the returned data will be null.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "startDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The beginning date for the search (yyyy-mm-dd). Defaults to 45 days from today if not specified."
+      },
+      {
+        "name": "endDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The end date for the search (yyyy-mm-dd). Defaults to today if not specified"
+      },
+      {
+        "name": "account",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The nickName of the account. Defaults to all  accounts if not specified."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/quickstats/list",
+    "description": "Return the quickstats for the api user, based on the search criteria. If no search conditions are set, it will return the quickstats for all the accounts for the API user for the last 45 days",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "startDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The beginning date for the search (yyyy-mm-dd). Defaults to 45 days from today if not specified."
+      },
+      {
+        "name": "endDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The end date for the search (yyyy-mm-dd). Defaults to today if not specified"
+      },
+      {
+        "name": "account",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The nickName of the account. Defaults to all  accounts if not specified."
+      },
+      {
+        "name": "page",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": 1,
+        "required": false,
+        "description": "Page Number. Results only return 100 records at a time"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/quickstats/schema",
+    "description": "Returns the XML Schema that describes the format of the retrieved data for the accounts.",
+    "notes": "",
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping/count",
+    "description": "Returns a count of physical goods orders matching the shipping criteria.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "status",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Can be \u0027shipped\u0027, \u0027notshipped\u0027 or \u0027all\u0027 - to find related orders."
+      },
+      {
+        "name": "days",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders."
+      },
+      {
+        "name": "startDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date"
+      },
+      {
+        "name": "endDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate"
+      },
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping/list",
+    "description": "List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned.\u0026nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header \u0027Page\u0027 with value 2 will return them.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "status",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Can be \u0027shipped\u0027, \u0027notshipped\u0027 or \u0027all\u0027 - to find related orders."
+      },
+      {
+        "name": "days",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders."
+      },
+      {
+        "name": "startDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date"
+      },
+      {
+        "name": "endDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate"
+      },
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored."
+      },
+      {
+        "name": "page",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": 1,
+        "required": false,
+        "description": "Page Number. Results only return 100 records at a time"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping/schema",
+    "description": "Returns the XML Schema that describes the format of the retrieved data when the shipping API calls are made.",
+    "notes": "",
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping/shipnotice/{receipt}",
+    "description": "Returns the ship notices for the given transaction.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping/shipnotice/{receipt}",
+    "description": "Creates a shipping notice for the given transaction.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "date",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": true,
+        "description": "The shipping date (yyyy-mm-dd)."
+      },
+      {
+        "name": "carrier",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The shipping carrier."
+      },
+      {
+        "name": "tracking",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The tracking id."
+      },
+      {
+        "name": "comments",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The comments associated with the notice."
+      },
+      {
+        "name": "item",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping/shipnotice/schema",
+    "description": "Returns the XML Schema that describes the format of the retrieved data when the Shipnotice Service API calls are made.",
+    "notes": "",
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping2/count",
+    "description": "Returns a count of physical goods orders matching the shipping criteria.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "status",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Can be \u0027shipped\u0027, \u0027notshipped\u0027 or \u0027all\u0027 - to find related orders."
+      },
+      {
+        "name": "days",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders."
+      },
+      {
+        "name": "startDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date"
+      },
+      {
+        "name": "endDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate"
+      },
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping2/list",
+    "description": "List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned.\u0026nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header \u0027Page\u0027 with value 2 will return them.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "status",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Can be \u0027shipped\u0027, \u0027notshipped\u0027 or \u0027all\u0027 - to find related orders."
+      },
+      {
+        "name": "days",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders."
+      },
+      {
+        "name": "startDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date"
+      },
+      {
+        "name": "endDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate"
+      },
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored."
+      },
+      {
+        "name": "page",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": 1,
+        "required": false,
+        "description": "Page Number. Results only return 100 records at a time"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping2/schema",
+    "description": "Returns the XML Schema that describes the format of the retrieved data when the shipping API calls are made.",
+    "notes": "",
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping2/shipnotice/{receipt}",
+    "description": "Returns the ship notices for the given transaction.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping2/shipnotice/{receipt}",
+    "description": "Creates a shipping notice for the given transaction.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "date",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": true,
+        "description": "The shipping date (yyyy-mm-dd)."
+      },
+      {
+        "name": "carrier",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The shipping carrier."
+      },
+      {
+        "name": "tracking",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The tracking id."
+      },
+      {
+        "name": "comments",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The comments associated with the notice."
+      },
+      {
+        "name": "item",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items."
+      },
+      {
+        "name": "fillOrder",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping2/shipnotice/schema",
+    "description": "Returns the XML Schema that describes the format of the retrieved data when the Shipnotice Service API calls are made.",
+    "notes": "",
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping3/count",
+    "description": "Returns a count of physical goods orders matching the shipping criteria.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "status",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Can be \u0027shipped\u0027, \u0027notshipped\u0027 or \u0027all\u0027 - to find related orders."
+      },
+      {
+        "name": "days",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders."
+      },
+      {
+        "name": "startDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date"
+      },
+      {
+        "name": "endDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate"
+      },
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping3/list",
+    "description": "List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned.\u0026nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header \u0027Page\u0027 with value 2 will return them.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "status",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Can be \u0027shipped\u0027, \u0027notshipped\u0027 or \u0027all\u0027 - to find related orders."
+      },
+      {
+        "name": "days",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders."
+      },
+      {
+        "name": "startDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date"
+      },
+      {
+        "name": "endDate",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate"
+      },
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored."
+      },
+      {
+        "name": "page",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": 1,
+        "required": false,
+        "description": "Page Number. Results only return 100 records at a time"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping3/schema",
+    "description": "Returns the XML Schema that describes the format of the retrieved data when the shipping API calls are made.",
+    "notes": "",
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping3/shipnotice/{receipt}",
+    "description": "Returns the ship notices for the given transaction.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping3/shipnotice/{receipt}",
+    "description": "Creates a shipping notice for the given transaction.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "date",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": true,
+        "description": "The shipping date (yyyy-mm-dd)."
+      },
+      {
+        "name": "carrier",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The shipping carrier."
+      },
+      {
+        "name": "tracking",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The tracking id."
+      },
+      {
+        "name": "comments",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The comments associated with the notice."
+      },
+      {
+        "name": "item",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items."
+      },
+      {
+        "name": "fillOrder",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/shipping3/shipnotice/schema",
+    "description": "Returns the XML Schema that describes the format of the retrieved data when the Shipnotice Service API calls are made.",
+    "notes": "",
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/tickets/{id}",
+    "description": "Find a ticket by its ID. Will return the ticket with the given ID back. If the ticket does not exist, or the user is not authorized to view the ticket - a status code of 403 will be returned.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "id",
+        "data_type": 4,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      }
+    ]
+  },
+  {
+    "method": "PUT",
+    "operation_id": null,
+    "endpoint": "/1.3/tickets/{id}",
+    "description": "Allows the user to close a ticket, comment on a ticket, change type of a ticket, or reopen the ticket. Will return a status code 200 if the action is successful, a 403 if user is not allowed to act on the ticket or the ticket does not exist. Upon success, this will return the ticket data. Please note that closing of a ticket manually means that the ticket is cancelled. So for example closing of an open refund ticket will cancel the refund request. If the action is not specified, the assumption is that the user is trying to comment on the ticket. Also note that reopening is only supported for closed tickets and will return a 400 status code otherwise.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "id",
+        "data_type": 4,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "action",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The action to be taken. Supported actions are \u0027change\u0027, \u0027close\u0027 and \u0027reopen\u0027."
+      },
+      {
+        "name": "comment",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The comments that go along with the action, or comments on the ticket. Comments are required when reopening a ticket."
+      },
+      {
+        "name": "type",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "If changing the type of the ticket, this will be one of rfnd, cncl, or tech. Note: Partial refunds are not allowed when changing to a rfnd ticket type. Tickets changed to rfnd will be full refunds."
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/tickets/{id}/returned",
+    "description": "Acknowledges return of physical item from customer, allowing refund of transaction to complete.  This call will return a status code of 204 if successful.  The body of the response will be empty in this case.  A 403 (Forbidden) status code will be return if access is denied.  A 400 (Bad Request) will be returned if the ticket isn\u0027t found or the ticket is not for a physical purchase.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "id",
+        "data_type": 4,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "operation_id": null,
+    "endpoint": "/1.3/tickets/{receipt}",
+    "description": "Create a ticket with the passed in parameters. Will return the created ticket if it\u0027s successful.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase"
+      },
+      {
+        "name": "type",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The type of the ticket. Must be either \u0027rfnd\u0027, \u0027cncl\u0027 or \u0027tech\u0027. For \u0027rfnd\u0027 the parameter refundType must also be specified. If the receipt is for a non-recurring product, either \u0027rfnd\u0027 or \u0027cncl\u0027 will automatically refund that sale.  For any receipt of a recurring product, a \u0027rfnd\u0027 will refund that receipt AND cancel any future billing, while a \u0027cncl\u0027 will only cancel future billing without issuing any refunds."
+      },
+      {
+        "name": "comment",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The comments associated with creating a ticket."
+      },
+      {
+        "name": "reason",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The reason associated with the ticket. A ticket reason should be one of the following based on type: CNCLticket.type.cancel.1 (I did not receive additional value for the recurring payments).ticket.type.cancel.2 (I was not satisfied with the subscription / Subscription did not meet expectations) ticket.type.cancel.3 (I was unable to get support from the vendor) ticket.type.cancel.4 (Product was not compatible with my computer) ticket.type.cancel.5 (I am unable to afford continuing payments for this subscription) ticket.type.cancel.6 (I did not realize that I accepted the terms for continuing payments) ticket.type.cancel.7 (Other) ticket.type.cancel.not.mobile (Product was not compatible with my mobile device.) RFNDticket.type.refund.1 (I never received my product) ticket.type.refund.2 (I was not satisfied with the product. / Product did not meet expectations) ticket.type.refund.3 (Product was not compatible with my computer) ticket.type.refund.4 (I was unable to get technical support) ticket.type.refund.5 (I did not authorize the purchase) ticket.type.refund.6 (I do not recognize the purchase) ticket.type.refund.7 (Duplicate purchase. / Or already purchased product previously) ticket.type.refund.returned (Product returned) ticket.type.refund.8 (Other) ticket.type.refund.not.mobile (Product was not compatible with my mobile device.) TECHticket.type.tech_support.1 (I am unable to log in.) ticket.type.tech_support.2 (I had problems downloading the product.) ticket.type.tech_support.3 (I never received a valid registration code, please send a valid code.) ticket.type.tech_support.4 (I can\u0027t get the product to work.) ticket.type.tech_support.9 (Other)ticket.type.tech_support.10 (I never received my product.)"
+      },
+      {
+        "name": "refundType",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The type of refund. Supported values include \u0027FULL\u0027, \u0027PARTIAL_PERCENT\u0027, \u0027PARTIAL_AMOUNT\u0027 (case sensitive). For \u0027PARTIAL_PERCENT\u0027 and \u0027PARTIAL_AMOUNT\u0027 the parameter refundAmount must be specified.  Additionally the vendor associated with the transaction must be enabled for partial refunds in order to use both \u0027PARTIAL_PERCENT\u0027 and \u0027PARTIAL_AMOUNT\u0027, if vendor is not enabled and one of the partial options is specified a 403 will be returned."
+      },
+      {
+        "name": "refundAmount",
+        "data_type": 16,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Specified for partial refunds indicating the amount of the transaction to be refunded. For \u0027PARTIAL_PERCENT\u0027 this must be a number between 1 and 80, with no more than two digits of precision - for example 50.00. For \u0027PARTIAL_AMOUNT\u0027 this is the amount to refund in the currency the customer used during the purchase. The resource /1.3/tickets/refundAmounts may be used to retrieve what amounts in the customers currency convert to."
+      },
+      {
+        "name": "retainSubscription",
+        "data_type": 2,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Specifies if the subscription should be retained after the refund has been processed"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/tickets/count",
+    "description": "Counts the tickets matching the search criteria.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "type",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The type of the ticket. Must be either \u0027rfnd\u0027 / \u0027cncl\u0027 or \u0027tech\u0027"
+      },
+      {
+        "name": "status",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The status of the ticket. Can be \u0027open\u0027, \u0027reopened\u0027 or \u0027closed\u0027"
+      },
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Counts a ticket by a given receipt. Will return the ticket(s) associated with the transaction. If the receipt is a subscription, all tickets with associated with each rebill of that subscription will be counted."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/tickets/list",
+    "description": "Searches for tickets matching the search criteria. Will return a list of ticket data objects with a status code of 200. If more than 100 results are returned, it will return a status code of 206 [Partial Content]. Users can then use the \u0027Page\u0027 header to determine the page needed.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "type",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The type of the ticket. Must be either \u0027rfnd\u0027 / \u0027cncl\u0027 or \u0027tech\u0027"
+      },
+      {
+        "name": "status",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "The status of the ticket. Can be \u0027open\u0027, \u0027reopened\u0027 or \u0027closed\u0027"
+      },
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "Find a ticket by a given receipt. Will return the ticket(s) associated with the transaction. If the receipt is a subscription, all tickets with associated with each rebill of that subscription will be returned.  Must be 4 or more characters in length, not counting the wildcard character (\u0027%\u0027).  May not start with the wildcard character."
+      },
+      {
+        "name": "createDateFrom",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The start of the createDate range to filter tickets by. If you provide a \u0027createDateFrom\u0027, you must also provide a \u0027createDateTo\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
+      },
+      {
+        "name": "createDateTo",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The end of the createDate range to filter tickets by. If you provide a \u0027createDateTo\u0027, you must also provide a \u0027createDateFrom\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
+      },
+      {
+        "name": "updateDateFrom",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The start of the updateDate range to filter tickets by. If you provide a \u0027updateDateFrom\u0027, you must also provide a \u0027updateDateTo\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
+      },
+      {
+        "name": "updateDateTo",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The end of the updateDate range to filter tickets by. If you provide a \u0027updateDateTo\u0027, you must also provide a \u0027updateDateFrom\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
+      },
+      {
+        "name": "closeDateFrom",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The start of the closeDate range to filter tickets by. If you provide a \u0027closeDateFrom\u0027, you must also provide a \u0027closeDateTo\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
+      },
+      {
+        "name": "closeDateTo",
+        "data_type": 64,
+        "in": 2,
+        "format": "date",
+        "default": null,
+        "required": false,
+        "description": "The end of the closeDate range to filter tickets by. If you provide a \u0027closeDateTo\u0027, you must also provide a \u0027closeDateFrom\u0027 to complete the date range. The range cannot be more than 7 days in length. Dates must be in the format \u0027yyyy-mm-dd\u0027, i.e \u00272011-12-31\u0027 for December 31st, 2011."
+      },
+      {
+        "name": "page",
+        "data_type": 4,
+        "in": 2,
+        "format": null,
+        "default": 1,
+        "required": false,
+        "description": "Page Number. Results only return 100 records at a time"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/tickets/partialRefundDataSchema",
+    "description": null,
+    "notes": null,
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/tickets/refundAmounts/{receipt}",
+    "description": "Returns amounts that would be refunded for a given refund type \u0026 value.",
+    "notes": "",
+    "parameters": [
+      {
+        "name": "receipt",
+        "data_type": 64,
+        "in": 3,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "sku",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": false,
+        "description": "line item sku/itemNo"
+      },
+      {
+        "name": "refundType",
+        "data_type": 64,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "The type of refund. Supported values include \u0027FULL\u0027, \u0027PARTIAL_PERCENT\u0027, \u0027PARTIAL_AMOUNT\u0027 (case sensitive). For \u0027PARTIAL_PERCENT\u0027 and \u0027PARTIAL_AMOUNT\u0027 the parameter refundAmount must be specified. Additionally the vendor associated with the transaction must be enabled for partial refunds in order to use both \u0027PARTIAL_PERCENT\u0027 and \u0027PARTIAL_AMOUNT\u0027, if vendor is not enabled and one of the partial options is specified a 403 will be returned."
+      },
+      {
+        "name": "refundAmount",
+        "data_type": 16,
+        "in": 2,
+        "format": null,
+        "default": null,
+        "required": true,
+        "description": "Specified for partial refunds indicating the amount of the transaction to be refunded. For \u0027PARTIAL_PERCENT\u0027 this must be a number between 1 and 80, with no more than two digits of precision - for example 50.00. For \u0027PARTIAL_AMOUNT\u0027 this is the amount to refund in the currency the customer used during the purchase."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "operation_id": null,
+    "endpoint": "/1.3/tickets/schema",
+    "description": "Returns the XML Schema that describes the format of a TicketData object",
+    "notes": "",
+    "parameters": []
+  }
+]

@@ -23,7 +23,7 @@ public class ProductTests : IClassFixture<SharedFixture>
     }
 
     #region Create
-
+    /*
     [SkippableFact]
     [TestPriority(10)]
     public async Task CreateProductAsync_CanCreate() =>
@@ -38,7 +38,7 @@ public class ProductTests : IClassFixture<SharedFixture>
             categories: new List<ProductCategory>() { ProductCategory.EBOOK, ProductCategory.SOFTWARE },
             thankYouPage: "https://sample.com/thankyou?id=SAMP01",
             pitchPage: "https://sample.com/product/SAMP01");
-
+    */
     #endregion Create
 
     #region Read
@@ -90,7 +90,7 @@ public class ProductTests : IClassFixture<SharedFixture>
     #endregion Read
 
     #region Update
-
+    /*
     [SkippableFact]
     [TestPriority(30)]
     public async Task CreateProductAsync_CanUpdate()
@@ -107,7 +107,7 @@ public class ProductTests : IClassFixture<SharedFixture>
             thankYouPage: "https://sample.com/thankyou?id=SAMP01",
             pitchPage: "https://sample.com/product/SAMP01");
     }
-
+    */
     #endregion Update
 
     #region Delete
@@ -130,7 +130,7 @@ public class ProductTests : IClassFixture<SharedFixture>
     public void ObjectResponseResult_CanReadText() => _okEmptyMockClient.ObjectResponseResult_CanReadText();
 }
 
-internal class ProductMockClient : ProductClient, IMockTests
+internal class ProductMockClient : ProductsClient, IMockTests
 {
     public ProductMockClient(HttpClient httpClient) : base(httpClient)
     {

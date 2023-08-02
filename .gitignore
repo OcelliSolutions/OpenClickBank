@@ -351,3 +351,6 @@ internallog.*
 api_keys.json
 api_key.json
 Coverage/
+
+*.html
+*.xsd
