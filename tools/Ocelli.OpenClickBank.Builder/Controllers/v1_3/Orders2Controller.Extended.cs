@@ -81,7 +81,7 @@ public class Orders2Controller : Orders2ControllerBase
 
     /// <inheritdoc cref="Orders2ControllerBase.GetOrders" />
     [HttpGet]
-    [Route("1.3/orders2/GetOrders")]
+    [Route("1.3/orders2/list")]
     [Authorize]
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]

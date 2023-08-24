@@ -51,6 +51,12 @@ namespace Ocelli.OpenClickBank.Builder.Models
         public abstract System.Threading.Tasks.Task GetShippings([Microsoft.AspNetCore.Mvc.FromQuery] string? status = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? days = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? receipt = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
 
         /// <summary>
+        /// Returns the ship notices for the given transaction.
+        /// </summary>
+        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/shipping3/shipnotice/{receipt}")]
+        public abstract System.Threading.Tasks.Task GetShipNotice(string receipt);
+
+        /// <summary>
         /// Creates a shipping notice for the given transaction.
         /// </summary>
         /// <param name="date">The shipping date (yyyy-mm-dd).</param>
@@ -61,12 +67,6 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="fillOrder">Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated.</param>
         [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/shipping3/shipnotice/{receipt}")]
         public abstract System.Threading.Tasks.Task CreateShipNotice(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime date, [Microsoft.AspNetCore.Mvc.FromQuery] string carrier, [Microsoft.AspNetCore.Mvc.FromQuery] string? tracking = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? comments = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? item = null, [Microsoft.AspNetCore.Mvc.FromQuery] bool? fillOrder = null);
-
-        /// <summary>
-        /// Returns the ship notices for the given transaction.
-        /// </summary>
-        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/shipping3/shipnotice/{receipt}")]
-        public abstract System.Threading.Tasks.Task GetShipNotice(string receipt);
 
     }
 

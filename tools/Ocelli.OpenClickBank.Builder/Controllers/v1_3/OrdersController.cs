@@ -48,55 +48,6 @@ namespace Ocelli.OpenClickBank.Builder.Models
         public abstract System.Threading.Tasks.Task GetOrderUpsells(string receipt);
 
         /// <summary>
-        /// *BETA* Allows a vendor to restart a cancelled subscription
-        /// </summary>
-        /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
-        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/reinstate")]
-        public abstract System.Threading.Tasks.Task ReinstateOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
-
-        /// <summary>
-        /// *BETA* Allows a vendor to change the rebill date of a subscription
-        /// </summary>
-        /// <param name="restartDate">The date when the subscription will be resumed in format yyyy-mm-dd</param>
-        /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
-        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/pause")]
-        public abstract System.Threading.Tasks.Task PauseOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime restartDate, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
-
-        /// <summary>
-        /// *BETA* Allows a vendor to extend a subscription by a given number of rebill periods
-        /// </summary>
-        /// <param name="numPeriods">The number of periods to extend the subscription by</param>
-        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
-        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/extend")]
-        public abstract System.Threading.Tasks.Task ExtendOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] int numPeriods, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
-
-        /// <summary>
-        /// *BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.
-        /// </summary>
-        /// <param name="oldSku">The SKU of the current product for the subscription.</param>
-        /// <param name="newSku">The SKU of the new product for the subscription.</param>
-        /// <param name="carryAffiliate">Determines if the affiliate from the original transaction is carried over to the new subscription.</param>
-        /// <param name="applyProratedRefundQuery">Determines if the prorated refund should be applied on the product change. This parameter will default to TRUE if not explicitly set</param>
-        /// <param name="nextRebillDate">Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change</param>
-        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/changeProduct")]
-        public abstract System.Threading.Tasks.Task ChangeProductOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string oldSku, [Microsoft.AspNetCore.Mvc.FromQuery] string newSku, [Microsoft.AspNetCore.Mvc.FromQuery] bool? carryAffiliate = null, [Microsoft.AspNetCore.Mvc.FromQuery(Name = "applyProratedRefund")] bool? applyProratedRefundQuery = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? nextRebillDate = null);
-
-        /// <summary>
-        /// Allows a vendor to change shipping address of a physical recurring subscription.
-        /// </summary>
-        /// <param name="address1">Updated address (line 1).</param>
-        /// <param name="city">Updated city.</param>
-        /// <param name="countryCode">Updated country code.</param>
-        /// <param name="firstName">Updated customer first name.</param>
-        /// <param name="lastName">Updated customer last name.</param>
-        /// <param name="address2">Updated address (line 2).</param>
-        /// <param name="county">Updated county.</param>
-        /// <param name="province">Updated state or province.</param>
-        /// <param name="postalCode">Updated postal code or Zip.</param>
-        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/changeAddress")]
-        public abstract System.Threading.Tasks.Task ChangeAddressOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string address1, [Microsoft.AspNetCore.Mvc.FromQuery] string city, [Microsoft.AspNetCore.Mvc.FromQuery] string countryCode, [Microsoft.AspNetCore.Mvc.FromQuery] string? firstName = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? lastName = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? address2 = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? county = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? province = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? postalCode = null);
-
-        /// <summary>
         /// Same as the list command, except that this one returns the count of the orders returned based on the search criteria.
         /// </summary>
         /// <param name="startDate">The beginning date for the search (yyyy-mm-dd)</param>
@@ -129,6 +80,55 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/orders/list")]
         public abstract System.Threading.Tasks.Task GetOrders([Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? vendor = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? affiliate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? lastName = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? item = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? email = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? tid = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? role = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? postalCode = null, [Microsoft.AspNetCore.Mvc.FromQuery] double? amount = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
+
+        /// <summary>
+        /// Allows a vendor to change shipping address of a physical recurring subscription.
+        /// </summary>
+        /// <param name="address1">Updated address (line 1).</param>
+        /// <param name="city">Updated city.</param>
+        /// <param name="countryCode">Updated country code.</param>
+        /// <param name="firstName">Updated customer first name.</param>
+        /// <param name="lastName">Updated customer last name.</param>
+        /// <param name="address2">Updated address (line 2).</param>
+        /// <param name="county">Updated county.</param>
+        /// <param name="province">Updated state or province.</param>
+        /// <param name="postalCode">Updated postal code or Zip.</param>
+        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/changeAddress")]
+        public abstract System.Threading.Tasks.Task ChangeAddressOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string address1, [Microsoft.AspNetCore.Mvc.FromQuery] string city, [Microsoft.AspNetCore.Mvc.FromQuery] string countryCode, [Microsoft.AspNetCore.Mvc.FromQuery] string? firstName = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? lastName = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? address2 = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? county = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? province = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? postalCode = null);
+
+        /// <summary>
+        /// *BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.
+        /// </summary>
+        /// <param name="oldSku">The SKU of the current product for the subscription.</param>
+        /// <param name="newSku">The SKU of the new product for the subscription.</param>
+        /// <param name="carryAffiliate">Determines if the affiliate from the original transaction is carried over to the new subscription.</param>
+        /// <param name="applyProratedRefundQuery">Determines if the prorated refund should be applied on the product change. This parameter will default to TRUE if not explicitly set</param>
+        /// <param name="nextRebillDate">Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change</param>
+        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/changeProduct")]
+        public abstract System.Threading.Tasks.Task ChangeProductOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string oldSku, [Microsoft.AspNetCore.Mvc.FromQuery] string newSku, [Microsoft.AspNetCore.Mvc.FromQuery] bool? carryAffiliate = null, [Microsoft.AspNetCore.Mvc.FromQuery(Name = "applyProratedRefund")] bool? applyProratedRefundQuery = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? nextRebillDate = null);
+
+        /// <summary>
+        /// *BETA* Allows a vendor to extend a subscription by a given number of rebill periods
+        /// </summary>
+        /// <param name="numPeriods">The number of periods to extend the subscription by</param>
+        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
+        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/extend")]
+        public abstract System.Threading.Tasks.Task ExtendOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] int numPeriods, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
+
+        /// <summary>
+        /// *BETA* Allows a vendor to change the rebill date of a subscription
+        /// </summary>
+        /// <param name="restartDate">The date when the subscription will be resumed in format yyyy-mm-dd</param>
+        /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
+        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/pause")]
+        public abstract System.Threading.Tasks.Task PauseOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime restartDate, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
+
+        /// <summary>
+        /// *BETA* Allows a vendor to restart a cancelled subscription
+        /// </summary>
+        /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
+        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/orders/{receipt}/reinstate")]
+        public abstract System.Threading.Tasks.Task ReinstateOrder(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
 
     }
 

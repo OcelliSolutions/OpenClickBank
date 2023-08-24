@@ -3149,7 +3149,7 @@ namespace Ocelli.OpenClickBank
         public virtual async System.Threading.Tasks.Task<ClickBankResponse<OrderList?>> GetOrdersAsync(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null, double? amount = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/rest/1.3/orders2/GetOrders?");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/rest/1.3/orders2/list?");
             if (startDate != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("startDate") + "=").Append(System.Uri.EscapeDataString(startDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");

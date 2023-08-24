@@ -232,7 +232,9 @@ internal static class DocumentExtensions
         };
         document.Servers.Add(new OpenApiServer { Url = $"https://api.clickbank.com/rest" });
 
-        var groupedEndpoints = endpoints.GroupBy(e => new { e.Method, e.Endpoint });
+        var groupedEndpoints = endpoints.GroupBy(e => new { e.Method, e.Endpoint })
+            .OrderBy(g => g.Key.Method)
+            .ThenBy(g => g.Key.Endpoint);
 
         foreach (var group in groupedEndpoints)
         {

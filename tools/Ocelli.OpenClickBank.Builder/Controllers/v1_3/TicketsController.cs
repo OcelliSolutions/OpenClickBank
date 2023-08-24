@@ -28,15 +28,6 @@ namespace Ocelli.OpenClickBank.Builder.Models
     public abstract class TicketsControllerBase : Microsoft.AspNetCore.Mvc.ControllerBase
     {
         /// <summary>
-        /// Returns amounts that would be refunded for a given refund type &amp; value.
-        /// </summary>
-        /// <param name="refundType">The type of refund. Supported values include 'FULL', 'PARTIAL_PERCENT', 'PARTIAL_AMOUNT' (case sensitive). For 'PARTIAL_PERCENT' and 'PARTIAL_AMOUNT' the parameter refundAmount must be specified. Additionally the vendor associated with the transaction must be enabled for partial refunds in order to use both 'PARTIAL_PERCENT' and 'PARTIAL_AMOUNT', if vendor is not enabled and one of the partial options is specified a 403 will be returned.</param>
-        /// <param name="refundAmount">Specified for partial refunds indicating the amount of the transaction to be refunded. For 'PARTIAL_PERCENT' this must be a number between 1 and 80, with no more than two digits of precision - for example 50.00. For 'PARTIAL_AMOUNT' this is the amount to refund in the currency the customer used during the purchase.</param>
-        /// <param name="sku">line item sku/itemNo</param>
-        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/tickets/refundAmounts/{receipt}")]
-        public abstract System.Threading.Tasks.Task GetTicketRefundAmounts(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string refundType, [Microsoft.AspNetCore.Mvc.FromQuery] double refundAmount, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
-
-        /// <summary>
         /// Find a ticket by its ID. Will return the ticket with the given ID back. If the ticket does not exist, or the user is not authorized to view the ticket - a status code of 403 will be returned.
         /// </summary>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/tickets/{id}")]
@@ -52,10 +43,13 @@ namespace Ocelli.OpenClickBank.Builder.Models
         public abstract System.Threading.Tasks.Task UpdateTicket(int id, [Microsoft.AspNetCore.Mvc.FromQuery] string? action = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? comment = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? type = null);
 
         /// <summary>
-        /// Acknowledges return of physical item from customer, allowing refund of transaction to complete.  This call will return a status code of 204 if successful.  The body of the response will be empty in this case.  A 403 (Forbidden) status code will be return if access is denied.  A 400 (Bad Request) will be returned if the ticket isn't found or the ticket is not for a physical purchase.
+        /// Counts the tickets matching the search criteria.
         /// </summary>
-        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/tickets/{id}/returned")]
-        public abstract System.Threading.Tasks.Task ReturnedTicket(int id);
+        /// <param name="type">The type of the ticket. Must be either 'rfnd' / 'cncl' or 'tech'</param>
+        /// <param name="status">The status of the ticket. Can be 'open', 'reopened' or 'closed'</param>
+        /// <param name="receipt">Counts a ticket by a given receipt. Will return the ticket(s) associated with the transaction. If the receipt is a subscription, all tickets with associated with each rebill of that subscription will be counted.</param>
+        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/tickets/count")]
+        public abstract System.Threading.Tasks.Task GetTicketCount([Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? status = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? receipt = null);
 
         /// <summary>
         /// Searches for tickets matching the search criteria. Will return a list of ticket data objects with a status code of 200. If more than 100 results are returned, it will return a status code of 206 [Partial Content]. Users can then use the 'Page' header to determine the page needed.
@@ -74,13 +68,19 @@ namespace Ocelli.OpenClickBank.Builder.Models
         public abstract System.Threading.Tasks.Task GetTickets([Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? status = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? receipt = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? createDateFrom = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? createDateTo = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? updateDateFrom = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? updateDateTo = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? closeDateFrom = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? closeDateTo = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
 
         /// <summary>
-        /// Counts the tickets matching the search criteria.
+        /// Returns amounts that would be refunded for a given refund type &amp; value.
         /// </summary>
-        /// <param name="type">The type of the ticket. Must be either 'rfnd' / 'cncl' or 'tech'</param>
-        /// <param name="status">The status of the ticket. Can be 'open', 'reopened' or 'closed'</param>
-        /// <param name="receipt">Counts a ticket by a given receipt. Will return the ticket(s) associated with the transaction. If the receipt is a subscription, all tickets with associated with each rebill of that subscription will be counted.</param>
-        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/tickets/count")]
-        public abstract System.Threading.Tasks.Task GetTicketCount([Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? status = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? receipt = null);
+        /// <param name="refundType">The type of refund. Supported values include 'FULL', 'PARTIAL_PERCENT', 'PARTIAL_AMOUNT' (case sensitive). For 'PARTIAL_PERCENT' and 'PARTIAL_AMOUNT' the parameter refundAmount must be specified. Additionally the vendor associated with the transaction must be enabled for partial refunds in order to use both 'PARTIAL_PERCENT' and 'PARTIAL_AMOUNT', if vendor is not enabled and one of the partial options is specified a 403 will be returned.</param>
+        /// <param name="refundAmount">Specified for partial refunds indicating the amount of the transaction to be refunded. For 'PARTIAL_PERCENT' this must be a number between 1 and 80, with no more than two digits of precision - for example 50.00. For 'PARTIAL_AMOUNT' this is the amount to refund in the currency the customer used during the purchase.</param>
+        /// <param name="sku">line item sku/itemNo</param>
+        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/tickets/refundAmounts/{receipt}")]
+        public abstract System.Threading.Tasks.Task GetTicketRefundAmounts(string receipt, [Microsoft.AspNetCore.Mvc.FromQuery] string refundType, [Microsoft.AspNetCore.Mvc.FromQuery] double refundAmount, [Microsoft.AspNetCore.Mvc.FromQuery] string? sku = null);
+
+        /// <summary>
+        /// Acknowledges return of physical item from customer, allowing refund of transaction to complete.  This call will return a status code of 204 if successful.  The body of the response will be empty in this case.  A 403 (Forbidden) status code will be return if access is denied.  A 400 (Bad Request) will be returned if the ticket isn't found or the ticket is not for a physical purchase.
+        /// </summary>
+        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("1.3/tickets/{id}/returned")]
+        public abstract System.Threading.Tasks.Task ReturnedTicket(int id);
 
         /// <summary>
         /// Create a ticket with the passed in parameters. Will return the created ticket if it's successful.

@@ -28,6 +28,12 @@ namespace Ocelli.OpenClickBank.Builder.Models
     public abstract class QuickstatsControllerBase : Microsoft.AspNetCore.Mvc.ControllerBase
     {
         /// <summary>
+        /// Return a list of all account nicknames which the current api user has read access.
+        /// </summary>
+        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/quickstats/accounts")]
+        public abstract System.Threading.Tasks.Task GetQuickstatAccounts();
+
+        /// <summary>
         /// The count service sums the quickstat sale, refund and chargeback amounts based on the search criteria. If no search conditions are set, it will return the sum of the values for the last 45 days based on all the accounts linked to the API keys. The count service is similar to the list method except for the fact that it presents the user with one total of the dates specified the search criteria instead of listing each day's quickstat values individually. Note that the quickStatDate in the returned data will be null.
         /// </summary>
         /// <param name="startDate">The beginning date for the search (yyyy-mm-dd). Defaults to 45 days from today if not specified.</param>
@@ -35,12 +41,6 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="account">The nickName of the account. Defaults to all  accounts if not specified.</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/quickstats/count")]
         public abstract System.Threading.Tasks.Task GetQuickstatCount([Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? account = null);
-
-        /// <summary>
-        /// Return a list of all account nicknames which the current api user has read access.
-        /// </summary>
-        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/quickstats/accounts")]
-        public abstract System.Threading.Tasks.Task GetQuickstatAccounts();
 
         /// <summary>
         /// Return the quickstats for the api user, based on the search criteria. If no search conditions are set, it will return the quickstats for all the accounts for the API user for the last 45 days

@@ -28,6 +28,13 @@ namespace Ocelli.OpenClickBank.Builder.Models
     public abstract class ProductsControllerBase : Microsoft.AspNetCore.Mvc.ControllerBase
     {
         /// <summary>
+        /// Delete a product
+        /// </summary>
+        /// <param name="site">The site owning product to be deleted</param>
+        [Microsoft.AspNetCore.Mvc.HttpDelete, Microsoft.AspNetCore.Mvc.Route("1.3/products/{sku}")]
+        public abstract System.Threading.Tasks.Task DeleteProduct(string sku, [Microsoft.AspNetCore.Mvc.FromQuery] string site);
+
+        /// <summary>
         /// Gets a product
         /// </summary>
         /// <param name="site">The site owning the product to be retrieved.</param>
@@ -69,13 +76,6 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="preRebillNotificationLeadTime">The number of days before the rebill notification.  When enabled, a Pre-rebill notification will be sent to the number equal to the number of days indicated in the lead time and will apply to the rest of the subscription.</param>
         [Microsoft.AspNetCore.Mvc.HttpPut, Microsoft.AspNetCore.Mvc.Route("1.3/products/{sku}")]
         public abstract System.Threading.Tasks.Task UpdateProduct(string sku, [Microsoft.AspNetCore.Mvc.FromQuery] string site, [Microsoft.AspNetCore.Mvc.FromQuery] string currency, [Microsoft.AspNetCore.Mvc.FromQuery] double price, [Microsoft.AspNetCore.Mvc.FromQuery] string language, [Microsoft.AspNetCore.Mvc.FromQuery] string title, [Microsoft.AspNetCore.Mvc.FromQuery] bool? digital = null, [Microsoft.AspNetCore.Mvc.FromQuery] bool? physical = null, [Microsoft.AspNetCore.Mvc.FromQuery] bool? digitalRecurring = null, [Microsoft.AspNetCore.Mvc.FromQuery] bool? physicalRecurring = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? categories = null, [Microsoft.AspNetCore.Mvc.FromQuery] bool? skipConfirmationPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? thankYouPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? mobileThankYouPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] double? rebillPrice = null, [Microsoft.AspNetCore.Mvc.FromQuery] double? rebillCommission = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? trialPeriod = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? frequency = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? duration = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? shippingProfile = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? purchaseCommission = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? description = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? image = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? pitchPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? mobilePitchPage = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? saleRefundDaysLimit = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? rebillRefundDaysLimit = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? deliveryMethod = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? deliverySpeed = null, [Microsoft.AspNetCore.Mvc.FromQuery] bool? preRebillNotificationOverride = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? preRebillNotificationLeadTime = null);
-
-        /// <summary>
-        /// Delete a product
-        /// </summary>
-        /// <param name="site">The site owning product to be deleted</param>
-        [Microsoft.AspNetCore.Mvc.HttpDelete, Microsoft.AspNetCore.Mvc.Route("1.3/products/{sku}")]
-        public abstract System.Threading.Tasks.Task DeleteProduct(string sku, [Microsoft.AspNetCore.Mvc.FromQuery] string site);
 
         /// <summary>
         /// Lists all products
