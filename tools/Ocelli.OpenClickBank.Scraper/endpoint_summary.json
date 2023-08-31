@@ -36,7 +36,7 @@
       {
         "name": "page",
         "data_type": 4,
-        "in": 2,
+        "in": 4,
         "format": null,
         "default": 1,
         "required": false,
@@ -647,7 +647,7 @@
       {
         "name": "page",
         "data_type": 4,
-        "in": 2,
+        "in": 4,
         "format": null,
         "default": 1,
         "required": false,
@@ -1303,7 +1303,7 @@
       {
         "name": "page",
         "data_type": 4,
-        "in": 2,
+        "in": 4,
         "format": null,
         "default": 1,
         "required": false,
@@ -1689,7 +1689,7 @@
       {
         "name": "page",
         "data_type": 4,
-        "in": 2,
+        "in": 4,
         "format": null,
         "default": 1,
         "required": false,
@@ -1786,7 +1786,7 @@
       {
         "name": "page",
         "data_type": 4,
-        "in": 2,
+        "in": 4,
         "format": null,
         "default": 1,
         "required": false,
@@ -1911,7 +1911,7 @@
       {
         "name": "page",
         "data_type": 4,
-        "in": 2,
+        "in": 4,
         "format": null,
         "default": 1,
         "required": false,
@@ -2125,7 +2125,7 @@
       {
         "name": "page",
         "data_type": 4,
-        "in": 2,
+        "in": 4,
         "format": null,
         "default": 1,
         "required": false,
@@ -2348,7 +2348,7 @@
       {
         "name": "page",
         "data_type": 4,
-        "in": 2,
+        "in": 4,
         "format": null,
         "default": 1,
         "required": false,
@@ -2751,7 +2751,7 @@
       {
         "name": "page",
         "data_type": 4,
-        "in": 2,
+        "in": 4,
         "format": null,
         "default": 1,
         "required": false,

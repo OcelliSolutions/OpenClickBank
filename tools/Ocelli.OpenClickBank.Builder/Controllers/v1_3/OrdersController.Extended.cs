@@ -79,14 +79,14 @@ public class OrdersController : OrdersControllerBase
     [ProducesResponseType(typeof(OrderList), StatusCodes.Status206PartialContent)]
     public Task GetOrders(DateTime? startDate = null, DateTime? endDate = null, TransactionType? type = null, string? vendor = null,
         string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null,
-        RoleAccount? role = null, string? postalCode = null, double? amount = null, int? page = null) =>
+        RoleAccount? role = null, string? postalCode = null, double? amount = null, [FromHeader] int? page = null) =>
         throw new NotImplementedException();
 
     /// <inheritdoc cref="OrdersControllerBase.GetOrders"/>
     [HttpGet, Route("1.3/orders/list.ignore"), ApiExplorerSettings(IgnoreApi = true)]
     override public Task GetOrders(DateTime? startDate = null, DateTime? endDate = null, string? type = null, string? vendor = null,
         string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null,
-        string? role = null, string? postalCode = null, double? amount = null, int? page = null) =>
+        string? role = null, string? postalCode = null, double? amount = null, [FromHeader] int? page = null) =>
         throw new NotImplementedException();
 
     /// <inheritdoc cref="OrdersControllerBase.GetOrderStatus"/>

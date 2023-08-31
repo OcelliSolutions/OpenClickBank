@@ -48,7 +48,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="receipt">Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.</param>
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/shipping3/list")]
-        public abstract System.Threading.Tasks.Task GetShippings([Microsoft.AspNetCore.Mvc.FromQuery] string? status = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? days = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? receipt = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
+        public abstract System.Threading.Tasks.Task GetShippings([Microsoft.AspNetCore.Mvc.FromQuery] string? status = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? days = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? receipt = null, [Microsoft.AspNetCore.Mvc.FromHeader] int? page = null);
 
         /// <summary>
         /// Returns the ship notices for the given transaction.

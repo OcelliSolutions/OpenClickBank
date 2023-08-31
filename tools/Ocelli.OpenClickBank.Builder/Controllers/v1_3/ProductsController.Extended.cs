@@ -40,7 +40,7 @@ public class ProductsController : ProductsControllerBase
 
     /// <inheritdoc cref="ProductsControllerBase.UpdateProduct"/>
     [HttpPut, Route("1.3/products/{sku}.ignore"), ApiExplorerSettings(IgnoreApi = true)]
-    override public Task UpdateProduct(string sku, string site, string currency, double price, string language, string title,
+    public override Task UpdateProduct(string sku, string site, string currency, double price, string language, string title,
         bool? digital = null, bool? physical = null, bool? digitalRecurring = null, bool? physicalRecurring = null,
         string? categories = null, bool? skipConfirmationPage = null, string? thankYouPage = null,
         string? mobileThankYouPage = null, double? rebillPrice = null, double? rebillCommission = null,
@@ -66,7 +66,7 @@ public class ProductsController : ProductsControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.API_PRODUCTS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(ProductList), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProductList), StatusCodes.Status206PartialContent)]
-    public Task GetProducts(string site, ProductType? type = null, int? page = null) => throw new NotImplementedException();
+    public Task GetProducts(string site, ProductType? type = null, [FromHeader] int? page = null) => throw new NotImplementedException();
 
     /// <inheritdoc cref="ProductsControllerBase.GetProducts"/>
     [HttpGet, Route("1.3/products/list.ignore"), ApiExplorerSettings(IgnoreApi = true)]
@@ -75,5 +75,5 @@ public class ProductsController : ProductsControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.API_PRODUCTS_CLIENT, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(ProductList), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProductList), StatusCodes.Status206PartialContent)]
-    override public Task GetProducts(string site, string? type = null, int? page = null) => throw new NotImplementedException();
+    public override Task GetProducts(string site, string? type = null, [FromHeader] int? page = null) => throw new NotImplementedException();
 }

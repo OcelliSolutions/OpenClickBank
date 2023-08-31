@@ -8,9 +8,9 @@ using Ocelli.OpenClickBank.Scraper.Models;
 
 namespace Ocelli.OpenClickBank.Scraper.Extensions;
 
-internal static class DocumentExtensions
+static internal class DocumentExtensions
 {
-    internal static List<string> DateParameterNames =
+    static internal List<string> DateParameterNames =
         new()
         {
             "restartDate",
@@ -28,9 +28,9 @@ internal static class DocumentExtensions
             "date"
         };
 
-    internal static List<string> StringParameterNames = new() { "sku" };
+    static internal List<string> StringParameterNames = new() { "sku" };
 
-    internal static List<string> IntParameterNames = new()
+    static internal List<string> IntParameterNames = new()
     {
         "numPeriods",
         "trialPeriod",
@@ -45,7 +45,7 @@ internal static class DocumentExtensions
         "id"
     };
 
-    internal static List<string> DoubleParameterNames = new()
+    static internal List<string> DoubleParameterNames = new()
     {
         "price",
         "rebillPrice",
@@ -55,7 +55,7 @@ internal static class DocumentExtensions
         "refundAmount"
     };
 
-    internal static List<string> BooleanParameterNames = new()
+    static internal List<string> BooleanParameterNames = new()
     {
         "applyProratedRefund",
         "carryAffiliate",
@@ -131,6 +131,9 @@ internal static class DocumentExtensions
                     DataType = parameterType,
                     Required = true
                 };
+                if (parameter.Name == "page")
+                    parameter.Kind = OpenApiParameterKind.Header;
+
                 endpointInfo.Parameters.Add(parameter);
             }
 
@@ -197,6 +200,9 @@ internal static class DocumentExtensions
                                 .Equals("true", StringComparison.OrdinalIgnoreCase),
                             Description = parameterDescription
                         };
+                        if (parameter.Name == "page")
+                            parameter.Kind = OpenApiParameterKind.Header;
+
                         endpointInfo.Parameters.Add(parameter);
                     }
 
@@ -206,7 +212,7 @@ internal static class DocumentExtensions
                         {
                             Name = "page",
                             DataType = JsonObjectType.Integer,
-                            Kind = OpenApiParameterKind.Query,
+                            Kind = OpenApiParameterKind.Header,
                             Default = 1,
                             Required = false,
                             Description = "Page Number. Results only return 100 records at a time"

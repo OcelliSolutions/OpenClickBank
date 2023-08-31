@@ -1155,7 +1155,7 @@ paths:
             type: number
             format: double
         - name: page
-          in: query
+          in: header
           description: Page Number. Results only return 100 records at a time
           schema:
             type: integer
@@ -1510,7 +1510,7 @@ paths:
           schema:
             $ref: '#/components/schemas/ProductType'
         - name: page
-          in: query
+          in: header
           description: Page Number. Results only return 100 records at a time
           schema:
             type: integer
@@ -1620,7 +1620,7 @@ paths:
           schema:
             type: string
         - name: page
-          in: query
+          in: header
           description: Page Number. Results only return 100 records at a time
           schema:
             type: integer
@@ -1728,7 +1728,7 @@ paths:
           schema:
             type: string
         - name: page
-          in: query
+          in: header
           description: Page Number. Results only return 100 records at a time
           schema:
             type: integer
@@ -2067,7 +2067,7 @@ paths:
             type: string
             format: date
         - name: page
-          in: query
+          in: header
           description: Page Number. Results only return 100 records at a time
           schema:
             type: integer

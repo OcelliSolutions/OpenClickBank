@@ -23,6 +23,6 @@ public class ImagesController : ImagesControllerBase
 
     /// <inheritdoc cref="ImagesControllerBase.GetImages"/>
     [HttpGet, Route("1.3/images/list.ignore"), ApiExplorerSettings(IgnoreApi = true)]
-    override public Task GetImages(string site, string? type = null, bool? approvedOnly = null, int? page = null) => throw new NotImplementedException();
+    override public Task GetImages(string site, string? type = null, bool? approvedOnly = null, [FromHeader] int? page = null) => throw new NotImplementedException();
 
 }

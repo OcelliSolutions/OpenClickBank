@@ -84,7 +84,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="type">The product types to return.d  Must be either STANDARD or RECURRING.  Will return all types if not specified</param>
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/products/list")]
-        public abstract System.Threading.Tasks.Task GetProducts([Microsoft.AspNetCore.Mvc.FromQuery] string site, [Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
+        public abstract System.Threading.Tasks.Task GetProducts([Microsoft.AspNetCore.Mvc.FromQuery] string site, [Microsoft.AspNetCore.Mvc.FromQuery] string? type = null, [Microsoft.AspNetCore.Mvc.FromHeader] int? page = null);
 
     }
 

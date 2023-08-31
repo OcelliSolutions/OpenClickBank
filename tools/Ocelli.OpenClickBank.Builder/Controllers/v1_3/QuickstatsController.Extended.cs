@@ -32,5 +32,5 @@ public class QuickstatsController : QuickstatsControllerBase
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(AccountList), StatusCodes.Status200OK)]
-    override public Task GetQuickstats(DateTime? startDate = null, DateTime? endDate = null, string? account = null, int? page = null) => throw new NotImplementedException();
+    override public Task GetQuickstats(DateTime? startDate = null, DateTime? endDate = null, string? account = null, [FromHeader] int? page = null) => throw new NotImplementedException();
 }

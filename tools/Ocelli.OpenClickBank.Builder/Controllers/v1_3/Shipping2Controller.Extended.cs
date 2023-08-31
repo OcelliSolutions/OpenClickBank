@@ -27,7 +27,7 @@ public class Shipping2Controller : Shipping2ControllerBase
 
     /// <inheritdoc cref="Shipping2ControllerBase.GetShippingCount" />
     [HttpGet, Route("1.3/shipping2/count.ignore"), ApiExplorerSettings(IgnoreApi = true)]
-    override public Task GetShippingCount(string? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
+    public override Task GetShippingCount(string? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
         string? receipt = null) =>
         throw new NotImplementedException();
 
@@ -39,13 +39,13 @@ public class Shipping2Controller : Shipping2ControllerBase
     [ProducesResponseType(typeof(ShippingList), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ShippingList), StatusCodes.Status206PartialContent)]
     public Task GetShippings(ShippingStatus? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
-        string? receipt = null, int? page = null) =>
+        string? receipt = null, [FromHeader] int? page = null) =>
         throw new NotImplementedException();
 
     /// <inheritdoc cref="Shipping2ControllerBase.GetShippings" />
     [HttpGet, Route("1.3/shipping2/list.ignore"), ApiExplorerSettings(IgnoreApi = true)]
-    override public Task GetShippings(string? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
-        string? receipt = null, int? page = null) =>
+    public override Task GetShippings(string? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
+        string? receipt = null, [FromHeader] int? page = null) =>
         throw new NotImplementedException();
 
     /// <inheritdoc cref="Shipping2ControllerBase.CreateShipNotice" />
@@ -53,7 +53,7 @@ public class Shipping2Controller : Shipping2ControllerBase
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.API_ORDER_WRITE, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(ShippingNoticeData), StatusCodes.Status200OK)]
-    override public Task CreateShipNotice(string receipt, DateTime date, string carrier, string? tracking = null, string? comments = null,
+    public override Task CreateShipNotice(string receipt, DateTime date, string carrier, string? tracking = null, string? comments = null,
         string? item = null, bool? fillOrder = null) =>
         throw new NotImplementedException();
 
@@ -62,5 +62,5 @@ public class Shipping2Controller : Shipping2ControllerBase
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(ShippingNoticeList), StatusCodes.Status200OK)]
-    override public Task GetShipNotice(string receipt) => throw new NotImplementedException();
+    public override Task GetShipNotice(string receipt) => throw new NotImplementedException();
 }

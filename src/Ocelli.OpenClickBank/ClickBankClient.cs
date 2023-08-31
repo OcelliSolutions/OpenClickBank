@@ -3198,10 +3198,6 @@ namespace Ocelli.OpenClickBank
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("amount") + "=").Append(System.Uri.EscapeDataString(ConvertToString(amount, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            if (page != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("page") + "=").Append(System.Uri.EscapeDataString(ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
             urlBuilder_.Length--;
 
             var client_ = _httpClient;
@@ -3210,6 +3206,9 @@ namespace Ocelli.OpenClickBank
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
+
+                    if (page != null)
+                        request_.Headers.TryAddWithoutValidation("page", ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
@@ -4172,10 +4171,6 @@ namespace Ocelli.OpenClickBank
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("type") + "=").Append(System.Uri.EscapeDataString(ConvertToString(type, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            if (page != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("page") + "=").Append(System.Uri.EscapeDataString(ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
             urlBuilder_.Length--;
 
             var client_ = _httpClient;
@@ -4184,6 +4179,9 @@ namespace Ocelli.OpenClickBank
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
+
+                    if (page != null)
+                        request_.Headers.TryAddWithoutValidation("page", ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
@@ -4619,10 +4617,6 @@ namespace Ocelli.OpenClickBank
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("account") + "=").Append(System.Uri.EscapeDataString(ConvertToString(account, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            if (page != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("page") + "=").Append(System.Uri.EscapeDataString(ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
             urlBuilder_.Length--;
 
             var client_ = _httpClient;
@@ -4631,6 +4625,9 @@ namespace Ocelli.OpenClickBank
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
+
+                    if (page != null)
+                        request_.Headers.TryAddWithoutValidation("page", ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
@@ -5029,10 +5026,6 @@ namespace Ocelli.OpenClickBank
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("receipt") + "=").Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            if (page != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("page") + "=").Append(System.Uri.EscapeDataString(ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
             urlBuilder_.Length--;
 
             var client_ = _httpClient;
@@ -5041,6 +5034,9 @@ namespace Ocelli.OpenClickBank
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
+
+                    if (page != null)
+                        request_.Headers.TryAddWithoutValidation("page", ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
@@ -5984,10 +5980,6 @@ namespace Ocelli.OpenClickBank
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("closeDateTo") + "=").Append(System.Uri.EscapeDataString(closeDateTo.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            if (page != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("page") + "=").Append(System.Uri.EscapeDataString(ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
             urlBuilder_.Length--;
 
             var client_ = _httpClient;
@@ -5996,6 +5988,9 @@ namespace Ocelli.OpenClickBank
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
+
+                    if (page != null)
+                        request_.Headers.TryAddWithoutValidation("page", ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 

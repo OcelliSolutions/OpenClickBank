@@ -90,7 +90,7 @@ public class Orders2Controller : Orders2ControllerBase
     public Task GetOrders(DateTime? startDate = null, DateTime? endDate = null, TransactionType? type = null,
         string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null,
         string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null,
-        double? amount = null, int? page = null) => throw new NotImplementedException();
+        double? amount = null, [FromHeader] int? page = null) => throw new NotImplementedException();
 
     /// <inheritdoc cref="Orders2ControllerBase.GetOrders" />
     [HttpGet]

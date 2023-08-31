@@ -50,7 +50,7 @@ namespace Ocelli.OpenClickBank.Builder.Models
         /// <param name="account">The nickName of the account. Defaults to all  accounts if not specified.</param>
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("1.3/quickstats/list")]
-        public abstract System.Threading.Tasks.Task GetQuickstats([Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? account = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? page = null);
+        public abstract System.Threading.Tasks.Task GetQuickstats([Microsoft.AspNetCore.Mvc.FromQuery] DateTime? startDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] DateTime? endDate = null, [Microsoft.AspNetCore.Mvc.FromQuery] string? account = null, [Microsoft.AspNetCore.Mvc.FromHeader] int? page = null);
 
     }
 

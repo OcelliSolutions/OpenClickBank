@@ -74,7 +74,7 @@ public class TicketsController : TicketsControllerBase
     public Task GetTickets(TicketTypeRequest? type = null, string? status = null, string? receipt = null,
         DateTime? createDateFrom = null,
         DateTime? createDateTo = null, DateTime? updateDateFrom = null, DateTime? updateDateTo = null,
-        DateTime? closeDateFrom = null, DateTime? closeDateTo = null, int? page = null) =>
+        DateTime? closeDateFrom = null, DateTime? closeDateTo = null, [FromHeader] int? page = null) =>
         throw new NotImplementedException();
 
     /// <inheritdoc cref="TicketsControllerBase.GetTickets" />
@@ -84,7 +84,7 @@ public class TicketsController : TicketsControllerBase
     override public Task GetTickets(string? type = null, string? status = null, string? receipt = null,
         DateTime? createDateFrom = null,
         DateTime? createDateTo = null, DateTime? updateDateFrom = null, DateTime? updateDateTo = null,
-        DateTime? closeDateFrom = null, DateTime? closeDateTo = null, int? page = null) =>
+        DateTime? closeDateFrom = null, DateTime? closeDateTo = null, [FromHeader] int? page = null) =>
         throw new NotImplementedException();
 
     /// <inheritdoc cref="TicketsControllerBase.GetTicketRefundAmounts" />

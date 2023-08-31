@@ -39,13 +39,13 @@ public class ShippingController : ShippingControllerBase
     [ProducesResponseType(typeof(ShippingList), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ShippingList), StatusCodes.Status206PartialContent)]
     public Task GetShippings(ShippingStatus? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
-        string? receipt = null, int? page = null) =>
+        string? receipt = null, [FromHeader] int? page = null) =>
         throw new NotImplementedException();
 
     /// <inheritdoc cref="ShippingControllerBase.GetShippings" />
     [HttpGet, Route("1.3/shipping/list.ignore"), ApiExplorerSettings(IgnoreApi = true)]
     override public Task GetShippings(string? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
-        string? receipt = null, int? page = null) =>
+        string? receipt = null, [FromHeader] int? page = null) =>
         throw new NotImplementedException();
 
     /// <inheritdoc cref="ShippingControllerBase.CreateShipNotice" />
