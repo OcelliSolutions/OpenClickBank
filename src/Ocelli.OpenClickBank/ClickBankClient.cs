@@ -7695,6 +7695,9 @@ namespace Ocelli.OpenClickBank
         [System.Runtime.Serialization.EnumMember(Value = @"TEST")]
         TEST = 9,
 
+        [System.Runtime.Serialization.EnumMember(Value = @"N/A")]
+        N/A = 10,
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v10.0.0.0))")]

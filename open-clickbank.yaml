@@ -2773,6 +2773,7 @@ components:
         - DNRS
         - MAES
         - TEST
+        - N/A
       type: string
       additionalProperties: { }
     PhysicalPricing:
