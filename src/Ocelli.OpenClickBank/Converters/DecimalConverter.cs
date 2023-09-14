@@ -6,7 +6,7 @@ namespace Ocelli.OpenClickBank.Converters;
 
 internal class DecimalConverter : JsonConverter<decimal?>
 {
-    override public decimal? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override decimal? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.String)
         {
@@ -18,6 +18,6 @@ internal class DecimalConverter : JsonConverter<decimal?>
         return null;
     }
 
-    override public void Write(Utf8JsonWriter writer, decimal? value, JsonSerializerOptions options) =>
+    public override void Write(Utf8JsonWriter writer, decimal? value, JsonSerializerOptions options) =>
         writer.WriteAsNullable(value);
 }

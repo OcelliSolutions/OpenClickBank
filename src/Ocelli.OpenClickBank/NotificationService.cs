@@ -6,7 +6,21 @@ using Ocelli.OpenClickBank.Converters;
 namespace Ocelli.OpenClickBank;
 public class NotificationService : INotificationService
 {
-    public Notification? DecryptNotification(string cipherText, string secretKey, string initVector)
+    public Notification DecryptNotification(string cipherText, string secretKey, string initVector)
+    {
+        var decryptedString = DecryptNotificationJson(cipherText, secretKey, initVector);
+
+        var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+        options.Converters.Add(new EnumConverter<NotificationTransactionType>());
+        options.Converters.Add(new EnumConverter<NotificationRole>());
+        options.Converters.Add(new EnumConverter<PaymentMethod>());
+        options.Converters.Add(new EnumConverter<LineItemType>());
+        options.Converters.Add(new DateTimeOffsetConverter());
+        var result = JsonSerializer.Deserialize<Notification>(decryptedString, options);
+        return result ?? new Notification();
+    }
+
+    public string DecryptNotificationJson(string cipherText, string secretKey, string initVector)
     {
         var inputBytes = Encoding.UTF8.GetBytes(secretKey);
 
@@ -29,20 +43,11 @@ public class NotificationService : INotificationService
         aes.IV = iv;
         aes.Mode = CipherMode.CBC;
         aes.Padding = PaddingMode.PKCS7;
-        
+
         using Stream memoryStream = new MemoryStream(Convert.FromBase64String(cipherText));
         using CryptoStream cryptoStream =
             new(memoryStream, aes.CreateDecryptor(keyBytes, iv), CryptoStreamMode.Read);
         var decryptedString = new StreamReader(cryptoStream).ReadToEnd();
-
-        var options = new JsonSerializerOptions();
-        options.PropertyNameCaseInsensitive = true;
-        options.Converters.Add(new EnumConverter<NotificationTransactionType>());
-        options.Converters.Add(new EnumConverter<NotificationRole>());
-        options.Converters.Add(new EnumConverter<PaymentMethod>());
-        options.Converters.Add(new EnumConverter<LineItemType>());
-        options.Converters.Add(new DateTimeOffsetConverter());
-        var result = JsonSerializer.Deserialize<Notification>(decryptedString, options);
-        return result;
+        return decryptedString;
     }
 }

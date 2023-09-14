@@ -6,7 +6,7 @@ namespace Ocelli.OpenClickBank.Converters;
 
 internal class BooleanConverter : JsonConverter<bool?>
 {
-    override public bool? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override bool? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.String)
             return reader.GetString() == "true";
@@ -14,6 +14,6 @@ internal class BooleanConverter : JsonConverter<bool?>
         return null;
     }
 
-    override public void Write(Utf8JsonWriter writer, bool? value, JsonSerializerOptions options) =>
+    public override void Write(Utf8JsonWriter writer, bool? value, JsonSerializerOptions options) =>
         writer.WriteAsNullable(value);
 }

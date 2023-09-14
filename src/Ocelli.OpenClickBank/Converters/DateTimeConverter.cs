@@ -6,7 +6,7 @@ namespace Ocelli.OpenClickBank.Converters;
 
 internal class DateTimeConverter : JsonConverter<DateTime?>
 {
-    override public DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.String)
         {
@@ -18,6 +18,6 @@ internal class DateTimeConverter : JsonConverter<DateTime?>
         return null;
     }
 
-    override public void Write(Utf8JsonWriter writer, DateTime? value, JsonSerializerOptions options) =>
+    public override void Write(Utf8JsonWriter writer, DateTime? value, JsonSerializerOptions options) =>
         writer.WriteAsNullable(value);
 }

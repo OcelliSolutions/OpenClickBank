@@ -6,7 +6,7 @@ namespace Ocelli.OpenClickBank.Converters;
 
 internal class DoubleConverter : JsonConverter<double?>
 {
-    override public double? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override double? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.String)
         {
@@ -18,6 +18,6 @@ internal class DoubleConverter : JsonConverter<double?>
         return null;
     }
 
-    override public void Write(Utf8JsonWriter writer, double? value, JsonSerializerOptions options) =>
+    public override void Write(Utf8JsonWriter writer, double? value, JsonSerializerOptions options) =>
         writer.WriteAsNullable(value);
 }
