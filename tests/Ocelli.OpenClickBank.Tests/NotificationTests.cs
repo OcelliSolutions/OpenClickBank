@@ -1,4 +1,7 @@
-﻿using System.Security.Cryptography;
+﻿using System.IO;
+using System.Security.Cryptography;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Ocelli.OpenClickBank.Tests;
 
@@ -100,5 +103,39 @@ public class NotificationTests : IClassFixture<SharedFixture>
 
         Assert.Throws<FormatException>(() =>
             Fixture.ApiKey.ClickBankService.Notifications.DecryptNotification(Encrypted, SecretKey, initVector));
+    }
+
+    [Fact]
+    public void DecryptSensitiveDataFromFile()
+    {
+        // Read test data from the JSON file
+        string json = File.ReadAllText("ins.json");
+        var testData = JsonSerializer.Deserialize<SensitiveTestData[]>(json);
+
+        foreach (var data in testData)
+        {
+            // Attempt to decrypt the sensitive data
+            try
+            {
+                var notification = Fixture.ApiKey.ClickBankService.Notifications.DecryptNotification(data.Notification, data.Secret, data.Iv);
+                // You can perform further checks/assertions here as needed
+                Assert.NotNull(notification);
+            }
+            catch (Exception ex)
+            {
+                // Handle decryption errors, e.g., log the error or fail the test
+                Assert.Fail($"Decryption failed for notification '{data.Notification}': {ex.Message}");
+            }
+        }
+    }
+    public class SensitiveTestData
+    {
+        [JsonPropertyName("notification")]
+        public string Notification { get; set; } = null!;
+        [JsonPropertyName("iv")]
+        public string Iv { get; set; } = null!;
+
+        [JsonPropertyName("secret")]
+        public string Secret { get; set; } = null!;
     }
 }

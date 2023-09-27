@@ -62,7 +62,7 @@ public class SharedFixture : IDisposable
         }
         catch (Exception ex)
         {
-            throw new KeyNotFoundException($@"Please create a `api_keys.json` file. {ex.Message}");
+            throw new KeyNotFoundException($@"Please create a `api_key.json` file. {ex.Message}");
         }
     }
 
