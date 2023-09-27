@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum TicketReasonRequest
 {
     [EnumMember(Value = "ticket.type.cancel.1")] TICKET_TYPE_CANCEL_1,
@@ -29,3 +30,4 @@ public enum TicketReasonRequest
     [EnumMember(Value = "ticket.type.tech_support.9")] TICKET_TYPE_TECH_SUPPORT_9,
     [EnumMember(Value = "ticket.type.tech_support.10")] TICKET_TYPE_TECH_SUPPORT_10
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

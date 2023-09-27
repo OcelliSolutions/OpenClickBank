@@ -5,8 +5,12 @@ using System.Runtime.Serialization;
 
 namespace Ocelli.OpenClickBank.Builder.Filters;
 
+/// <summary>
+/// Use the EnumMemberValue when creating the OpenApi spec. This allows for us to have valid enum values but still match what ClickBank uses.
+/// </summary>
 public class DescribeEnumMemberValuesFilter : ISchemaFilter
 {
+    /// <inheritdoc />
     public void Apply(OpenApiSchema schema, SchemaFilterContext context)
     {
         if (context.Type.IsEnum)

@@ -10,6 +10,10 @@ namespace Ocelli.OpenClickBank.Tests.Fixtures;
 
 public class SharedFixture : IDisposable
 {
+    /// <summary>
+    /// The fixture to use for all integration testing
+    /// </summary>
+    /// <exception cref="KeyNotFoundException"></exception>
     public SharedFixture()
     {
         try
@@ -63,10 +67,10 @@ public class SharedFixture : IDisposable
     }
 
     public ApiKey ApiKey { get; set; } = new(new OpenClickBankConfig());
-    internal string Receipt { get; set; }
-    internal HttpClient BadRequestMockHttpClient { get; set; }
-    internal HttpClient OkEmptyMockHttpClient { get; set; }
-    internal HttpClient OkInvalidJsonMockHttpClient { get; set; }
+    internal string Receipt { get; set; } = string.Empty;
+    internal HttpClient BadRequestMockHttpClient { get; set; } = new HttpClient();
+    internal HttpClient OkEmptyMockHttpClient { get; set; } = new HttpClient();
+    internal HttpClient OkInvalidJsonMockHttpClient { get; set; } = new HttpClient();
 
     public void Dispose() => GC.SuppressFinalize(this);
 }

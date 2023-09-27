@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum Dimension
 {
     [EnumMember(Value = "AFFILIATE")] AFFILIATE,
@@ -15,3 +16,4 @@ public enum Dimension
     [EnumMember(Value = "VENDOR_CATEGORY")] VENDOR_CATEGORY,
     [EnumMember(Value = "VENDOR_PRODUCT_SKU")] VENDOR_PRODUCT_SKU
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

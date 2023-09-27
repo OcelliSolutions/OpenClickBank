@@ -3,8 +3,12 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Ocelli.OpenClickBank.Builder.Filters;
 
+/// <summary>
+/// try to figure out what the return type is supposed to be.
+/// </summary>
 public class NullableOperationFilter : IOperationFilter
 {
+    /// <inheritdoc />
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
         foreach (var response in operation.Responses)

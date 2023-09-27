@@ -1,5 +1,6 @@
 ﻿namespace Ocelli.OpenClickBank.Builder.Models;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public class OrderShipLineItemData
 {
     public string? ItemNo { get; set; }
@@ -12,3 +13,4 @@ public class OrderShipLineItemData
     public bool HasBeenRefunded { get; set; }
     public bool HasBeenChargebacked { get; set; }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

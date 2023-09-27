@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Models;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public class SubscriptionDetailsRowData
 {
     public string? AffNickName { get; set; }
@@ -40,3 +41,4 @@ public class SubscriptionDetailsRowData
     public string? TrialPeriod { get; set; }
     public string? TxnType { get; set; }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

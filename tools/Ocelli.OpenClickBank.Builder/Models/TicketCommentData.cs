@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Models;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public class TicketCommentData
 {
     public int? CommentId { get; set; }
@@ -10,3 +11,4 @@ public class TicketCommentData
     public TicketActionType? Action { get; set; }
     public Role? CommentRole { get; set; }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

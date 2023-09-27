@@ -1,5 +1,6 @@
 ﻿namespace Ocelli.OpenClickBank.Builder.Models;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public class OrderShipData
 {
     public string? Receipt { get; set; }
@@ -20,3 +21,4 @@ public class OrderShipData
     public VendorVariableElementArray? VendorVariables { get; set; }
     public OrderShipLineItemData[]? LineItemShipData { get; set; }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

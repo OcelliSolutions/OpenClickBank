@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum AnalyticAttribute
 {
     [EnumMember(Value = "DIMENSION_VALUE")] DIMENSION_VALUE,
@@ -33,3 +34,4 @@ public enum AnalyticAttribute
     [EnumMember(Value = "REFUND_RATE")] REFUND_RATE,
     [EnumMember(Value = "CHARGEBACK_RATE")] CHARGEBACK_RATE
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

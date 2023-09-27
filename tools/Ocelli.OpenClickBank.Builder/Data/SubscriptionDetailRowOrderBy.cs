@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum SubscriptionDetailRowOrderBy
 {
     [EnumMember(Value = "RECEIPT")] RECEIPT,
@@ -30,3 +31,4 @@ public enum SubscriptionDetailRowOrderBy
     [EnumMember(Value = "REBILL_SALE_AMOUNT")] REBILL_SALE_AMOUNT,
     [EnumMember(Value = "REBILL_SALE_COUNT")] REBILL_SALE_COUNT
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

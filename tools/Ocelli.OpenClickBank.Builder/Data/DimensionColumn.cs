@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum DimensionColumn
 {
     [EnumMember(Value = "CHARGEBACK_AMOUNT")] CHARGEBACK_AMOUNT,
@@ -32,3 +33,4 @@ public enum DimensionColumn
     [EnumMember(Value = "UPSELL_AMOUNT")] UPSELL_AMOUNT,
     [EnumMember(Value = "UPSELL_COUNT")] UPSELL_COUNT,
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum RefundableState
 {
     [EnumMember(Value = "nil")] NIL,
@@ -15,3 +16,4 @@ public enum RefundableState
     [EnumMember(Value = "OVER_ELV_LIMIT")] OVER_ELV_LIMIT,
     [EnumMember(Value = "PROVIDER_DISCONNECTED")] PROVIDER_DISCONNECTED
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

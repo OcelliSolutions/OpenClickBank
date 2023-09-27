@@ -7696,7 +7696,7 @@ namespace Ocelli.OpenClickBank
         TEST = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"N/A")]
-        N/A = 10,
+        N_A = 10,
 
     }
 

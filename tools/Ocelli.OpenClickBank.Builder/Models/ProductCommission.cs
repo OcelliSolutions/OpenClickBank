@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Models;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public class ProductCommission
 {
     public decimal? Purchase { get; set; }
@@ -11,3 +12,4 @@ public class ProductCommission
     [JsonPropertyName("commission_tier_override")]
     public bool CommissionTierOverride { get; set; }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

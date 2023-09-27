@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum TicketSource
 {
     [EnumMember(Value = "nil")] NIL,
@@ -36,3 +37,4 @@ public enum TicketSource
     [EnumMember(Value = "CB_POWERED_PROGRAM")] CB_POWERED_PROGRAM,
     [EnumMember(Value = "CLKBANK")] CLKBANK
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

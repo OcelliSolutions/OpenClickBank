@@ -38,5 +38,5 @@ public class ApiKey
     }
 
     public int DaysToTest { get; set; }
-    public string Site { get; set; }
+    public string Site { get; set; } = string.Empty;
 }

@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum ImageType
 {
     [EnumMember(Value = "nil")] NIL,
@@ -14,3 +15,4 @@ public enum ImageType
     [EnumMember(Value = "CUSTOM_BANNER_BG")] CUSTOM_BANNER_BG,
     [EnumMember(Value = "CUSTOM_ORDERFORM")] CUSTOM_ORDERFORM
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

@@ -4,14 +4,18 @@ using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace Ocelli.OpenClickBank.Builder.Filters;
 
+/// <inheritdoc />
 public class ProduceResponseTypeModelProvider : IApplicationModelProvider
 {
+    /// <inheritdoc />
     public int Order => 3;
 
+    /// <inheritdoc />
     public void OnProvidersExecuted(ApplicationModelProviderContext context)
     {
     }
 
+    /// <inheritdoc/>
     public void OnProvidersExecuting(ApplicationModelProviderContext context)
     {
         foreach (var controller in context.Result.Controllers)
@@ -33,6 +37,7 @@ public class ProduceResponseTypeModelProvider : IApplicationModelProvider
         }
     }
 
+    /// <inheritdoc/>
     public void AddProducesResponseTypeAttribute(ActionModel action, Type? returnType, int statusCodeResult)
     {
         if (returnType != null)
@@ -40,6 +45,7 @@ public class ProduceResponseTypeModelProvider : IApplicationModelProvider
         else if (returnType == null) action.Filters.Add(new ProducesResponseTypeAttribute(statusCodeResult));
     }
 
+    /// <inheritdoc/>
     public void AddUniversalStatusCodes(ActionModel action, Type returnType)
     {
         //AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status400BadRequest);
@@ -53,6 +59,7 @@ public class ProduceResponseTypeModelProvider : IApplicationModelProvider
         //AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status503ServiceUnavailable);
     }
 
+    /// <inheritdoc/>
     public void AddPostStatusCodes(ActionModel action, Type returnType)
     {
         AddProducesResponseTypeAttribute(action, null, StatusCodes.Status200OK);

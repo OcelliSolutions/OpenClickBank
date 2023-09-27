@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Models;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public class ImageBean
 {
     public int? Id { get; set; }
@@ -9,3 +10,4 @@ public class ImageBean
     public ImageType? Type { get; set; }
     public bool Approved { get; set; }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

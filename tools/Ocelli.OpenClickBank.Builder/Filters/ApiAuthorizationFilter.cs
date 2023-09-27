@@ -11,14 +11,20 @@ namespace Ocelli.OpenClickBank.Builder.Filters;
 public class ApiAuthorizationFilter : ActionFilterAttribute
 {
     private readonly List<ApiPermission>? _apiPermissions;
+
+    /// <inheritdoc />
     public ApiAuthorizationFilter() { }
 
+    /// <inheritdoc />
     public ApiAuthorizationFilter(ApiPermission[] permissions)
     {
         _apiPermissions = new List<ApiPermission>();
         _apiPermissions.AddRange(permissions);
     }
 
+    /// <summary>
+    /// The display name of the permission
+    /// </summary>
     public string PermissionDescription
     {
         get

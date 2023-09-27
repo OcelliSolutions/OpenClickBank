@@ -3,6 +3,7 @@ using Ocelli.OpenClickBank.Builder.Data;
 
 namespace Ocelli.OpenClickBank.Builder.Models;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public class Product
 {
     [JsonPropertyName("@sku")]
@@ -70,3 +71,4 @@ public class Product
     //todo: go through all models and if the object is minOccurs="0", set it to be nullable. ClickBank will just not send it sometimes.
     //todo: ensure that all properties that are "unbounded" are set to arrays. They may be sent as arrays or objects.
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

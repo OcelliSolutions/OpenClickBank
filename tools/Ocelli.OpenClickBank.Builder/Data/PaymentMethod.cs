@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum PaymentMethod
 {
     [EnumMember(Value = "nil")]
@@ -25,5 +26,7 @@ public enum PaymentMethod
     [EnumMember(Value = "TEST")]
     TEST,
     [EnumMember(Value = "N/A")]
-    N_A,
+    N_A
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+

@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Models;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public class TicketData
 {
     public int? TicketId { get; set; }
@@ -25,3 +26,4 @@ public class TicketData
     public DateTimeOffset? UpdateTime { get; set; }
     public TicketSource? Source { get; set; }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

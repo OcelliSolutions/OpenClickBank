@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Models;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public class LineItemData
 {
     public string ItemNo { get; set; } = null!;
@@ -19,3 +20,4 @@ public class LineItemData
     public LineItemStatus? Status { get; set; }
     public OrderRole? Role { get; set; }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

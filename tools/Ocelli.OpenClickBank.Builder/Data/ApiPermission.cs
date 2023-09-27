@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 /// <summary>
 /// Permissions/scopes used when authorizing against endpoints.
 /// </summary>
@@ -45,3 +46,4 @@ public enum ApiPermission
 
     [EnumMember(Value = "api_subscription_modifications")] API_SUBSCRIPTION_MODIFICATIONS
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

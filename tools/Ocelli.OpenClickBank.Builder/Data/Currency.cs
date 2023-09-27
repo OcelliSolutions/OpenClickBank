@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum Currency
 {
     [EnumMember(Value = "ARS")] ARS,
@@ -35,3 +36,4 @@ public enum Currency
     [EnumMember(Value = "USD")] USD,
     [EnumMember(Value = "ZAR")] ZAR
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

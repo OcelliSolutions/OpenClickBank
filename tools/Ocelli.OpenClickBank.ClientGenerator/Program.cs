@@ -107,6 +107,7 @@ namespace Ocelli.OpenClickBank.ClientGenerator
     {
         public string Generate(int index, string name, object value, JsonSchema schema) =>
             name
+                .Replace("/", "_")
                 .Replace(".", "_")
                 .Replace("-", "_").ToUpper();
     }

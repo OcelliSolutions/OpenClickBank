@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum RevRec
 {
     [EnumMember(Value = "nil")] NIL,
@@ -13,3 +14,4 @@ public enum RevRec
     [EnumMember(Value = "VM")] VM,
     [EnumMember(Value = "I")] I
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

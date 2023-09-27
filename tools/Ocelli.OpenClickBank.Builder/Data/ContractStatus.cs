@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum ContractStatus
 {
     [EnumMember(Value = "nil")] NIL,
@@ -12,3 +13,4 @@ public enum ContractStatus
     [EnumMember(Value = "TERMINATION_REQUESTED")] TERMINATION_REQUESTED,
     [EnumMember(Value = "EXPIRED")] EXPIRED
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

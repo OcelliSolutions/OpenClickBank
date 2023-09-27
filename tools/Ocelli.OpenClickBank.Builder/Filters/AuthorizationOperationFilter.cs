@@ -8,6 +8,7 @@ namespace Ocelli.OpenClickBank.Builder.Filters;
 /// </summary>
 public class AuthorizationOperationFilter : IOperationFilter
 {
+    /// <inheritdoc />
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
         var filterDescriptors = context.ApiDescription.ActionDescriptor.FilterDescriptors;

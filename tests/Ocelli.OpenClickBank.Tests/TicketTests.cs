@@ -100,7 +100,7 @@ public class TicketTests : IClassFixture<SharedFixture>
     {
         var ticketList =
             await Fixture.ApiKey.ClickBankService.Tickets.GetTicketsAsync();
-        var id = ticketList.Result?.TicketData?.FirstOrDefault(t => t.Type == TicketType.REFUND)?.TicketId ?? 0;
+        var id = ticketList.Result?.TicketData?.FirstOrDefault(t => t?.Type == TicketType.REFUND)?.TicketId ?? 0;
         Skip.If(id == 0, "No testable tickets");
         var response = await Fixture.ApiKey.ClickBankService.Tickets.ReturnedTicketAsync(id);
         _additionalPropertiesHelper.CheckAdditionalProperties(response,

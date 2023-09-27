@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum OrderRole
 {
     [EnumMember(Value = "nil")] NIL,
@@ -10,3 +11,5 @@ public enum OrderRole
     [EnumMember(Value = "JV_TRADITIONAL")] JV_TRADITIONAL,
     [EnumMember(Value = "JV_UPSELL")] JV_UPSELL
 }
+
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

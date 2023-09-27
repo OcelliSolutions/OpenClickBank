@@ -8,10 +8,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace Ocelli.OpenClickBank.Builder.Controllers.v1_3;
 
-/// <inheritdoc />
-//[ApiController]
-//public class AnalyticsController : AnalyticsControllerBase {}
-
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Route("rest/1.3/analytics")]
 [ApiController]
 [SwaggerTag("The Analytics API provides account and subscription analytics information", "https://api.clickbank.com/rest/1.3/analytics")]
@@ -199,3 +196,5 @@ AFFILIATE_ONLY - this shows summary information which excludes the selected acco
         [FromQuery, SwaggerParameter(Description = "When an order by is included this may be specified with a value of true to sort ascending instead of descending")] bool? sortAscending,
         [FromHeader, SwaggerParameter(Description = "The page number of the results (default is page 1).")] int? page = 1) => Ok();
 }
+
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

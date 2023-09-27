@@ -4,6 +4,9 @@ using System.Runtime.Serialization;
 
 namespace Ocelli.OpenClickBank.Builder.Extensions;
 
+/// <summary>
+/// The extension methods for enums
+/// </summary>
 public static class EnumExtensions
 {
     /// <summary>

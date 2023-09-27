@@ -2,6 +2,7 @@
 
 namespace Ocelli.OpenClickBank.Builder.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public enum ActiveStatus
 {
     [EnumMember(Value = "ACTIVE")]
@@ -9,3 +10,4 @@ public enum ActiveStatus
     [EnumMember(Value = "INACTIVE")]
     INACTIVE
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

@@ -8,6 +8,7 @@ namespace Ocelli.OpenClickBank.Builder.Filters;
 /// </summary>
 public class DateTimeSchemaFilter : ISchemaFilter
 {
+    /// <inheritdoc />
     public void Apply(OpenApiSchema schema, SchemaFilterContext context)
     {
         if (context.Type == typeof(DateTimeOffset))
