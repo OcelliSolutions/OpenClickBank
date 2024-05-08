@@ -197,5 +197,15 @@ namespace v1_3.Models
                             && (this.LineItemData.Count != 0));
             }
         }
+        
+        [System.Diagnostics.CodeAnalysis.AllowNullAttribute()]
+        [System.Diagnostics.CodeAnalysis.MaybeNullAttribute()]
+        [System.Xml.Serialization.XmlElementAttribute("commonTrackingParameters", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public CommonTrackingParameters CommonTrackingParameters { get; set; }
+        
+        [System.Diagnostics.CodeAnalysis.AllowNullAttribute()]
+        [System.Diagnostics.CodeAnalysis.MaybeNullAttribute()]
+        [System.Xml.Serialization.XmlElementAttribute("affiliateTrackingParameters", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public AffiliateTrackingParameters AffiliateTrackingParameters { get; set; }
     }
 }

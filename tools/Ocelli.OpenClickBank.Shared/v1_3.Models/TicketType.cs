@@ -40,6 +40,8 @@ namespace v1_3.Models
         
         APPROVAL_FUNNEL,
         
+        APPROVAL_PRODUCT_V2,
+        
         APPROVAL_ADVANCED_UPSELL,
         
         APPROVAL_CSS_ORDERFORM,
