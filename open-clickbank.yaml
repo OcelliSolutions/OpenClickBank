@@ -2774,6 +2774,7 @@ components:
         - MAES
         - TEST
         - N/A
+        - MSTR_PAZE
       type: string
       additionalProperties: { }
     PhysicalPricing:
