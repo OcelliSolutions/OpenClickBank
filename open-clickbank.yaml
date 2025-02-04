@@ -15,7 +15,7 @@ paths:
       operationId: GetStatus
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -25,6 +25,13 @@ paths:
                 $ref: '#/components/schemas/AnalyticStatus'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/analytics/{role}/subscription/details/compthirty':
     get:
       tags:
@@ -57,7 +64,7 @@ paths:
             $ref: '#/components/schemas/SortDirection'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -67,6 +74,13 @@ paths:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/analytics/{role}/subscription/details/compsixty':
     get:
       tags:
@@ -99,7 +113,7 @@ paths:
             $ref: '#/components/schemas/SortDirection'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -109,6 +123,13 @@ paths:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/analytics/{role}/subscription/details/cancelthirty':
     get:
       tags:
@@ -141,7 +162,7 @@ paths:
             $ref: '#/components/schemas/SortDirection'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -151,6 +172,13 @@ paths:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/analytics/{role}/subscription/details/cancelsixty':
     get:
       tags:
@@ -183,7 +211,7 @@ paths:
             $ref: '#/components/schemas/SortDirection'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -193,6 +221,13 @@ paths:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/analytics/{role}/subscription/details/startdate':
     get:
       tags:
@@ -241,7 +276,7 @@ paths:
             format: date
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -251,6 +286,13 @@ paths:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/analytics/{role}/subscription/details/canceldate':
     get:
       tags:
@@ -299,7 +341,7 @@ paths:
             format: date
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -309,6 +351,13 @@ paths:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/analytics/{role}/subscription/details/nextpmtdate':
     get:
       tags:
@@ -357,7 +406,7 @@ paths:
             format: date
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -367,6 +416,13 @@ paths:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/analytics/{role}/subscription/details/status':
     get:
       tags:
@@ -404,7 +460,7 @@ paths:
             $ref: '#/components/schemas/SubscriptionStatus'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -414,6 +470,13 @@ paths:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/analytics/{role}/subscription/details':
     get:
       tags:
@@ -446,7 +509,7 @@ paths:
             $ref: '#/components/schemas/SortDirection'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -456,6 +519,13 @@ paths:
                 $ref: '#/components/schemas/SubscriptionDetailResult'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/analytics/{role}/subscription/trends':
     get:
       tags:
@@ -512,7 +582,7 @@ paths:
             default: 1
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -521,7 +591,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SubscriptionTrendsData'
         '206':
-          description: Success
+          description: Partial Content
           content:
             application/json:
               schema:
@@ -531,6 +601,13 @@ paths:
                 $ref: '#/components/schemas/SubscriptionTrendsData'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/analytics/{role}/{dimension}':
     get:
       tags:
@@ -602,7 +679,7 @@ paths:
             default: 1
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -611,7 +688,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AnalyticsResult'
         '206':
-          description: Success
+          description: Partial Content
           content:
             application/json:
               schema:
@@ -621,6 +698,13 @@ paths:
                 $ref: '#/components/schemas/AnalyticsResult'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
       deprecated: true
   '/rest/1.3/analytics/{role}/{dimension}/summary':
     get:
@@ -699,7 +783,7 @@ paths:
             default: 1
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -708,7 +792,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AnalyticsResult'
         '206':
-          description: Success
+          description: Partial Content
           content:
             application/json:
               schema:
@@ -718,6 +802,13 @@ paths:
                 $ref: '#/components/schemas/AnalyticsResult'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
       deprecated: true
   /rest/1.3/debug:
     get:
@@ -727,13 +818,17 @@ paths:
       operationId: GetDebug
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             text/plain:
               schema:
                 type: string
         '403':
           description: Forbidden
+          content:
+            text/plain:
+              schema:
+                type: string
   /rest/1.3/images/list:
     get:
       tags:
@@ -766,7 +861,7 @@ paths:
             default: 1
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -775,7 +870,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ImageListResult'
         '206':
-          description: Success
+          description: Partial Content
           content:
             application/json:
               schema:
@@ -785,6 +880,13 @@ paths:
                 $ref: '#/components/schemas/ImageListResult'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/orders2/{receipt}/changeAddress':
     post:
       tags:
@@ -848,6 +950,13 @@ paths:
           description: No Content
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/orders2/{receipt}/changeDate':
     post:
       tags:
@@ -878,6 +987,13 @@ paths:
           description: No Content
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/orders2/{receipt}/changeProduct':
     post:
       tags:
@@ -923,6 +1039,13 @@ paths:
           description: No Content
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/orders2/{receipt}/extend':
     post:
       tags:
@@ -952,6 +1075,13 @@ paths:
           description: No Content
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/orders2/{receipt}':
     get:
       tags:
@@ -972,7 +1102,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -982,6 +1112,13 @@ paths:
                 $ref: '#/components/schemas/OrderList'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
     head:
       tags:
         - Orders2
@@ -1004,6 +1141,13 @@ paths:
           description: No Content
         '403':
           description: Forbidden
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
   /rest/1.3/orders2/count:
     get:
       tags:
@@ -1073,7 +1217,7 @@ paths:
             $ref: '#/components/schemas/RoleAccount'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             text/plain:
               schema:
@@ -1081,6 +1225,10 @@ paths:
                 format: int32
         '403':
           description: Forbidden
+          content:
+            text/plain:
+              schema:
+                type: string
   /rest/1.3/orders2/list:
     get:
       tags:
@@ -1162,7 +1310,7 @@ paths:
             format: int32
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -1171,7 +1319,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/OrderList'
         '206':
-          description: Success
+          description: Partial Content
           content:
             application/json:
               schema:
@@ -1181,6 +1329,13 @@ paths:
                 $ref: '#/components/schemas/OrderList'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/orders2/{receipt}/upsells':
     get:
       tags:
@@ -1196,7 +1351,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -1208,6 +1363,13 @@ paths:
           description: No Content
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/orders2/{receipt}/pause':
     post:
       tags:
@@ -1238,6 +1400,13 @@ paths:
           description: No Content
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/orders2/{receipt}/reinstate':
     post:
       tags:
@@ -1261,6 +1430,13 @@ paths:
           description: No Content
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/products/{sku}':
     get:
       tags:
@@ -1281,7 +1457,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -1291,6 +1467,13 @@ paths:
                 $ref: '#/components/schemas/Product'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
     put:
       tags:
         - Products
@@ -1464,11 +1647,18 @@ paths:
             format: int32
       responses:
         '200':
-          description: Success
+          description: OK
         '201':
           description: Created
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
     delete:
       tags:
         - Products
@@ -1491,6 +1681,13 @@ paths:
           description: No Content
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   /rest/1.3/products/list:
     get:
       tags:
@@ -1517,7 +1714,7 @@ paths:
             format: int32
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -1526,7 +1723,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProductList'
         '206':
-          description: Success
+          description: Partial Content
           content:
             application/json:
               schema:
@@ -1536,6 +1733,13 @@ paths:
                 $ref: '#/components/schemas/ProductList'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   /rest/1.3/quickstats/count:
     get:
       tags:
@@ -1565,7 +1769,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             text/plain:
               schema:
@@ -1573,6 +1777,10 @@ paths:
                 format: int32
         '403':
           description: Forbidden
+          content:
+            text/plain:
+              schema:
+                type: string
   /rest/1.3/quickstats/accounts:
     get:
       tags:
@@ -1582,7 +1790,7 @@ paths:
       operationId: GetQuickstatAccounts
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -1592,6 +1800,13 @@ paths:
                 $ref: '#/components/schemas/AccountList'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   /rest/1.3/quickstats/list:
     get:
       tags:
@@ -1627,7 +1842,7 @@ paths:
             format: int32
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -1637,6 +1852,13 @@ paths:
                 $ref: '#/components/schemas/AccountList'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   /rest/1.3/shipping3/count:
     get:
       tags:
@@ -1677,7 +1899,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -1689,6 +1911,13 @@ paths:
                 format: int32
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   /rest/1.3/shipping3/list:
     get:
       tags:
@@ -1735,7 +1964,7 @@ paths:
             format: int32
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -1744,7 +1973,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ShippingList'
         '206':
-          description: Success
+          description: Partial Content
           content:
             application/json:
               schema:
@@ -1754,6 +1983,13 @@ paths:
                 $ref: '#/components/schemas/ShippingList'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/shipping3/shipnotice/{receipt}':
     post:
       tags:
@@ -1801,7 +2037,7 @@ paths:
             type: boolean
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -1811,6 +2047,13 @@ paths:
                 $ref: '#/components/schemas/ShippingNoticeData'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
     get:
       tags:
         - Shipping3
@@ -1825,7 +2068,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -1835,6 +2078,13 @@ paths:
                 $ref: '#/components/schemas/ShippingNoticeList'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/tickets/{receipt}':
     post:
       tags:
@@ -1886,7 +2136,7 @@ paths:
             type: boolean
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -1896,6 +2146,13 @@ paths:
                 $ref: '#/components/schemas/TicketData'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/tickets/{id}':
     get:
       tags:
@@ -1912,7 +2169,7 @@ paths:
             format: int32
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -1922,6 +2179,13 @@ paths:
                 $ref: '#/components/schemas/TicketData'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
     put:
       tags:
         - Tickets
@@ -1952,7 +2216,7 @@ paths:
             $ref: '#/components/schemas/TicketTypeRequest'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -1964,6 +2228,13 @@ paths:
           description: No Content
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   /rest/1.3/tickets/count:
     get:
       tags:
@@ -1989,7 +2260,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -2001,6 +2272,13 @@ paths:
                 format: int32
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   /rest/1.3/tickets/list:
     get:
       tags:
@@ -2074,7 +2352,7 @@ paths:
             format: int32
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -2083,7 +2361,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TicketList'
         '206':
-          description: Success
+          description: Partial Content
           content:
             application/json:
               schema:
@@ -2093,6 +2371,13 @@ paths:
                 $ref: '#/components/schemas/TicketList'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/tickets/refundAmounts/{receipt}':
     get:
       tags:
@@ -2124,7 +2409,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -2134,6 +2419,13 @@ paths:
                 $ref: '#/components/schemas/PartialRefundData'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
   '/rest/1.3/tickets/{id}/returned':
     post:
       tags:
@@ -2150,7 +2442,7 @@ paths:
             format: int32
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -2162,6 +2454,13 @@ paths:
           description: No Content
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
 components:
   schemas:
     AccountData:
