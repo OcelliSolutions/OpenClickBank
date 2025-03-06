@@ -59,7 +59,7 @@ public class Shipping3Tests(ITestOutputHelper testOutputHelper, SharedFixture sh
         if (initialCheck?.ShippingNoticeData == null || initialCheck.ShippingNoticeData.Count < 2)
         {
             var request = await Fixture.ApiKey.ClickBankService.Shipping.CreateShipNoticeAsync(Fixture.Receipt,
-                DateOnly.FromDateTime(DateTime.UtcNow), "ups", tracking: "sample", comments: "test", fillOrder: false);
+                DateOnly.FromDateTime(DateTime.UtcNow), "ups", tracking: "sample", comments: "test");
             _additionalPropertiesHelper.CheckAdditionalProperties(request,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         }
@@ -104,11 +104,11 @@ internal class Shipping3MockClient : Shipping3Client, IMockTests
     public async Task TestAllMethodsThatReturnDataAsync()
     {
         ReadResponseAsString = true;
-        await Assert.ThrowsAsync<ApiException>(async () => await GetShippingCountAsync(cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await GetShippingCount3Async(cancellationToken: CancellationToken.None));
 
         ReadResponseAsString = false;
         //Only one method needs to be tested with `ReadResponseAsString = false`
-        await Assert.ThrowsAsync<ApiException>(async () => await GetShippingCountAsync(cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await GetShippingCount3Async(cancellationToken: CancellationToken.None));
     }
 }
 

@@ -112,20 +112,20 @@ internal class Order2MockClient : Orders2Client, IMockTests
     public async Task TestAllMethodsThatReturnDataAsync()
     {
         ReadResponseAsString = true;
-        await Assert.ThrowsAsync<ApiException>(async () => await GetOrdersAsync(DateOnly.FromDateTime(DateTime.Now),
+        await Assert.ThrowsAsync<ApiException>(async () => await GetOrders2Async(DateOnly.FromDateTime(DateTime.Now),
             DateOnly.FromDateTime(DateTime.Now), TransactionType.BILL, "", "", "", "", "", "", RoleAccount.AFFILIATE,
             "", 0, 1, CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await GetOrderAsync("", "", CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await GetOrderUpsellsAsync("", CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await ChangeAddressOrderAsync("","","","","", "", "", "", "", cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await GetOrder2Async("", "", CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await GetOrderUpsells2Async("", CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await ChangeAddressOrder2Async("","","","","", "", "", "", "", cancellationToken: CancellationToken.None));
         await Assert.ThrowsAsync<ApiException>(async () => await ChangeDateOrderAsync("", DateOnly.FromDateTime(DateTime.Now), "",  cancellationToken: CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await ChangeProductOrderAsync("", "", "", false, false, DateOnly.FromDateTime(DateTime.Now), cancellationToken: CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await ExtendOrderAsync("", 1, "", cancellationToken: CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await PauseOrderAsync("", DateOnly.FromDateTime(DateTime.Now), "", cancellationToken: CancellationToken.None));
-        await Assert.ThrowsAsync<ApiException>(async () => await ReinstateOrderAsync("", "", cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await ChangeProductOrder2Async("", "", "", false, false, DateOnly.FromDateTime(DateTime.Now), cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await ExtendOrder2Async("", 1, "", cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await PauseOrder2Async("", DateOnly.FromDateTime(DateTime.Now), "", cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await ReinstateOrder2Async("", "", cancellationToken: CancellationToken.None));
 
         ReadResponseAsString = false;
         //Only one method needs to be tested with `ReadResponseAsString = false`
-        await Assert.ThrowsAsync<ApiException>(async () => await GetOrdersAsync(cancellationToken: CancellationToken.None));
+        await Assert.ThrowsAsync<ApiException>(async () => await GetOrders2Async(cancellationToken: CancellationToken.None));
     }
 }
