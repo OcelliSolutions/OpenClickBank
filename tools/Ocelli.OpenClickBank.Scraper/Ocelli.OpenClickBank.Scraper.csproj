@@ -9,10 +9,10 @@
 
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="1.2.0" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.72" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.74" />
     <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.2.0" />
     <PackageReference Include="PluralizeService.Core" Version="1.2.21147.2" />
-    <PackageReference Include="XmlSchemaClassGenerator-beta" Version="2.1.1178" />
+    <PackageReference Include="XmlSchemaClassGenerator-beta" Version="2.1.1179" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,24 +4,14 @@ namespace Ocelli.OpenClickBank.Tests;
 
 [TestCaseOrderer("Ocelli.OpenClickBank.Tests.Fixtures.PriorityOrderer", "Ocelli.OpenClickBank.Tests")]
 [Collection("ShippingTests")]
-public class Shipping3Tests : IClassFixture<SharedFixture>
+public class Shipping3Tests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
+    : IClassFixture<SharedFixture>
 {
-    private SharedFixture Fixture { get; }
-    private readonly ITestOutputHelper _testOutputHelper;
-    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
-    private readonly Shipping3MockClient _badRequestMockClient;
-    private readonly Shipping3MockClient _okEmptyMockClient;
-    private readonly Shipping3MockClient _okInvalidJsonMockClient;
-
-    public Shipping3Tests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
-    {
-        Fixture = sharedFixture;
-        _testOutputHelper = testOutputHelper;
-        _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
-        _badRequestMockClient = new Shipping3MockClient(sharedFixture.BadRequestMockHttpClient);
-        _okEmptyMockClient = new Shipping3MockClient(sharedFixture.OkEmptyMockHttpClient);
-        _okInvalidJsonMockClient = new Shipping3MockClient(sharedFixture.OkInvalidJsonMockHttpClient);
-    }
+    private SharedFixture Fixture { get; } = sharedFixture;
+    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper = new(testOutputHelper);
+    private readonly Shipping3MockClient _badRequestMockClient = new(sharedFixture.BadRequestMockHttpClient);
+    private readonly Shipping3MockClient _okEmptyMockClient = new(sharedFixture.OkEmptyMockHttpClient);
+    private readonly Shipping3MockClient _okInvalidJsonMockClient = new(sharedFixture.OkInvalidJsonMockHttpClient);
 
     #region Read
     
@@ -45,7 +35,7 @@ public class Shipping3Tests : IClassFixture<SharedFixture>
             hasMoreData = shippingListResult.HasMoreData;
             page++;
         } while (hasMoreData);
-        _testOutputHelper.WriteLine($@"Shipping Tested: {results.Count}");
+        testOutputHelper.WriteLine($@"Shipping Tested: {results.Count}");
     }
 
     [SkippableFact]
