@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace Ocelli.OpenClickBank.Extensions;
+namespace Ocelli.OpenClickBank;
 
 public static class EnumExtensions
 {

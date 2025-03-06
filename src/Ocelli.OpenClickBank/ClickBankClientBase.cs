@@ -1,12 +1,11 @@
-﻿using Ocelli.OpenClickBank.Converters;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Ocelli.OpenClickBank;
 
 internal class ClickBankClientBase
 {
-    protected static void UpdateJsonSerializerSettings(JsonSerializerOptions settings)
+    static protected void UpdateJsonSerializerSettings(JsonSerializerOptions settings)
     {
         settings.Converters.Add(new BooleanConverter());
         settings.Converters.Add(new DateTimeConverter());
@@ -80,7 +79,7 @@ internal class ClickBankClientBase
 
 internal partial class QuickstatsClient
 {
-    partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request,
+    partial void PrepareRequest(HttpClient client, HttpRequestMessage request,
         string url)
     {
         request.Headers.Accept.Clear();

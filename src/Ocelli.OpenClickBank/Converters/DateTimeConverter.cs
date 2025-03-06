@@ -1,8 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using Ocelli.OpenClickBank.Extensions;
 
-namespace Ocelli.OpenClickBank.Converters;
+namespace Ocelli.OpenClickBank;
 
 internal class DateTimeConverter : JsonConverter<DateTime?>
 {

@@ -1,7 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
-using Ocelli.OpenClickBank.Converters;
 
 namespace Ocelli.OpenClickBank;
 internal class NotificationService : INotificationService

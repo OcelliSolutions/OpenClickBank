@@ -1,10 +1,10 @@
 ﻿using System.Text.Json;
 
-namespace Ocelli.OpenClickBank.Extensions;
+namespace Ocelli.OpenClickBank;
 
-internal static class ModelExtensions
+static internal class ModelExtensions
 {
-    internal static void WriteAsNullable(this Utf8JsonWriter writer, dynamic? value)
+    static internal void WriteAsNullable(this Utf8JsonWriter writer, dynamic? value)
     {
         if (value == null)
         {

@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Ocelli.OpenClickBank.Converters;
+namespace Ocelli.OpenClickBank;
 
 internal class ArrayOrObjectJsonConverter<T> : JsonConverter<ICollection<T>> where T : class, new()
 {
