@@ -4,7 +4,7 @@ using System.Text.Json;
 using Ocelli.OpenClickBank.Converters;
 
 namespace Ocelli.OpenClickBank;
-public class NotificationService : INotificationService
+internal class NotificationService : INotificationService
 {
     public Notification DecryptNotification(string cipherText, string secretKey, string initVector)
     {

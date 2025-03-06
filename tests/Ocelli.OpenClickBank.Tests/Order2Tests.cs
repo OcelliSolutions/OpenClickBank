@@ -1,27 +1,18 @@
 ﻿using System.Diagnostics;
+using Xunit.Priority;
 
 namespace Ocelli.OpenClickBank.Tests;
 
 [TestCaseOrderer("Ocelli.OpenClickBank.Tests.Fixtures.PriorityOrderer", "Ocelli.OpenClickBank.Tests")]
 [Collection("OrderTests")]
-public class Order2Tests : IClassFixture<SharedFixture>
+public class Order2Tests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
+    : IClassFixture<SharedFixture>
 {
-    private SharedFixture Fixture { get; }
-    private readonly ITestOutputHelper _testOutputHelper;
-    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
-    private readonly Order2MockClient _badRequestMockClient;
-    private readonly Order2MockClient _okEmptyMockClient;
-    private readonly Order2MockClient _okInvalidJsonMockClient;
-
-    public Order2Tests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
-    {
-        Fixture = sharedFixture;
-        _testOutputHelper = testOutputHelper;
-        _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
-        _badRequestMockClient = new Order2MockClient(sharedFixture.BadRequestMockHttpClient);
-        _okEmptyMockClient = new Order2MockClient(sharedFixture.OkEmptyMockHttpClient);
-        _okInvalidJsonMockClient = new Order2MockClient(sharedFixture.OkInvalidJsonMockHttpClient);
-    }
+    private SharedFixture Fixture { get; } = sharedFixture;
+    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper = new(testOutputHelper);
+    private readonly Order2MockClient _badRequestMockClient = new(sharedFixture.BadRequestMockHttpClient);
+    private readonly Order2MockClient _okEmptyMockClient = new(sharedFixture.OkEmptyMockHttpClient);
+    private readonly Order2MockClient _okInvalidJsonMockClient = new(sharedFixture.OkInvalidJsonMockHttpClient);
 
     #region Create
 
@@ -32,7 +23,7 @@ public class Order2Tests : IClassFixture<SharedFixture>
     #region Read
 
     [SkippableFact]
-    [TestPriority(20)]
+    [Priority(20)]
     public async Task GetOrdersAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var results = new List<OrderData>();
@@ -53,11 +44,11 @@ public class Order2Tests : IClassFixture<SharedFixture>
             hasMoreData = orders.HasMoreData;
             page++;
         } while (hasMoreData);
-        _testOutputHelper.WriteLine($@"Orders Tested: {results.Count}");
+        testOutputHelper.WriteLine($@"Orders Tested: {results.Count}");
     }
 
     [SkippableFact]
-    [TestPriority(20)]
+    [Priority(20)]
     public async Task GetOrderCountAsync_ReturnNumber_ShouldPass()
     {
         var orders =
@@ -67,7 +58,7 @@ public class Order2Tests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    [TestPriority(20)]
+    [Priority(20)]
     public async Task GetOrderAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var response = await Fixture.ApiKey.ClickBankService.Orders.GetOrderAsync(Fixture.Receipt, cancellationToken: CancellationToken.None);
@@ -75,7 +66,7 @@ public class Order2Tests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    [TestPriority(20)]
+    [Priority(20)]
     public async Task GetOrderUpsellsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var response = await Fixture.ApiKey.ClickBankService.Orders.GetOrderUpsellsAsync(Fixture.Receipt, CancellationToken.None);
@@ -87,7 +78,7 @@ public class Order2Tests : IClassFixture<SharedFixture>
     #region Update
 
     [SkippableFact]
-    [TestPriority(20)]
+    [Priority(20)]
     public async Task ChangeOrderAddressAsync_CanCall() =>
         await Fixture.ApiKey.ClickBankService.Orders.ChangeAddressOrderAsync(receipt: Fixture.Receipt,
             address1: "123 Test St.", city: "Middle", county:"Nowhere", countryCode: "US", postalCode: "80030", province: "CO",

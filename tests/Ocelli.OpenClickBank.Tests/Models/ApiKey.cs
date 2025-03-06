@@ -2,17 +2,19 @@
 
 public class ApiKey
 {
+    private readonly IClickBankServiceFactory _clickBankServiceFactory;
     private OpenClickBankConfig _openClickBankConfig = null!;
-    internal ClickBankService ClickBankService = new() { OpenClickBankConfig = new OpenClickBankConfig() };
+    internal IClickBankService ClickBankService { get; private set; }
 
-    public ApiKey(OpenClickBankConfig openClickBankConfig)
+    public ApiKey(IClickBankServiceFactory clickBankServiceFactory, OpenClickBankConfig openClickBankConfig)
     {
+        _clickBankServiceFactory = clickBankServiceFactory ?? throw new ArgumentNullException(nameof(clickBankServiceFactory));
         DaysToTest = 1;
 #if DEBUG
         DaysToTest = 10;
 #endif
         OpenClickBankConfig = openClickBankConfig;
-        if (openClickBankConfig.DeveloperApiKey.EndsWith("xx")) return;
+
         try
         {
             var account = ClickBankService.Quickstats.GetQuickstatAccountsAsync().Result;
@@ -32,8 +34,7 @@ public class ApiKey
         set
         {
             _openClickBankConfig = value;
-            //ClickBankService = new ClickBankService(value);
-            ClickBankService = new ClickBankService { OpenClickBankConfig = value };
+            ClickBankService = _clickBankServiceFactory.Create(value);
         }
     }
 

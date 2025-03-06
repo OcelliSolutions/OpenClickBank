@@ -2,24 +2,14 @@
 
 [TestCaseOrderer("Ocelli.OpenClickBank.Tests.Fixtures.PriorityOrderer", "Ocelli.OpenClickBank.Tests")]
 [Collection("ImageTests")]
-public class ImageTests : IClassFixture<SharedFixture>
+public class ImageTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
+    : IClassFixture<SharedFixture>
 {
-    private SharedFixture Fixture { get; }
-    private readonly ITestOutputHelper _testOutputHelper;
-    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
-    private readonly ImageMockClient _badRequestMockClient;
-    private readonly ImageMockClient _okEmptyMockClient;
-    private readonly ImageMockClient _okInvalidJsonMockClient;
-
-    public ImageTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
-    {
-        Fixture = sharedFixture;
-        _testOutputHelper = testOutputHelper;
-        _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
-        _badRequestMockClient = new ImageMockClient(sharedFixture.BadRequestMockHttpClient);
-        _okEmptyMockClient = new ImageMockClient(sharedFixture.OkEmptyMockHttpClient);
-        _okInvalidJsonMockClient = new ImageMockClient(sharedFixture.OkInvalidJsonMockHttpClient);
-    }
+    private SharedFixture Fixture { get; } = sharedFixture;
+    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper = new(testOutputHelper);
+    private readonly ImageMockClient _badRequestMockClient = new(sharedFixture.BadRequestMockHttpClient);
+    private readonly ImageMockClient _okEmptyMockClient = new(sharedFixture.OkEmptyMockHttpClient);
+    private readonly ImageMockClient _okInvalidJsonMockClient = new(sharedFixture.OkInvalidJsonMockHttpClient);
 
     [SkippableFact]
     public async Task GetStatusAsync_AdditionalPropertiesAreEmpty_ShouldPass()

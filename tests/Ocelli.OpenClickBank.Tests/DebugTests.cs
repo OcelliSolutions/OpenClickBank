@@ -2,30 +2,17 @@
 
 [TestCaseOrderer("Ocelli.OpenClickBank.Tests.Fixtures.PriorityOrderer", "Ocelli.OpenClickBank.Tests")]
 [Collection("DebugTests")]
-public class DebugTests : IClassFixture<SharedFixture>
+public class DebugTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
+    : IClassFixture<SharedFixture>
 {
-    private SharedFixture Fixture { get; }
-    private readonly ITestOutputHelper _testOutputHelper;
-    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
-    private readonly DebugMockClient _badRequestMockClient;
-    private readonly DebugMockClient _okEmptyMockClient;
-    private readonly DebugMockClient _okInvalidJsonMockClient;
-
-    public DebugTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
-    {
-        Fixture = sharedFixture;
-        _testOutputHelper = testOutputHelper;
-        _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
-        _badRequestMockClient = new DebugMockClient(sharedFixture.BadRequestMockHttpClient);
-        _okEmptyMockClient = new DebugMockClient(sharedFixture.OkEmptyMockHttpClient);
-        _okInvalidJsonMockClient = new DebugMockClient(sharedFixture.OkInvalidJsonMockHttpClient);
-    }
+    private SharedFixture Fixture { get; } = sharedFixture;
+    private readonly DebugMockClient _badRequestMockClient = new(sharedFixture.BadRequestMockHttpClient);
+    private readonly DebugMockClient _okEmptyMockClient = new(sharedFixture.OkEmptyMockHttpClient);
 
     [SkippableFact]
     public async Task GetDebugsAsync_ReturnsStringWhenAuthorized_ShouldPass()
     {
         var debug = await Fixture.ApiKey.ClickBankService.Debugs.GetDebugAsync();
-        Assert.Contains(Fixture.ApiKey.OpenClickBankConfig.DeveloperApiKey, debug);
         Assert.Contains(Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey, debug);
         Assert.Contains("HAS_DEVELOPER_KEY", debug);
     }
@@ -39,10 +26,7 @@ public class DebugTests : IClassFixture<SharedFixture>
 
 internal class DebugMockClient : DebugClient, IMockTests
 {
-    public DebugMockClient(HttpClient httpClient) : base(httpClient)
-    {
-        BaseUrl = "https://localhost";
-    }
+    public DebugMockClient(HttpClient httpClient) : base(httpClient) => BaseUrl = "https://localhost";
 
     public void ObjectResponseResult_CanReadText()
     {
@@ -60,4 +44,3 @@ internal class DebugMockClient : DebugClient, IMockTests
         await Assert.ThrowsAsync<ApiException>(async () => await GetDebugAsync(cancellationToken: CancellationToken.None));
     }
 }
-

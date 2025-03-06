@@ -1,30 +1,23 @@
-﻿namespace Ocelli.OpenClickBank.Tests;
+﻿using Xunit.Priority;
+
+namespace Ocelli.OpenClickBank.Tests;
 
 [TestCaseOrderer("Ocelli.OpenClickBank.Tests.Fixtures.PriorityOrderer", "Ocelli.OpenClickBank.Tests")]
 [Collection("TicketTests")]
-public class TicketTests : IClassFixture<SharedFixture>
+public class TicketTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
+    : IClassFixture<SharedFixture>
 {
-    private SharedFixture Fixture { get; }
-    private readonly ITestOutputHelper _testOutputHelper;
-    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
-    private readonly TicketMockClient _badRequestMockClient;
-    private readonly TicketMockClient _okEmptyMockClient;
-    private readonly TicketMockClient _okInvalidJsonMockClient;
-
-    public TicketTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
-    {
-        Fixture = sharedFixture;
-        _testOutputHelper = testOutputHelper;
-        _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
-        _badRequestMockClient = new TicketMockClient(sharedFixture.BadRequestMockHttpClient);
-        _okEmptyMockClient = new TicketMockClient(sharedFixture.OkEmptyMockHttpClient);
-        _okInvalidJsonMockClient = new TicketMockClient(sharedFixture.OkInvalidJsonMockHttpClient);
-    }
+    private SharedFixture Fixture { get; } = sharedFixture;
+    private readonly ITestOutputHelper _testOutputHelper = testOutputHelper;
+    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper = new(testOutputHelper);
+    private readonly TicketMockClient _badRequestMockClient = new(sharedFixture.BadRequestMockHttpClient);
+    private readonly TicketMockClient _okEmptyMockClient = new(sharedFixture.OkEmptyMockHttpClient);
+    private readonly TicketMockClient _okInvalidJsonMockClient = new(sharedFixture.OkInvalidJsonMockHttpClient);
 
     #region Create
 
     [SkippableFact]
-    [TestPriority(10)]
+    [Priority(10)]
     public async Task CreateTicketAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         Skip.If(string.IsNullOrWhiteSpace(Fixture.Receipt), "A receipt was not provided");
@@ -37,8 +30,8 @@ public class TicketTests : IClassFixture<SharedFixture>
     }
     #endregion Create
 
-    [SkippableFact]
-    [TestPriority(10)]
+    [SkippableFact] 
+    [Priority(10)]
     public async Task GetTicketsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var ticketList =
@@ -59,7 +52,7 @@ public class TicketTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    [TestPriority(10)]
+    [Priority(10)]
     public async Task GetTicketCountAsync_ResultsReturned_ShouldPass()
     {
         var count =
@@ -71,7 +64,7 @@ public class TicketTests : IClassFixture<SharedFixture>
 
     //TODO: The required parameter of `receipt` is not available.
     [SkippableFact]
-    [TestPriority(11)]
+    [Priority(11)]
     public async Task GetTicketRefundAmountsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var ticketList =
@@ -83,7 +76,7 @@ public class TicketTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    [TestPriority(20)]
+    [Priority(20)]
     public async Task UpdateTicketAsync_ResultsReturned_ShouldPass()
     {
         var ticketList =
@@ -95,7 +88,7 @@ public class TicketTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    [TestPriority(30)]
+    [Priority(30)]
     public async Task AcceptReturnFromCustomerAsync_ResultsReturned_ShouldPass()
     {
         var ticketList =

@@ -1,31 +1,23 @@
-﻿namespace Ocelli.OpenClickBank.Tests;
+﻿using Xunit.Priority;
+
+namespace Ocelli.OpenClickBank.Tests;
 
 [TestCaseOrderer("Ocelli.OpenClickBank.Tests.Fixtures.PriorityOrderer", "Ocelli.OpenClickBank.Tests")]
 [Collection("ProductTests")]
-public class ProductTests : IClassFixture<SharedFixture>
+public class ProductTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
+    : IClassFixture<SharedFixture>
 {
     private string _sku => "SAMP01";
-    private SharedFixture Fixture { get; }
-    private readonly ITestOutputHelper _testOutputHelper;
-    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
-    private readonly ProductMockClient _badRequestMockClient;
-    private readonly ProductMockClient _okEmptyMockClient;
-    private readonly ProductMockClient _okInvalidJsonMockClient;
-
-    public ProductTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
-    {
-        Fixture = sharedFixture;
-        _testOutputHelper = testOutputHelper;
-        _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
-        _badRequestMockClient = new ProductMockClient(sharedFixture.BadRequestMockHttpClient);
-        _okEmptyMockClient = new ProductMockClient(sharedFixture.OkEmptyMockHttpClient);
-        _okInvalidJsonMockClient = new ProductMockClient(sharedFixture.OkInvalidJsonMockHttpClient);
-    }
+    private SharedFixture Fixture { get; } = sharedFixture;
+    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper = new(testOutputHelper);
+    private readonly ProductMockClient _badRequestMockClient = new(sharedFixture.BadRequestMockHttpClient);
+    private readonly ProductMockClient _okEmptyMockClient = new(sharedFixture.OkEmptyMockHttpClient);
+    private readonly ProductMockClient _okInvalidJsonMockClient = new(sharedFixture.OkInvalidJsonMockHttpClient);
 
     #region Create
     /*
     [SkippableFact]
-    [TestPriority(10)]
+    [Priority(10)]
     public async Task CreateProductAsync_CanCreate() =>
         await Fixture.ApiKey.ClickBankService.Products.CreateProductAsync(
             sku: _sku,
@@ -44,7 +36,7 @@ public class ProductTests : IClassFixture<SharedFixture>
     #region Read
 
     [SkippableFact]
-    [TestPriority(20)]
+    [Priority(20)]
     public async Task GetProductsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var results = new List<Product>();
@@ -74,11 +66,11 @@ public class ProductTests : IClassFixture<SharedFixture>
             hasMoreData = productList.HasMoreData;
             page++;
         } while (hasMoreData);
-        _testOutputHelper.WriteLine($@"Products Tested: {results.Count}");
+        testOutputHelper.WriteLine($@"Products Tested: {results.Count}");
     }
 
     [SkippableFact]
-    [TestPriority(21)]
+    [Priority(21)]
     public async Task GetProductAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var response =
@@ -92,7 +84,7 @@ public class ProductTests : IClassFixture<SharedFixture>
     #region Update
     /*
     [SkippableFact]
-    [TestPriority(30)]
+    [Priority(30)]
     public async Task CreateProductAsync_CanUpdate()
     {
         await Fixture.ApiKey.ClickBankService.Products.CreateProductAsync(
@@ -112,7 +104,7 @@ public class ProductTests : IClassFixture<SharedFixture>
 
     #region Delete
 
-    [SkippableFact, TestPriority(99)]
+    [SkippableFact, Priority(99)]
     public async Task DeleteProductAsync_CanDelete() => await Fixture.ApiKey.ClickBankService.Products.DeleteProductAsync(_sku, Fixture.ApiKey.Site, CancellationToken.None);
 
     #endregion Delete

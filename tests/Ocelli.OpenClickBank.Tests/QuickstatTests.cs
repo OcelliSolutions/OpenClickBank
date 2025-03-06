@@ -2,24 +2,14 @@
 
 [TestCaseOrderer("Ocelli.OpenClickBank.Tests.Fixtures.PriorityOrderer", "Ocelli.OpenClickBank.Tests")]
 [Collection("QuickstatTests")]
-public class QuickstatTests : IClassFixture<SharedFixture>
+public class QuickstatTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
+    : IClassFixture<SharedFixture>
 {
-    private SharedFixture Fixture { get; }
-    private readonly ITestOutputHelper _testOutputHelper;
-    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
-    private readonly QuickstatMockClient _badRequestMockClient;
-    private readonly QuickstatMockClient _okEmptyMockClient;
-    private readonly QuickstatMockClient _okInvalidJsonMockClient;
-
-    public QuickstatTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
-    {
-        Fixture = sharedFixture;
-        _testOutputHelper = testOutputHelper;
-        _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
-        _badRequestMockClient = new QuickstatMockClient(sharedFixture.BadRequestMockHttpClient);
-        _okEmptyMockClient = new QuickstatMockClient(sharedFixture.OkEmptyMockHttpClient);
-        _okInvalidJsonMockClient = new QuickstatMockClient(sharedFixture.OkInvalidJsonMockHttpClient);
-    }
+    private SharedFixture Fixture { get; } = sharedFixture;
+    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper = new(testOutputHelper);
+    private readonly QuickstatMockClient _badRequestMockClient = new(sharedFixture.BadRequestMockHttpClient);
+    private readonly QuickstatMockClient _okEmptyMockClient = new(sharedFixture.OkEmptyMockHttpClient);
+    private readonly QuickstatMockClient _okInvalidJsonMockClient = new(sharedFixture.OkInvalidJsonMockHttpClient);
 
     [SkippableFact]
     public async Task GetAccountAsync_ReturnsAccountWhenAuthorized_ShouldPass()

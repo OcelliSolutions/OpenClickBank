@@ -2,7 +2,6 @@
 
 public interface IClickBankService
 {
-    OpenClickBankConfig OpenClickBankConfig { get; set; }
     IAnalyticsClient Analytics { get; }
     IDebugClient Debugs { get; }
     IImagesClient Images { get; }
