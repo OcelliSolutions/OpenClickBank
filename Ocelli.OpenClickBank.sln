@@ -30,6 +30,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ocelli.OpenClickBank.Shared
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomSwaggerGen", "tools\CustomSwaggerGen\CustomSwaggerGen.csproj", "{80E2A5EF-7E8C-4AE9-830B-701FBD9CC84E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "src\TestApp\TestApp.csproj", "{A56736D2-CC75-478F-9A72-BC8607B8189D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{80E2A5EF-7E8C-4AE9-830B-701FBD9CC84E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80E2A5EF-7E8C-4AE9-830B-701FBD9CC84E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80E2A5EF-7E8C-4AE9-830B-701FBD9CC84E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A56736D2-CC75-478F-9A72-BC8607B8189D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A56736D2-CC75-478F-9A72-BC8607B8189D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A56736D2-CC75-478F-9A72-BC8607B8189D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A56736D2-CC75-478F-9A72-BC8607B8189D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{38AA1EAA-5CF7-4FE9-A217-B499277CDF01} = {BC85FDDA-7CA2-4A4A-A14A-A01CC2407009}
 		{74D1B5C6-9AE8-416E-BE6E-86F2A3DAF1EB} = {BC85FDDA-7CA2-4A4A-A14A-A01CC2407009}
 		{80E2A5EF-7E8C-4AE9-830B-701FBD9CC84E} = {BC85FDDA-7CA2-4A4A-A14A-A01CC2407009}
+		{A56736D2-CC75-478F-9A72-BC8607B8189D} = {E8519136-D908-4DB1-ADBB-5587B1194695}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D89413E0-B400-4A35-B9A8-EA6B48193503}

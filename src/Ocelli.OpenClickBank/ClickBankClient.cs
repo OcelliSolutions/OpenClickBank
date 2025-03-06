@@ -3979,7 +3979,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderList?> GetOrders2Async(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null, double? amount = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ClickBankResponse<OrderList?>> GetOrders2Async(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null, double? amount = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4857,7 +4857,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrders2Async(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null, double? amount = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ClickBankResponse<OrderList?>> GetOrders2Async(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null, double? amount = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -4952,13 +4952,13 @@ namespace Ocelli.OpenClickBank
                         if (status_ == 200)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<OrderList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            return objectResponse_.Object;
+                            return new ClickBankResponse<OrderList?>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ == 206)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<OrderList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            return objectResponse_.Object;
+                            return new ClickBankResponse<OrderList?>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ == 403)
@@ -7338,7 +7338,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ShippingList?> GetShippings2Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ClickBankResponse<ShippingList?>> GetShippings2Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7545,7 +7545,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ShippingList?> GetShippings2Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ClickBankResponse<ShippingList?>> GetShippings2Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -7612,13 +7612,13 @@ namespace Ocelli.OpenClickBank
                         if (status_ == 200)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<ShippingList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            return objectResponse_.Object;
+                            return new ClickBankResponse<ShippingList?>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ == 206)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<ShippingList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            return objectResponse_.Object;
+                            return new ClickBankResponse<ShippingList?>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ == 403)
@@ -8001,7 +8001,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ShippingList?> GetShippings3Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ClickBankResponse<ShippingList?>> GetShippings3Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8208,7 +8208,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ShippingList?> GetShippings3Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ClickBankResponse<ShippingList?>> GetShippings3Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -8275,13 +8275,13 @@ namespace Ocelli.OpenClickBank
                         if (status_ == 200)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<ShippingList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            return objectResponse_.Object;
+                            return new ClickBankResponse<ShippingList?>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ == 206)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<ShippingList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            return objectResponse_.Object;
+                            return new ClickBankResponse<ShippingList?>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ == 403)
