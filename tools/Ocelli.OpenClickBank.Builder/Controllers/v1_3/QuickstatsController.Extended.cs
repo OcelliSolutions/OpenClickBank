@@ -18,19 +18,19 @@ public class QuickstatsController : QuickstatsControllerBase
     //[Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
-    override public Task GetQuickstatCount(DateTime? startDate = null, DateTime? endDate = null, string? account = null) => throw new NotImplementedException();
+    public override Task GetQuickstatCount(DateTime? startDate = null, DateTime? endDate = null, string? account = null) => throw new NotImplementedException();
 
     /// <inheritdoc cref="QuickstatsControllerBase.GetQuickstatAccounts"/>
     [Authorize]
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(AccountList), StatusCodes.Status200OK)]
-    override public Task GetQuickstatAccounts() => throw new NotImplementedException();
+    public override Task GetQuickstatAccounts() => throw new NotImplementedException();
 
     /// <inheritdoc cref="QuickstatsControllerBase.GetQuickstats"/>
     [Authorize]
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(AccountList), StatusCodes.Status200OK)]
-    override public Task GetQuickstats(DateTime? startDate = null, DateTime? endDate = null, string? account = null, [FromHeader] int? page = null) => throw new NotImplementedException();
+    public override Task GetQuickstats(DateTime? startDate = null, DateTime? endDate = null, string? account = null, [FromHeader] int? page = null) => throw new NotImplementedException();
 }

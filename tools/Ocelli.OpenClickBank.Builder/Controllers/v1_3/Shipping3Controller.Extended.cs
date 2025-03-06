@@ -24,7 +24,7 @@ public class Shipping3Controller : Shipping3ControllerBase
 
     /// <inheritdoc cref="Shipping3ControllerBase.GetShippingCount" />
     [HttpGet, Route("1.3/shipping3/count.ignore"), ApiExplorerSettings(IgnoreApi = true)]
-    override public Task GetShippingCount(string? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
+    public override Task GetShippingCount(string? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
         string? receipt = null) =>
         throw new NotImplementedException();
 
@@ -41,7 +41,7 @@ public class Shipping3Controller : Shipping3ControllerBase
 
     /// <inheritdoc cref="Shipping3ControllerBase.GetShippings" />
     [HttpGet, Route("1.3/shipping3/list.ignore"), ApiExplorerSettings(IgnoreApi = true)]
-    override public Task GetShippings(string? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
+    public override Task GetShippings(string? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
         string? receipt = null, [FromHeader] int? page = null) =>
         throw new NotImplementedException();
 
@@ -50,7 +50,7 @@ public class Shipping3Controller : Shipping3ControllerBase
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.API_ORDER_WRITE, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(ShippingNoticeData), StatusCodes.Status200OK)]
-    override public Task CreateShipNotice(string receipt, DateTime date, string carrier, string? tracking = null, string? comments = null,
+    public override Task CreateShipNotice(string receipt, DateTime date, string carrier, string? tracking = null, string? comments = null,
         string? item = null, bool? fillOrder = null) =>
         throw new NotImplementedException();
 
@@ -59,5 +59,5 @@ public class Shipping3Controller : Shipping3ControllerBase
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(ShippingNoticeList), StatusCodes.Status200OK)]
-    override public Task GetShipNotice(string receipt) => throw new NotImplementedException();
+    public override Task GetShipNotice(string receipt) => throw new NotImplementedException();
 }

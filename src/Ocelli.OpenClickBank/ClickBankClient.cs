@@ -2429,6 +2429,1423 @@ namespace Ocelli.OpenClickBank
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial interface IOrdersClient
+    {
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// *BETA* Allows a vendor to restart a cancelled subscription
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
+        /// </remarks>
+        /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task ReinstateOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// *BETA* Allows a vendor to change the rebill date of a subscription
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
+        /// </remarks>
+        /// <param name="restartDate">The date when the subscription will be resumed in format yyyy-mm-dd</param>
+        /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task PauseOrderAsync(string receipt, DateOnly? restartDate = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// *BETA* Allows a vendor to extend a subscription by a given number of rebill periods
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
+        /// </remarks>
+        /// <param name="numPeriods">The number of periods to extend the subscription by</param>
+        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task ExtendOrderAsync(string receipt, int? numPeriods = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// *BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_order_write • api_subscription_modifications
+        /// </remarks>
+        /// <param name="oldSku">The SKU of the current product for the subscription.</param>
+        /// <param name="newSku">The SKU of the new product for the subscription.</param>
+        /// <param name="carryAffiliate">Determines if the affiliate from the original transaction is carried over to the new subscription.</param>
+        /// <param name="applyProratedRefund">Determines if the prorated refund should be applied on the product change. This parameter will default to TRUE if not explicitly set</param>
+        /// <param name="nextRebillDate">Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task ChangeProductOrderAsync(string receipt, string? oldSku = null, string? newSku = null, bool? carryAffiliate = null, bool? applyProratedRefund = null, DateOnly? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Allows a vendor to change shipping address of a physical recurring subscription.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_order_write
+        /// </remarks>
+        /// <param name="address1">Updated address (line 1).</param>
+        /// <param name="city">Updated city.</param>
+        /// <param name="countryCode">Updated country code.</param>
+        /// <param name="firstName">Updated customer first name.</param>
+        /// <param name="lastName">Updated customer last name.</param>
+        /// <param name="address2">Updated address (line 2).</param>
+        /// <param name="county">Updated county.</param>
+        /// <param name="province">Updated state or province.</param>
+        /// <param name="postalCode">Updated postal code or Zip.</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task ChangeAddressOrderAsync(string receipt, string? address1 = null, string? city = null, string? countryCode = null, string? firstName = null, string? lastName = null, string? address2 = null, string? county = null, string? province = null, string? postalCode = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Same as the list command, except that this one returns the count of the orders returned based on the search criteria.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd)</param>
+        /// <param name="endDate">The end date for the search (yyyy-mm-dd)</param>
+        /// <param name="type">The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND / TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</param>
+        /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="affiliate">The affiliate name. Supports the word 'none' to search for transactions without affiliates, and wildcard searches using the '%' character. (Wilcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="lastName">Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="email">The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="tid">The TID (Tracking ID / Promo Code) to search on.  This will search both vendor and affiliate tracking codes and be returned in the promo field</param>
+        /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE]</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<int> GetOrderCountAsync(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? email = null, string? tid = null, RoleAccount? role = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// List orders for the authenticated user scoped to the search criteria. Only the first 100 orders will be returned.&nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd).  If a startDate is specified, you must also specify an endDate.</param>
+        /// <param name="endDate">The end date for the search (yyyy-mm-dd). If an endDate is specified, you must also specify a startDate.</param>
+        /// <param name="type">The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</param>
+        /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="affiliate">The affiliate name. Supports the word 'none' to search for transactions without affiliates, and wildcard searches using the '%' character. (Wilcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="lastName">Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="item">The item number of the order</param>
+        /// <param name="email">The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="tid">The TID (Tracking ID / Promo Code) to search on.  This will search both vendor and affiliate tracking codes and be returned in the promo field</param>
+        /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE]</param>
+        /// <param name="postalCode">Customer's zip or postal code. Supports wildcard searches.</param>
+        /// <param name="amount">The transaction total amount</param>
+        /// <param name="page">Page Number. Results only return 100 records at a time</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ClickBankResponse<OrderList?>> GetOrdersAsync(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null, double? amount = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// This head request is used to identify if a particular order or a subscription is active, i.e. it has not been refunded, chargebacked or cancelled. It will return a 403 (Forbidden) if that's the case, or a 204 if the order is still active. Note that it will also return a 403 if the order is not found, or the user does not have access to that receipt.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task GetOrderStatusAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Returns a list of order detail objects which match the given receipt.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<OrderList?> GetOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Returns all the upsell transactions for the given parent upsell transaction.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<OrderList?> GetOrderUpsellsAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    internal partial class OrdersClient : ClickBankClientBase, IOrdersClient
+    {
+        #pragma warning disable 8618
+        private string _baseUrl;
+        #pragma warning restore 8618
+
+        private System.Net.Http.HttpClient _httpClient;
+        private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
+        private System.Text.Json.JsonSerializerOptions _instanceSettings;
+
+    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        public OrdersClient(System.Net.Http.HttpClient httpClient)
+    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        {
+            BaseUrl = "https://api.clickbank.com";
+            _httpClient = httpClient;
+            Initialize();
+        }
+
+        private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
+        {
+            var settings = new System.Text.Json.JsonSerializerOptions();
+            UpdateJsonSerializerSettings(settings);
+            return settings;
+        }
+
+        public string BaseUrl
+        {
+            get { return _baseUrl; }
+            set
+            {
+                _baseUrl = value;
+                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
+                    _baseUrl += '/';
+            }
+        }
+
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
+
+        partial void Initialize();
+
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
+        partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// *BETA* Allows a vendor to restart a cancelled subscription
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
+        /// </remarks>
+        /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task ReinstateOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/orders/{receipt}/reinstate"
+                    urlBuilder_.Append("rest/1.3/orders/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/reinstate");
+                    urlBuilder_.Append('?');
+                    if (sku != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("sku")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 204)
+                        {
+                            return;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// *BETA* Allows a vendor to change the rebill date of a subscription
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
+        /// </remarks>
+        /// <param name="restartDate">The date when the subscription will be resumed in format yyyy-mm-dd</param>
+        /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task PauseOrderAsync(string receipt, DateOnly? restartDate = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/orders/{receipt}/pause"
+                    urlBuilder_.Append("rest/1.3/orders/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/pause");
+                    urlBuilder_.Append('?');
+                    if (restartDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("restartDate")).Append('=').Append(System.Uri.EscapeDataString(restartDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (sku != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("sku")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 204)
+                        {
+                            return;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// *BETA* Allows a vendor to extend a subscription by a given number of rebill periods
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_subscription_modifications
+        /// </remarks>
+        /// <param name="numPeriods">The number of periods to extend the subscription by</param>
+        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task ExtendOrderAsync(string receipt, int? numPeriods = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/orders/{receipt}/extend"
+                    urlBuilder_.Append("rest/1.3/orders/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/extend");
+                    urlBuilder_.Append('?');
+                    if (numPeriods != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("numPeriods")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(numPeriods, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (sku != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("sku")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 204)
+                        {
+                            return;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// *BETA* Allows a vendor to change (upgrade or downgrade) the product associated with a subscription.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_order_write • api_subscription_modifications
+        /// </remarks>
+        /// <param name="oldSku">The SKU of the current product for the subscription.</param>
+        /// <param name="newSku">The SKU of the new product for the subscription.</param>
+        /// <param name="carryAffiliate">Determines if the affiliate from the original transaction is carried over to the new subscription.</param>
+        /// <param name="applyProratedRefund">Determines if the prorated refund should be applied on the product change. This parameter will default to TRUE if not explicitly set</param>
+        /// <param name="nextRebillDate">Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task ChangeProductOrderAsync(string receipt, string? oldSku = null, string? newSku = null, bool? carryAffiliate = null, bool? applyProratedRefund = null, DateOnly? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/orders/{receipt}/changeProduct"
+                    urlBuilder_.Append("rest/1.3/orders/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/changeProduct");
+                    urlBuilder_.Append('?');
+                    if (oldSku != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("oldSku")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(oldSku, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (newSku != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("newSku")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(newSku, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (carryAffiliate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("carryAffiliate")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(carryAffiliate, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (applyProratedRefund != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("applyProratedRefund")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(applyProratedRefund, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (nextRebillDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("nextRebillDate")).Append('=').Append(System.Uri.EscapeDataString(nextRebillDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 204)
+                        {
+                            return;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Allows a vendor to change shipping address of a physical recurring subscription.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: HAS_DEVELOPER_KEY • api_order_write
+        /// </remarks>
+        /// <param name="address1">Updated address (line 1).</param>
+        /// <param name="city">Updated city.</param>
+        /// <param name="countryCode">Updated country code.</param>
+        /// <param name="firstName">Updated customer first name.</param>
+        /// <param name="lastName">Updated customer last name.</param>
+        /// <param name="address2">Updated address (line 2).</param>
+        /// <param name="county">Updated county.</param>
+        /// <param name="province">Updated state or province.</param>
+        /// <param name="postalCode">Updated postal code or Zip.</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task ChangeAddressOrderAsync(string receipt, string? address1 = null, string? city = null, string? countryCode = null, string? firstName = null, string? lastName = null, string? address2 = null, string? county = null, string? province = null, string? postalCode = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/orders/{receipt}/changeAddress"
+                    urlBuilder_.Append("rest/1.3/orders/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/changeAddress");
+                    urlBuilder_.Append('?');
+                    if (address1 != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("address1")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(address1, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (city != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("city")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(city, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (countryCode != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("countryCode")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(countryCode, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (firstName != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("firstName")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(firstName, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (lastName != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("lastName")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(lastName, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (address2 != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("address2")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(address2, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (county != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("county")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(county, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (province != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("province")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(province, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (postalCode != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("postalCode")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(postalCode, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 204)
+                        {
+                            return;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Same as the list command, except that this one returns the count of the orders returned based on the search criteria.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd)</param>
+        /// <param name="endDate">The end date for the search (yyyy-mm-dd)</param>
+        /// <param name="type">The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND / TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</param>
+        /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="affiliate">The affiliate name. Supports the word 'none' to search for transactions without affiliates, and wildcard searches using the '%' character. (Wilcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="lastName">Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="email">The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="tid">The TID (Tracking ID / Promo Code) to search on.  This will search both vendor and affiliate tracking codes and be returned in the promo field</param>
+        /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE]</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<int> GetOrderCountAsync(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? email = null, string? tid = null, RoleAccount? role = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/orders/count"
+                    urlBuilder_.Append("rest/1.3/orders/count");
+                    urlBuilder_.Append('?');
+                    if (startDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("startDate")).Append('=').Append(System.Uri.EscapeDataString(startDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (endDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("endDate")).Append('=').Append(System.Uri.EscapeDataString(endDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (type != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("type")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(type, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (vendor != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("vendor")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(vendor, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (affiliate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("affiliate")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(affiliate, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (lastName != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("lastName")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(lastName, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (email != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("email")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(email, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (tid != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("tid")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(tid, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (role != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("role")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(role, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            int.TryParse(responseData_, out var result_);
+                            return result_;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var result_ = (string)System.Convert.ChangeType(responseData_, typeof(string));
+                            throw new ApiException<string>("Forbidden", status_, responseData_, headers_, result_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// List orders for the authenticated user scoped to the search criteria. Only the first 100 orders will be returned.&nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="startDate">The beginning date for the search (yyyy-mm-dd).  If a startDate is specified, you must also specify an endDate.</param>
+        /// <param name="endDate">The end date for the search (yyyy-mm-dd). If an endDate is specified, you must also specify a startDate.</param>
+        /// <param name="type">The type of transactions to be returned. Supported types are [SALE / RFND / CGBK / FEE / BILL / TEST_SALE / TEST_BILL / TEST_RFND /TEST_FEE]. If not specified all types will be returned. If an invalid type is specified, no transactions will be returned.</param>
+        /// <param name="vendor">The vendor name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="affiliate">The affiliate name. Supports the word 'none' to search for transactions without affiliates, and wildcard searches using the '%' character. (Wilcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="lastName">Customers last name. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="item">The item number of the order</param>
+        /// <param name="email">The email of the customer. Supports wildcard searches using the '%' character. (Wildcards are converted to %25 after url encoding is done by the client)</param>
+        /// <param name="tid">The TID (Tracking ID / Promo Code) to search on.  This will search both vendor and affiliate tracking codes and be returned in the promo field</param>
+        /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE]</param>
+        /// <param name="postalCode">Customer's zip or postal code. Supports wildcard searches.</param>
+        /// <param name="amount">The transaction total amount</param>
+        /// <param name="page">Page Number. Results only return 100 records at a time</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ClickBankResponse<OrderList?>> GetOrdersAsync(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null, double? amount = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+
+                    if (page != null)
+                        request_.Headers.TryAddWithoutValidation("page", ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture));
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/orders/list"
+                    urlBuilder_.Append("rest/1.3/orders/list");
+                    urlBuilder_.Append('?');
+                    if (startDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("startDate")).Append('=').Append(System.Uri.EscapeDataString(startDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (endDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("endDate")).Append('=').Append(System.Uri.EscapeDataString(endDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (type != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("type")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(type, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (vendor != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("vendor")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(vendor, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (affiliate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("affiliate")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(affiliate, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (lastName != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("lastName")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(lastName, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (item != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("item")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (email != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("email")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(email, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (tid != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("tid")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(tid, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (role != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("role")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(role, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (postalCode != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("postalCode")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(postalCode, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (amount != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("amount")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(amount, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<OrderList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            return new ClickBankResponse<OrderList?>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 206)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<OrderList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            return new ClickBankResponse<OrderList?>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// This head request is used to identify if a particular order or a subscription is active, i.e. it has not been refunded, chargebacked or cancelled. It will return a 403 (Forbidden) if that's the case, or a 204 if the order is still active. Note that it will also return a 403 if the order is not found, or the user does not have access to that receipt.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
+        /// <returns>No Content</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task GetOrderStatusAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("HEAD");
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/orders/{receipt}"
+                    urlBuilder_.Append("rest/1.3/orders/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('?');
+                    if (sku != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("sku")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 204)
+                        {
+                            return;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Returns a list of order detail objects which match the given receipt.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/orders/{receipt}"
+                    urlBuilder_.Append("rest/1.3/orders/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('?');
+                    if (sku != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("sku")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(sku, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<OrderList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Returns all the upsell transactions for the given parent upsell transaction.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrderUpsellsAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/orders/{receipt}/upsells"
+                    urlBuilder_.Append("rest/1.3/orders/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/upsells");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<OrderList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 204)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            return null;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        protected struct ObjectResponseResult<T>
+        {
+            public ObjectResponseResult(T responseObject, string responseText)
+            {
+                this.Object = responseObject;
+                this.Text = responseText;
+            }
+
+            public T Object { get; }
+
+            public string Text { get; }
+        }
+
+        public bool ReadResponseAsString { get; set; }
+
+        protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Threading.CancellationToken cancellationToken)
+        {
+            if (response == null || response.Content == null)
+            {
+                return new ObjectResponseResult<T>(default(T)!, string.Empty);
+            }
+
+            if (ReadResponseAsString)
+            {
+                var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    var typedBody = System.Text.Json.JsonSerializer.Deserialize<T>(responseText, JsonSerializerSettings);
+                    return new ObjectResponseResult<T>(typedBody!, responseText);
+                }
+                catch (System.Text.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                }
+            }
+            else
+            {
+                try
+                {
+                    using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    {
+                        var typedBody = await System.Text.Json.JsonSerializer.DeserializeAsync<T>(responseStream, JsonSerializerSettings, cancellationToken).ConfigureAwait(false);
+                        return new ObjectResponseResult<T>(typedBody!, string.Empty);
+                    }
+                }
+                catch (System.Text.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                }
+            }
+        }
+
+        private string ConvertToString(object? value, System.Globalization.CultureInfo cultureInfo)
+        {
+            if (value == null)
+            {
+                return "";
+            }
+
+            if (value is System.Enum)
+            {
+                var name = System.Enum.GetName(value.GetType(), value);
+                if (name != null)
+                {
+                    var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
+                    if (field != null)
+                    {
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                            as System.Runtime.Serialization.EnumMemberAttribute;
+                        if (attribute != null)
+                        {
+                            return attribute.Value != null ? attribute.Value : name;
+                        }
+                    }
+
+                    var converted = System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
+                    return converted == null ? string.Empty : converted;
+                }
+            }
+            else if (value is bool) 
+            {
+                return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
+            }
+            else if (value is byte[])
+            {
+                return System.Convert.ToBase64String((byte[]) value);
+            }
+            else if (value is string[])
+            {
+                return string.Join(",", (string[])value);
+            }
+            else if (value.GetType().IsArray)
+            {
+                var valueArray = (System.Array)value;
+                var valueTextArray = new string[valueArray.Length];
+                for (var i = 0; i < valueArray.Length; i++)
+                {
+                    valueTextArray[i] = ConvertToString(valueArray.GetValue(i), cultureInfo);
+                }
+                return string.Join(",", valueTextArray);
+            }
+
+            var result = System.Convert.ToString(value, cultureInfo);
+            return result == null ? "" : result;
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial interface IOrders2Client
     {
 
@@ -2450,7 +3867,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="postalCode">Updated postal code or Zip.</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ChangeAddressOrderAsync(string receipt, string? address1 = null, string? city = null, string? countryCode = null, string? firstName = null, string? lastName = null, string? address2 = null, string? county = null, string? province = null, string? postalCode = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task ChangeAddressOrder2Async(string receipt, string? address1 = null, string? city = null, string? countryCode = null, string? firstName = null, string? lastName = null, string? address2 = null, string? county = null, string? province = null, string? postalCode = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2479,7 +3896,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="nextRebillDate">Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ChangeProductOrderAsync(string receipt, string? oldSku = null, string? newSku = null, bool? carryAffiliate = null, bool? applyProratedRefund = null, DateOnly? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task ChangeProductOrder2Async(string receipt, string? oldSku = null, string? newSku = null, bool? carryAffiliate = null, bool? applyProratedRefund = null, DateOnly? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2492,7 +3909,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ExtendOrderAsync(string receipt, int? numPeriods = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task ExtendOrder2Async(string receipt, int? numPeriods = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2504,7 +3921,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderList?> GetOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OrderList?> GetOrder2Async(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2516,7 +3933,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task GetOrderStatusAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task GetOrderStatus2Async(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2538,7 +3955,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE]</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> GetOrderCountAsync(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, string? postalCode = null, RoleAccount? role = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<int> GetOrderCount2Async(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, string? postalCode = null, RoleAccount? role = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2562,7 +3979,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ClickBankResponse<OrderList?>> GetOrdersAsync(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null, double? amount = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OrderList?> GetOrders2Async(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null, double? amount = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2573,7 +3990,7 @@ namespace Ocelli.OpenClickBank
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderList?> GetOrderUpsellsAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OrderList?> GetOrderUpsells2Async(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2586,7 +4003,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task PauseOrderAsync(string receipt, DateOnly? restartDate = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task PauseOrder2Async(string receipt, DateOnly? restartDate = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2598,7 +4015,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ReinstateOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task ReinstateOrder2Async(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 
@@ -2666,7 +4083,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="postalCode">Updated postal code or Zip.</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task ChangeAddressOrderAsync(string receipt, string? address1 = null, string? city = null, string? countryCode = null, string? firstName = null, string? lastName = null, string? address2 = null, string? county = null, string? province = null, string? postalCode = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task ChangeAddressOrder2Async(string receipt, string? address1 = null, string? city = null, string? countryCode = null, string? firstName = null, string? lastName = null, string? address2 = null, string? county = null, string? province = null, string? postalCode = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -2895,7 +4312,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="nextRebillDate">Allows the vendor to change the date of the next rebill. Date Format is YYYY-MM-DD. Not passing in any value will set the next rebill date to the next day of product change</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task ChangeProductOrderAsync(string receipt, string? oldSku = null, string? newSku = null, bool? carryAffiliate = null, bool? applyProratedRefund = null, DateOnly? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task ChangeProductOrder2Async(string receipt, string? oldSku = null, string? newSku = null, bool? carryAffiliate = null, bool? applyProratedRefund = null, DateOnly? nextRebillDate = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -3006,7 +4423,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task ExtendOrderAsync(string receipt, int? numPeriods = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task ExtendOrder2Async(string receipt, int? numPeriods = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -3104,7 +4521,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrder2Async(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -3198,7 +4615,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">sku/itemNo of the line item. Used to identify individual purchase in multi-item cart purchase</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task GetOrderStatusAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task GetOrderStatus2Async(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -3300,7 +4717,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="role">Role account was of transaction options are [VENDOR, AFFILIATE]</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<int> GetOrderCountAsync(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, string? postalCode = null, RoleAccount? role = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<int> GetOrderCount2Async(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, string? postalCode = null, RoleAccount? role = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -3440,7 +4857,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="page">Page Number. Results only return 100 records at a time</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ClickBankResponse<OrderList?>> GetOrdersAsync(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null, double? amount = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrders2Async(DateOnly? startDate = null, DateOnly? endDate = null, TransactionType? type = null, string? vendor = null, string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null, RoleAccount? role = null, string? postalCode = null, double? amount = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -3535,13 +4952,13 @@ namespace Ocelli.OpenClickBank
                         if (status_ == 200)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<OrderList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            return new ClickBankResponse<OrderList?>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 206)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<OrderList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            return new ClickBankResponse<OrderList?>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 403)
@@ -3582,7 +4999,7 @@ namespace Ocelli.OpenClickBank
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrderUpsellsAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<OrderList?> GetOrderUpsells2Async(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -3678,7 +5095,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task PauseOrderAsync(string receipt, DateOnly? restartDate = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task PauseOrder2Async(string receipt, DateOnly? restartDate = null, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -3776,7 +5193,7 @@ namespace Ocelli.OpenClickBank
         /// <param name="sku">The item number of the subscription product that should be reinstated for the order</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task ReinstateOrderAsync(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task ReinstateOrder2Async(string receipt, string? sku = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -5230,7 +6647,7 @@ namespace Ocelli.OpenClickBank
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial interface IShipping3Client
+    public partial interface IShippingClient
     {
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -5278,10 +6695,9 @@ namespace Ocelli.OpenClickBank
         /// <param name="tracking">The tracking id.</param>
         /// <param name="comments">The comments associated with the notice.</param>
         /// <param name="item">The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.</param>
-        /// <param name="fillOrder">Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ShippingNoticeData?> CreateShipNoticeAsync(string receipt, DateOnly? date = null, string? carrier = null, string? tracking = null, string? comments = null, string? item = null, bool? fillOrder = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ShippingNoticeData?> CreateShipNoticeAsync(string receipt, DateOnly? date = null, string? carrier = null, string? tracking = null, string? comments = null, string? item = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5297,7 +6713,7 @@ namespace Ocelli.OpenClickBank
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    internal partial class Shipping3Client : ClickBankClientBase, IShipping3Client
+    internal partial class ShippingClient : ClickBankClientBase, IShippingClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -5308,7 +6724,7 @@ namespace Ocelli.OpenClickBank
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public Shipping3Client(System.Net.Http.HttpClient httpClient)
+        public ShippingClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             BaseUrl = "https://api.clickbank.com";
@@ -5369,8 +6785,8 @@ namespace Ocelli.OpenClickBank
 
                     var urlBuilder_ = new System.Text.StringBuilder();
                     if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-                    // Operation Path: "rest/1.3/shipping3/count"
-                    urlBuilder_.Append("rest/1.3/shipping3/count");
+                    // Operation Path: "rest/1.3/shipping/count"
+                    urlBuilder_.Append("rest/1.3/shipping/count");
                     urlBuilder_.Append('?');
                     if (status != null)
                     {
@@ -5487,8 +6903,8 @@ namespace Ocelli.OpenClickBank
 
                     var urlBuilder_ = new System.Text.StringBuilder();
                     if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-                    // Operation Path: "rest/1.3/shipping3/list"
-                    urlBuilder_.Append("rest/1.3/shipping3/list");
+                    // Operation Path: "rest/1.3/shipping/list"
+                    urlBuilder_.Append("rest/1.3/shipping/list");
                     urlBuilder_.Append('?');
                     if (status != null)
                     {
@@ -5588,10 +7004,1331 @@ namespace Ocelli.OpenClickBank
         /// <param name="tracking">The tracking id.</param>
         /// <param name="comments">The comments associated with the notice.</param>
         /// <param name="item">The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ShippingNoticeData?> CreateShipNoticeAsync(string receipt, DateOnly? date = null, string? carrier = null, string? tracking = null, string? comments = null, string? item = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/shipping/shipnotice/{receipt}"
+                    urlBuilder_.Append("rest/1.3/shipping/shipnotice/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('?');
+                    if (date != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("date")).Append('=').Append(System.Uri.EscapeDataString(date.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (carrier != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("carrier")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(carrier, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (tracking != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("tracking")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(tracking, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (comments != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("comments")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(comments, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (item != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("item")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ShippingNoticeData?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Returns the ship notices for the given transaction.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ShippingNoticeList?> GetShipNoticeAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/shipping/shipnotice/{receipt}"
+                    urlBuilder_.Append("rest/1.3/shipping/shipnotice/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ShippingNoticeList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        protected struct ObjectResponseResult<T>
+        {
+            public ObjectResponseResult(T responseObject, string responseText)
+            {
+                this.Object = responseObject;
+                this.Text = responseText;
+            }
+
+            public T Object { get; }
+
+            public string Text { get; }
+        }
+
+        public bool ReadResponseAsString { get; set; }
+
+        protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Threading.CancellationToken cancellationToken)
+        {
+            if (response == null || response.Content == null)
+            {
+                return new ObjectResponseResult<T>(default(T)!, string.Empty);
+            }
+
+            if (ReadResponseAsString)
+            {
+                var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    var typedBody = System.Text.Json.JsonSerializer.Deserialize<T>(responseText, JsonSerializerSettings);
+                    return new ObjectResponseResult<T>(typedBody!, responseText);
+                }
+                catch (System.Text.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                }
+            }
+            else
+            {
+                try
+                {
+                    using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    {
+                        var typedBody = await System.Text.Json.JsonSerializer.DeserializeAsync<T>(responseStream, JsonSerializerSettings, cancellationToken).ConfigureAwait(false);
+                        return new ObjectResponseResult<T>(typedBody!, string.Empty);
+                    }
+                }
+                catch (System.Text.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                }
+            }
+        }
+
+        private string ConvertToString(object? value, System.Globalization.CultureInfo cultureInfo)
+        {
+            if (value == null)
+            {
+                return "";
+            }
+
+            if (value is System.Enum)
+            {
+                var name = System.Enum.GetName(value.GetType(), value);
+                if (name != null)
+                {
+                    var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
+                    if (field != null)
+                    {
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                            as System.Runtime.Serialization.EnumMemberAttribute;
+                        if (attribute != null)
+                        {
+                            return attribute.Value != null ? attribute.Value : name;
+                        }
+                    }
+
+                    var converted = System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
+                    return converted == null ? string.Empty : converted;
+                }
+            }
+            else if (value is bool) 
+            {
+                return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
+            }
+            else if (value is byte[])
+            {
+                return System.Convert.ToBase64String((byte[]) value);
+            }
+            else if (value is string[])
+            {
+                return string.Join(",", (string[])value);
+            }
+            else if (value.GetType().IsArray)
+            {
+                var valueArray = (System.Array)value;
+                var valueTextArray = new string[valueArray.Length];
+                for (var i = 0; i < valueArray.Length; i++)
+                {
+                    valueTextArray[i] = ConvertToString(valueArray.GetValue(i), cultureInfo);
+                }
+                return string.Join(",", valueTextArray);
+            }
+
+            var result = System.Convert.ToString(value, cultureInfo);
+            return result == null ? "" : result;
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial interface IShipping2Client
+    {
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Returns a count of physical goods orders matching the shipping criteria.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="status">Can be 'shipped', 'notshipped' or 'all' - to find related orders.</param>
+        /// <param name="days">Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.</param>
+        /// <param name="startDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date</param>
+        /// <param name="endDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate</param>
+        /// <param name="receipt">Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<int> GetShippingCount2Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned.&nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="status">Can be 'shipped', 'notshipped' or 'all' - to find related orders.</param>
+        /// <param name="days">Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.</param>
+        /// <param name="startDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date</param>
+        /// <param name="endDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate</param>
+        /// <param name="receipt">Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.</param>
+        /// <param name="page">Page Number. Results only return 100 records at a time</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ShippingList?> GetShippings2Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Creates a shipping notice for the given transaction.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • api_order_write • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="date">The shipping date (yyyy-mm-dd).</param>
+        /// <param name="carrier">The shipping carrier.</param>
+        /// <param name="tracking">The tracking id.</param>
+        /// <param name="comments">The comments associated with the notice.</param>
+        /// <param name="item">The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.</param>
         /// <param name="fillOrder">Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ShippingNoticeData?> CreateShipNoticeAsync(string receipt, DateOnly? date = null, string? carrier = null, string? tracking = null, string? comments = null, string? item = null, bool? fillOrder = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        System.Threading.Tasks.Task<ShippingNoticeData?> CreateShipNotice2Async(string receipt, DateOnly? date = null, string? carrier = null, string? tracking = null, string? comments = null, string? item = null, bool? fillOrder = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Returns the ship notices for the given transaction.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ShippingNoticeList?> GetShipNotice2Async(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    internal partial class Shipping2Client : ClickBankClientBase, IShipping2Client
+    {
+        #pragma warning disable 8618
+        private string _baseUrl;
+        #pragma warning restore 8618
+
+        private System.Net.Http.HttpClient _httpClient;
+        private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
+        private System.Text.Json.JsonSerializerOptions _instanceSettings;
+
+    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        public Shipping2Client(System.Net.Http.HttpClient httpClient)
+    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        {
+            BaseUrl = "https://api.clickbank.com";
+            _httpClient = httpClient;
+            Initialize();
+        }
+
+        private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
+        {
+            var settings = new System.Text.Json.JsonSerializerOptions();
+            UpdateJsonSerializerSettings(settings);
+            return settings;
+        }
+
+        public string BaseUrl
+        {
+            get { return _baseUrl; }
+            set
+            {
+                _baseUrl = value;
+                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
+                    _baseUrl += '/';
+            }
+        }
+
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
+
+        partial void Initialize();
+
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
+        partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Returns a count of physical goods orders matching the shipping criteria.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="status">Can be 'shipped', 'notshipped' or 'all' - to find related orders.</param>
+        /// <param name="days">Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.</param>
+        /// <param name="startDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date</param>
+        /// <param name="endDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate</param>
+        /// <param name="receipt">Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<int> GetShippingCount2Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/shipping2/count"
+                    urlBuilder_.Append("rest/1.3/shipping2/count");
+                    urlBuilder_.Append('?');
+                    if (status != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("status")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(status, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (days != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("days")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(days, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (startDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("startDate")).Append('=').Append(System.Uri.EscapeDataString(startDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (endDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("endDate")).Append('=').Append(System.Uri.EscapeDataString(endDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (receipt != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("receipt")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<int>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned.&nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="status">Can be 'shipped', 'notshipped' or 'all' - to find related orders.</param>
+        /// <param name="days">Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.</param>
+        /// <param name="startDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date</param>
+        /// <param name="endDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate</param>
+        /// <param name="receipt">Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.</param>
+        /// <param name="page">Page Number. Results only return 100 records at a time</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ShippingList?> GetShippings2Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+
+                    if (page != null)
+                        request_.Headers.TryAddWithoutValidation("page", ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture));
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/shipping2/list"
+                    urlBuilder_.Append("rest/1.3/shipping2/list");
+                    urlBuilder_.Append('?');
+                    if (status != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("status")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(status, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (days != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("days")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(days, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (startDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("startDate")).Append('=').Append(System.Uri.EscapeDataString(startDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (endDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("endDate")).Append('=').Append(System.Uri.EscapeDataString(endDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (receipt != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("receipt")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ShippingList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 206)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ShippingList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Creates a shipping notice for the given transaction.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • api_order_write • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="date">The shipping date (yyyy-mm-dd).</param>
+        /// <param name="carrier">The shipping carrier.</param>
+        /// <param name="tracking">The tracking id.</param>
+        /// <param name="comments">The comments associated with the notice.</param>
+        /// <param name="item">The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.</param>
+        /// <param name="fillOrder">Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated.</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ShippingNoticeData?> CreateShipNotice2Async(string receipt, DateOnly? date = null, string? carrier = null, string? tracking = null, string? comments = null, string? item = null, bool? fillOrder = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/shipping2/shipnotice/{receipt}"
+                    urlBuilder_.Append("rest/1.3/shipping2/shipnotice/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('?');
+                    if (date != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("date")).Append('=').Append(System.Uri.EscapeDataString(date.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (carrier != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("carrier")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(carrier, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (tracking != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("tracking")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(tracking, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (comments != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("comments")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(comments, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (item != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("item")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (fillOrder != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("fillOrder")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(fillOrder, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ShippingNoticeData?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Returns the ship notices for the given transaction.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ShippingNoticeList?> GetShipNotice2Async(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            if (receipt == null)
+                throw new System.ArgumentNullException("receipt");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/shipping2/shipnotice/{receipt}"
+                    urlBuilder_.Append("rest/1.3/shipping2/shipnotice/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ShippingNoticeList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        protected struct ObjectResponseResult<T>
+        {
+            public ObjectResponseResult(T responseObject, string responseText)
+            {
+                this.Object = responseObject;
+                this.Text = responseText;
+            }
+
+            public T Object { get; }
+
+            public string Text { get; }
+        }
+
+        public bool ReadResponseAsString { get; set; }
+
+        protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Threading.CancellationToken cancellationToken)
+        {
+            if (response == null || response.Content == null)
+            {
+                return new ObjectResponseResult<T>(default(T)!, string.Empty);
+            }
+
+            if (ReadResponseAsString)
+            {
+                var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    var typedBody = System.Text.Json.JsonSerializer.Deserialize<T>(responseText, JsonSerializerSettings);
+                    return new ObjectResponseResult<T>(typedBody!, responseText);
+                }
+                catch (System.Text.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                }
+            }
+            else
+            {
+                try
+                {
+                    using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    {
+                        var typedBody = await System.Text.Json.JsonSerializer.DeserializeAsync<T>(responseStream, JsonSerializerSettings, cancellationToken).ConfigureAwait(false);
+                        return new ObjectResponseResult<T>(typedBody!, string.Empty);
+                    }
+                }
+                catch (System.Text.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                }
+            }
+        }
+
+        private string ConvertToString(object? value, System.Globalization.CultureInfo cultureInfo)
+        {
+            if (value == null)
+            {
+                return "";
+            }
+
+            if (value is System.Enum)
+            {
+                var name = System.Enum.GetName(value.GetType(), value);
+                if (name != null)
+                {
+                    var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
+                    if (field != null)
+                    {
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                            as System.Runtime.Serialization.EnumMemberAttribute;
+                        if (attribute != null)
+                        {
+                            return attribute.Value != null ? attribute.Value : name;
+                        }
+                    }
+
+                    var converted = System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
+                    return converted == null ? string.Empty : converted;
+                }
+            }
+            else if (value is bool) 
+            {
+                return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
+            }
+            else if (value is byte[])
+            {
+                return System.Convert.ToBase64String((byte[]) value);
+            }
+            else if (value is string[])
+            {
+                return string.Join(",", (string[])value);
+            }
+            else if (value.GetType().IsArray)
+            {
+                var valueArray = (System.Array)value;
+                var valueTextArray = new string[valueArray.Length];
+                for (var i = 0; i < valueArray.Length; i++)
+                {
+                    valueTextArray[i] = ConvertToString(valueArray.GetValue(i), cultureInfo);
+                }
+                return string.Join(",", valueTextArray);
+            }
+
+            var result = System.Convert.ToString(value, cultureInfo);
+            return result == null ? "" : result;
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial interface IShipping3Client
+    {
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Returns a count of physical goods orders matching the shipping criteria.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="status">Can be 'shipped', 'notshipped' or 'all' - to find related orders.</param>
+        /// <param name="days">Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.</param>
+        /// <param name="startDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date</param>
+        /// <param name="endDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate</param>
+        /// <param name="receipt">Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<int> GetShippingCount3Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned.&nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="status">Can be 'shipped', 'notshipped' or 'all' - to find related orders.</param>
+        /// <param name="days">Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.</param>
+        /// <param name="startDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date</param>
+        /// <param name="endDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate</param>
+        /// <param name="receipt">Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.</param>
+        /// <param name="page">Page Number. Results only return 100 records at a time</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ShippingList?> GetShippings3Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Creates a shipping notice for the given transaction.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • api_order_write • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="date">The shipping date (yyyy-mm-dd).</param>
+        /// <param name="carrier">The shipping carrier.</param>
+        /// <param name="tracking">The tracking id.</param>
+        /// <param name="comments">The comments associated with the notice.</param>
+        /// <param name="item">The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.</param>
+        /// <param name="fillOrder">Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated.</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ShippingNoticeData?> CreateShipNotice3Async(string receipt, DateOnly? date = null, string? carrier = null, string? tracking = null, string? comments = null, string? item = null, bool? fillOrder = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Returns the ship notices for the given transaction.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ShippingNoticeList?> GetShipNotice3Async(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    internal partial class Shipping3Client : ClickBankClientBase, IShipping3Client
+    {
+        #pragma warning disable 8618
+        private string _baseUrl;
+        #pragma warning restore 8618
+
+        private System.Net.Http.HttpClient _httpClient;
+        private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
+        private System.Text.Json.JsonSerializerOptions _instanceSettings;
+
+    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        public Shipping3Client(System.Net.Http.HttpClient httpClient)
+    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        {
+            BaseUrl = "https://api.clickbank.com";
+            _httpClient = httpClient;
+            Initialize();
+        }
+
+        private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
+        {
+            var settings = new System.Text.Json.JsonSerializerOptions();
+            UpdateJsonSerializerSettings(settings);
+            return settings;
+        }
+
+        public string BaseUrl
+        {
+            get { return _baseUrl; }
+            set
+            {
+                _baseUrl = value;
+                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
+                    _baseUrl += '/';
+            }
+        }
+
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
+
+        partial void Initialize();
+
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
+        partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Returns a count of physical goods orders matching the shipping criteria.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="status">Can be 'shipped', 'notshipped' or 'all' - to find related orders.</param>
+        /// <param name="days">Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.</param>
+        /// <param name="startDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date</param>
+        /// <param name="endDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate</param>
+        /// <param name="receipt">Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<int> GetShippingCount3Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/shipping3/count"
+                    urlBuilder_.Append("rest/1.3/shipping3/count");
+                    urlBuilder_.Append('?');
+                    if (status != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("status")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(status, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (days != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("days")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(days, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (startDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("startDate")).Append('=').Append(System.Uri.EscapeDataString(startDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (endDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("endDate")).Append('=').Append(System.Uri.EscapeDataString(endDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (receipt != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("receipt")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<int>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// List physical goods orders matching the shipping criteria. Only the first 100 orders will be returned.&nbsp;This method supports pagination, so if the second page of the next 100 items is required a request header 'Page' with value 2 will return them.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="status">Can be 'shipped', 'notshipped' or 'all' - to find related orders.</param>
+        /// <param name="days">Return orders within the last n days. If start and end date are specified, they will take precedence over this value. If neither days, startDate or endDate is specified, it will default to last 30 days or orders.</param>
+        /// <param name="startDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the start date</param>
+        /// <param name="endDate">Instead of using the days parameter, a user can specify a date range (yyyy-mm-dd). This is the endDate</param>
+        /// <param name="receipt">Search the physical good order by receipt. If this parameter is specified, the other search parameters will be ignored.</param>
+        /// <param name="page">Page Number. Results only return 100 records at a time</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ShippingList?> GetShippings3Async(ShippingStatus? status = null, int? days = null, DateOnly? startDate = null, DateOnly? endDate = null, string? receipt = null, int? page = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+
+                    if (page != null)
+                        request_.Headers.TryAddWithoutValidation("page", ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture));
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "rest/1.3/shipping3/list"
+                    urlBuilder_.Append("rest/1.3/shipping3/list");
+                    urlBuilder_.Append('?');
+                    if (status != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("status")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(status, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (days != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("days")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(days, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (startDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("startDate")).Append('=').Append(System.Uri.EscapeDataString(startDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (endDate != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("endDate")).Append('=').Append(System.Uri.EscapeDataString(endDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (receipt != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("receipt")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(receipt, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ShippingList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 206)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ShippingList?>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Forbidden", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Creates a shipping notice for the given transaction.
+        /// </summary>
+        /// <remarks>
+        /// <b>Permissions Required</b>: api_order_read • api_order_write • HAS_DEVELOPER_KEY
+        /// </remarks>
+        /// <param name="date">The shipping date (yyyy-mm-dd).</param>
+        /// <param name="carrier">The shipping carrier.</param>
+        /// <param name="tracking">The tracking id.</param>
+        /// <param name="comments">The comments associated with the notice.</param>
+        /// <param name="item">The sku/itemNo of the line item. This parameter is required if the transaction includes multiple physical items.</param>
+        /// <param name="fillOrder">Indicates that the receipt is part of an order to be shipped altogether, for which the remaining shipping notices should be automatically generated.</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ShippingNoticeData?> CreateShipNotice3Async(string receipt, DateOnly? date = null, string? carrier = null, string? tracking = null, string? comments = null, string? item = null, bool? fillOrder = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");
@@ -5705,7 +8442,7 @@ namespace Ocelli.OpenClickBank
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ShippingNoticeList?> GetShipNoticeAsync(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ShippingNoticeList?> GetShipNotice3Async(string receipt, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (receipt == null)
                 throw new System.ArgumentNullException("receipt");

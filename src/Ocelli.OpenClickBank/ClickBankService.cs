@@ -7,10 +7,12 @@ internal class ClickBankService(HttpClient httpClient, OpenClickBankConfig confi
     public IDebugClient Debugs => new DebugClient(httpClient);
     public IImagesClient Images => new ImagesClient(httpClient);
     public INotificationService Notifications => new NotificationService();
-    public IOrders2Client Orders => new Orders2Client(httpClient);
+    public IOrdersClient Orders => new OrdersClient(httpClient);
     public IOrders2Client Orders2 => new Orders2Client(httpClient);
     public IProductsClient Products => new ProductsClient(httpClient);
-    public IShipping3Client Shipping => new Shipping3Client(httpClient);
+    public IShippingClient Shipping => new ShippingClient(httpClient);
+    public IShipping2Client Shipping2 => new Shipping2Client(httpClient);
+    public IShipping3Client Shipping3 => new Shipping3Client(httpClient);
     public ITicketsClient Tickets => new TicketsClient(httpClient);
     public IQuickstatsClient Quickstats => new QuickstatsClient(httpClient);
 }

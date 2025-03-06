@@ -9,8 +9,6 @@ namespace Ocelli.OpenClickBank.Builder.Controllers.v1_3;
 
 /// <inheritdoc cref="Shipping2ControllerBase" />
 [ApiController]
-[Obsolete("Use shipping2 API")]
-[ApiExplorerSettings(IgnoreApi = true)]
 [SwaggerTag("The Shipping API provides shipping information for physical good orders by receipt or time parameters. This also contains the Ship Notice API.", "https://api.clickbank.com/rest/1.3/shipping2")]
 public class Shipping2Controller : Shipping2ControllerBase
 {

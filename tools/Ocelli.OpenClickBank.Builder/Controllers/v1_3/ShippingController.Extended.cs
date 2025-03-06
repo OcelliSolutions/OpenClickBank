@@ -9,8 +9,6 @@ namespace Ocelli.OpenClickBank.Builder.Controllers.v1_3;
 
 /// <inheritdoc cref="ShippingControllerBase" />
 [ApiController]
-[Obsolete("Use shipping API")]
-[ApiExplorerSettings(IgnoreApi = true)]
 [SwaggerTag("The Shipping API provides shipping information for physical good orders by receipt or time parameters. This also contains the Ship Notice API.", "https://api.clickbank.com/rest/1.3/shipping")]
 public class ShippingController : ShippingControllerBase
 {
@@ -27,7 +25,7 @@ public class ShippingController : ShippingControllerBase
 
     /// <inheritdoc cref="ShippingControllerBase.GetShippingCount" />
     [HttpGet, Route("1.3/shipping/count.ignore"), ApiExplorerSettings(IgnoreApi = true)]
-    override public Task GetShippingCount(string? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
+    public override Task GetShippingCount(string? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
         string? receipt = null) =>
         throw new NotImplementedException();
 
@@ -44,7 +42,7 @@ public class ShippingController : ShippingControllerBase
 
     /// <inheritdoc cref="ShippingControllerBase.GetShippings" />
     [HttpGet, Route("1.3/shipping/list.ignore"), ApiExplorerSettings(IgnoreApi = true)]
-    override public Task GetShippings(string? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
+    public override Task GetShippings(string? status = null, int? days = null, DateTime? startDate = null, DateTime? endDate = null,
         string? receipt = null, [FromHeader] int? page = null) =>
         throw new NotImplementedException();
 
@@ -53,7 +51,7 @@ public class ShippingController : ShippingControllerBase
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.API_ORDER_WRITE, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(ShippingNoticeData), StatusCodes.Status200OK)]
-    override public Task CreateShipNotice(string receipt, DateTime date, string carrier, string? tracking = null, string? comments = null,
+    public override Task CreateShipNotice(string receipt, DateTime date, string carrier, string? tracking = null, string? comments = null,
         string? item = null) =>
         throw new NotImplementedException();
 
@@ -62,5 +60,5 @@ public class ShippingController : ShippingControllerBase
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(ShippingNoticeList), StatusCodes.Status200OK)]
-    override public Task GetShipNotice(string receipt) => throw new NotImplementedException();
+    public override Task GetShipNotice(string receipt) => throw new NotImplementedException();
 }

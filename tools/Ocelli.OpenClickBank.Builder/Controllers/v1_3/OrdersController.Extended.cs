@@ -9,8 +9,6 @@ namespace Ocelli.OpenClickBank.Builder.Controllers.v1_3;
 
 /// <inheritdoc cref="OrdersControllerBase"/>
 [ApiController]
-[Obsolete("Use orders API")]
-[ApiExplorerSettings(IgnoreApi = true)]
 [SwaggerTag("The Orders API lets you view order information and update some order parameters", "https://api.clickbank.com/rest/1.3/orders")]
 public class OrdersController : OrdersControllerBase
 {
@@ -19,28 +17,28 @@ public class OrdersController : OrdersControllerBase
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.HAS_DEVELOPER_KEY, ApiPermission.API_SUBSCRIPTION_MODIFICATIONS })]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    override public Task ReinstateOrder(string receipt, string? sku = null) => throw new NotImplementedException();
+    public override Task ReinstateOrder(string receipt, string? sku = null) => throw new NotImplementedException();
 
     /// <inheritdoc cref="OrdersControllerBase.PauseOrder"/>
     [Authorize]
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.HAS_DEVELOPER_KEY, ApiPermission.API_SUBSCRIPTION_MODIFICATIONS })]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    override public Task PauseOrder(string receipt, DateTime restartDate, string? sku = null) => throw new NotImplementedException();
+    public override Task PauseOrder(string receipt, DateTime restartDate, string? sku = null) => throw new NotImplementedException();
 
     /// <inheritdoc cref="OrdersControllerBase.ExtendOrder"/>
     [Authorize]
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.HAS_DEVELOPER_KEY, ApiPermission.API_SUBSCRIPTION_MODIFICATIONS })]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    override public Task ExtendOrder(string receipt, int numPeriods, string? sku = null) => throw new NotImplementedException();
+    public override Task ExtendOrder(string receipt, int numPeriods, string? sku = null) => throw new NotImplementedException();
 
     /// <inheritdoc cref="OrdersControllerBase.ChangeProductOrder"/>
     [Authorize]
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.HAS_DEVELOPER_KEY, ApiPermission.API_ORDER_WRITE, ApiPermission.API_SUBSCRIPTION_MODIFICATIONS })]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    override public Task ChangeProductOrder(string receipt, string oldSku, string newSku, bool? carryAffiliate = null,
+    public override Task ChangeProductOrder(string receipt, string oldSku, string newSku, bool? carryAffiliate = null,
         bool? applyProratedRefundQuery = null, DateTime? nextRebillDate = null) =>
         throw new NotImplementedException();
 
@@ -49,7 +47,7 @@ public class OrdersController : OrdersControllerBase
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.HAS_DEVELOPER_KEY, ApiPermission.API_ORDER_WRITE })]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    override public Task ChangeAddressOrder(string receipt, string address1, string city, string countryCode, string? firstName = null,
+    public override Task ChangeAddressOrder(string receipt, string address1, string city, string countryCode, string? firstName = null,
         string? lastName = null, string? address2 = null, string? county = null, string? province = null,
         string? postalCode = null) =>
         throw new NotImplementedException();
@@ -66,7 +64,7 @@ public class OrdersController : OrdersControllerBase
 
     /// <inheritdoc cref="OrdersControllerBase.GetOrderCount"/>
     [HttpGet, Route("1.3/orders/count.ignore"), ApiExplorerSettings(IgnoreApi = true)]
-    override public Task GetOrderCount(DateTime? startDate = null, DateTime? endDate = null, string? type = null, string? vendor = null,
+    public override Task GetOrderCount(DateTime? startDate = null, DateTime? endDate = null, string? type = null, string? vendor = null,
         string? affiliate = null, string? lastName = null, string? email = null, string? tid = null, string? role = null) =>
         throw new NotImplementedException();
 
@@ -84,7 +82,7 @@ public class OrdersController : OrdersControllerBase
 
     /// <inheritdoc cref="OrdersControllerBase.GetOrders"/>
     [HttpGet, Route("1.3/orders/list.ignore"), ApiExplorerSettings(IgnoreApi = true)]
-    override public Task GetOrders(DateTime? startDate = null, DateTime? endDate = null, string? type = null, string? vendor = null,
+    public override Task GetOrders(DateTime? startDate = null, DateTime? endDate = null, string? type = null, string? vendor = null,
         string? affiliate = null, string? lastName = null, string? item = null, string? email = null, string? tid = null,
         string? role = null, string? postalCode = null, double? amount = null, [FromHeader] int? page = null) =>
         throw new NotImplementedException();
@@ -109,5 +107,5 @@ public class OrdersController : OrdersControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(OrderList), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    override public Task GetOrderUpsells(string receipt) => throw new NotImplementedException();
+    public override Task GetOrderUpsells(string receipt) => throw new NotImplementedException();
 }

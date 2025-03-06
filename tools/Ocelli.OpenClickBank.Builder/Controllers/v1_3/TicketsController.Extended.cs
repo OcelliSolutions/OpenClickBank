@@ -34,7 +34,7 @@ public class TicketsController : TicketsControllerBase
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_WRITE, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(TicketData), StatusCodes.Status200OK)]
-    override public Task CreateTicket(string receipt, string type, string reason, string? sku = null,
+    public override Task CreateTicket(string receipt, string type, string reason, string? sku = null,
         string? comment = null,
         string? refundType = null, double? refundAmount = null, bool? retainSubscription = null) =>
         throw new NotImplementedException();
@@ -44,7 +44,7 @@ public class TicketsController : TicketsControllerBase
     [Produces("application/json", "application/xml")]
     [ApiAuthorizationFilter(new[] { ApiPermission.API_ORDER_READ, ApiPermission.HAS_DEVELOPER_KEY })]
     [ProducesResponseType(typeof(TicketData), StatusCodes.Status200OK)]
-    override public Task GetTicket(int id) => throw new NotImplementedException();
+    public override Task GetTicket(int id) => throw new NotImplementedException();
 
     /// <inheritdoc cref="TicketsControllerBase.GetTicketCount" />
     [HttpGet]
@@ -60,7 +60,7 @@ public class TicketsController : TicketsControllerBase
     [HttpGet]
     [Route("1.3/tickets/count.ignore")]
     [ApiExplorerSettings(IgnoreApi = true)]
-    override public Task GetTicketCount(string? type = null, string? status = null, string? receipt = null) =>
+    public override Task GetTicketCount(string? type = null, string? status = null, string? receipt = null) =>
         throw new NotImplementedException();
 
     /// <inheritdoc cref="TicketsControllerBase.GetTickets" />
@@ -81,7 +81,7 @@ public class TicketsController : TicketsControllerBase
     [HttpGet]
     [Route("1.3/tickets/list.ignore")]
     [ApiExplorerSettings(IgnoreApi = true)]
-    override public Task GetTickets(string? type = null, string? status = null, string? receipt = null,
+    public override Task GetTickets(string? type = null, string? status = null, string? receipt = null,
         DateTime? createDateFrom = null,
         DateTime? createDateTo = null, DateTime? updateDateFrom = null, DateTime? updateDateTo = null,
         DateTime? closeDateFrom = null, DateTime? closeDateTo = null, [FromHeader] int? page = null) =>
@@ -101,7 +101,7 @@ public class TicketsController : TicketsControllerBase
     [HttpGet]
     [Route("1.3/tickets/refundAmounts/{receipt}.ignore")]
     [ApiExplorerSettings(IgnoreApi = true)]
-    override public Task GetTicketRefundAmounts(string receipt, string refundType, double refundAmount,
+    public override Task GetTicketRefundAmounts(string receipt, string refundType, double refundAmount,
         string? sku = null) => throw new NotImplementedException();
 
     /// <inheritdoc cref="TicketsControllerBase.ReturnedTicket" />
@@ -113,7 +113,7 @@ public class TicketsController : TicketsControllerBase
     })]
     [ProducesResponseType(typeof(ShippingNoticeList), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    override public Task ReturnedTicket(int id) => throw new NotImplementedException();
+    public override Task ReturnedTicket(int id) => throw new NotImplementedException();
 
 
     /// <inheritdoc cref="TicketsControllerBase.UpdateTicket" />
@@ -134,6 +134,6 @@ public class TicketsController : TicketsControllerBase
     [HttpPut]
     [Route("1.3/tickets/{id}.ignore")]
     [ApiExplorerSettings(IgnoreApi = true)]
-    override public Task UpdateTicket(int id, string? action = null, string? comment = null, string? type = null) =>
+    public override Task UpdateTicket(int id, string? action = null, string? comment = null, string? type = null) =>
         throw new NotImplementedException();
 }

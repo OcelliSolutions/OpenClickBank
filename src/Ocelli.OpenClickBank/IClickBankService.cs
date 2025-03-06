@@ -6,9 +6,12 @@ public interface IClickBankService
     IDebugClient Debugs { get; }
     IImagesClient Images { get; }
     INotificationService Notifications { get; }
-    IOrders2Client Orders { get; }
+    IOrdersClient Orders { get; }
+    IOrders2Client Orders2 { get; }
     IProductsClient Products { get; }
     IQuickstatsClient Quickstats { get; }
-    IShipping3Client Shipping { get; }
+    IShippingClient Shipping { get; }
+    IShipping2Client Shipping2 { get; }
+    IShipping3Client Shipping3 { get; }
     ITicketsClient Tickets { get; }
 }
