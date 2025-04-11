@@ -28,7 +28,9 @@ public enum PaymentMethod
     [EnumMember(Value = "N/A")]
     N_A,
     [EnumMember(Value = "MSTR_PAZE")]
-    MSTR_PAZE
+    MSTR_PAZE,
+    [EnumMember(Value = "MSTR_APPLE")]
+    MSTR_APPLE
 }
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 

@@ -10817,6 +10817,9 @@ namespace Ocelli.OpenClickBank
         [System.Runtime.Serialization.EnumMember(Value = @"MSTR_PAZE")]
         MSTR_PAZE = 11,
 
+        [System.Runtime.Serialization.EnumMember(Value = @"MSTR_APPLE")]
+        MSTR_APPLE = 12,
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]

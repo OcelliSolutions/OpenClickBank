@@ -4024,6 +4024,7 @@ components:
         - TEST
         - N/A
         - MSTR_PAZE
+        - MSTR_APPLE
       type: string
       additionalProperties: { }
     PhysicalPricing:
