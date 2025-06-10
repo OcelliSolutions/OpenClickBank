@@ -10,7 +10,7 @@ public class OrderData
     public string? Receipt { get; set; }
     public string? TrackingId { get; set; }
     [JsonPropertyName("paytmentMethod")] 
-    public string PaymentMethod { get; set; }
+    public string PaymentMethod { get; set; } = null!;
     public TransactionType? TransactionType { get; set; }
     public decimal? TotalOrderAmount { get; set; }
     public decimal? TotalShippingAmount { get; set; }

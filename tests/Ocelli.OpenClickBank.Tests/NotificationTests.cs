@@ -32,7 +32,7 @@ public class NotificationTests(ITestOutputHelper testOutputHelper, SharedFixture
         Assert.Equal("ketoboost1", notification.Vendor);
         Assert.Equal(NotificationRole.VENDOR, notification.Role);
         Assert.Equal((decimal)1.0, notification.TotalAccountAmount);
-        Assert.Equal(PaymentMethod.VISA, notification.PaymentMethod);
+        Assert.Equal("VISA", notification.PaymentMethod);
         Assert.Equal((decimal)1.0, notification.TotalOrderAmount);
         Assert.Equal((decimal)0.0, notification.TotalTaxAmount);
         Assert.Equal((decimal)0.0, notification.TotalShippingAmount);

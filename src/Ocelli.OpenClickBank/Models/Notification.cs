@@ -19,7 +19,7 @@ public class Notification
 
     public decimal TotalAccountAmount { get; set; }
 
-    public PaymentMethod PaymentMethod { get; set; }
+    public string PaymentMethod { get; set; } = null!;
 
     public decimal TotalOrderAmount { get; set; }
 

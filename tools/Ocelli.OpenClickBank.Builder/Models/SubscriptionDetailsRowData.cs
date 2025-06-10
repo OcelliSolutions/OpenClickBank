@@ -23,7 +23,7 @@ public class SubscriptionDetailsRowData
     public int InitialSaleCount { get; set; }
     public string? ItemNo { get; set; }
     public DateTimeOffset? NextPaymentDate { get; set; }
-    public string PaymentMethod { get; set; }
+    public string PaymentMethod { get; set; } = null!;
     public int ProcessedPaymentsCount { get; set; }
     public string? Province { get; set; }
     public string? PubNickName { get; set; }

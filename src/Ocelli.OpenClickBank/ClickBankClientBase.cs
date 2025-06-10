@@ -27,7 +27,6 @@ internal class ClickBankClientBase
         settings.Converters.Add(new EnumConverter<LineItemType>());
         settings.Converters.Add(new EnumConverter<LineItemStatus>());
         settings.Converters.Add(new EnumConverter<OrderRole>());
-        settings.Converters.Add(new EnumConverter<PaymentMethod>());
         settings.Converters.Add(new EnumConverter<ProductCategory>());
         settings.Converters.Add(new EnumConverter<ProductType>());
         settings.Converters.Add(new EnumConverter<RecurringFrequency>());

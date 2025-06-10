@@ -12,7 +12,6 @@ internal class NotificationService : INotificationService
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         options.Converters.Add(new EnumConverter<NotificationTransactionType>());
         options.Converters.Add(new EnumConverter<NotificationRole>());
-        options.Converters.Add(new EnumConverter<PaymentMethod>());
         options.Converters.Add(new EnumConverter<LineItemType>());
         options.Converters.Add(new DateTimeOffsetConverter());
         var result = JsonSerializer.Deserialize<Notification>(decryptedString, options);
