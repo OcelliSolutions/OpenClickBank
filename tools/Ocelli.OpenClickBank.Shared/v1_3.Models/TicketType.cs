@@ -57,9 +57,6 @@ namespace v1_3.Models
         [System.Xml.Serialization.XmlEnumAttribute("APPROVAL_ADVANCED_UPSELL")]
         ApprovalAdvancedUpsell,
         
-        [System.Xml.Serialization.XmlEnumAttribute("APPROVAL_CSS_ORDERFORM")]
-        ApprovalCssOrderform,
-        
         [System.Xml.Serialization.XmlEnumAttribute("APPROVAL_TEMPLATE_ORDERFORM")]
         ApprovalTemplateOrderform,
         
@@ -68,9 +65,6 @@ namespace v1_3.Models
         
         [System.Xml.Serialization.XmlEnumAttribute("APPROVAL_ORDER_BUMP_CUSTOM_TEXT")]
         ApprovalOrderBumpCustomText,
-        
-        [System.Xml.Serialization.XmlEnumAttribute("APPROVAL_EXIT_OFFER")]
-        ApprovalExitOffer,
         
         [System.Xml.Serialization.XmlEnumAttribute("APPROVAL_PHOTO_ID")]
         ApprovalPhotoId,

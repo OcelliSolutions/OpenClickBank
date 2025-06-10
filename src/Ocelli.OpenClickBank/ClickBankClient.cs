@@ -10517,8 +10517,7 @@ namespace Ocelli.OpenClickBank
         public string? TrackingId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("paytmentMethod")]
-        
-        public PaymentMethod? PaytmentMethod { get; set; } = default!;
+        public string? PaytmentMethod { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("transactionType")]
         
@@ -10774,51 +10773,6 @@ namespace Ocelli.OpenClickBank
             get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
             set { _additionalProperties = value; }
         }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum PaymentMethod
-    {
-
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        NIL = 0,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"PYPL")]
-        PYPL = 1,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"PYPL-NEW")]
-        PYPL_NEW = 2,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"VISA")]
-        VISA = 3,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"MSTR")]
-        MSTR = 4,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"DISC")]
-        DISC = 5,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"AMEX")]
-        AMEX = 6,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"DNRS")]
-        DNRS = 7,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"MAES")]
-        MAES = 8,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"TEST")]
-        TEST = 9,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"N/A")]
-        N_A = 10,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"MSTR_PAZE")]
-        MSTR_PAZE = 11,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"MSTR_APPLE")]
-        MSTR_APPLE = 12,
 
     }
 
@@ -11796,8 +11750,7 @@ namespace Ocelli.OpenClickBank
         public System.DateTimeOffset? NextPaymentDate { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("paymentMethod")]
-        
-        public PaymentMethod? PaymentMethod { get; set; } = default!;
+        public string? PaymentMethod { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("processedPaymentsCount")]
         public int? ProcessedPaymentsCount { get; set; } = default!;

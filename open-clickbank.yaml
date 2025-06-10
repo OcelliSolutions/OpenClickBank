@@ -3819,7 +3819,8 @@ components:
           type: string
           nullable: true
         paytmentMethod:
-          $ref: '#/components/schemas/PaymentMethod'
+          type: string
+          nullable: true
         transactionType:
           $ref: '#/components/schemas/TransactionType'
         totalOrderAmount:
@@ -4010,23 +4011,6 @@ components:
           nullable: true
       additionalProperties: { }
       nullable: true
-    PaymentMethod:
-      enum:
-        - nil
-        - PYPL
-        - PYPL-NEW
-        - VISA
-        - MSTR
-        - DISC
-        - AMEX
-        - DNRS
-        - MAES
-        - TEST
-        - N/A
-        - MSTR_PAZE
-        - MSTR_APPLE
-      type: string
-      additionalProperties: { }
     PhysicalPricing:
       type: object
       properties:
@@ -4576,7 +4560,8 @@ components:
           format: date-time
           nullable: true
         paymentMethod:
-          $ref: '#/components/schemas/PaymentMethod'
+          type: string
+          nullable: true
         processedPaymentsCount:
           type: integer
           format: int32
