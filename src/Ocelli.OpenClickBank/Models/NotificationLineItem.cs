@@ -16,5 +16,5 @@ public class NotificationLineItem
     public decimal AccountAmount { get; set; }
     public int Quantity { get; set; }
     public string? DownloadUrl { get; set; }
-    public LineItemType? LineItemType { get; set; }
+    public string? LineItemType { get; set; }
 }

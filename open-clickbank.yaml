@@ -3758,7 +3758,8 @@ components:
           format: int32
           nullable: true
         lineItemType:
-          $ref: '#/components/schemas/LineItemType'
+          type: string
+          nullable: true
         rebillAmount:
           type: number
           format: double
@@ -3778,30 +3779,11 @@ components:
           format: date-time
           nullable: true
         status:
-          $ref: '#/components/schemas/LineItemStatus'
+          type: string
+          nullable: true
         role:
-          $ref: '#/components/schemas/OrderRole'
-      additionalProperties: { }
-    LineItemStatus:
-      enum:
-        - nil
-        - ACTIVE
-        - AUTHORIZATION_FAILURE
-        - CANCELED
-        - COMPLETED
-        - VALIDATION_FAILURE
-      type: string
-      additionalProperties: { }
-    LineItemType:
-      enum:
-        - nil
-        - ORIGINAL
-        - BUMP
-        - CART
-        - STANDARD
-        - TOKEN
-        - UPSELL
-      type: string
+          type: string
+          nullable: true
       additionalProperties: { }
     OrderData:
       type: object
@@ -3822,7 +3804,8 @@ components:
           type: string
           nullable: true
         transactionType:
-          $ref: '#/components/schemas/TransactionType'
+          type: string
+          nullable: true
         totalOrderAmount:
           type: number
           format: double
@@ -3854,7 +3837,8 @@ components:
           type: string
           nullable: true
         currency:
-          $ref: '#/components/schemas/Currency'
+          type: string
+          nullable: true
         declinedConsent:
           type: boolean
         email:
@@ -3869,12 +3853,14 @@ components:
             $ref: '#/components/schemas/ContactField'
           nullable: true
         role:
-          $ref: '#/components/schemas/OrderRole'
+          type: string
+          nullable: true
         fullName:
           type: string
           nullable: true
         customerRefundableState:
-          $ref: '#/components/schemas/RefundableState'
+          type: string
+          nullable: true
         vendorVariables:
           $ref: '#/components/schemas/VendorVariableElementArray'
         lineItemData:
@@ -3893,15 +3879,6 @@ components:
           nullable: true
       additionalProperties: { }
       nullable: true
-    OrderRole:
-      enum:
-        - nil
-        - VENDOR
-        - AFFILIATE
-        - JV_TRADITIONAL
-        - JV_UPSELL
-      type: string
-      additionalProperties: { }
     OrderShipData:
       type: object
       properties:
@@ -4328,20 +4305,6 @@ components:
         - PARTIAL_AMOUNT
         - PARTIAL_QUANTITY
         - TAX
-      type: string
-      additionalProperties: { }
-    RefundableState:
-      enum:
-        - nil
-        - REFUNDABLE
-        - SUGGESTED_REFUND_BLOCK
-        - UNREFUNDABLE
-        - ALREADY_REFUNDED
-        - TOO_OLD
-        - REFUND_BLOCKED
-        - HAS_OPEN_REFUND
-        - OVER_ELV_LIMIT
-        - PROVIDER_DISCONNECTED
       type: string
       additionalProperties: { }
     RevRec:

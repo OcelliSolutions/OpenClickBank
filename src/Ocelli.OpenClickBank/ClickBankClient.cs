@@ -10409,8 +10409,7 @@ namespace Ocelli.OpenClickBank
         public int? Quantity { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lineItemType")]
-        
-        public LineItemType? LineItemType { get; set; } = default!;
+        public string? LineItemType { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("rebillAmount")]
         public double? RebillAmount { get; set; } = default!;
@@ -10430,12 +10429,10 @@ namespace Ocelli.OpenClickBank
         public System.DateTimeOffset? NextPaymentDate { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("status")]
-        
-        public LineItemStatus? Status { get; set; } = default!;
+        public string? Status { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("role")]
-        
-        public OrderRole? Role { get; set; } = default!;
+        public string? Role { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
@@ -10445,57 +10442,6 @@ namespace Ocelli.OpenClickBank
             get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
             set { _additionalProperties = value; }
         }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum LineItemStatus
-    {
-
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        NIL = 0,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"ACTIVE")]
-        ACTIVE = 1,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"AUTHORIZATION_FAILURE")]
-        AUTHORIZATION_FAILURE = 2,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"CANCELED")]
-        CANCELED = 3,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"COMPLETED")]
-        COMPLETED = 4,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"VALIDATION_FAILURE")]
-        VALIDATION_FAILURE = 5,
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum LineItemType
-    {
-
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        NIL = 0,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"ORIGINAL")]
-        ORIGINAL = 1,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"BUMP")]
-        BUMP = 2,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"CART")]
-        CART = 3,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"STANDARD")]
-        STANDARD = 4,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"TOKEN")]
-        TOKEN = 5,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"UPSELL")]
-        UPSELL = 6,
 
     }
 
@@ -10520,8 +10466,7 @@ namespace Ocelli.OpenClickBank
         public string? PaytmentMethod { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("transactionType")]
-        
-        public TransactionType? TransactionType { get; set; } = default!;
+        public string? TransactionType { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("totalOrderAmount")]
         public double? TotalOrderAmount { get; set; } = default!;
@@ -10551,8 +10496,7 @@ namespace Ocelli.OpenClickBank
         public string? FirstName { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("currency")]
-        
-        public Currency? Currency { get; set; } = default!;
+        public string? Currency { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("declinedConsent")]
         public bool? DeclinedConsent { get; set; } = default!;
@@ -10567,15 +10511,13 @@ namespace Ocelli.OpenClickBank
         public System.Collections.Generic.ICollection<ContactField>? CustomerContactInfo { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("role")]
-        
-        public OrderRole? Role { get; set; } = default!;
+        public string? Role { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("fullName")]
         public string? FullName { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("customerRefundableState")]
-        
-        public RefundableState? CustomerRefundableState { get; set; } = default!;
+        public string? CustomerRefundableState { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("vendorVariables")]
         public VendorVariableElementArray? VendorVariables { get; set; } = default!;
@@ -10609,27 +10551,6 @@ namespace Ocelli.OpenClickBank
             get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
             set { _additionalProperties = value; }
         }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum OrderRole
-    {
-
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        NIL = 0,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"VENDOR")]
-        VENDOR = 1,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"AFFILIATE")]
-        AFFILIATE = 2,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"JV_TRADITIONAL")]
-        JV_TRADITIONAL = 3,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"JV_UPSELL")]
-        JV_UPSELL = 4,
 
     }
 
@@ -11315,42 +11236,6 @@ namespace Ocelli.OpenClickBank
 
         [System.Runtime.Serialization.EnumMember(Value = @"TAX")]
         TAX = 5,
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum RefundableState
-    {
-
-        [System.Runtime.Serialization.EnumMember(Value = @"nil")]
-        NIL = 0,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"REFUNDABLE")]
-        REFUNDABLE = 1,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"SUGGESTED_REFUND_BLOCK")]
-        SUGGESTED_REFUND_BLOCK = 2,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"UNREFUNDABLE")]
-        UNREFUNDABLE = 3,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"ALREADY_REFUNDED")]
-        ALREADY_REFUNDED = 4,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"TOO_OLD")]
-        TOO_OLD = 5,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"REFUND_BLOCKED")]
-        REFUND_BLOCKED = 6,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"HAS_OPEN_REFUND")]
-        HAS_OPEN_REFUND = 7,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"OVER_ELV_LIMIT")]
-        OVER_ELV_LIMIT = 8,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"PROVIDER_DISCONNECTED")]
-        PROVIDER_DISCONNECTED = 9,
 
     }
 

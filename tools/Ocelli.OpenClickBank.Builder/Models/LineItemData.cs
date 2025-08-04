@@ -12,12 +12,12 @@ public class LineItemData
     public decimal? CustomerAmount { get; set; }
     public decimal? AccountAmount { get; set; }
     public int? Quantity { get; set; }
-    public LineItemType? LineItemType { get; set; }
+    public string? LineItemType { get; set; }
     public decimal? RebillAmount { get; set; }
     public int? ProcessedPayments { get; set; }
     public int? FuturePayments { get; set; }
     public DateTimeOffset? NextPaymentDate { get; set; }
-    public LineItemStatus? Status { get; set; }
-    public OrderRole? Role { get; set; }
+    public string? Status { get; set; }
+    public string? Role { get; set; }
 }
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

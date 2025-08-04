@@ -24,13 +24,13 @@ internal class ClickBankClientBase
         settings.Converters.Add(new EnumConverter<DimensionColumn>());
         settings.Converters.Add(new EnumConverter<ImageType>());
         settings.Converters.Add(new EnumConverter<Language>());
-        settings.Converters.Add(new EnumConverter<LineItemType>());
-        settings.Converters.Add(new EnumConverter<LineItemStatus>());
-        settings.Converters.Add(new EnumConverter<OrderRole>());
+        //settings.Converters.Add(new EnumConverter<LineItemType>());
+        //settings.Converters.Add(new EnumConverter<LineItemStatus>());
+        //settings.Converters.Add(new EnumConverter<OrderRole>());
         settings.Converters.Add(new EnumConverter<ProductCategory>());
         settings.Converters.Add(new EnumConverter<ProductType>());
         settings.Converters.Add(new EnumConverter<RecurringFrequency>());
-        settings.Converters.Add(new EnumConverter<RefundableState>());
+        //settings.Converters.Add(new EnumConverter<RefundableState>());
         settings.Converters.Add(new EnumConverter<RefundType>());
         settings.Converters.Add(new EnumConverter<RevRec>());
         settings.Converters.Add(new EnumConverter<Role>());
