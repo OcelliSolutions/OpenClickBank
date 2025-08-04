@@ -24,7 +24,7 @@ public class Shipping3Tests(ITestOutputHelper testOutputHelper, SharedFixture sh
         do
         {
             var shippingListResult =
-                await Fixture.ApiKey.ClickBankService.Shipping.GetShippingsAsync(days:30, page: page);
+                await Fixture.ApiKey.ClickBankService.Shipping3.GetShippings3Async(days:30, page: page);
             _additionalPropertiesHelper.CheckAdditionalProperties(shippingListResult,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
             Assert.NotNull(shippingListResult.Result?.OrderShipData);
@@ -42,7 +42,7 @@ public class Shipping3Tests(ITestOutputHelper testOutputHelper, SharedFixture sh
     public async Task GetShippingCountAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var count =
-            await Fixture.ApiKey.ClickBankService.Shipping.GetShippingCountAsync();
+            await Fixture.ApiKey.ClickBankService.Shipping3.GetShippingCount3Async();
         _additionalPropertiesHelper.CheckAdditionalProperties(count,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         Assert.NotEqual(0, count);
@@ -54,18 +54,18 @@ public class Shipping3Tests(ITestOutputHelper testOutputHelper, SharedFixture sh
     {
         //ClickBank will just keep adding shipping notifications without checking first. For testing only create up to 2 instances.
         var initialCheck =
-            await Fixture.ApiKey.ClickBankService.Shipping.GetShipNoticeAsync(Fixture.Receipt);
+            await Fixture.ApiKey.ClickBankService.Shipping3.GetShipNotice3Async(Fixture.Receipt);
 
         if (initialCheck?.ShippingNoticeData == null || initialCheck.ShippingNoticeData.Count < 2)
         {
-            var request = await Fixture.ApiKey.ClickBankService.Shipping.CreateShipNoticeAsync(Fixture.Receipt,
+            var request = await Fixture.ApiKey.ClickBankService.Shipping3.CreateShipNotice3Async(Fixture.Receipt,
                 DateOnly.FromDateTime(DateTime.UtcNow), "ups", tracking: "sample", comments: "test");
             _additionalPropertiesHelper.CheckAdditionalProperties(request,
                 Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         }
 
         var response =
-            await Fixture.ApiKey.ClickBankService.Shipping.GetShipNoticeAsync(Fixture.Receipt);
+            await Fixture.ApiKey.ClickBankService.Shipping3.GetShipNotice3Async(Fixture.Receipt);
         _additionalPropertiesHelper.CheckAdditionalProperties(response,
             Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
         Skip.If(response == null, "No shipping notice found for this receipt.");

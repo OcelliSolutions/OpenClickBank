@@ -32,7 +32,7 @@ public class Order2Tests(ITestOutputHelper testOutputHelper, SharedFixture share
         do
         {
             var orders =
-                await Fixture.ApiKey.ClickBankService.Orders.GetOrdersAsync(startDate: DateOnly.FromDateTime(DateTime.Now).AddDays(-30),
+                await Fixture.ApiKey.ClickBankService.Orders2.GetOrders2Async(startDate: DateOnly.FromDateTime(DateTime.Now).AddDays(-30),
                     endDate: DateOnly.FromDateTime(DateTime.Now), page: page);
             _additionalPropertiesHelper.CheckAdditionalProperties(orders, Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
             Debug.Assert(orders.Result?.OrderData != null, "orders.OrderData != null");
@@ -52,7 +52,7 @@ public class Order2Tests(ITestOutputHelper testOutputHelper, SharedFixture share
     public async Task GetOrderCountAsync_ReturnNumber_ShouldPass()
     {
         var orders =
-            await Fixture.ApiKey.ClickBankService.Orders.GetOrderCountAsync(startDate: DateOnly.FromDateTime(DateTime.Now).AddDays(-30),
+            await Fixture.ApiKey.ClickBankService.Orders2.GetOrderCount2Async(startDate: DateOnly.FromDateTime(DateTime.Now).AddDays(-30),
                 endDate: DateOnly.FromDateTime(DateTime.Now));
         Assert.NotEqual(0, orders);
     }
@@ -61,7 +61,7 @@ public class Order2Tests(ITestOutputHelper testOutputHelper, SharedFixture share
     [Priority(20)]
     public async Task GetOrderAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        var response = await Fixture.ApiKey.ClickBankService.Orders.GetOrderAsync(Fixture.Receipt, cancellationToken: CancellationToken.None);
+        var response = await Fixture.ApiKey.ClickBankService.Orders2.GetOrder2Async(Fixture.Receipt, cancellationToken: CancellationToken.None);
         _additionalPropertiesHelper.CheckAdditionalProperties(response, Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
     }
 
@@ -69,7 +69,7 @@ public class Order2Tests(ITestOutputHelper testOutputHelper, SharedFixture share
     [Priority(20)]
     public async Task GetOrderUpsellsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        var response = await Fixture.ApiKey.ClickBankService.Orders.GetOrderUpsellsAsync(Fixture.Receipt, CancellationToken.None);
+        var response = await Fixture.ApiKey.ClickBankService.Orders2.GetOrderUpsells2Async(Fixture.Receipt, CancellationToken.None);
         _additionalPropertiesHelper.CheckAdditionalProperties(response, Fixture.ApiKey.OpenClickBankConfig.ClerkApiKey);
     }
 
@@ -80,7 +80,7 @@ public class Order2Tests(ITestOutputHelper testOutputHelper, SharedFixture share
     [SkippableFact]
     [Priority(20)]
     public async Task ChangeOrderAddressAsync_CanCall() =>
-        await Fixture.ApiKey.ClickBankService.Orders.ChangeAddressOrderAsync(receipt: Fixture.Receipt,
+        await Fixture.ApiKey.ClickBankService.Orders2.ChangeAddressOrder2Async(receipt: Fixture.Receipt,
             address1: "123 Test St.", city: "Middle", county:"Nowhere", countryCode: "US", postalCode: "80030", province: "CO",
             cancellationToken: CancellationToken.None);
 

@@ -10248,6 +10248,9 @@ namespace Ocelli.OpenClickBank
         [System.Text.Json.Serialization.JsonPropertyName("approved")]
         public bool? Approved { get; set; } = default!;
 
+        [System.Text.Json.Serialization.JsonPropertyName("path")]
+        public string? Path { get; set; } = default!;
+
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]

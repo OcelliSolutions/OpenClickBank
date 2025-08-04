@@ -9,5 +9,6 @@ public class ImageBean
     public string? Title { get; set; }
     public ImageType? Type { get; set; }
     public bool Approved { get; set; }
+    public string? Path { get; set; }
 }
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

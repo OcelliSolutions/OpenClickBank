@@ -3674,6 +3674,9 @@ components:
           $ref: '#/components/schemas/ImageType'
         approved:
           type: boolean
+        path:
+          type: string
+          nullable: true
       additionalProperties: { }
     ImageData:
       type: object
